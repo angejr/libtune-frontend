@@ -3,16 +3,22 @@
 
     data () {
       return {
+        search: "",
         headers: [
-          { title: 'play', key: 'play' },
-          { title: 'title', key: 'title' },
-          { title: 'length', key: 'length' },
-          { title: 'tags', key: 'tags' },
-          { title: 'download', key: 'download' },
+          { title: '', key: 'play', align:"center", sortable: false },
+          { title: 'Title', key: 'title', align:"left" },
+          { title: 'Tags', key: 'tags', align:"center" },
+          { title: '', key: 'download', align:"center", sortable: false },
         ],
-
-        songs: []
+        songs: [],
+        currentPage: 1,
+        itemsPerPage: 5
       }
+    },
+    computed: {
+      pageCount () {
+        return Math.ceil(this.songs.length / this.itemsPerPage)
+      },
     },
     async mounted() {
       this.getSongs()
@@ -20,47 +26,84 @@
     methods: {
       async getSongs(){
         const {data, pending, error} = await useFetch(() => `${STRAPI_API_URL}/musics`, {
-      "headers": {
-        "Authorization": `Bearer ${STRAPI_TOKEN_MUSIC}`
-      }
-    })
+                              "headers": {
+                                "Authorization": `Bearer ${STRAPI_TOKEN_MUSIC}`
+                              }
+                            })
 
           for (let item of data.value.data){
+              await this.getSongDuration(item.s3_url)
               this.songs.push({id: item.id, ...item.attributes})
           }
-
-          console.log(this.songs)
         },
 
-        async downloadSongs(item){
-          // Create an invisible anchor element programmatically
-          const link = document.createElement('a');
-          link.href = item.s3_url; // Set href to the audio file URL
-          link.setAttribute('download', item.title); // Set the download attribute with the file name
+      async downloadSong(item){
+        // Create an invisible anchor element programmatically
+        const link = document.createElement('a');
+        link.href = item.s3_url; // Set href to the audio file URL
+        link.setAttribute('download', item.title); // Set the download attribute with the file name
 
-          // Append the link to the document body
-          document.body.appendChild(link);
+        // Append the link to the document body
+        document.body.appendChild(link);
 
-          // Programmatically click the link to trigger the download
-          link.click();
+        // Programmatically click the link to trigger the download
+        link.click();
 
-          // Remove the link from the document
-          document.body.removeChild(link);
-        }
+        // Remove the link from the document
+        document.body.removeChild(link);
+      },
 
-      
-      }
+      async getSongDuration(url) {
+          const audio = new Audio(url);
+          audio.preload = "metadata"
+          audio.addEventListener( 'loadedmetadata', () => {
+            console.log(audio.duration)
+          })
+
+      },
+
+      // Helper method to format the duration
+    formatDuration(duration) {
+      const minutes = Math.floor(duration / 60);
+      const seconds = Math.floor(duration % 60).toString().padStart(2, '0');
+      return `${minutes}:${seconds}`;
+    }
+
+    }
   }
 
 </script>
 
+
 <template>
-  <v-data-table-virtual
+
+  <v-card
+  title="Music"
+  flat
+  width="60%">
+
+  
+  <template v-slot:text>
+    <v-text-field
+      v-model="search"
+      label="Search"
+      prepend-inner-icon="mdi-magnify"
+      variant="outlined"
+      hide-details
+      single-line
+      width="50%"
+    ></v-text-field>
+  </template>
+
+  <v-data-table
     :headers="headers"
     :items="songs"
-    height="400"
-    width="20"
+    :search="search"
+    v-model:page="currentPage"
+    :items-per-page="itemsPerPage"
+    height="100%"
   >
+    
   <template v-slot:item.play="{ item }">
         <AudioPlayer :audio-source="item.s3_url">
         </AudioPlayer>
@@ -72,12 +115,22 @@
         color="red-lighten-2"
         icon="mdi-download"
         variant="text"
-        @click="downloadSongs(item)"
+        @click="downloadSong(item)"
         >
     </v-btn>
   </template>
 
-</v-data-table-virtual>
+  <template v-slot:bottom>
+      <div class="text-center pt-2">
+        <v-pagination
+          v-model="currentPage"
+          :length="pageCount"
+        ></v-pagination>
+      </div>
+    </template>
 
+</v-data-table>
+
+</v-card>
 
 </template>
