@@ -119,6 +119,14 @@
         >
     </v-btn>
   </template>
+  <template v-slot:item.tags="{ item }">
+        <v-chip v-if="item.tags" v-for="(tag, index) in item.tags.split(' ')" style="margin:2px"
+        size="small" :color="sunoTags[`${tag}`] ? sunoTags[`${tag}`] : `grey`">
+          {{tag}}
+          {{ sunoTags[`${tag}`] }}
+        </v-chip>
+
+  </template>
 
   <template v-slot:bottom>
       <div class="text-center pt-2">
