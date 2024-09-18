@@ -1,66 +1,67 @@
 <template>
-    <div class="d-flex justify-center align-center">
-      <v-progress-circular
-        :model-value="audioProgress"
-        :size="60"
-        :width="15"
-        color="blue"
-      >
-        <!-- Circular Play/Pause Button -->
-        <v-btn
-          icon
-          @click="togglePlay"
-        >
-          <v-icon v-if="!isPlaying">mdi-play-circle</v-icon>
-          <v-icon v-else>mdi-pause-circle</v-icon>
-        </v-btn>
-      </v-progress-circular>
-  
-      <!-- Hidden audio element -->
-      <audio ref="audio" :src="audioSource" @timeupdate="updateProgress"></audio>
-    </div>
-  </template>
+  <div class="d-flex justify-center align-center" style="position: relative">
+    <v-progress-circular
+      :model-value="audioProgress"
+      :size="45"
+      :width="5"
+      color="white"
+      style="position: absolute; z-index: 1;"
+
+    >
+      <!-- Circular Play/Pause Button -->
+      <v-icon color="black" @click="togglePlay"
+        >{{ !isPlaying ? "mdi-play-circle" : "mdi-pause-circle" }}
+      </v-icon>
+    </v-progress-circular>
+    <v-img :src="imageSource || '/images/image_2129f9df-9159-45e4-9a49-ef626338842b.jpeg'" :width="50"></v-img>
+
+    <!-- Hidden audio element -->
+    <audio ref="audio" :src="audioSource" @timeupdate="updateProgress"></audio>
+  </div>
+</template>
   
   <script>
-  export default {
-    props: {
-      // Accept the audio URL as a prop
-      audioSource: {
-        type: String,
-        required: true,
-      },
+export default {
+  props: {
+    audioSource: {
+      type: String,
+      required: true,
     },
-    data() {
-      return {
-        isPlaying: false,
-        audioProgress: 0,
-      };
+    imageSource: {
+      type: String,
+      required: true,
     },
-    methods: {
-      togglePlay() {
-          const audio = this.$refs.audio;
-        if (this.isPlaying) {
-          audio.pause();
-        } else {
-          audio.play();
-        }
-  
-        this.isPlaying = !this.isPlaying;
-      },
-      updateProgress() {
-        const audio = this.$refs.audio;
-        this.audioProgress = (audio.currentTime / audio.duration) * 100;
-        console.log(this.audioProgress)
-      },
+  },
+  data() {
+    return {
+      isPlaying: false,
+      audioProgress: 0,
+    };
+  },
+  methods: {
+    togglePlay() {
+      const audio = this.$refs.audio;
+      if (this.isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+
+      this.isPlaying = !this.isPlaying;
     },
-  };
-  </script>
+    updateProgress() {
+      const audio = this.$refs.audio;
+      this.audioProgress = (audio.currentTime / audio.duration) * 100;
+    },
+  },
+};
+</script>
   
   <style scoped>
-  .v-progress-circular {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  </style>
+.v-progress-circular {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
   
