@@ -16,7 +16,7 @@
     <v-img :src="imageSource || '/images/image_2129f9df-9159-45e4-9a49-ef626338842b.jpeg'" :width="50"></v-img>
 
     <!-- Hidden audio element -->
-    <audio ref="audio" :src="audioSource" @timeupdate="updateProgress"></audio>
+    <audio :id="audioId" ref="audio" :src="audioSource" @timeupdate="updateProgress"></audio>
   </div>
 </template>
   
@@ -31,23 +31,42 @@ export default {
       type: String,
       required: true,
     },
+    isPlaying: {
+      type: Boolean,
+      required: true
+    },
+    audioId: {
+      type: String,
+      required: true
+    }
   },
   data() {
     return {
-      isPlaying: false,
+      isPlayingInternal: false,
       audioProgress: 0,
     };
+  },
+  watch: {
+    isPlaying(newVal) {
+      // Watch the `isPlaying` prop to control the audio element
+      const audioElement = this.$refs.audio;
+      if (newVal) {
+        audioElement.play();
+        this.isPlayingInternal = true;
+      } else {
+        audioElement.pause();
+        this.isPlayingInternal = false;
+      }
+    }
   },
   methods: {
     togglePlay() {
       const audio = this.$refs.audio;
-      if (this.isPlaying) {
-        audio.pause();
+      if (this.isPlayingInternal) {
+        this.$emit('toggle-play', null);
       } else {
-        audio.play();
+        this.$emit('toggle-play', this.audioId);
       }
-
-      this.isPlaying = !this.isPlaying;
     },
     updateProgress() {
       const audio = this.$refs.audio;

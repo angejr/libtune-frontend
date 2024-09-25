@@ -13,7 +13,8 @@
         ],
         songs: [],
         currentPage: 1,
-        itemsPerPage: 10
+        itemsPerPage: 10,
+        currentPlayingAudio: null
       }
     },
     computed: {
@@ -54,8 +55,14 @@
         document.body.removeChild(link);
       },
      
+      handleTogglePlay(audioId) {
+        // Set the new currently playing audio
+        // If the same audio is clicked again, stop it
+        this.currentPlayingAudio = this.currentPlayingAudio === audioId ? null : audioId;
+      }
 
-    }
+    }, 
+    
   }
 
 </script>
@@ -82,13 +89,22 @@
       v-model:page="currentPage"
       :items-per-page="itemsPerPage"
       height="100%"
+      hover
+      multi-sort
     >
+  
       <template v-slot:item.play="{ item }">
-        <AudioPlayer :audioSource="item.s3_url" :imageSource="item.image_url">
+        <AudioPlayer
+          :audioSource="item.s3_url"
+          :imageSource="item.image_url"
+          :audioId="item.id"
+          :isPlaying="currentPlayingAudio === item.id"
+          @toggle-play="handleTogglePlay"
+        >
         </AudioPlayer>
       </template>
       <template v-slot:item.length="{ item }">
-        {{ item.length || '00:00' }}
+        {{ item.length || "00:00" }}
       </template>
 
       <template v-slot:item.download="{ item }">
@@ -102,7 +118,7 @@
         >
         </v-btn>
       </template>
-      
+
       <template v-slot:item.tags="{ item }">
         <v-chip
           v-if="item.tags"
