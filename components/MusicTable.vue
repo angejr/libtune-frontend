@@ -59,9 +59,16 @@
         // Set the new currently playing audio
         // If the same audio is clicked again, stop it
         this.currentPlayingAudio = this.currentPlayingAudio === audioId ? null : audioId;
+      },
+      getCurrent(){
+        return this.currentPlayingAudio
+      },
+      getRowProps(item){
+        return {
+          class:  item.item.id === this.getCurrent() ? 'playingClass' : ''
+        }
       }
-
-    }, 
+    },
     
   }
 
@@ -91,8 +98,8 @@
       height="100%"
       hover
       multi-sort
+      :row-props="getRowProps"
     >
-  
       <template v-slot:item.play="{ item }">
         <AudioPlayer
           :audioSource="item.s3_url"
@@ -111,7 +118,7 @@
         <!-- Download Button -->
         <v-btn
           class="ma-2"
-          color="red-lighten-2"
+          color="grey-darken-2"
           icon="mdi-download"
           variant="text"
           @click="downloadSong(item)"
@@ -143,3 +150,10 @@
     </v-data-table>
   </v-card>
 </template>
+
+<style lang="css">
+.playingClass {
+  background-color: rgb(70, 138, 138);
+  color: white;
+}
+</style>
