@@ -8,23 +8,32 @@
           { title: '', key: 'play', align:"center", sortable: false },
           { title: 'Title', key: 'title', align:"left" },
           { title: 'Length', key: 'length', align:"center" },
-          { title: 'Tags', key: 'tags', align:"center" },
+          { title: 'Tags', key: 'tags', align:"center", sortable: false },
           { title: '', key: 'download', align:"center", sortable: false },
         ],
         songs: [],
         currentPage: 1,
         itemsPerPage: 10,
-        currentPlayingAudio: null
+        currentPlayingAudio: null,
+        filter: [], 
       }
     },
     computed: {
       pageCount () {
         return Math.ceil(this.songs.length / this.itemsPerPage)
       },
+      filteredItems(){
+        return this.filter.length === 0 ? this.songs : this.songs.filter(el => this.filter.some( (element) => {
+          let tags = el?.tags?.split(' ')
+          if (el?.instrumental){
+            tags.push('Instrumental')
+          }
+          return tags?.includes(element)
+        } ) )
+      }
     },
     async mounted() {
       await this.getSongs()
-      console.log(this.songs.filter(el => el.image_url))
     },
     methods: {
       async getSongs(){
@@ -35,7 +44,7 @@
                             })
 
           for (let item of data.value.data){
-              this.songs.push({id: item.id, ...item.attributes})
+              this.songs.push({id: item.id, ...item.attributes, instrumental: item.attributes.lyric === "[Instrumental]"})
           }
         },
 
@@ -78,23 +87,36 @@
 <template>
   <v-card title="Music" flat width="60%">
     <template v-slot:text>
-      <v-text-field
-        v-model="search"
-        label="Search"
-        prepend-inner-icon="mdi-magnify"
-        variant="outlined"
-        hide-details
-        single-line
-        width="50%"
-      ></v-text-field>
+      <v-container>
+        <v-row align="start">
+          <v-text-field
+            v-model="search"
+            label="Search"
+            prepend-inner-icon="mdi-magnify"
+            variant="outlined"
+            hide-details
+            single-line
+            width="40%"
+          ></v-text-field>
+          <v-spacer></v-spacer>
+          <v-autocomplete
+            v-model="filter"
+            :items="Object.keys(sunoTags).concat('Instrumental')"
+            label="Select Tags"
+            clearable
+            chips
+            multiple
+            width="25%"
+          >
+          </v-autocomplete>
+        </v-row>
+      </v-container>
     </template>
 
-    <v-data-table
+    <v-data-table-virtual
       :headers="headers"
-      :items="songs"
+      :items="filteredItems"
       :search="search"
-      v-model:page="currentPage"
-      :items-per-page="itemsPerPage"
       height="100%"
       hover
       multi-sort
@@ -127,27 +149,22 @@
       </template>
 
       <template v-slot:item.tags="{ item }">
+        <v-chip v-if="item.instrumental" color="green">
+          Instrumental
+        </v-chip>
         <v-chip
           v-if="item.tags"
           v-for="tag in item.tags.split(' ')"
           style="margin: 2px"
           size="small"
-          :color="sunoTags[`${tag}`] ? sunoTags[`${tag}`] : `grey`"
+          :color="
+            sunoTags[`${tag}`] ? sunoTags[`${tag}`] : `grey`
+          "
           :key="tag"
-        >
-          {{ tag }}
+          >{{ tag }}
         </v-chip>
       </template>
-
-      <template v-slot:bottom>
-        <div class="text-center pt-2">
-          <v-pagination
-            v-model="currentPage"
-            :length="pageCount"
-          ></v-pagination>
-        </div>
-      </template>
-    </v-data-table>
+    </v-data-table-virtual>
   </v-card>
 </template>
 
