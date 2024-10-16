@@ -32,7 +32,7 @@
         } ) )
       }
     },
-    async mounted() {
+    async created() {
       await this.getSongs()
     },
     methods: {
@@ -43,10 +43,12 @@
                               }
                             })
 
-          for (let item of data.value.data){
+        if (data?.value?.data){
+          for (let item of data?.value?.data){
               this.songs.push({id: item.id, ...item.attributes, instrumental: item.attributes.lyric === "[Instrumental]"})
           }
-        },
+        }
+      },
 
       async downloadSong(item){
         // Create an invisible anchor element programmatically
@@ -85,7 +87,7 @@
 
 
 <template>
-  <v-card title="Music" flat width="60%">
+  <v-card title="100% royalty free music" flat width="70%">
     <template v-slot:text>
       <v-container>
         <v-row align="start">
@@ -117,7 +119,6 @@
       :headers="headers"
       :items="filteredItems"
       :search="search"
-      height="100%"
       hover
       multi-sort
       :row-props="getRowProps"
