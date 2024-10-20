@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <v-app-bar elevation="10">
+  <v-app-bar elevation="10" absolute>
     <template v-slot:prepend>
       <v-app-bar-title style="margin-left: 20px" size="20">
         <v-btn @click="goToHome" variant="text" size="large">
