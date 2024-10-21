@@ -1,5 +1,5 @@
 <template>
-  <v-container style="background-color: white" width="500px">
+    <v-container style="background-color: white" width="500px">
     <v-row style="padding-bottom: 10px">
       <v-col>
         <h1>Sign-Up</h1>
@@ -91,7 +91,7 @@ export default {
       if (this.$refs.form.validate()) {
         // Handle form submission here
 
-            const { data, error } = await useFetch(`${STRAPI_API_URL}/users`, {
+            const { data, error } = await useFetch(`${STRAPI_API_URL}/auth/local/register`, {
               method: "POST",
               headers: {
                 Authorization: `Bearer ${STRAPI_TOKEN_USER}`,
@@ -100,17 +100,17 @@ export default {
                 username: this.username,
                 email: this.email,
                 password: this.password,
-                role: {
-                  connect: [{id: 2}], // User is set as authenticated
-                },
               },
             });
 
             if (!error.value){
-                alert('Form Submitted Successfully!');
+                alert(`You're signed in !`);
+                localStorage.setItem('loginToken', data?.value?.jwt)
+                goToPath('/')
+
             }
             else {
-                alert("ERROR")
+                alert(error.value.data.error.message)
             }
       }
     },
