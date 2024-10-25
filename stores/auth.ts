@@ -33,7 +33,7 @@ export const useAuthStore = defineStore('auth', {
                 throw new Error(error.value.data.error.message)
             }
             if (data.value) {
-                this.user = {username: data.value.user.username}
+                this.user = {username: data.value.user.username, email: data.value.user.email}
                 this.userToken = data.value.jwt
             }
             console.log({user: this.user})
@@ -57,7 +57,7 @@ export const useAuthStore = defineStore('auth', {
                 throw new Error(error.value.data.error.message)
             }
             if (data.value) {
-                this.user = data.value.user
+                this.user = {username: data.value.user.username, email: data.value.user.email}
                 this.userToken = data.value.jwt
                 console.log({token: this.userToken})
             }
@@ -85,7 +85,7 @@ export const useAuthStore = defineStore('auth', {
         },
 
         autoLogin() {
-            const userToken = localStorage.getItem('userToken')
+            const userToken = sessionStorage.getItem('userToken')
             if (userToken) {
                 const decodedToken = jwtDecode(userToken)
                 const currentTime = Date.now() / 1000
