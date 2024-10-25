@@ -15,7 +15,7 @@ console.log(authStore.currentState)
         v-if="!authStore.isAuthenticated"
         style="display: flex; justify-content: space-around; width: 200px"
       >
-        <v-btn> Login </v-btn>
+        <v-btn @click="goToPath('/login')"> Login </v-btn>
         <v-btn @click="goToPath('/signup')" variant="outlined" color="blue"> Sign-up </v-btn>
       </div>
       <v-menu v-else>
@@ -28,7 +28,7 @@ console.log(authStore.currentState)
         </template>
         <v-list>
           <v-list-item>
-            <v-list-item-title>{{authStore.user.username}}</v-list-item-title>
+            <v-list-item-title style="font-size: 20px; font-weight: bold;">{{authStore.user.username}}</v-list-item-title>
             <v-list-subheader color="blue">{{authStore.user.email}}</v-list-subheader>
           </v-list-item>
           <v-list-item>
@@ -37,7 +37,7 @@ console.log(authStore.currentState)
           <v-list-item>
             <v-list-item-title>My Purchases </v-list-item-title>
           </v-list-item>
-          <v-list-item prepend-icon="mdi-logout-variant" baseColor="red" activeColor="grey"
+          <v-list-item prepend-icon="mdi-logout-variant" baseColor="red"
           @click="goToPath('/');authStore.logout()">
             <v-list-item-title >Logout </v-list-item-title>
           </v-list-item>
