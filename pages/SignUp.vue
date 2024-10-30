@@ -20,14 +20,14 @@
       <v-text-field
         v-model="username"
         label="Username"
-        :rules="[rules.required]"
+        :rules="[validationRules.required]"
         required
       ></v-text-field>
 
       <v-text-field
         v-model="email"
         label="Email"
-        :rules="[rules.required, rules.email]"
+        :rules="[validationRules.required, validationRules.email]"
         required
       ></v-text-field>
 
@@ -35,7 +35,7 @@
         v-model="password"
         label="Password"
         type="password"
-        :rules="[rules.required, rules.min(8)]"
+        :rules="[validationRules.required, validationRules.min(8)]"
         required
       ></v-text-field>
 
@@ -43,7 +43,7 @@
         v-model="confirmPassword"
         label="Confirm Password"
         type="password"
-        :rules="[rules.required, matchPassword]"
+        :rules="[validationRules.required, matchPassword]"
         required
       ></v-text-field>
 
@@ -73,14 +73,6 @@ const username = ref("");
 const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
-
-// Form validation rules
-const rules = {
-  required: (value) => !!value || "Required.",
-  email: (value) => /.+@.+\..+/.test(value) || "Invalid e-mail.",
-  min: (length) => (value) =>
-    value.length >= length || `Min ${length} characters.`,
-};
 
 // Password match validation
 const matchPassword = (value) =>

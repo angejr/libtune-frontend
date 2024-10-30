@@ -31,8 +31,8 @@ console.log(authStore.currentState)
             <v-list-item-title style="font-size: 20px; font-weight: bold;">{{authStore.user.username}}</v-list-item-title>
             <v-list-subheader color="blue">{{authStore.user.email}}</v-list-subheader>
           </v-list-item>
-          <v-list-item>
-            <v-list-item-title>My account </v-list-item-title>
+          <v-list-item @click="goToPath('/account')">
+            <v-list-item-title >My account </v-list-item-title>
           </v-list-item>
           <v-list-item>
             <v-list-item-title>My Purchases </v-list-item-title>

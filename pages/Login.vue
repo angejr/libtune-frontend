@@ -15,7 +15,7 @@
         <v-text-field variant="outlined"
           v-model="email"
           label="Email"
-          :rules="[rules.required, rules.email]"
+          :rules="[validationRules.required, validationRules.email]"
           required
           lazy
         ></v-text-field>
@@ -24,7 +24,7 @@
           v-model="password"
           label="Password"
           type="password"
-          :rules="[rules.required, rules.min(8)]"
+          :rules="[validationRules.required, validationRules.min(8)]"
           required
           lazy
         ></v-text-field>
@@ -49,14 +49,6 @@
   const isFormValid = ref(false);
   const email = ref("");
   const password = ref("");
-  
-  // Form validation rules
-  const rules = {
-    required: (value) => !!value || "Required.",
-    email: (value) => /.+@.+\..+/.test(value) || "Invalid e-mail.",
-    min: (length) => (value) =>
-      value.length >= length || `Min ${length} characters.`,
-  };
   
   // Form reference
   const formRef = ref(null);
