@@ -25,8 +25,8 @@ console.log(authStore.currentState)
           Sign-up
         </v-btn>
       </div>
-      <div v-else style="display: flex; justify-content: space-around; align-items: center; width: 200px">
-        <v-btn @click="goToPath('/subscribe')" variant="elevated" color="purple"> Premium </v-btn>
+      <div v-else style="display: flex; justify-content: space-around; align-items: center; width: 250px">
+        <v-btn @click="goToPath('/subscribe')" variant="elevated" color="purple"> BUY PREMIUM </v-btn>
         <v-menu>
           <template v-slot:activator="{ props }">
             <v-btn v-bind="props" elevation="2" icon="mdi-account"></v-btn>

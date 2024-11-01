@@ -57,7 +57,7 @@ export const useAuthStore = defineStore('auth', {
                 throw new Error(error.value.data.error.message)
             }
             if (data.value) {
-                this.user = {username: data.value.user.username, email: data.value.user.email}
+                this.user = data.value.user
                 this.userToken = data.value.jwt
                 console.log({token: this.userToken})
             }
@@ -69,7 +69,10 @@ export const useAuthStore = defineStore('auth', {
                     method: "GET",
                     headers: { Authorization: `Bearer ${this.userToken}` },
                 })
-                this.user = data.value.user
+
+                if (data.value){
+                    this.user = data.value
+                }
                 if (error.value) {
                     console.error("Fetch user error:", error)
                     // throw error
