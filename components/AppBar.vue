@@ -13,6 +13,7 @@ console.log(authStore.currentState)
         style="font-size: 24px; font-weight: bold; color: inherit"
       >
         Libtune
+        <v-chip v-if="authStore.user.customerId" size="x-small" variant="elevated" color="purple"> PRO</v-chip>
       </v-btn>
     </v-app-bar-title>
     <template v-slot:append>
@@ -26,7 +27,8 @@ console.log(authStore.currentState)
         </v-btn>
       </div>
       <div v-else style="display: flex; justify-content: space-around; align-items: center; width: 250px">
-        <v-btn @click="goToPath('/subscribe')" variant="elevated" color="purple"> BUY PREMIUM </v-btn>
+        <v-btn v-if="!authStore.user.customerId" @click="goToPath('/subscribe')" variant="elevated" color="purple"> BUY PREMIUM </v-btn>
+        <v-spacer v-else></v-spacer>
         <v-menu>
           <template v-slot:activator="{ props }">
             <v-btn v-bind="props" elevation="2" icon="mdi-account"></v-btn>

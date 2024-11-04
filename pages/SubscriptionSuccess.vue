@@ -8,54 +8,63 @@ const subscribed = ref(false);
 
 const checkoutSessionId = params.get("sessionId");
 
-if (checkoutSessionId) {
-  const { data, error } = await useFetch(
-    `${STRAPI_URL}/strapi-stripe/retrieveCheckoutSession/${checkoutSessionId}`,
-    {
-      method: "GET",
-    }
-  );
+// If the user is already a customer skip the subscription process
+if (authStore.user.customerId){
+    subscriptionOver.value = true;
+    subscribed.value = true;
 
-  if (data.value) {
-    let customerId = data.value.customer;
-
-    if (customerId) {
-      // Fetch self user
-      await authStore.fetchUser();
-
-      let { error } = await useFetch(
-        `${STRAPI_API_URL}/users/${authStore.user.id}`,
+}
+else{
+    if (checkoutSessionId) {
+      const { data, error } = await useFetch(
+        `${STRAPI_URL}/strapi-stripe/retrieveCheckoutSession/${checkoutSessionId}`,
         {
-          method: "PUT",
-          headers: { Authorization: `Bearer ${STRAPI_TOKEN_USER}` },
-          body: {
-            customerId,
-          },
+          method: "GET",
         }
       );
-
-      subscriptionOver.value = true;
-      if (error.value) {
-        alert(error.value.data.error.message);
-      } 
-      else {
-        subscribed.value = true;
+    
+      if (data.value) {
+        let customerId = data.value.customer;
+    
+        if (customerId) {
+          // Fetch self user
+          await authStore.fetchUser();
+    
+          let { error } = await useFetch(
+            `${STRAPI_API_URL}/users/${authStore.user.id}`,
+            {
+              method: "PUT",
+              headers: { Authorization: `Bearer ${STRAPI_TOKEN_USER}` },
+              body: {
+                customerId,
+              },
+            }
+          );
+    
+          subscriptionOver.value = true;
+          if (error.value) {
+            alert(error.value.data.error.message);
+          } 
+          else {
+            subscribed.value = true;
+          }
+        } 
+        else {
+          subscriptionOver.value = true;
+          alert("No customer found");
+        }
       }
-    } 
-    else {
+    
+      if (error.value) {
+        subscriptionOver.value = true;
+        alert(error.value.data.error.message);
+      }
+    } else {
       subscriptionOver.value = true;
-      alert("No customer found");
+      subscribed.value = false;
     }
-  }
-
-  if (error.value) {
-    subscriptionOver.value = true;
-    alert(error.value.data.error.message);
-  }
-} else {
-  subscriptionOver.value = true;
-  subscribed.value = false;
 }
+
 </script>
 
 <template>
