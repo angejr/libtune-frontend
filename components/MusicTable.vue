@@ -180,12 +180,27 @@ function getRowProps(item) {
             @click="handleDownload(item)"
           >
           </v-btn>
-          <!-- Dialog that appears if user is not customer is false -->
-          <v-dialog
+        </template>
+
+        <template v-slot:item.tags="{ item }">
+          <v-chip v-if="item.instrumental" color="green"> Instrumental </v-chip>
+          <v-chip
+            v-if="item.tags"
+            v-for="tag in item.tags.split(' ')"
+            style="margin: 2px"
+            size="small"
+            :color="sunoTags[`${tag}`] ? sunoTags[`${tag}`] : `grey`"
+            :key="tag"
+          >
+            {{ tag }}
+          </v-chip>
+        </template>
+      </v-data-table-virtual>
+    </v-card>
+    <!-- Dialog that appears if user is not customer is false -->
+    <v-dialog
             v-model="getPremiumDialog"
             max-width="500"
-            opacity="0.01"
-            elevation="0"
           >
             <v-card>
               <v-card-title>
@@ -213,8 +228,6 @@ function getRowProps(item) {
           <v-dialog
             v-model="loginDialog"
             max-width="500"
-            opacity="0.01"
-            elevation="0"
           >
             <v-card>
               <v-card-title>
@@ -248,23 +261,6 @@ function getRowProps(item) {
               </v-card-actions>
             </v-card>
           </v-dialog>
-        </template>
-
-        <template v-slot:item.tags="{ item }">
-          <v-chip v-if="item.instrumental" color="green"> Instrumental </v-chip>
-          <v-chip
-            v-if="item.tags"
-            v-for="tag in item.tags.split(' ')"
-            style="margin: 2px"
-            size="small"
-            :color="sunoTags[`${tag}`] ? sunoTags[`${tag}`] : `grey`"
-            :key="tag"
-          >
-            {{ tag }}
-          </v-chip>
-        </template>
-      </v-data-table-virtual>
-    </v-card>
   </v-container>
 </template>
 
