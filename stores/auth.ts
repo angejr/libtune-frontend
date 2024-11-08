@@ -1,11 +1,10 @@
 import { defineStore } from 'pinia'
-import { useStorage } from '@vueuse/core' // Optional: to use localStorage easily
 import { jwtDecode } from 'jwt-decode'
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
-        user: useStorage('user', {}, sessionStorage),   // User object
-        userToken: useStorage('userToken', '', sessionStorage), // JWT userToken stored in localStorage
+        user: null,   // User object
+        userToken: useCookie('userToken').value || null, // JWT userToken stored in localStorage
     }),
     getters: {
         isAuthenticated: (state) => !!state.userToken,
@@ -13,6 +12,13 @@ export const useAuthStore = defineStore('auth', {
     },
 
     actions: {
+        setUser(user: any) {
+            this.user = user;
+        },
+        setToken(token: any) {
+            this.userToken = token;
+            useCookie('userToken').value = token
+        },
         async register(username: string, email: string, password: string) {
             const { data, error } = await useFetch(
                 `${STRAPI_API_URL}/auth/local/register`,
@@ -33,11 +39,9 @@ export const useAuthStore = defineStore('auth', {
                 throw new Error(error.value.data.error.message)
             }
             if (data.value) {
-                this.user = {username: data.value.user.username, email: data.value.user.email}
-                this.userToken = data.value.jwt
+                this.setUser(data.value.user)
+                this.setToken(data.value.jwt)
             }
-            console.log({user: this.user})
-            console.log({token: this.userToken})
         },
 
         async login(email: string, password: string) {
@@ -57,9 +61,8 @@ export const useAuthStore = defineStore('auth', {
                 throw new Error(error.value.data.error.message)
             }
             if (data.value) {
-                this.user = data.value.user
-                this.userToken = data.value.jwt
-                console.log({token: this.userToken})
+                this.setUser(data.value.user)
+                this.setToken(data.value.jwt)
             }
         },
 
@@ -70,14 +73,14 @@ export const useAuthStore = defineStore('auth', {
                     headers: { Authorization: `Bearer ${this.userToken}` },
                 })
 
-                if (data.value){
-                    this.user = data.value
+                if (data.value) {
+                    this.setUser(data.value)
                 }
                 if (error.value) {
                     console.error("Fetch user error:", error)
                     // throw error
-                    throw new Error(error.value.data.error.message)
                     this.logout()  // Clear user and userToken if userToken is invalid
+                    throw new Error(error.value.data.error.message)
                 }
             }
         },
@@ -85,21 +88,22 @@ export const useAuthStore = defineStore('auth', {
         logout() {
             this.user = null
             this.userToken = null
+            useCookie('userToken').value = null
         },
 
-        autoLogin() {
-            const userToken = sessionStorage.getItem('userToken')
-            if (userToken) {
-                const decodedToken = jwtDecode(userToken)
-                const currentTime = Date.now() / 1000
+        // autoLogin() {
+        //     const userToken = sessionStorage.getItem('userToken')
+        //     if (userToken) {
+        //         const decodedToken = jwtDecode(userToken)
+        //         const currentTime = Date.now() / 1000
 
-                if (decodedToken.exp > currentTime) {
-                    this.userToken = userToken
-                    this.fetchUser()  // Fetch the user if the userToken is valid
-                } else {
-                    this.logout()
-                }
-            }
-        },
+        //         if (decodedToken.exp > currentTime) {
+        //             this.userToken = userToken
+        //             this.fetchUser()  // Fetch the user if the userToken is valid
+        //         } else {
+        //             this.logout()
+        //         }
+        //     }
+        // },
     },
 })

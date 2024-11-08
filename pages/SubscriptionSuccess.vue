@@ -3,8 +3,8 @@ const authStore = useAuthStore();
 
 const params = new URLSearchParams(document.location.search);
 
-const subscriptionOver = ref(!!authStore.user.customerId);
-const subscribed = ref(!!authStore.user.customerId);
+const subscriptionOver = ref(!!authStore.user?.customerId);
+const subscribed = ref(!!authStore.user?.customerId);
 
 const checkoutSessionId = params.get("sessionId");
 

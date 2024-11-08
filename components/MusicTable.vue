@@ -29,10 +29,6 @@ const filteredItems = computed(() => {
       );
 });
 
-// Fetching songs on component mount
-onMounted(async () => {
-  await getSongs();
-});
 
 // Functions
 async function getSongs() {
@@ -54,11 +50,14 @@ async function getSongs() {
   }
 }
 
+// Fetching songs on component setup
+await getSongs()
+
 function handleDownload(item) {
   if (!authStore.userToken) {
     loginDialog.value = true;
   } else {
-    if (!authStore.user.customerId) {
+    if (!authStore.user?.customerId) {
       getPremiumDialog.value = true; // Open the dialog if isCustomer is false
     } else {
       downloadSong(item);
@@ -146,15 +145,6 @@ function getRowProps(item) {
               size="40"
             ></v-progress-circular>
           </div>
-        </template>
-
-        <!-- No Data Slot (optional) -->
-        <template v-slot:no-data>
-          <v-progress-circular
-            indeterminate
-            color="primary"
-            size="40"
-          ></v-progress-circular>
         </template>
 
         <template v-slot:item.play="{ item }">
