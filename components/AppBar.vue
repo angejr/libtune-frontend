@@ -1,6 +1,5 @@
 <script setup lang="js">
 const authStore = useAuthStore()
-console.log(authStore.currentState)
 </script>
 
 <template>

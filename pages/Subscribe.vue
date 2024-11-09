@@ -1,25 +1,68 @@
 <script setup>
 const authStore = useAuthStore();
+const route = useRoute();
 
-console.log(window.onload)
+function SS_ProductCheckout(productId, baseUrl, userEmail) {
+  localStorage.setItem("strapiStripeUrl", baseUrl);
+  const getRedirectUrl =
+    baseUrl + "/strapi-stripe/getRedirectUrl/" + productId + "/" + userEmail;
 
-onMounted(() => {
-  // Check if `window.onload` is a function and call it manually
-  if (typeof window.onload === 'function') {
-    window.onload();
-  }
-});
+  fetch(getRedirectUrl, {
+    method: "get",
+    mode: "cors",
+    headers: new Headers({
+      "Content-Type": "application/json",
+    }),
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      console.log("COUCOUUUUU STRIPE");
+      console.log({ responseURL: response.url });
+      if (response.url) {
+        const url = response.url;
+        navigateTo(url, { external: true });
+
+        // ADDED SS_GetProductPaymentDetails
+
+        const checkoutSessionId = url
+          .split("/")
+          [url.split("/").length - 1].split("#")[0];
+
+        console.log("checkoutSessionId_1");
+        console.log(checkoutSessionId);
+        const baseUrl = localStorage.getItem("strapiStripeUrl");
+        const retrieveCheckoutSessionUrl =
+          baseUrl +
+          "/strapi-stripe/retrieveCheckoutSession/" +
+          checkoutSessionId;
+
+        if ( window.performance.getEntriesByType("navigation").map((nav) => nav.type).includes("reload")
+        ) {
+          console.info("website reloded");
+        } else {
+          fetch(retrieveCheckoutSessionUrl, {
+            method: "get",
+            mode: "cors",
+            headers: new Headers({
+              "Content-Type": "application/json",
+            }),
+          });
+        }
+      }
+    });
+}
 
 // Define the URL as a ref or computed property
-const url = ref(STRAPI_URL);
 
+function goToStripe() {
+  // for product Checkout
+  SS_ProductCheckout(1, STRAPI_URL, authStore.user.email);
+}
 </script>
 
 <template>
   <v-container>
     <h1>COUCOU</h1>
-    <v-btn class="SS_ProductCheckout" color="primary" data-id="1" :data-url="url" :data-email="authStore.user.email">
-      Subscribe
-    </v-btn>
+    <v-btn @click="goToStripe" color="primary"> Subscribe </v-btn>
   </v-container>
 </template>

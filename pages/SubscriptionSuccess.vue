@@ -1,12 +1,11 @@
 <script setup>
 const authStore = useAuthStore();
 
-const params = new URLSearchParams(document.location.search);
-
 const subscriptionOver = ref(!!authStore.user?.customerId);
 const subscribed = ref(!!authStore.user?.customerId);
-
-const checkoutSessionId = params.get("sessionId");
+const errorMessage = ref("")
+const route = useRoute();
+const checkoutSessionId = route.query["sessionId"];
 
 // If the user is already a customer skip the subscription process
 if (!subscribed.value) {
@@ -26,7 +25,7 @@ if (!subscribed.value) {
         try {
           await authStore.fetchUser();
         } catch (e) {
-          alert(e.message);
+          errorMessage.value = e.message;
         }
 
         let { error } = await useFetch(
@@ -42,19 +41,19 @@ if (!subscribed.value) {
 
         subscriptionOver.value = true;
         if (error.value) {
-          alert(error.value.data.error.message);
+          errorMessage.value = error.value.data.error.message;
         } else {
           subscribed.value = true;
         }
       } else {
         subscriptionOver.value = true;
-        alert("No customer found");
+        errorMessage.value = "No customer found";
       }
     }
 
     if (error.value) {
       subscriptionOver.value = true;
-      alert(error.value.data.error.message);
+      errorMessage.value = error.value.data.error.message;
     }
   } else {
     subscriptionOver.value = true;
@@ -80,7 +79,7 @@ if (!subscribed.value) {
     ></v-progress-circular>
     <div v-else>
       <h1 v-if="subscribed">YOU'RE SUBSCRIBED !</h1>
-      <h1 v-else>Problem while subscribing</h1>
+      <h1 v-else>{{errorMessage}}</h1>
     </div>
   </v-container>
 </template>
