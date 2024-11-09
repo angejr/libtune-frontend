@@ -16,8 +16,6 @@ function SS_ProductCheckout(productId, baseUrl, userEmail) {
   })
     .then((response) => response.json())
     .then((response) => {
-      console.log("COUCOUUUUU STRIPE");
-      console.log({ responseURL: response.url });
       if (response.url) {
         const url = response.url;
         navigateTo(url, { external: true });
@@ -28,15 +26,17 @@ function SS_ProductCheckout(productId, baseUrl, userEmail) {
           .split("/")
           [url.split("/").length - 1].split("#")[0];
 
-        console.log("checkoutSessionId_1");
-        console.log(checkoutSessionId);
         const baseUrl = localStorage.getItem("strapiStripeUrl");
         const retrieveCheckoutSessionUrl =
           baseUrl +
           "/strapi-stripe/retrieveCheckoutSession/" +
           checkoutSessionId;
 
-        if ( window.performance.getEntriesByType("navigation").map((nav) => nav.type).includes("reload")
+        if (
+          window.performance
+            .getEntriesByType("navigation")
+            .map((nav) => nav.type)
+            .includes("reload")
         ) {
           console.info("website reloded");
         } else {
