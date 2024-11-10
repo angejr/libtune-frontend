@@ -10,12 +10,7 @@ const checkoutSessionId = route.query["sessionId"];
 // If the user is already a customer skip the subscription process
 if (!subscribed.value) {
   if (checkoutSessionId) {
-    const { data, error } = await useFetch(
-      `${STRAPI_URL}/strapi-stripe/retrieveCheckoutSession/${checkoutSessionId}`,
-      {
-        method: "GET",
-      }
-    );
+    const { data, error } = await useFetch(`/api/checkoutsessions/${checkoutSessionId}`);
 
     if (data.value) {
       let customerId = data.value.customer;
@@ -80,7 +75,7 @@ if (!subscribed.value) {
     ></v-progress-circular>
     <div v-else>
       <h1 v-if="subscribed">YOU'RE SUBSCRIBED !</h1>
-      <h1 v-else>{{errorMessage}}</h1>
+      <div v-else>{{errorMessage}}</div>
     </div>
   </v-container>
 </template>
