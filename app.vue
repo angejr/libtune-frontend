@@ -1,12 +1,13 @@
 <script setup>
 const authStore = useAuthStore();
+const error = ref("")
 
 // Fetch user on load
 if (authStore.userToken) {
   try {
     await authStore.fetchUser();
   } catch (e) {
-    alert(e.message);
+    error.value = e.message
   }
 }
 </script>
@@ -16,7 +17,8 @@ if (authStore.userToken) {
   <v-app class="app">
     <AppBar> </AppBar>
     <v-main class="app" style="margin-top: 20px">
-      <NuxtPage></NuxtPage>
+      <div v-if="error"> {{error}}</div>
+      <NuxtPage v-else></NuxtPage>
     </v-main>
   </v-app>
 </template>

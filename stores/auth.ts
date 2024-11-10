@@ -48,7 +48,7 @@ export const useAuthStore = defineStore('auth', {
 
         async fetchUser() {
             if (this.userToken) {
-                const { data, error } = await useFetch(`${STRAPI_API_URL}/users/me`, {
+                const { data, error } = await useFetch('/api/users/me', {
                     method: "GET",
                     headers: { Authorization: `Bearer ${this.userToken}` },
                 })
@@ -59,8 +59,8 @@ export const useAuthStore = defineStore('auth', {
                 if (error.value) {
                     console.error("Fetch user error:", error)
                     // throw error
-                    this.logout()  // Clear user and userToken if userToken is invalid
-                    throw new Error(error.value.data.error.message)
+                    // this.logout()  // Clear user and userToken if userToken is invalid
+                    throw new Error(error.value.message)
                 }
             }
         },

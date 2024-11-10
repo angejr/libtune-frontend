@@ -5,9 +5,9 @@ export default defineEventHandler(async (event) => {
     const STRAPI_API_URL = config.strapiApiUrl
 
     const body = await readBody(event)
-    const method = event.node.req.method
+    const method = event.node.req.method as 'GET' | 'POST' | 'PUT' | 'DELETE'
 
-     const response = await $fetch(
+    return await $fetch(
         `${STRAPI_API_URL}/auth/local`,
         {
             method,
@@ -17,6 +17,4 @@ export default defineEventHandler(async (event) => {
             body
         }
     )
-
-    return response
 })
