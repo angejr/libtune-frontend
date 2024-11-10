@@ -20,50 +20,30 @@ export const useAuthStore = defineStore('auth', {
             useCookie('userToken').value = token
         },
         async register(username: string, email: string, password: string) {
-            const { data, error } = await useFetch(
-                `${STRAPI_API_URL}/auth/local/register`,
-                {
-                    method: "POST",
-                    headers: {
-                        Authorization: `Bearer ${STRAPI_TOKEN_USER}`,
-                    },
-                    body: {
-                        username,
-                        email,
-                        password,
-                    },
-                }
-            );
 
-            if (error.value) {
-                throw new Error(error.value.data.error.message)
-            }
-            if (data.value) {
-                this.setUser(data.value.user)
-                this.setToken(data.value.jwt)
-            }
+            const response = await $fetch('/api/register', {
+                method: "POST",
+                body: {
+                    username,
+                    email,
+                    password,
+                },
+            })
+            this.setUser(response.user)
+            this.setToken(response.jwt)
         },
 
         async login(email: string, password: string) {
-            const { data, error } = await useFetch(`${STRAPI_API_URL}/auth/local`, {
+
+            const response = await $fetch('/api/login', {
                 method: "POST",
-                headers: {
-                    Authorization: `Bearer ${STRAPI_TOKEN_USER}`,
-                },
                 body: {
                     identifier: email,
                     password,
                 },
-            });
-            if (error.value) {
-                console.error("Login error:", error)
-                // throw error
-                throw new Error(error.value.data.error.message)
-            }
-            if (data.value) {
-                this.setUser(data.value.user)
-                this.setToken(data.value.jwt)
-            }
+            })
+            this.setUser(response.user)
+            this.setToken(response.jwt)
         },
 
         async fetchUser() {

@@ -61,7 +61,6 @@
         await authStore.login(email.value, password.value);
         alert(`You're Logged in!`);
         goToPath("/");
-        console.log({state: authStore.currentState})
       } catch (e) {
         alert(e.message);
       }

@@ -89,7 +89,6 @@ const submitForm = async () => {
       await authStore.register(username.value, email.value, password.value);
       alert(`You're signed in!`);
       goToPath("/");
-      console.log({state: authStore.currentState})
     } catch (e) {
       alert(e.message);
     }
