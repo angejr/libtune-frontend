@@ -24,27 +24,28 @@ if (!subscribed.value) {
         // Fetch self user
         try {
           await authStore.fetchUser();
+          let { error } = await useFetch(`/api/users/${authStore.user.id}`,
+            {
+              method: "PUT",
+              body: {
+                customerId,
+              }
+            }
+          );
+  
+          subscriptionOver.value = true;
+          if (error.value) {
+            errorMessage.value = error.value.message;
+          } else {
+            subscribed.value = true;
+          }
+
+          // Refetch User 
+          await authStore.fetchUser();
         } catch (e) {
           errorMessage.value = e.message;
         }
 
-        let { error } = await useFetch(
-          `${STRAPI_API_URL}/users/${authStore.user.id}`,
-          {
-            method: "PUT",
-            headers: { Authorization: `Bearer ${STRAPI_TOKEN_USER}` },
-            body: {
-              customerId,
-            },
-          }
-        );
-
-        subscriptionOver.value = true;
-        if (error.value) {
-          errorMessage.value = error.value.data.error.message;
-        } else {
-          subscribed.value = true;
-        }
       } else {
         subscriptionOver.value = true;
         errorMessage.value = "No customer found";
@@ -53,7 +54,7 @@ if (!subscribed.value) {
 
     if (error.value) {
       subscriptionOver.value = true;
-      errorMessage.value = error.value.data.error.message;
+      errorMessage.value = error.value.message;
     }
   } else {
     subscriptionOver.value = true;
