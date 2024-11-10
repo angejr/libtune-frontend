@@ -16,6 +16,25 @@ const filter = ref([]);
 
 const getPremiumDialog = ref(false);
 const loginDialog = ref(false);
+const loadingError = ref("")
+
+async function getSongs() {
+  const { data, error } = await useFetch('/api/musics');
+
+  if (data.value?.data) {
+    songs.value = data.value.data.map((item) => ({
+      id: item.id,
+      ...item.attributes,
+      instrumental: item.attributes.lyric === "[Instrumental]",
+    }));
+  }
+  else {
+    loadingError.value = error.value.message
+  }
+}
+
+// Fetching songs on component setup
+getSongs()
 
 const filteredItems = computed(() => {
   return filter.value.length === 0
@@ -31,27 +50,6 @@ const filteredItems = computed(() => {
 
 
 // Functions
-async function getSongs() {
-  const { data } = await useFetch(() => `${STRAPI_API_URL}/musics`, {
-    headers: {
-      Authorization: `Bearer ${STRAPI_TOKEN_MUSIC}`,
-    },
-    query: {
-      [`pagination[limit]`]: 1000,
-    },
-  });
-
-  if (data.value?.data) {
-    songs.value = data.value.data.map((item) => ({
-      id: item.id,
-      ...item.attributes,
-      instrumental: item.attributes.lyric === "[Instrumental]",
-    }));
-  }
-}
-
-// Fetching songs on component setup
-await getSongs()
 
 function handleDownload(item) {
   if (!authStore.userToken) {
@@ -128,7 +126,12 @@ function getRowProps(item) {
         </v-row>
       </v-container>
 
+      <div v-if="loadingError">
+        {{ loadingError }}
+      </div>
+
       <v-data-table-virtual
+        v-else
         :headers="headers"
         :items="filteredItems"
         :search="search"
