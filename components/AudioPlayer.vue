@@ -8,8 +8,8 @@
       style="position: absolute; z-index: 1"
     >
       <!-- Circular Play/Pause Button -->
-      <v-icon color="black" @click="togglePlay"
-        >{{ !isPlaying ? "mdi-play-circle" : "mdi-pause-circle" }}
+      <v-icon color="black" @click="togglePlay">
+        {{ !isPlayingInternal ? "mdi-play-circle" : "mdi-pause-circle" }}
       </v-icon>
     </v-progress-circular>
     <v-img
@@ -28,68 +28,70 @@
     ></audio>
   </div>
 </template>
-  
-  <script>
-export default {
-  props: {
-    audioSource: {
-      type: String,
-      required: true,
-    },
-    imageSource: {
-      type: String,
-      required: true,
-    },
-    isPlaying: {
-      type: Boolean,
-      required: true,
-    },
-    audioId: {
-      type: String,
-      required: true,
-    },
+
+<script setup>
+
+// Props
+const props = defineProps({
+  audioSource: {
+    type: String,
+    required: true,
   },
-  data() {
-    return {
-      isPlayingInternal: false,
-      audioProgress: 0,
-    };
+  imageSource: {
+    type: String,
+    required: true,
   },
-  watch: {
-    isPlaying(newVal) {
-      // Watch the `isPlaying` prop to control the audio element
-      const audioElement = this.$refs.audio;
-      if (newVal) {
-        audioElement.play();
-        this.isPlayingInternal = true;
-      } else {
-        audioElement.pause();
-        this.isPlayingInternal = false;
-      }
-    },
+  isPlaying: {
+    type: Boolean,
+    required: true,
   },
-  methods: {
-    togglePlay() {
-      const audio = this.$refs.audio;
-      if (this.isPlayingInternal) {
-        this.$emit("toggle-play", null);
-      } else {
-        this.$emit("toggle-play", this.audioId);
-      }
-    },
-    updateProgress() {
-      const audio = this.$refs.audio;
-      this.audioProgress = (audio.currentTime / audio.duration) * 100;
-    },
+  audioId: {
+    type: String,
+    required: true,
   },
-};
+});
+
+// Define custom events that the component can emit
+const emit = defineEmits(['toggle-play']);
+
+// Refs and reactive variables
+const audio = ref(null);
+const isPlayingInternal = ref(false);
+const audioProgress = ref(0);
+
+// Watcher for the `isPlaying` prop to control audio element
+watch(() => props.isPlaying, (newVal) => {
+  if (audio.value) {
+    if (newVal) {
+      audio.value.play();
+      isPlayingInternal.value = true;
+    } else {
+      audio.value.pause();
+      isPlayingInternal.value = false;
+    }
+  }
+});
+
+// Methods
+function togglePlay() {
+  if (isPlayingInternal.value) {
+    emit('toggle-play', null);
+  } else {
+    emit('toggle-play', props.audioId);
+  }
+}
+
+function updateProgress() {
+  if (audio.value) {
+    audioProgress.value = (audio.value.currentTime / audio.value.duration) * 100;
+  }
+}
 </script>
-  
-  <style scoped>
+
+<style scoped>
 .v-progress-circular {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 </style>
-  
