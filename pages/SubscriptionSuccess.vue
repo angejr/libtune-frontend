@@ -16,12 +16,11 @@ if (!subscribed.value) {
       let customerId = data.value.customer;
 
       if (customerId) {
-        // Fetch self user
         try {
-          await authStore.fetchUser();
-          let { error } = await useFetch(`/api/users/${authStore.user.id}`,
+          let { error } = await useFetch(`/api/users/me`,
             {
               method: "PUT",
+              headers: { Authorization: `Bearer ${authStore.userToken}` },
               body: {
                 customerId,
               }
