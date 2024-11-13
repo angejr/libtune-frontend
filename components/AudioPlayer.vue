@@ -30,13 +30,10 @@
 </template>
 
 <script setup>
+const audioSource = ref(null)
 
 // Props
 const props = defineProps({
-  audioSource: {
-    type: String,
-    required: true,
-  },
   imageSource: {
     type: String,
     required: true,
@@ -73,10 +70,11 @@ watch(() => props.isPlaying, (newVal) => {
 });
 
 // Methods
-function togglePlay() {
+async function togglePlay() {
   if (isPlayingInternal.value) {
     emit('toggle-play', null);
   } else {
+    await getSong()
     emit('toggle-play', props.audioId);
   }
 }
@@ -85,6 +83,11 @@ function updateProgress() {
   if (audio.value) {
     audioProgress.value = (audio.value.currentTime / audio.value.duration) * 100;
   }
+}
+
+async function getSong(){
+  const {url} = await $fetch(`/api/musics/${props.audioId}`)
+  audioSource.value = url
 }
 </script>
 

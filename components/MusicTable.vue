@@ -152,7 +152,6 @@ function getRowProps(item) {
 
         <template v-slot:item.play="{ item }">
           <AudioPlayer
-            :audioSource="item.s3_url"
             :imageSource="item.image_url"
             :audioId="item.id"
             :isPlaying="currentPlayingAudio === item.id"

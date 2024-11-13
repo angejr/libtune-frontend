@@ -9,5 +9,9 @@ export default defineNuxtConfig({
     strapiApiUrl: process.env.NUXT_STRAPI_API_URL,
     strapiTokenMusic: process.env.NUXT_STRAPI_TOKEN_MUSIC,
     strapiTokenUser: process.env.NUXT_STRAPI_TOKEN_USER,
+    awsRegion: process.env.AWS_REGION,
+    awsMusicBucket: process.env.AWS_MUSIC_BUCKET,
+    awsAccessKeyId: process.env.NUXT_AWS_ACCESS_KEY_ID,
+    awsSecretAccesKey: process.env.NUXT_AWS_SECRET_ACCESS_KEY
   }
 })
