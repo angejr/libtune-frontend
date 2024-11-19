@@ -9,13 +9,11 @@
     >
       <!-- Circular Play/Pause Button -->
       <v-icon color="black" @click="togglePlay">
-        {{ !isPlayingInternal ? "mdi-play-circle" : "mdi-pause-circle" }}
+        {{ isPlayingInternal ? "mdi-pause-circle" : "mdi-play-circle" }}
       </v-icon>
     </v-progress-circular>
     <v-img
-      :src="
-        imageSource || '/images/image_2129f9df-9159-45e4-9a49-ef626338842b.jpeg'
-      "
+      :src="imageSource || '/images/image_2129f9df-9159-45e4-9a49-ef626338842b.jpeg'"
       :width="50"
     ></v-img>
 
@@ -25,12 +23,16 @@
       ref="audio"
       :src="audioSource"
       @timeupdate="updateProgress"
+      @loadeddata="onAudioLoaded"
+      @play="onPlay"
+      @pause="onPause"
+      @error="onAudioError"
     ></audio>
   </div>
 </template>
 
 <script setup>
-const audioSource = ref(null)
+const audioSource = ref(null);
 
 // Props
 const props = defineProps({
@@ -53,41 +55,97 @@ const emit = defineEmits(['toggle-play']);
 
 // Refs and reactive variables
 const audio = ref(null);
-const isPlayingInternal = ref(false);
 const audioProgress = ref(0);
+const isPlayingInternal = ref(false); // Explicit state for play/pause icon
 
-// Watcher for the `isPlaying` prop to control audio element
-watch(() => props.isPlaying, (newVal) => {
-  if (audio.value) {
-    if (newVal) {
-      audio.value.play();
-      isPlayingInternal.value = true;
-    } else {
-      audio.value.pause();
-      isPlayingInternal.value = false;
+// Watcher for the `isPlaying` prop to control the audio element
+watch(
+  () => props.isPlaying,
+  async (newVal) => {
+    if (audio.value) {
+      try {
+        if (newVal) {
+          if (audioSource.value !== null) {
+            await audio.value.play();
+          }
+        } else {
+          audio.value.pause();
+        }
+      } catch (error) {
+        console.error("Error controlling audio playback:", error);
+      }
     }
   }
-});
+);
 
 // Methods
 async function togglePlay() {
-  if (isPlayingInternal.value) {
-    emit('toggle-play', null);
-  } else {
-    await getSong()
-    emit('toggle-play', props.audioId);
+  try {
+    if (audio.value) {
+      if (isPlayingInternal.value) {
+        audio.value.pause();
+        emit('toggle-play', null);
+      } else {
+        if (!audioSource.value) {
+          await getSong();
+        }
+
+        if (audio.value.readyState >= 3) {
+          await audio.value.play();
+          emit('toggle-play', props.audioId);
+        } else {
+          audio.value.addEventListener(
+            'loadeddata',
+            async () => {
+              try {
+                await audio.value.play();
+                emit('toggle-play', props.audioId);
+              } catch (error) {
+                console.error("Playback failed after loading data:", error);
+              }
+            },
+            { once: true }
+          );
+
+          audio.value.load(); // Ensure the audio is loaded with the new source
+        }
+      }
+    }
+  } catch (error) {
+    console.error("Error toggling play:", error);
   }
 }
 
 function updateProgress() {
-  if (audio.value) {
+  if (audio.value && audio.value.duration) {
     audioProgress.value = (audio.value.currentTime / audio.value.duration) * 100;
   }
 }
 
-async function getSong(){
-  const {url} = await $fetch(`/api/musics/${props.audioId}`)
-  audioSource.value = url
+async function getSong() {
+  try {
+    const { url } = await $fetch(`/api/musics/${props.audioId}`);
+    audioSource.value = url;
+  } catch (error) {
+    console.error("Error fetching song URL:", error);
+  }
+}
+
+function onAudioLoaded() {
+  console.log("Audio is ready to play");
+}
+
+function onAudioError() {
+  console.error("Error loading audio source");
+}
+
+// Sync play/pause state with audio element events
+function onPlay() {
+  isPlayingInternal.value = true;
+}
+
+function onPause() {
+  isPlayingInternal.value = false;
 }
 </script>
 
