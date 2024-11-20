@@ -32,6 +32,6 @@ export default defineEventHandler(async (event) => {
     Key: s3_url.split('/')[s3_url.split('/').length - 1]
   });
 
-  const signedURL = await getSignedUrl(s3Client, command, { expiresIn: 120 });
+  const signedURL = await getSignedUrl(s3Client, command, { expiresIn: 300 });
   return {url: signedURL}
 })

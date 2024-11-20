@@ -63,13 +63,22 @@ function handleDownload(item) {
   }
 }
 
-function downloadSong(item) {
-  const link = document.createElement("a");
-  link.href = item.s3_url;
-  link.setAttribute("download", item.title);
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+async function downloadSong(item) {
+  try {
+    const link = document.createElement("a");
+    const { url } = await $fetch(`/api/musics/download/${item.id}`, {
+      headers: {
+        authorization: `Bearer ${authStore.userToken}`
+      }
+    });
+    link.href = url;
+    link.setAttribute("download", item.title);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch (error) {
+    console.error("Error fetching song URL:", error);
+  }
 }
 
 function handleTogglePlay(audioId) {
