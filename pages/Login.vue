@@ -17,7 +17,7 @@
             v-model="email"
             label="Email"
             variant="outlined"
-            :rules="[validationRules.required, validationRules.email]"
+            :rules="[validationRules.required, validationRules.email, validationRules.safe, validationRules.max(30)]"
             required
             dense
             class="mt-4"
@@ -28,7 +28,7 @@
             label="Password"
             type="password"
             variant="outlined"
-            :rules="[validationRules.required, validationRules.min(8)]"
+            :rules="[validationRules.required, validationRules.min(8), validationRules.safe, validationRules.max(30)]"
             required
             dense
             class="mt-4"

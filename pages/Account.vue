@@ -24,25 +24,30 @@ const authStore = useAuthStore();
                   <v-list-item>
                     <v-list-item-content>
                       <v-list-item-title>Username</v-list-item-title>
-                      <v-text-field outlined v-model="authStore.user.username"></v-text-field>
+                      <v-text-field outlined v-model="authStore.user.username"
+                      :rules="[validationRules.safe, validationRules.max(30)]"
+                      ></v-text-field>
                     </v-list-item-content>
                   </v-list-item>
                   <v-list-item>
                     <v-list-item-content>
                       <v-list-item-title>Email</v-list-item-title>
-                      <v-text-field outlined disabled v-model="authStore.user.email"></v-text-field>
+                      <v-text-field outlined disabled v-model="authStore.user.email"
+                      :rules="[validationRules.safe, validationRules.max(30)]"></v-text-field>
                     </v-list-item-content>
                   </v-list-item>
                   <v-list-item>
                     <v-list-item-content>
                       <v-list-item-title>Last Name</v-list-item-title>
-                      <v-text-field outlined v-model="authStore.user.lastName"></v-text-field>
+                      <v-text-field outlined v-model="authStore.user.lastName"
+                      :rules="[validationRules.safe, validationRules.max(30)]"></v-text-field>
                     </v-list-item-content>
                   </v-list-item>
                   <v-list-item>
                     <v-list-item-content>
                       <v-list-item-title>First Name</v-list-item-title>
-                      <v-text-field outlined v-model="authStore.user.firstName"></v-text-field>
+                      <v-text-field outlined v-model="authStore.user.firstName"
+                      :rules="[validationRules.safe, validationRules.max(30)]"></v-text-field>
                     </v-list-item-content>
                   </v-list-item>
                 </v-list>
@@ -59,7 +64,8 @@ const authStore = useAuthStore();
                   <v-list-item>
                     <v-list-item-content>
                       <v-list-item-title>Card Number</v-list-item-title>
-                      <v-text-field outlined></v-text-field>
+                      <v-text-field outlined
+                      :rules="[validationRules.safe, validationRules.number, validationRules.max(100) ]"></v-text-field>
                     </v-list-item-content>
                   </v-list-item>
                   <v-list-item>

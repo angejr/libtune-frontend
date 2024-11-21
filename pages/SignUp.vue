@@ -15,7 +15,7 @@
             v-model="username"
             label="Username"
             variant="outlined"
-            :rules="[validationRules.required]"
+            :rules="[validationRules.required, validationRules.safe, validationRules.max(30)]"
             dense
             class="mt-4"
           ></v-text-field>
@@ -24,7 +24,7 @@
             v-model="email"
             label="Email"
             variant="outlined"
-            :rules="[validationRules.required, validationRules.email]"
+            :rules="[validationRules.required, validationRules.email, validationRules.safe, validationRules.max(30)]"
             dense
             class="mt-4"
           ></v-text-field>
@@ -34,7 +34,7 @@
             label="Password"
             type="password"
             variant="outlined"
-            :rules="[validationRules.required, validationRules.min(8)]"
+            :rules="[validationRules.required, validationRules.min(8), validationRules.safe, validationRules.max(30)]"
             dense
             class="mt-4"
           ></v-text-field>
@@ -44,7 +44,7 @@
             label="Confirm Password"
             type="password"
             variant="outlined"
-            :rules="[validationRules.required, matchPassword]"
+            :rules="[validationRules.required, matchPassword, validationRules.safe, validationRules.max(30)]"
             dense
             class="mt-4"
           ></v-text-field>
