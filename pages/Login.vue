@@ -1,46 +1,86 @@
 <template>
-    <v-container style="background-color: white; display: flex; flex-direction: column; justify-content: space-around;" width="500px" height="300px">
-          <h1 style="padding-bottom:20px">Login</h1>
-      <v-form
-        v-model="isFormValid"
-        ref="formRef"
-        lazy-validation
-        style="
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        "
-      >
-  
-        <v-text-field variant="outlined"
-          v-model="email"
-          label="Email"
-          :rules="[validationRules.required, validationRules.email]"
-          required
-          lazy
-        ></v-text-field>
-  
-        <v-text-field variant="outlined"
-          v-model="password"
-          label="Password"
-          type="password"
-          :rules="[validationRules.required, validationRules.min(8)]"
-          required
-          lazy
-        ></v-text-field>
-  
-        <v-btn
-          :disabled="!isFormValid"
-          @click="submitForm"
-          color="primary"
-          width="100px"
-          style="align-self: center;"
+  <v-container
+    class="login-container"
+  >
+    <v-card elevation="10" class="login-card">
+      <v-card-title class="text-center text-h5 font-weight-bold">
+        Login
+      </v-card-title>
+      <v-divider></v-divider>
+      <v-card-text>
+        <v-form
+          v-model="isFormValid"
+          ref="formRef"
+          lazy-validation
         >
-          Enter
+          <v-text-field
+            v-model="email"
+            label="Email"
+            variant="outlined"
+            :rules="[validationRules.required, validationRules.email]"
+            required
+            dense
+            class="mt-4"
+          ></v-text-field>
+
+          <v-text-field
+            v-model="password"
+            label="Password"
+            type="password"
+            variant="outlined"
+            :rules="[validationRules.required, validationRules.min(8)]"
+            required
+            dense
+            class="mt-4"
+          ></v-text-field>
+
+          <v-btn
+            :disabled="!isFormValid"
+            @click="submitForm"
+            color="primary"
+            block
+            large
+            class="mt-6"
+          >
+            Log In
+          </v-btn>
+        </v-form>
+      </v-card-text>
+      <v-card-actions class="text-center justify-center">
+        <v-btn text color="secondary" @click="goToForgotPassword">
+          Forgot Password?
         </v-btn>
-      </v-form>
-    </v-container>
-  </template>
+      </v-card-actions>
+    </v-card>
+  </v-container>
+</template>
+
+<style scoped>
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.v-btn[block] {
+  width: 100%;
+}
+
+.v-card-title {
+  margin-bottom: 10px;
+}
+</style>
+
     
   <script setup>
   const authStore = useAuthStore();
