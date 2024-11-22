@@ -59,7 +59,7 @@ export const useAuthStore = defineStore('auth', {
                 if (error.value) {
                     console.error("Fetch user error:", error)
                     // throw error
-                    // this.logout()  // Clear user and userToken if userToken is invalid
+                    this.logout()  // Clear user and userToken if userToken is invalid
                     throw new Error(error.value.message)
                 }
             }

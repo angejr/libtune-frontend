@@ -1,5 +1,6 @@
 <script setup>
 const authStore = useAuthStore();
+const errorStore = useErrorStore();
 
 const search = ref("");
 
@@ -16,7 +17,6 @@ const filter = ref([]);
 
 const getPremiumDialog = ref(false);
 const loginDialog = ref(false);
-const loadingError = ref("");
 
 async function getSongs() {
   const { data, error } = await useFetch("/api/musics");
@@ -28,7 +28,7 @@ async function getSongs() {
       instrumental: item.attributes.lyric === "[Instrumental]",
     }));
   } else {
-    loadingError.value = error.value.message;
+    errorStore.setError({title: "Error while fetching music" , text: error.value.message});
   }
 }
 
@@ -75,7 +75,7 @@ async function downloadSong(item) {
     link.click();
     document.body.removeChild(link);
   } catch (error) {
-    console.error("Error fetching song URL:", error);
+    errorStore.setError({title: "Error downloading song" , text: error.message});
   }
 }
 
@@ -131,15 +131,8 @@ function getRowProps(item) {
           </v-col>
         </v-row>
       </v-container>
-
-      <!-- Error Message -->
-      <v-alert v-if="loadingError" type="error" dismissible class="mt-4">
-        {{ loadingError }}
-      </v-alert>
-
       <!-- Music Table -->
       <v-data-table-virtual
-        v-else
         :headers="headers"
         :items="filteredItems"
         :search="search"
@@ -277,11 +270,6 @@ function getRowProps(item) {
 
 .tag-chip {
   margin: 2px;
-}
-
-.v-alert {
-  border-radius: 8px;
-  font-size: 14px;
 }
 
 .playingClass {
