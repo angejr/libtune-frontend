@@ -72,7 +72,7 @@ if (!subscribed.value) {
 
     <!-- Subscription Confirmation -->
     <v-card
-      v-else
+      v-if="subscribed"
       class="subscription-card"
       elevation="4"
     >

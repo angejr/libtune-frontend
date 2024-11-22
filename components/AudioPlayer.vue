@@ -33,6 +33,7 @@
 
 <script setup>
 const audioSource = ref(null);
+const errorStore = useErrorStore();
 
 // Props
 const props = defineProps({
@@ -72,7 +73,7 @@ watch(
           audio.value.pause();
         }
       } catch (error) {
-        console.error("Error controlling audio playback:", error);
+        errorStore.setError({title: "Error controlling audio playback", text: error.message})
       }
     }
   }
@@ -101,7 +102,7 @@ async function togglePlay() {
                 await audio.value.play();
                 emit('toggle-play', props.audioId);
               } catch (error) {
-                console.error("Playback failed after loading data:", error);
+                errorStore.setError({title: "Playback failed after loading data", text: error.message})
               }
             },
             { once: true }
@@ -112,7 +113,7 @@ async function togglePlay() {
       }
     }
   } catch (error) {
-    console.error("Error toggling play:", error);
+    errorStore.setError({title: "Error toggling play", text: error.message})
   }
 }
 
@@ -127,7 +128,7 @@ async function getSong() {
     const { url } = await $fetch(`/api/musics/${props.audioId}`);
     audioSource.value = url;
   } catch (error) {
-    console.error("Error fetching song URL:", error);
+    errorStore.setError({title: "Error fetching song URL", text: error.message})
   }
 }
 
@@ -136,7 +137,7 @@ function onAudioLoaded() {
 }
 
 function onAudioError() {
-  console.error("Error loading audio source");
+  errorStore.setError({title: "Error loading audio source", text: error.message})
 }
 
 // Sync play/pause state with audio element events

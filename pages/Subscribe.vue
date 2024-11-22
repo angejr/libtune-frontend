@@ -111,7 +111,6 @@ function goToStripe() {
 <style scoped>
 .premium-plan-card {
   border-radius: 12px;
-  background-color: #f9f9f9;
 }
 .price {
   color: #4a148c;
