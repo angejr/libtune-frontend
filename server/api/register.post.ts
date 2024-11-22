@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
         username: z.string().min(1).max(60),
         email: z.string().regex(/^.+@.+\..+$/).max(60),
         password: z.string().min(8).max(30)
-    })
+    }).strict()
     const validation = await readValidatedBody(event, body => schema.safeParse(body))
 
     if (!validation.success) {
