@@ -24,3 +24,4 @@ logs
 !.env.example
 
 utils/env.ts
+*.http
