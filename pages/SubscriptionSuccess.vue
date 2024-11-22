@@ -1,9 +1,9 @@
 <script setup>
 const authStore = useAuthStore();
+const errorStore = useErrorStore();
 
 const subscriptionOver = ref(!!authStore.user?.customerId);
 const subscribed = ref(!!authStore.user?.customerId);
-const errorMessage = ref("")
 const route = useRoute();
 const checkoutSessionId = route.query["sessionId"];
 
@@ -29,7 +29,7 @@ if (!subscribed.value) {
   
           subscriptionOver.value = true;
           if (error.value) {
-            errorMessage.value = error.value.message;
+            errorStore.setError({title: "Error", text: error.value.message})
           } else {
             subscribed.value = true;
           }
@@ -37,18 +37,18 @@ if (!subscribed.value) {
           // Refetch User 
           await authStore.fetchUser();
         } catch (e) {
-          errorMessage.value = e.message;
+          errorStore.setError({title: "Error", text: e.message})
         }
 
       } else {
         subscriptionOver.value = true;
-        errorMessage.value = "No customer found";
+        errorStore.setError({title: "Error", text: "No customer found"})
       }
     }
 
     if (error.value) {
       subscriptionOver.value = true;
-      errorMessage.value = error.value.message;
+      errorStore.setError({title: "Error", text: error.value.message})
     }
   } else {
     subscriptionOver.value = true;
@@ -109,17 +109,6 @@ if (!subscribed.value) {
         </v-btn>
       </v-card-actions>
     </v-card>
-
-    <!-- Error Message -->
-    <v-alert
-      v-if="subscriptionOver && !subscribed"
-      type="error"
-      class="error-message mt-4"
-      dismissible
-    >
-      <v-icon left color="red">mdi-alert</v-icon>
-      {{ errorMessage }}
-    </v-alert>
   </v-container>
 </template>
 

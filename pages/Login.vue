@@ -9,10 +9,11 @@
       <v-divider></v-divider>
       <v-card-text>
         <v-form
-          v-model="isFormValid"
-          ref="formRef"
-          lazy-validation
+        v-model="isFormValid"
+        ref="formRef"
+        lazy-validation
         >
+        <p v-if="loginError" style="color:red; margin-top: 10px"> Wrong E-mail or password</p>
           <v-text-field
             v-model="email"
             label="Email"
@@ -84,6 +85,8 @@
     
   <script setup>
   const authStore = useAuthStore();
+  const errorStore = useErrorStore();
+  const loginError = ref(false)
   
   // Reactive form state
   const isFormValid = ref(false);
@@ -99,10 +102,15 @@
     if (formRef.value && formRef.value.validate()) {
       try {
         await authStore.login(email.value, password.value);
-        alert(`You're Logged in!`);
         goToPath("/");
       } catch (e) {
-        alert(e.message);
+        console.log(e.statusCode)
+        if (e.statusCode == 401){
+          loginError.value = true
+        }
+        else{
+          errorStore.setError({title: "Login Error", text: e.message})
+        }
       }
     }
   };

@@ -73,6 +73,7 @@
 
 <script setup>
 const authStore = useAuthStore();
+const errorStore = useErrorStore();
 
 const isFormValid = ref(false);
 const username = ref("");
@@ -89,10 +90,9 @@ const submitForm = async () => {
   if (formRef.value && formRef.value.validate()) {
     try {
       await authStore.register(username.value, email.value, password.value);
-      alert(`You're signed in!`);
       goToPath("/");
     } catch (e) {
-      alert(e.message);
+      errorStore.setError({title: "Sign-Up Error", text: e.message})
     }
   }
 };

@@ -1,5 +1,6 @@
 <script setup>
 const authStore = useAuthStore();
+const errorStore = useErrorStore();
 const route = useRoute();
 
 function SS_ProductCheckout(productId, baseUrl, userEmail) {
@@ -56,7 +57,12 @@ function SS_ProductCheckout(productId, baseUrl, userEmail) {
 
 function goToStripe() {
   // for product Checkout
-  SS_ProductCheckout(1, STRAPI_URL, authStore.user.email);
+  try{
+    SS_ProductCheckout(1, STRAPI_URL, authStore.user.email);
+  }
+  catch(e){
+    errorStore.setError({title: "Error", text: e.message})
+  }
 }
 </script>
 
