@@ -15,7 +15,7 @@
             v-model="username"
             label="Username"
             variant="outlined"
-            :rules="[validationRules.required, validationRules.safe, validationRules.max(30)]"
+            :rules="[validationRules.required, validationRules.safe, validationRules.max(60)]"
             dense
             class="mt-4"
           ></v-text-field>
@@ -24,7 +24,7 @@
             v-model="email"
             label="Email"
             variant="outlined"
-            :rules="[validationRules.required, validationRules.email, validationRules.safe, validationRules.max(30)]"
+            :rules="[validationRules.required, validationRules.email, validationRules.safe, validationRules.max(60)]"
             dense
             class="mt-4"
           ></v-text-field>

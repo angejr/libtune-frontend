@@ -19,7 +19,9 @@
     "nuxt": "^3.13.0",
     "vue": "latest",
     "vue-router": "latest",
-    "vuetify-nuxt-module": "^0.18.2"
+    "vuetify-nuxt-module": "^0.18.2",
+    "xss": "^1.0.15",
+    "zod": "^3.23.8"
   },
   "overrides": {
     "vue": "latest"
