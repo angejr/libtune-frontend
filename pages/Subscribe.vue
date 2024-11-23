@@ -1,7 +1,6 @@
 <script setup>
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
-const route = useRoute();
 
 function SS_ProductCheckout(productId, baseUrl, userEmail) {
   localStorage.setItem("strapiStripeUrl", baseUrl);

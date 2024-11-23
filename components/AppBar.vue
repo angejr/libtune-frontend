@@ -44,9 +44,6 @@ const authStore = useAuthStore()
             <v-list-item @click="goToPath('/account')">
               <v-list-item-title>My account </v-list-item-title>
             </v-list-item>
-            <v-list-item>
-              <v-list-item-title>My Purchases </v-list-item-title>
-            </v-list-item>
             <v-list-item
               prepend-icon="mdi-logout-variant"
               baseColor="red"

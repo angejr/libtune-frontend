@@ -104,7 +104,6 @@
         await authStore.login(email.value, password.value);
         goToPath("/");
       } catch (e) {
-        console.log(e.statusCode)
         if (e.statusCode == 401){
           loginError.value = true
         }
