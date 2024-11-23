@@ -10,45 +10,23 @@ const checkoutSessionId = route.query["sessionId"];
 // If the user is already a customer skip the subscription process
 if (!subscribed.value) {
   if (checkoutSessionId) {
-    const { data, error } = await useFetch(`/api/checkoutsessions/${checkoutSessionId}`);
+    const { data, error } = await useFetch(
+      `/api/checkoutsessions/${checkoutSessionId}`,
+      {
+        headers: { Authorization: `Bearer ${authStore.userToken}` },
+      }
+    );
 
     if (data.value) {
-      let customerId = data.value.customer;
-
-      if (customerId) {
-        try {
-          let { error } = await useFetch(`/api/users/me`,
-            {
-              method: "PUT",
-              headers: { Authorization: `Bearer ${authStore.userToken}` },
-              body: {
-                customerId,
-              }
-            }
-          );
-  
-          subscriptionOver.value = true;
-          if (error.value) {
-            errorStore.setError({title: "Error", text: error.value.message})
-          } else {
-            subscribed.value = true;
-          }
-
-          // Refetch User 
-          await authStore.fetchUser();
-        } catch (e) {
-          errorStore.setError({title: "Error", text: e.message})
-        }
-
-      } else {
-        subscriptionOver.value = true;
-        errorStore.setError({title: "Error", text: "No customer found"})
-      }
+      // Refetch User
+      await authStore.fetchUser();
+      subscriptionOver.value = true;
+      subscribed.value = true;
     }
 
     if (error.value) {
       subscriptionOver.value = true;
-      errorStore.setError({title: "Error", text: error.value.message})
+      errorStore.setError({ title: "Error", text: error.value.message });
     }
   } else {
     subscriptionOver.value = true;
@@ -58,10 +36,7 @@ if (!subscribed.value) {
 </script>
 
 <template>
-  <v-container
-    fluid
-    class="subscription-landing-container"
-  >
+  <v-container fluid class="subscription-landing-container">
     <!-- Loading Spinner -->
     <v-progress-circular
       v-if="!subscriptionOver"
@@ -71,11 +46,7 @@ if (!subscribed.value) {
     ></v-progress-circular>
 
     <!-- Subscription Confirmation -->
-    <v-card
-      v-if="subscribed"
-      class="subscription-card"
-      elevation="4"
-    >
+    <v-card v-if="subscribed" class="subscription-card" elevation="4">
       <v-card-title class="headline text-center">
         <v-icon large color="green" class="mr-3">mdi-check-circle</v-icon>
         You're Subscribed!
@@ -83,12 +54,13 @@ if (!subscribed.value) {
       <v-divider></v-divider>
       <v-card-text>
         <p class="text-center">
-          Thank you for subscribing to <strong>Libtune Premium</strong>. 
+          Thank you for subscribing to <strong>Libtune Premium</strong>.
         </p>
         <p class="text-left">
-          You now have unlimited access to our library of <strong> 100% royalty-free music! </strong>
+          You now have unlimited access to our library of
+          <strong> 100% royalty-free music! </strong>
         </p>
-        <br>
+        <br />
         <p class="text-left">
           <strong>Next Steps:</strong>
         </p>
@@ -99,12 +71,7 @@ if (!subscribed.value) {
         </ul>
       </v-card-text>
       <v-card-actions class="justify-center">
-        <v-btn
-          color="primary"
-          variant="elevated"
-          large
-          @click="goToPath('/')"
-        >
+        <v-btn color="primary" variant="elevated" large @click="goToPath('/')">
           Explore Music Library
         </v-btn>
       </v-card-actions>

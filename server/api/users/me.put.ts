@@ -26,7 +26,6 @@ export default defineEventHandler(async (event) => {
 
     // Validate input against schema
     const schema = z.object({
-        customerId: z.string().max(50).optional(),
         username: z.string().min(1).max(60).optional(),
     }).strict()
     const validation = await readValidatedBody(event, body => schema.safeParse(body))
