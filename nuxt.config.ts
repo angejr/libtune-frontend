@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     awsMusicBucket: process.env.AWS_MUSIC_BUCKET,
     awsAccessKeyId: process.env.NUXT_AWS_ACCESS_KEY_ID,
     awsSecretAccesKey: process.env.NUXT_AWS_SECRET_ACCESS_KEY,
-    strapiAdminApiToken: process.env.NUXT_STRAPI_ADMIN_API_TOKEN
+    strapiAdminApiToken: process.env.NUXT_STRAPI_ADMIN_API_TOKEN,
+    stripeSecretKey: process.env.NUXT_STRIPE_SECRET_KEY
   }
 })
