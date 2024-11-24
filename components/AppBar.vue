@@ -12,7 +12,7 @@ const authStore = useAuthStore()
         style="font-size: 24px; font-weight: bold; color: inherit"
       >
         Libtune
-        <v-chip v-if="authStore.user?.customerId" size="x-small" variant="elevated" color="purple"> PRO</v-chip>
+        <v-chip v-if="authStore.user?.customerId" size="x-small" variant="elevated" color="purple"> PREMIUM</v-chip>
       </v-btn>
     </v-app-bar-title>
     <template v-slot:append>

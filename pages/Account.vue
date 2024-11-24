@@ -45,6 +45,31 @@ const formatDate = (timestamp) =>
     "
     fluid
   >
+    <!-- Profile Section Section -->
+    <v-card outlined class="mb-4">
+      <v-card-title class="text-h5"> Profile </v-card-title>
+      <v-divider></v-divider>
+      <v-card-text>
+        <v-text-field
+          v-model="authStore.user.email"
+          label="Email"
+          variant="outlined"
+          disabled
+          dense
+          class="mt-4"
+        >
+        </v-text-field>
+        <v-text-field
+          v-model="authStore.user.username"
+          label="Username"
+          variant="outlined"
+          disabled
+          dense
+          class="mt-4"
+        >
+        </v-text-field>
+      </v-card-text>
+    </v-card>
     <!-- Subscriptions Section -->
     <v-card outlined class="mb-4">
       <v-card-title class="text-h5">Subscriptions</v-card-title>
@@ -52,10 +77,11 @@ const formatDate = (timestamp) =>
       <v-card-text>
         <v-data-table-virtual
           :headers="[
-            { title: 'Status', value: 'status' },
+            { title: 'Status', value: 'status', align: 'center' },
             { title: 'Product', value: 'product' },
             { title: 'Billing Frequency', value: 'billing_frequency' },
             { title: 'Next Payment Date', value: 'next_payment_date' },
+            { title: '', value: 'action' },
           ]"
           :items="
             subscriptionData.map((sub) => ({
@@ -67,6 +93,7 @@ const formatDate = (timestamp) =>
                   ? 'Monthly'
                   : 'Yearly',
               next_payment_date: formatDate(sub.current_period_end),
+              action,
             }))
           "
         >
@@ -81,6 +108,26 @@ const formatDate = (timestamp) =>
             <strong>
               {{ item.product }}
             </strong>
+          </template>
+
+          <template v-slot:item.action="{ item }">
+            <v-menu>
+              <template v-slot:activator="{ props }">
+                <v-btn
+                  icon="mdi-dots-vertical"
+                  size="small"
+                  variant="plain"
+                  v-bind="props"
+                ></v-btn>
+              </template>
+              <v-list>
+                <v-list-item @click="goToPath('/unsubscribe')">
+                  <v-list-item-title style="color: red"
+                    >Cancel Subscription</v-list-item-title
+                  >
+                </v-list-item>
+              </v-list>
+            </v-menu>
           </template>
         </v-data-table-virtual>
       </v-card-text>
@@ -123,7 +170,7 @@ const formatDate = (timestamp) =>
             </div>
           </template>
 
-          <template v-slot:expended-item="{ item }">
+          <template v-slot:expanded-row="{ item }">
             <v-card flat>
               <v-card-text>
                 <p>
@@ -172,9 +219,9 @@ const formatDate = (timestamp) =>
             }))
           "
         >
-        <template v-slot:item.status="{ item }">
-            <v-chip  :color="item.status == 'succeeded' ? 'green' : 'red'" small>
-              {{item.status}}
+          <template v-slot:item.status="{ item }">
+            <v-chip :color="item.status == 'succeeded' ? 'green' : 'red'" small>
+              {{ item.status }}
             </v-chip>
           </template>
 
