@@ -97,6 +97,18 @@ const formatDate = (timestamp) =>
             }))
           "
         >
+          <template v-slot:no-data>
+            <div style="display: flex; justify-content: space-around">
+              <h2>No active subscription</h2>
+              <v-btn
+                @click="goToPath('/subscribe')"
+                variant="elevated"
+                color="purple"
+              >
+                BUY PREMIUM
+              </v-btn>
+            </div>
+          </template>
           <template v-slot:item.status="{ item }">
             <v-chip v-if="item.status == 'active'" color="green" small>
               active

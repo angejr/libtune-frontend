@@ -3,17 +3,22 @@ const authStore = useAuthStore();
 const feedback = ref('');
 const feedbackError = ref(false);
 
-const unsubscribe = () => {
+const unsubscribe = async () => {
   if (!feedback.value.trim()) {
     feedbackError.value = true;
     return;
   }
   feedbackError.value = false;
 
-  
-
-  // Logic to handle unsubscription, e.g., API call
-//   alert('You have unsubscribed successfully. We’re sorry to see you go!');
+  await $fetch('/api/customers/cancel/me', {
+    method: 'PUT',
+    headers: {
+        authorization: `Bearer ${authStore.userToken}`
+    }
+  })
+  // Refetch User
+  await authStore.fetchUser();
+  goToPath('/')
 };
 </script>
 
@@ -69,6 +74,7 @@ const unsubscribe = () => {
           label="Please let us know why you're unsubscribing"
           :error="feedbackError"
           :error-messages="feedbackError ? 'Feedback is required.' : ''"
+          :rules="[validationRules.required, validationRules.safe, validationRules.max(300)]"
           rows="4"
         ></v-textarea>
       </v-card-text>

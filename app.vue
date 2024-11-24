@@ -13,6 +13,9 @@ if (authStore.userToken) {
     })
   }
 }
+
+console.log(authStore.user)
+
 </script>
 
 
