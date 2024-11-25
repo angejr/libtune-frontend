@@ -4,6 +4,7 @@ export default defineEventHandler(async (event) => {
 
     const config = useRuntimeConfig()
     const STRAPI_API_URL = config.strapiApiUrl
+    const STRAPI_TOKEN_USER = config.strapiTokenUser
     const STRIPE_SECRET_KEY = config.stripeSecretKey
 
     const stripe = new Stripe(STRIPE_SECRET_KEY)
@@ -20,7 +21,7 @@ export default defineEventHandler(async (event) => {
         }
     )
 
-    const customerId = response.customerId
+    const {id: userId, customerId} = response
 
     if (!customerId) {
         throw createError({
@@ -58,5 +59,26 @@ export default defineEventHandler(async (event) => {
             })
         }
     }
-    return cancelledSubscriptions
+
+    // Delete customer Id on strapi
+    try {
+        return await $fetch(
+            `${STRAPI_API_URL}/users/${userId}`,
+            {
+                method: 'PUT',
+                headers: {
+                    Authorization: `Bearer ${STRAPI_TOKEN_USER}`,
+                },
+                body: {
+                    customerId: ''
+                }
+            }
+        )
+    }
+    catch (e) {
+        throw createError({
+            statusCode: 401,
+            statusMessage: 'Unable to remove customer Id'
+        })
+    }
 })

@@ -2,30 +2,27 @@
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
 
-const profile = ref({
-  username: authStore.user.username,
-  email: authStore.user.email,
-});
-
 const subscriptionData = ref([]);
 const paymentMethods = ref([]);
 const payments = ref([]);
 
 // Fetching data from Stripe API
-const { data, error } = await useFetch("/api/customers/me", {
-  headers: {
-    authorization: `Bearer ${authStore.userToken}`,
-  },
-});
-if (error.value) {
-  errorStore.setError({
-    title: "Could not fetch account data",
-    texte: error.value.data,
+if (authStore.user.customerId) {
+  const { data, error } = await useFetch("/api/customers/me", {
+    headers: {
+      authorization: `Bearer ${authStore.userToken}`,
+    },
   });
-} else {
-  subscriptionData.value = data.value.subscriptions || [];
-  paymentMethods.value = data.value.paymentMethods || [];
-  payments.value = data.value.payments || [];
+  if (error.value) {
+    errorStore.setError({
+      title: "Could not fetch account data",
+      texte: error.value.data,
+    });
+  } else {
+    subscriptionData.value = data.value.subscriptions || [];
+    paymentMethods.value = data.value.paymentMethods || [];
+    payments.value = data.value.payments || [];
+  }
 }
 
 const formatCurrency = (amount, currency) =>
@@ -146,7 +143,7 @@ const formatDate = (timestamp) =>
     </v-card>
 
     <!-- Payment Methods Section -->
-    <v-card outlined class="mb-4">
+    <v-card v-if="authStore.user.customerId" outlined  class="mb-4">
       <v-card-title class="text-h5">Payment Methods</v-card-title>
       <v-divider></v-divider>
       <v-card-text>
@@ -211,7 +208,7 @@ const formatDate = (timestamp) =>
     </v-card>
 
     <!-- Payments Section -->
-    <v-card outlined class="mb-4">
+    <v-card v-if="authStore.user.customerId" outlined  class="mb-4">
       <v-card-title class="text-h5">Payments</v-card-title>
       <v-divider></v-divider>
       <v-card-text>

@@ -105,9 +105,12 @@ function goToStripe() {
         </v-list>
       </v-card-text>
       <v-card-actions style="display: flex; justify-content: center">
-        <v-btn color="primary" variant="elevated" large @click="goToStripe">
+        <v-btn v-if="!authStore.user.customerId" color="primary" variant="elevated" large @click="goToStripe">
           Get Premium
         </v-btn>
+          <h3 v-else>
+            You are already subscribed !
+          </h3>
       </v-card-actions>
     </v-card>
   </v-container>

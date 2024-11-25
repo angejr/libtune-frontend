@@ -1,5 +1,7 @@
 <script setup>
 const authStore = useAuthStore();
+const errorStore = useErrorStore()
+
 const feedback = ref('');
 const feedbackError = ref(false);
 
@@ -10,20 +12,29 @@ const unsubscribe = async () => {
   }
   feedbackError.value = false;
 
-  await $fetch('/api/customers/cancel/me', {
-    method: 'PUT',
-    headers: {
-        authorization: `Bearer ${authStore.userToken}`
-    }
-  })
-  // Refetch User
-  await authStore.fetchUser();
-  goToPath('/')
+  try{
+
+      await $fetch('/api/customers/cancel/me', {
+        method: 'PUT',
+        headers: {
+            authorization: `Bearer ${authStore.userToken}`
+        }
+      })
+      // Refetch User
+      await authStore.fetchUser();
+      goToPath('/')
+  }
+  catch(e){
+    errorStore.setError({
+        title: 'Error while cancelling premium',
+        text: e.message
+    })
+  }
 };
 </script>
 
 <template>
-  <v-container class="py-8" style="display: flex; justify-content: center">
+  <v-container v-if="authStore.user.customerId" class="py-8" style="display: flex; justify-content: center">
     <v-card class="unsubscribe-card" elevation="10" max-width="500">
       <!-- Title -->
       <v-card-title class="text-center text-h5 font-weight-bold">
@@ -89,6 +100,27 @@ const unsubscribe = async () => {
           @click="unsubscribe"
         >
           Cancel Subscription
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-container>
+  <v-container v-else class="py-8" style="display: flex; justify-content: center">
+    <v-card class="unsubscribe-card" elevation="10" max-width="500">
+      <!-- Title -->
+      <v-card-title class="text-center text-h5 font-weight-bold">
+        <v-icon icon="mdi-close" color="red"></v-icon>
+        You are not subscribed yet
+      </v-card-title>
+
+      <!-- Unsubscribe Button -->
+      <v-card-actions style="display: flex; justify-content: center">
+        <v-btn
+          color="purple"
+          variant="elevated"
+          large
+          @click="goToPath('/subscribe')"
+        >
+          Get Premium
         </v-btn>
       </v-card-actions>
     </v-card>
