@@ -97,7 +97,7 @@ function getRowProps(item) {
 
 <template>
   <v-container class="py-8 music-page-container">
-    <v-card class="music-page-card" flat max-width="960px">
+    <v-card class="music-page-card" flat max-width="960px" elevation="8">
       <!-- Header -->
       <v-card-title class="text-center text-h4 font-weight-bold pb-4">
         100% Royalty-Free Music

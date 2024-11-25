@@ -50,6 +50,34 @@
               to ensure your satisfaction and success.
             </p>
           </section>
+
+          
+          <!-- Contact Section -->
+        <section class="about-section contact">
+          <h2 class="section-title">Contact Us</h2>
+          <p>
+            We’d love to hear from you! Whether you have a question, feedback, or need assistance, 
+            feel free to get in touch with us.
+          </p>
+          <ul class="contact-list">
+            <li>
+              <v-icon color="blue darken-2" class="contact-icon">mdi-email</v-icon>
+              <strong>Email:</strong> <a href="mailto:support@libtune.com">support@libtune.com</a>
+            </li>
+            <li>
+              <v-icon color="blue darken-2" class="contact-icon">mdi-phone</v-icon>
+              <strong>Phone:</strong> +33 1 23 45 67 89
+            </li>
+            <li>
+              <v-icon color="blue darken-2" class="contact-icon">mdi-map-marker</v-icon>
+              <strong>Address:</strong> 123 Rue de la Musique, 75001 Paris, France
+            </li>
+          </ul>
+          <p>
+            Our support team is available Monday to Friday, 9 AM to 5 PM (CET). 
+            We aim to respond to all inquiries within 24 hours.
+          </p>
+        </section>
   
           <!-- Call to Action -->
           <section class="about-section cta">
@@ -135,5 +163,28 @@
   .cta-btn {
     margin-top: 16px;
   }
+
+  .contact {
+  margin-top: 32px;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #444444;
+}
+
+.contact-icon {
+  margin-right: 12px;
+  font-size: 24px;
+}
   </style>
   
