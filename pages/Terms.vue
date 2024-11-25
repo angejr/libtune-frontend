@@ -2,18 +2,18 @@
 </script>
 
 <template>
-    <v-container class="py-8" style="display: flex; justify-content: center">
-      <v-card>
+    <v-container class="py-8" style="display: flex; justify-content: center; border-radius: 12px;">
+      <v-card style="border-radius: 12px;">
         <v-card-title style="display: flex; justify-content: center">
           <h1>Terms and Conditions</h1>
         </v-card-title>
         <v-card-text>
-          <body class="content">
+          <body class="termsContent">
             <h1>Terms of Service for Libtune</h1>
             <p><strong>Effective Date:</strong> 24/11/2024</p>
             <p><strong>Last Updated:</strong> 24/11/2024</p>
             <p>
-              Welcome to Libtune! These Terms of Service (“Terms”) govern your
+              Welcome to Libtune! These Terms of Service (“Terms”) govern your 
               access to and use of the Libtune platform, including our website,
               services, and music library (collectively, the “Services”). By using
               Libtune, you agree to these Terms. If you do not agree, you may not
@@ -174,7 +174,7 @@
 </template>
 
 <style>
-  .content {
+  .termsContent {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 20px;

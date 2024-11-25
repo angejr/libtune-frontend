@@ -2,6 +2,11 @@
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
 
+// Redirect when trying to access a page only accessible when logged in
+if (!authStore?.user?.userToken){
+  goToPath('/login')
+}
+
 const subscriptionOver = ref(!!authStore.user?.customerId);
 const subscribed = ref(!!authStore.user?.customerId);
 const route = useRoute();

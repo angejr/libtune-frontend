@@ -17,7 +17,7 @@ if (authStore.userToken) {
 
 
 <template>
-  <v-app class="app">
+  <v-app>
     <AppBar> </AppBar>
     <v-main class="app" style="margin-top: 20px">
       <v-dialog v-model="errorStore.error" max-width="500">

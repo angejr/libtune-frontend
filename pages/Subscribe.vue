@@ -56,11 +56,10 @@ function SS_ProductCheckout(productId, baseUrl, userEmail) {
 
 function goToStripe() {
   // for product Checkout
-  try{
+  try {
     SS_ProductCheckout(1, STRAPI_URL, authStore.user.email);
-  }
-  catch(e){
-    errorStore.setError({title: "Error", text: e.message})
+  } catch (e) {
+    errorStore.setError({ title: "Error", text: e.message });
   }
 }
 </script>
@@ -103,14 +102,30 @@ function goToStripe() {
             Redistribution or resale prohibited
           </v-list-item>
         </v-list>
+        <div v-if="!authStore?.userToken">
+          <h4>Login or Sign-up first to be able to subscribe</h4>
+          <br>
+          <div style="display:flex; justify-content: space-evenly; align-items: center">
+            <v-btn color="primary" variant="elevated" @click="goToPath('/login')">
+              Log In
+            </v-btn>
+            <v-btn color="primary" outlined @click="goToPath('/signup')">
+              Sign Up
+            </v-btn>
+          </div>
+        </div>
       </v-card-text>
-      <v-card-actions style="display: flex; justify-content: center">
-        <v-btn v-if="!authStore.user.customerId" color="primary" variant="elevated" large @click="goToStripe">
+      <v-card-actions v-if="authStore?.userToken" style="display: flex; justify-content: center">
+        <v-btn
+          v-if="!authStore?.user?.customerId"
+          color="primary"
+          variant="elevated"
+          large
+          @click="goToStripe"
+        >
           Get Premium
         </v-btn>
-          <h3 v-else>
-            You are already subscribed !
-          </h3>
+        <h3 v-else>You are already subscribed !</h3>
       </v-card-actions>
     </v-card>
   </v-container>
