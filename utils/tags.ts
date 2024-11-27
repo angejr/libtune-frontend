@@ -232,8 +232,33 @@ export const sunoTags = {
     "string-quartet": "#8b4513",
     "vibraphone": "#8b4513",
     "whistle": "#8b4513",
-    "woodwind": "#8b4513"
+    "woodwind": "#8b4513",
 
+    // Additional
+    "mellow": "#B4C6E7",
+    "reflective": "#87AFC7",
+    "ballad": "#D8A7B1",
+    "funky": "#F0D700",
+    "infectious": "#FFA500",
+    "bassline": "#6E44FF",
+    "powerful": "#FF4500",
+    "build-up": "#FF6347",
+    "beats": "#FFD700",
+    "soothing": "#ADD8E6",
+    "energized": "#FF5733",
+    "feel-good": "#FFC300",
+    "uplifting": "#FFD700",
+    "bright": "#FFFF00",
+    "soaring": "#87CEEB",
+    "acoustic": "#DEB887",
+    "upbeat": "#32CD32",
+    "energetic": "#FF4500",
+    "vibrant": "#FF69B4",
+    "catchy": "#FFA07A",
+    "hip-hop": "#708090",
+    "jazzy": "#8A2BE2",
+    "smooth": "#4682B4",
+    "poetic": "#BA55D3"
 }
 
 

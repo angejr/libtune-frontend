@@ -27,7 +27,7 @@ async function getSongs() {
       ...item.attributes,
       title: item.attributes.title || "Untitlted",
       instrumental: item.attributes.lyric === "[Instrumental]",
-      tags: item.attributes?.tags ? item.attributes.tags.replaceAll(',', '') : null
+      tags: item.attributes?.tags ? item.attributes.tags.replaceAll(',', '').replace('hip hop', 'hip-hop') : null
     }));
   } else {
     errorStore.setError({title: "Error while fetching music" , text: error.value.message});
@@ -95,6 +95,13 @@ function getRowProps(item) {
     class: item.item.id === getCurrent() ? "playingClass" : "",
   };
 }
+
+// let tagsNotColored = []
+// for (let tags of songs.value.map(el => el.tags ? el.tags.split(' ') : '')){
+//   tagsNotColored.push(...tags)
+// }
+// tagsNotColored = [... new Set(tagsNotColored)].filter(el => !sunoTags[el])
+// console.log(tagsNotColored)
 </script>
 
 <template>
