@@ -235,3 +235,31 @@ export const sunoTags = {
     "woodwind": "#8b4513"
 
 }
+
+
+export const excludedTags = [
+    'fake',
+
+    // Articles
+    "a", "an", "the",
+
+    // Demonstrative Determiners
+    "this", "that", "these", "those",
+
+    // Interrogative Determiners
+    "which", "what", "whose",
+
+    // Possessive Determiners
+    "my", "your", "his", "her", "its", "our", "their",
+
+    // Quantifiers
+    "all", "some", "any", "few", "many", "much", "each", "every",
+    "either", "neither", "several",
+
+    // Indefinite Determiners
+    "another", "other", "such",
+
+    // Numbers as Determiners
+    "one", "two", "three", "four", "five", "six", "seven",
+    "eight", "nine", "ten" //Add more numbers if needed
+];

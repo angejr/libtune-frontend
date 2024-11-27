@@ -25,7 +25,9 @@ async function getSongs() {
     songs.value = data.value.data.map((item) => ({
       id: item.id,
       ...item.attributes,
+      title: item.attributes.title || "Untitlted",
       instrumental: item.attributes.lyric === "[Instrumental]",
+      tags: item.attributes?.tags ? item.attributes.tags.replaceAll(',', '') : null
     }));
   } else {
     errorStore.setError({title: "Error while fetching music" , text: error.value.message});
@@ -121,6 +123,7 @@ function getRowProps(item) {
           <v-col cols="12" md="5">
             <v-autocomplete
               v-model="filter"
+              multiple
               :items="Object.keys(sunoTags).concat('Instrumental')"
               label="Filter by Tags"
               clearable
@@ -173,7 +176,7 @@ function getRowProps(item) {
             Instrumental
           </v-chip>
           <v-chip
-            v-for="tag in item.tags?.split(' ')"
+            v-for="tag in item.tags?.split(' ').filter(tag => !excludedTags.includes(tag))"
             :key="tag"
             small
             class="tag-chip"

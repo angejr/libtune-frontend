@@ -13,3 +13,18 @@ export const validationRules = {
   safe: (value :any) => value == useSanitize(value) || "Unsafe input",
   number: (value: any) => /^[0-9]*$/.test(value) || "Needs to be a number",
 };
+
+
+export function removeAll(stringsToRemove: string[], string: string) : string{
+  if (!string){
+    return string
+  }
+
+  let returnString = string
+
+  for (let toRemove of stringsToRemove){
+    returnString = returnString.replaceAll(toRemove, '')
+  }
+
+  return returnString
+}
