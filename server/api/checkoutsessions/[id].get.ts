@@ -4,7 +4,7 @@ import { z } from "zod"
 export default defineEventHandler(async (event) => {
 
     const config = useRuntimeConfig()
-    const STRAPI_URL = config.strapiUrl
+    const STRAPI_URL = config.public.strapiUrl
     const STRAPI_API_URL = config.strapiApiUrl
     const STRAPI_TOKEN_USER = config.strapiTokenUser
 

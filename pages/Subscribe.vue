@@ -1,6 +1,8 @@
 <script setup>
 const authStore = useAuthStore();
-const errorStore = useErrorStore();
+const errorStore = useErrorStore()
+const config = useRuntimeConfig()
+const STRAPI_URL = config.public.strapiUrl
 
 function SS_ProductCheckout(productId, baseUrl, userEmail) {
   localStorage.setItem("strapiStripeUrl", baseUrl);

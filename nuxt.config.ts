@@ -5,7 +5,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['vuetify-nuxt-module', '@pinia/nuxt'],
   runtimeConfig: {
-    strapiUrl: process.env.NUXT_STRAPI_URL,
+    public:{
+      strapiUrl: process.env.NUXT_STRAPI_URL,
+    },
     strapiApiUrl: process.env.NUXT_STRAPI_API_URL,
     strapiTokenMusic: process.env.NUXT_STRAPI_TOKEN_MUSIC,
     strapiTokenUser: process.env.NUXT_STRAPI_TOKEN_USER,

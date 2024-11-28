@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
 
     const config = useRuntimeConfig()
     const STRAPI_API_URL = config.strapiApiUrl
-    const STRAPI_URL = config.strapiUrl
+    const STRAPI_URL = config.public.strapiUrl
     const STRAPI_TOKEN_MUSIC = config.strapiTokenMusic
     const STRAPI_ADMIN_API_TOKEN = config.strapiAdminApiToken
 
