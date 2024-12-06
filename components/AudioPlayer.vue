@@ -38,16 +38,16 @@ const errorStore = useErrorStore();
 // Props
 const props = defineProps({
   imageSource: {
-    type: String,
-    required: true,
+    type: [String , Number],
+    required: false,
   },
   isPlaying: {
     type: Boolean,
     required: true,
   },
   audioId: {
-    type: String,
-    required: true,
+    type: [String , Number],
+    required: false,
   },
 });
 

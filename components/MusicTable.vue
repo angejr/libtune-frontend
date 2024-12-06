@@ -163,7 +163,7 @@ function getRowProps(row) {
         </template>
 
         <!-- Play Button -->
-        <template v-slot:item.play="{ item }">
+        <template v-slot:[`item.play`]="{ item }">
           <AudioPlayer
             :imageSource="item.image_url"
             :audioId="item.id"
@@ -173,17 +173,17 @@ function getRowProps(row) {
         </template>
 
         <!-- Length Column -->
-        <template v-slot:item.length="{ item }">
+        <template v-slot:[`item.length`]="{ item }">
           {{ item.length || "00:00" }}
         </template>
 
         <!-- Tags Column -->
-        <template v-slot:item.tags="{ item }">
+        <template v-slot:[`item.tags`]="{ item }">
           <v-chip v-if="item.instrumental" color="green" small>
             Instrumental
           </v-chip>
           <v-chip
-            v-for="tag in item.tags?.split(' ').filter(tag => !excludedTags.includes(tag))"
+            v-for="tag in  [... new Set(item.tags?.split(' ').filter(tag => !excludedTags.includes(tag)))]"
             :key="tag"
             small
             class="tag-chip"
@@ -194,7 +194,7 @@ function getRowProps(row) {
         </template>
 
         <!-- Download Button -->
-        <template v-slot:item.download="{ item }">
+        <template v-slot:[`item.download`]="{ item }">
           <v-btn
             color="purple"
             icon="mdi-download"

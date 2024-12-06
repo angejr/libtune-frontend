@@ -286,5 +286,6 @@ export const excludedTags = [
 
     // Numbers as Determiners
     "one", "two", "three", "four", "five", "six", "seven",
-    "eight", "nine", "ten" //Add more numbers if needed
+    "eight", "nine", "ten", //Add more numbers if needed
+    "with"
 ];
