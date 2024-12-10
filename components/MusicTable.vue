@@ -1,9 +1,11 @@
 <script setup>
+import { useIntersectionObserver } from "@vueuse/core";
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
 
 const search = ref("");
-
+const debouncedSearch = ref(""); // Separate value to track debounced input
+const filter = ref([]);
 const headers = [
   { title: "", key: "play", align: "center", sortable: false },
   { title: "Title", key: "title", align: "left" },
@@ -13,41 +15,95 @@ const headers = [
 ];
 const songs = ref([]);
 const currentPlayingAudio = ref(null);
-const filter = ref([]);
+
+const isLoading = ref(false);
+const allLoaded = ref(false);
+// Trigger fetch on scroll
+const loadMoreTrigger = ref(null);
+let page = 1;
+const pageSize = 50; // Adjust based on performance
 
 const getPremiumDialog = ref(false);
 const loginDialog = ref(false);
 
-async function getSongs() {
-  const { data, error } = await useFetch("/api/musics");
+// Debounce Function
+function debounce(func, delay) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => func(...args), delay);
+  };
+}
 
-  if (data.value?.data) {
-    songs.value = data.value.data.map((item) => ({
-      id: item.id,
-      ...item.attributes,
-      title: item.attributes.title || "Untitlted",
-      instrumental: item.attributes.lyric === "[Instrumental]",
-      tags: item.attributes?.tags ? item.attributes.tags.replaceAll(',', '').replace('hip hop', 'hip-hop') : null
-    }));
-  } else {
-    errorStore.setError({title: "Error while fetching music" , text: error.value.message});
+async function getSongs(setup = false) {
+  if (isLoading.value || allLoaded.value) return;
+
+  isLoading.value = true;
+
+  try {
+    let data;
+    if (setup) {
+      const response = await useFetch("/api/musics", {
+        params: {
+          search: debouncedSearch.value,
+          filter: filter.value.join(","),
+          page,
+          pageSize,
+        },
+      });
+      data = response.data.value?.data;
+    } else {
+      const response = await $fetch("/api/musics", {
+        params: {
+          search: debouncedSearch.value,
+          filter: filter.value.join(","),
+          page,
+          pageSize,
+        },
+      });
+      data = response.data;
+    }
+
+    if (data?.length && data?.length > 0) {
+      songs.value.push(...data);
+      page++;
+    } else {
+      allLoaded.value = true;
+    }
+  } catch (error) {
+    errorStore.setError({
+      title: "Error while fetching music",
+      text: error.message,
+    });
+  } finally {
+    isLoading.value = false;
   }
 }
 
-// Fetching songs on component setup
-getSongs();
+// Fetch initial songs on setup
+getSongs(true);
 
-const filteredItems = computed(() => {
-  return filter.value.length === 0
-    ? songs.value
-    : songs.value.filter((el) =>
-        filter.value.some((element) => {
-          let tags = el?.tags?.split(" ");
-          if (el?.instrumental) tags.push("Instrumental");
-          return tags?.includes(element);
-        })
-      );
+useIntersectionObserver(
+  loadMoreTrigger,
+  ([{ isIntersecting }]) => {
+    if (isIntersecting) {
+      getSongs();
+    }
+  }
+);
+
+// Trigger fetch when debouncedSearch changes
+watch(debouncedSearch, () => {
+  songs.value = [];
+  page = 1;
+  allLoaded.value = false;
+  getSongs();
 });
+
+// Debounced Search Handler
+const handleSearchInput = debounce((value) => {
+  debouncedSearch.value = value;
+}, 800);
 
 // Functions
 
@@ -77,7 +133,10 @@ async function downloadSong(item) {
     link.click();
     document.body.removeChild(link);
   } catch (error) {
-    errorStore.setError({title: "Error downloading song" , text: error.message});
+    errorStore.setError({
+      title: "Error downloading song",
+      text: error.message,
+    });
   }
 }
 
@@ -95,13 +154,6 @@ function getRowProps(row) {
     class: row.item.id === getCurrent() ? "playingClass" : "",
   };
 }
-
-// let tagsNotColored = []
-// for (let tags of songs.value.map(el => el.tags ? el.tags.split(' ') : '')){
-//   tagsNotColored.push(...tags)
-// }
-// tagsNotColored = [... new Set(tagsNotColored)].filter(el => !sunoTags[el])
-// console.log(tagsNotColored)
 </script>
 
 <template>
@@ -118,12 +170,14 @@ function getRowProps(row) {
         <v-row justify="space-between" align-content="center">
           <v-col cols="12" md="6">
             <v-text-field
-              v-model="search"
+              v-model.trim="search"
               label="Search"
               prepend-inner-icon="mdi-magnify"
               variant="outlined"
               hide-details
+              :rules="[validationRules.safe, validationRules.max(100)]"
               dense
+              @input="handleSearchInput(search)"
             />
           </v-col>
 
@@ -137,6 +191,14 @@ function getRowProps(row) {
               chips
               dense
               outlined
+              @update:model-value="
+                () => {
+                  songs = [];
+                  page = 1;
+                  allLoaded = false;
+                  getSongs();
+                }
+              "
             />
           </v-col>
         </v-row>
@@ -144,8 +206,7 @@ function getRowProps(row) {
       <!-- Music Table -->
       <v-data-table-virtual
         :headers="headers"
-        :items="filteredItems"
-        :search="search"
+        :items="songs"
         hover
         multi-sort
         class="mt-4"
@@ -183,7 +244,13 @@ function getRowProps(row) {
             Instrumental
           </v-chip>
           <v-chip
-            v-for="tag in  [... new Set(item.tags?.split(' ').filter(tag => !excludedTags.includes(tag)))]"
+            v-for="tag in [
+              ...new Set(
+                item.tags
+                  ?.split(' ')
+                  .filter((tag) => !excludedTags.includes(tag))
+              ),
+            ]"
             :key="tag"
             small
             class="tag-chip"
@@ -204,6 +271,11 @@ function getRowProps(row) {
           ></v-btn>
         </template>
       </v-data-table-virtual>
+
+      <!-- Loading Indicator -->
+      <div ref="loadMoreTrigger" v-if="!allLoaded" class="my-4 text-center">
+        <v-progress-circular v-if="isLoading" indeterminate color="primary" />
+      </div>
     </v-card>
 
     <!-- Premium Dialog -->
