@@ -40,6 +40,7 @@ export default defineEventHandler(async (event) => {
   const query: any = {
     [`pagination[page]`]: page,
     [`pagination[pageSize]`]: pageSize,
+    [`fields`]: ["title", "length", "lyric", "tags", "image_url"]
   }
 
   if (search) {

@@ -1,10 +1,10 @@
 <script setup>
-import { useIntersectionObserver } from "@vueuse/core";
+import { useIntersectionObserver, useDebounce } from "@vueuse/core";
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
 
 const search = ref("");
-const debouncedSearch = ref(""); // Separate value to track debounced input
+const debouncedSearch = useDebounce(search, 800); // Debounced ref
 const filter = ref([]);
 const headers = [
   { title: "", key: "play", align: "center", sortable: false },
@@ -25,15 +25,6 @@ const pageSize = 50; // Adjust based on performance
 
 const getPremiumDialog = ref(false);
 const loginDialog = ref(false);
-
-// Debounce Function
-function debounce(func, delay) {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => func(...args), delay);
-  };
-}
 
 async function getSongs(setup = false) {
   if (isLoading.value || allLoaded.value) return;
@@ -99,11 +90,6 @@ watch(debouncedSearch, () => {
   allLoaded.value = false;
   getSongs();
 });
-
-// Debounced Search Handler
-const handleSearchInput = debounce((value) => {
-  debouncedSearch.value = value;
-}, 800);
 
 // Functions
 
@@ -177,7 +163,6 @@ function getRowProps(row) {
               hide-details
               :rules="[validationRules.safe, validationRules.max(100)]"
               dense
-              @input="handleSearchInput(search)"
             />
           </v-col>
 
