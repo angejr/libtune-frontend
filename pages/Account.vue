@@ -6,8 +6,13 @@ const subscriptionData = ref([]);
 const paymentMethods = ref([]);
 const payments = ref([]);
 
+// Redirect to home if the user doesn't have an account yet
+if (!authStore?.userToken){
+  goToPath('/login')
+}
+
 // Fetching data from Stripe API
-if (authStore.user.customerId) {
+if (authStore?.user?.customerId) {
   const { data, error } = await useFetch("/api/customers/me", {
     headers: {
       authorization: `Bearer ${authStore.userToken}`,
@@ -106,20 +111,20 @@ const formatDate = (timestamp) =>
               </v-btn>
             </div>
           </template>
-          <template v-slot:item.status="{ item }">
+          <template v-slot:[`item.status`]="{ item }">
             <v-chip v-if="item.status == 'active'" color="green" small>
               active
             </v-chip>
             <v-chip v-else color="red" small> inactive </v-chip>
           </template>
 
-          <template v-slot:item.product="{ item }">
+          <template v-slot:[`item.product`]="{ item }">
             <strong>
               {{ item.product }}
             </strong>
           </template>
 
-          <template v-slot:item.action="{ item }">
+          <template v-slot:[`item.action`]="{}">
             <v-menu>
               <template v-slot:activator="{ props }">
                 <v-btn
@@ -143,7 +148,7 @@ const formatDate = (timestamp) =>
     </v-card>
 
     <!-- Payment Methods Section -->
-    <v-card v-if="authStore.user.customerId" outlined  class="mb-4">
+    <v-card v-if="authStore?.user?.customerId" outlined  class="mb-4">
       <v-card-title class="text-h5">Payment Methods</v-card-title>
       <v-divider></v-divider>
       <v-card-text>
@@ -166,7 +171,7 @@ const formatDate = (timestamp) =>
           item-expanded-value="index"
           show-expand
         >
-          <template v-slot:item.brand="{ item }">
+          <template v-slot:[`item.brand`]="{ item }">
             <div style="display: flex; align-items: center">
               <v-img
                 :src="`/images/${item.brand}.png`"
@@ -208,7 +213,7 @@ const formatDate = (timestamp) =>
     </v-card>
 
     <!-- Payments Section -->
-    <v-card v-if="authStore.user.customerId" outlined  class="mb-4">
+    <v-card v-if="authStore?.user?.customerId" outlined  class="mb-4">
       <v-card-title class="text-h5">Payments</v-card-title>
       <v-divider></v-divider>
       <v-card-text>
@@ -228,13 +233,13 @@ const formatDate = (timestamp) =>
             }))
           "
         >
-          <template v-slot:item.status="{ item }">
+          <template v-slot:[`item.status`]="{ item }">
             <v-chip :color="item.status == 'succeeded' ? 'green' : 'red'" small>
               {{ item.status }}
             </v-chip>
           </template>
 
-          <template v-slot:item.amount="{ item }">
+          <template v-slot:[`item.amount`]="{ item }">
             <strong>
               {{ item.amount }}
             </strong>

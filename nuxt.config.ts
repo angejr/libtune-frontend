@@ -4,6 +4,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: ['vuetify-nuxt-module', '@pinia/nuxt'],
+  ssr: true,
+  nitro: {
+    compressPublicAssets: { brotli: true, gzip: true },
+  },
   runtimeConfig: {
     public:{
       strapiUrl: process.env.NUXT_STRAPI_URL,

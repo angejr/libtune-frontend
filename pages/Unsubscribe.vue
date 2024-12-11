@@ -39,7 +39,7 @@ const unsubscribe = async () => {
 </script>
 
 <template>
-  <v-container v-if="authStore.user.customerId" class="py-8" style="display: flex; justify-content: center">
+  <v-container v-if="authStore?.user?.customerId" class="py-8" style="display: flex; justify-content: center">
     <v-card class="unsubscribe-card" elevation="10" max-width="500">
       <!-- Title -->
       <v-card-title class="text-center text-h5 font-weight-bold">
