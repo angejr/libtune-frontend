@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode'
 export const useAuthStore = defineStore('auth', {
     state: () => ({
         user: null,   // User object
-        userToken: useCookie('userToken').value || null, // JWT userToken stored in localStorage
+        userToken: useCookie('userToken', {httpOnly: true, secure: true}).value || null, // JWT userToken stored in localStorage
     }),
     getters: {
         isAuthenticated: (state) => !!state.userToken,
@@ -17,7 +17,7 @@ export const useAuthStore = defineStore('auth', {
         },
         setToken(token: any) {
             this.userToken = token;
-            useCookie('userToken').value = token
+            useCookie('userToken', {httpOnly: true, secure: true}).value = token
         },
         async register(username: string, email: string, password: string) {
 
@@ -68,7 +68,7 @@ export const useAuthStore = defineStore('auth', {
         logout() {
             this.user = null
             this.userToken = null
-            useCookie('userToken').value = null
+            useCookie('userToken', {httpOnly: true, secure: true}).value = null
         },
 
         // autoLogin() {

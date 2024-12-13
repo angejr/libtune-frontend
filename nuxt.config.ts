@@ -8,6 +8,16 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: { brotli: true, gzip: true },
   },
+  // app:{
+  //   head:{
+  //     script: [
+  //       {
+  //         src: "https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css",
+  //         async: true
+  //       }
+  //     ]
+  //   }
+  // },
   runtimeConfig: {
     public:{
       strapiUrl: process.env.NUXT_STRAPI_URL,

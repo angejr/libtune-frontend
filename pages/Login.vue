@@ -47,11 +47,6 @@
           </v-btn>
         </v-form>
       </v-card-text>
-      <v-card-actions class="text-center justify-center">
-        <v-btn text color="secondary" @click="goToForgotPassword">
-          Forgot Password?
-        </v-btn>
-      </v-card-actions>
     </v-card>
   </v-container>
 </template>
