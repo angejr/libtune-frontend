@@ -30,7 +30,8 @@ export default defineEventHandler(async (event) => {
   const command = new GetObjectCommand({
     Bucket: config.awsMusicBucket,
     // Exctract name of the file from url
-    Key: s3_url.split('/')[s3_url.split('/').length - 1]
+    Key: s3_url.split('/')[s3_url.split('/').length - 1],
+    ResponseContentType: 'application/octet-stream',
   });
 
   const signedURL = await getSignedUrl(s3Client, command, { expiresIn: 300 });
