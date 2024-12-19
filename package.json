@@ -28,5 +28,8 @@
   },
   "overrides": {
     "vue": "latest"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.9"
   }
 }
