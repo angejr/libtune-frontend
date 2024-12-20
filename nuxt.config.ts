@@ -3,7 +3,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ['vuetify-nuxt-module', '@pinia/nuxt', 'nuxt-gtag'],
+  modules: ['vuetify-nuxt-module', '@pinia/nuxt', 'nuxt-gtag', '@nuxtjs/seo'],
   gtag: {
     id: 'G-FJQG9Y2J4L',
     enabled: process.env.NODE_ENV === 'production'
