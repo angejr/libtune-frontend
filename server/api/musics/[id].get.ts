@@ -21,7 +21,6 @@ export default defineEventHandler(async (event) => {
 
   const s3_url = response.data.attributes.s3_url
   const s3Client = new S3Client({ region: config.awsRegion, 
-    disableHostPrefix: true,
     credentials: {
       accessKeyId: config.awsAccessKeyId,
       secretAccessKey: config.awsSecretAccesKey
@@ -35,5 +34,10 @@ export default defineEventHandler(async (event) => {
   });
 
   const signedURL = await getSignedUrl(s3Client, command, { expiresIn: 300 });
-  return {url: signedURL}
+
+  let music = await $fetch(signedURL)
+
+  return music 
+
+  // return {url: signedURL}
 })
