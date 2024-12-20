@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
   const s3Client = new S3Client({ region: config.awsRegion, 
     credentials: {
       accessKeyId: config.awsAccessKeyId,
-      secretAccessKey: config.awsSecretAccesKey
+      secretAccessKey: config.awsSecretAccessKey
     }
    });
   const command = new GetObjectCommand({

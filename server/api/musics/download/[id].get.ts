@@ -65,7 +65,7 @@ export default defineEventHandler(async (event) => {
         region: config.awsRegion,
         credentials: {
             accessKeyId: config.awsAccessKeyId,
-            secretAccessKey: config.awsSecretAccesKey
+            secretAccessKey: config.awsSecretAccessKey
         }
     });
     const command = new GetObjectCommand({
