@@ -60,12 +60,6 @@ export default defineEventHandler(async (event) => {
         }
     )
 
-    console.log({
-        COUCOU:{
-            ...config,
-        }
-    })
-
     const s3_url = response.data.attributes.s3_url
     const s3Client = new S3Client({
         region: config.awsRegion,
@@ -81,5 +75,5 @@ export default defineEventHandler(async (event) => {
     });
 
     const signedURL = await getSignedUrl(s3Client, command, { expiresIn: 300 });
-    return { url: signedURL }
+    return { url: signedURL, config }
 })
