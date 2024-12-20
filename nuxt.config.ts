@@ -31,6 +31,5 @@ export default defineNuxtConfig({
     awsSecretAccessKey: process.env.NUXT_AWS_SECRET_ACCESS_KEY,
     strapiAdminApiToken: process.env.NUXT_STRAPI_ADMIN_API_TOKEN,
     stripeSecretKey: process.env.NUXT_STRIPE_SECRET_KEY
-  },
-  debug: true
+  }
 })
