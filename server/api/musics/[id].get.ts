@@ -35,9 +35,5 @@ export default defineEventHandler(async (event) => {
 
   const signedURL = await getSignedUrl(s3Client, command, { expiresIn: 300 });
 
-  let music = await $fetch(signedURL)
-
-  return music 
-
-  // return {url: signedURL}
+  return {url: signedURL}
 })
