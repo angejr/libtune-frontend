@@ -125,7 +125,8 @@ function updateProgress() {
 
 async function getSong() {
   try {
-    const { url } = await $fetch(`/api/musics/${props.audioId}`);
+    const { url, config } = await $fetch(`/api/musics/${props.audioId}`);
+    console.log({coucou: config})
     audioSource.value = url
   } catch (error) {
     errorStore.setError({title: "Error fetching song URL", text: error.message})

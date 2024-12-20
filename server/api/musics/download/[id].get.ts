@@ -75,5 +75,7 @@ export default defineEventHandler(async (event) => {
     });
 
     const signedURL = await getSignedUrl(s3Client, command, { expiresIn: 300 });
-    return { url: signedURL, config }
+    return { url: signedURL, config: {
+        ...config
+    } }
 })
