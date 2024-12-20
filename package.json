@@ -19,6 +19,7 @@
     "dompurify": "^3.2.1",
     "jwt-decode": "^4.0.0",
     "nuxt": "^3.13.0",
+    "nuxt-gtag": "^3.0.2",
     "stripe": "^17.4.0",
     "vue": "latest",
     "vue-router": "latest",
