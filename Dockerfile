@@ -27,6 +27,8 @@ RUN npm ci --include=dev
 # Copy application code
 COPY . .
 
+ENV NUXT_STRAPI_URL="https://libtune-cms.fly.dev"
+
 # Build application
 RUN npm run build
 
