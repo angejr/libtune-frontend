@@ -60,6 +60,12 @@ export default defineEventHandler(async (event) => {
         }
     )
 
+    console.log({
+        COUCOU:{
+            ...config,
+        }
+    })
+
     const s3_url = response.data.attributes.s3_url
     const s3Client = new S3Client({
         region: config.awsRegion,
