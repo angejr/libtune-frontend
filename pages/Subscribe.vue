@@ -4,8 +4,6 @@ const errorStore = useErrorStore()
 const config = useRuntimeConfig()
 const STRAPI_URL = config.public.strapiUrl
 
-console.log({STRAPI_URL})
-
 function SS_ProductCheckout(productId, baseUrl, userEmail) {
   localStorage.setItem("strapiStripeUrl", baseUrl);
   const getRedirectUrl =
