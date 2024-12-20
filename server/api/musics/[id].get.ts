@@ -21,8 +21,7 @@ export default defineEventHandler(async (event) => {
 
   const s3_url = response.data.attributes.s3_url
   const s3Client = new S3Client({ region: config.awsRegion, 
-    // endpoint: `https://s3.${config.awsRegion}.amazonaws.com`,
-    endpoint: `https://${config.awsMusicBucket}.s3.${config.awsRegion}.amazonaws.com/`,
+    disableHostPrefix: true,
     credentials: {
       accessKeyId: config.awsAccessKeyId,
       secretAccessKey: config.awsSecretAccesKey
