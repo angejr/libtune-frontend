@@ -12,6 +12,12 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: { brotli: true, gzip: true },
   },
+  app:{
+    head:{
+      title: "",
+      titleTemplate: '%s'
+    }
+  },
   // app:{
   //   head:{
   //     script: [
