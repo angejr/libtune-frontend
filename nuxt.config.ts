@@ -18,7 +18,10 @@ export default defineNuxtConfig({
   app:{
     head:{
       title: "",
-      titleTemplate: '%s'
+      titleTemplate: '%s',
+      link: [
+        { rel: 'icon', href: '/favicon.ico' }
+      ]
     }
   },
   // app:{
