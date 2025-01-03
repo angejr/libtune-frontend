@@ -5,8 +5,8 @@ const errorStore = useErrorStore();
 useSeoMeta({
   title: "Libtune",
   ogTitle: "Libtune",
-  description: "100% Royalty-Free Music",
-  ogDescription: "100% Royalty-Free Music",
+  description: "Access a massive library of royalty-free and copyright-free music for podcasts, YouTube, and more. Find ambient, holiday, and orchestral tracks to elevate your projects. Subscribe now!",
+  ogDescription: "Royalty-free music for every project. Perfect for YouTube, podcasts, and more. Subscribe now!",
   ogSiteName: "Libtune"
 });
 

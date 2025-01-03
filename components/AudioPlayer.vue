@@ -15,6 +15,7 @@
     <v-img
       :src="imageSource || '/images/image_2129f9df-9159-45e4-9a49-ef626338842b.jpeg'"
       :width="50"
+      alt="Cover art for song"
     ></v-img>
 
     <!-- Hidden audio element -->
