@@ -3,7 +3,10 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ['vuetify-nuxt-module', '@pinia/nuxt', 'nuxt-gtag', '@nuxtjs/seo'],
+  modules: ['vuetify-nuxt-module', '@pinia/nuxt', 'nuxt-gtag', '@nuxtjs/seo', '@nuxtjs/sitemap', '@nuxtjs/robots'],
+  site: { 
+    url: 'https://libtune.com', 
+    },
   gtag: {
     id: 'G-FJQG9Y2J4L',
     enabled: process.env.NODE_ENV === 'production'
