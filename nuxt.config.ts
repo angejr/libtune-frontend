@@ -7,6 +7,11 @@ export default defineNuxtConfig({
   site: { 
     url: 'https://libtune.com', 
     },
+    robots: {
+      enabled: process.env.NODE_ENV === 'production',
+      blockNonSeoBots: true,
+      disallow: ['/api']
+    },
   gtag: {
     id: 'G-FJQG9Y2J4L',
     enabled: process.env.NODE_ENV === 'production'
