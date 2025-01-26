@@ -47,6 +47,29 @@ export default defineEventHandler(async (event) => {
     query[`filters[title][$containsi]`] = search
   }
 
+  if (filter.length > 0){
+
+    let augmentedFilter : any = []
+    filter.forEach((el) => {
+      augmentedFilter.push(el)
+      augmentedFilter.push(el.replaceAll('-', ''))
+      augmentedFilter.push(el.replaceAll('-', ' '))
+      augmentedFilter.push(el.replaceAll(' ', '-'))
+      augmentedFilter.push(el.replaceAll(' ', ''))
+    })
+
+    augmentedFilter = [... new Set(augmentedFilter)]
+
+    for (let i = 0; i < augmentedFilter.length; i++ ){
+      if (augmentedFilter[i] === "Instrumental"){
+        query[`filters[$or][${i}][lyric][$eq]`] = "[Instrumental]"
+      }
+      else{
+        query[`filters[$or][${i}][tags][$containsi]`] = augmentedFilter[i]
+      }
+    }
+  }
+
   const response: any = await $fetch(`${STRAPI_API_URL}/musics`, {
     method: "GET",
     headers: {
@@ -65,15 +88,15 @@ export default defineEventHandler(async (event) => {
     lyric: song.attributes.lyric,
   }))
 
-  if (filter.length > 0) {
-    response.data = response.data.filter((el: any) =>
-      filter.some((element) => {
-        let tags = el?.tags?.split(" ");
-        if (el?.instrumental) tags.push("Instrumental");
-        return tags?.includes(element);
-      })
-    );
-  }
+  // if (filter.length > 0) {
+  //   response.data = response.data.filter((el: any) =>
+  //     filter.some((element) => {
+  //       let tags = el?.tags?.split(" ");
+  //       if (el?.instrumental) tags.push("Instrumental");
+  //       return tags?.includes(element);
+  //     })
+  //   );
+  // }
 
   return response;
 });

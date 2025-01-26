@@ -8,7 +8,6 @@ export default defineNuxtConfig({
     url: 'https://libtune.com', 
     },
     robots: {
-      enabled: process.env.NODE_ENV === 'production',
       blockNonSeoBots: true,
       disallow: ['/api']
     },
