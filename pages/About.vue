@@ -6,7 +6,7 @@
           About Libtune
         </v-card-title>
         <v-divider></v-divider>
-        <v-card-text>
+        <v-card-text style="padding-left: 40px; padding-right: 40px">
           <!-- Introduction -->
           <section class="about-section">
             <p class="intro">
@@ -16,6 +16,29 @@
               Our mission is to make premium music accessible for all your creative endeavors, 
               while ensuring simplicity and professionalism.
             </p>
+          </section>
+
+          <!-- Commitment Section -->
+          <section class="about-section">
+            <h2 class="section-title">Pay once (per month), Use everywhere</h2>
+            <ul class="features-list">
+              <li>
+                <v-icon color="green" class="feature-icon">mdi-check-bold</v-icon>
+                <strong style="margin-left:5px; margin-right:5px">NO</strong> Copyright strikes
+              </li>
+              <li>
+                <v-icon color="green" class="feature-icon">mdi-check-bold</v-icon>
+                <strong style="margin-left:5px; margin-right:5px">NO</strong> Demonitizations
+              </li>
+              <li>
+                <v-icon color="green" class="feature-icon">mdi-check-bold</v-icon>
+                <strong style="margin-left:5px; margin-right:5px">NO</strong> Royalties to Pay to anyone 
+              </li>
+              <li>
+                <v-icon color="green" class="feature-icon">mdi-check-bold</v-icon>
+                Use all songs for <strong style="margin-left:5px; margin-right:5px">ANY</strong> project you please
+              </li>
+            </ul>
           </section>
   
           <!-- Features Section -->
@@ -40,45 +63,21 @@
               </li>
             </ul>
           </section>
-  
-          <!-- Commitment Section -->
-          <section class="about-section">
-            <h2 class="section-title">Our Commitment</h2>
-            <p>
-              At Libtune, we’re not just about music; we’re about creativity and empowerment.Our platform is designed to inspire your projects with high-quality soundtracks that bring them to life. 
-              We are committed to providing transparent pricing, fair licensing, and exceptional support 
-              to ensure your satisfaction and success.
-            </p>
-          </section>
-
           
           <!-- Contact Section -->
         <section class="about-section contact">
           <h2 class="section-title">Contact Us</h2>
-          <p>
-            We’d love to hear from you! Whether you have a question, feedback, or need assistance, 
-            feel free to get in touch with us.
-          </p>
           <ul class="contact-list">
             <li>
               <v-icon color="blue darken-2" class="contact-icon">mdi-email</v-icon>
               <strong>Email:</strong> <a href="mailto:support@libtune.com">support@libtune.com</a>
             </li>
           </ul>
-          <p>
-            Our support team is available Monday to Friday, 9 AM to 5 PM (CET). 
-            We aim to respond to all inquiries within 24 hours.
-          </p>
         </section>
   
           <!-- Call to Action -->
           <section class="about-section cta">
             <h2 class="section-title">Start Your Journey with Libtune</h2>
-            <p>
-              Ready to elevate your projects with exceptional music? Explore our library, 
-              sign up for our premium plan, and let your creativity shine. With Libtune, 
-              the soundtrack to your success is just a click away.
-            </p>
             <v-btn color="primary" variant="elevated" large @click="goToPath('/subscribe')">
           Get Premium
         </v-btn>
@@ -101,7 +100,7 @@
   }
   
   .about-card {
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
     border-radius: 12px;
     background-color: #ffffff;
@@ -122,7 +121,7 @@
     font-size: 18px;
     /* color: #555555; */
     line-height: 1.6;
-    text-align: center;
+    /* text-align: center; */
   }
   
   .section-title {

@@ -77,8 +77,8 @@ function goToStripe() {
       <v-card-title class="text-center text-h5 font-weight-bold">
         Premium Plan
       </v-card-title>
-      <v-card-subtitle class="text-center text-h6 font-weight-medium">
-        <h3 class="price">€5/month</h3>
+      <v-card-subtitle class="text-center text-h6">
+        <h2 class="price">€5/month</h2>
         <p>Billed monthly, cancel anytime</p>
       </v-card-subtitle>
       <v-divider></v-divider>
@@ -110,7 +110,7 @@ function goToStripe() {
           </v-list-item>
         </v-list>
         <div v-if="!authStore?.userToken">
-          <h4>Login or Sign-up first to be able to subscribe</h4>
+          <p style="text-align: center;">Login or Sign-up first to be able to subscribe</p>
           <br>
           <div style="display:flex; justify-content: space-evenly; align-items: center">
             <v-btn color="primary" variant="elevated" @click="goToPath('/login')">
@@ -143,7 +143,7 @@ function goToStripe() {
   border-radius: 12px;
 }
 .price {
-  color: #4a148c;
+  color: black;
   font-weight: bold;
 }
 .included {
