@@ -90,6 +90,11 @@
   
   // Form reference
   const formRef = ref(null);
+
+  useSeoMeta({
+  title: "Login",
+  })
+
   
   // Form submission logic
   const submitForm = async () => {

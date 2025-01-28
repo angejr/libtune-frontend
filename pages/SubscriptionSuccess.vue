@@ -2,6 +2,11 @@
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
 
+useSeoMeta({
+  title: "Subscription Success",
+})
+
+
 // Redirect when trying to access a page only accessible when logged in
 if (!authStore?.userToken){
   goToPath('/login')

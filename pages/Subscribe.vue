@@ -4,6 +4,11 @@ const errorStore = useErrorStore()
 const config = useRuntimeConfig()
 const STRAPI_URL = config.public.strapiUrl
 
+useSeoMeta({
+  title: "Pricing",
+})
+
+
 function SS_ProductCheckout(productId, baseUrl, userEmail) {
   localStorage.setItem("strapiStripeUrl", baseUrl);
   const getRedirectUrl =

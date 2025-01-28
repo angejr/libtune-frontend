@@ -3,7 +3,7 @@ const authStore = useAuthStore();
 const errorStore = useErrorStore();
 
 useSeoMeta({
-  title: "Libtune",
+  title: "Home",
   ogTitle: "Libtune",
   description: "Access a massive library of royalty-free and copyright-free music for podcasts, YouTube, and more. Find ambient, holiday, and orchestral tracks to elevate your projects. Perfect for content creators. Subscribe now!",
   ogDescription: "Royalty-free music for every project. Perfect for YouTube, podcasts, and more. Subscribe now!",

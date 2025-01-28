@@ -81,6 +81,11 @@ const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
 
+useSeoMeta({
+  title: "Sign-Up",
+})
+
+
 const matchPassword = (value) =>
   value === password.value || "Passwords must match.";
 

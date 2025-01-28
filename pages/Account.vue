@@ -6,6 +6,10 @@ const subscriptionData = ref([]);
 const paymentMethods = ref([]);
 const payments = ref([]);
 
+useSeoMeta({
+  title: "Account",
+})
+
 // Redirect to home if the user doesn't have an account yet
 if (!authStore?.userToken){
   goToPath('/login')

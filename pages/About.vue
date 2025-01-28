@@ -64,14 +64,6 @@
               <v-icon color="blue darken-2" class="contact-icon">mdi-email</v-icon>
               <strong>Email:</strong> <a href="mailto:support@libtune.com">support@libtune.com</a>
             </li>
-            <li>
-              <v-icon color="blue darken-2" class="contact-icon">mdi-phone</v-icon>
-              <strong>Phone:</strong> +33 1 23 45 67 89
-            </li>
-            <li>
-              <v-icon color="blue darken-2" class="contact-icon">mdi-map-marker</v-icon>
-              <strong>Address:</strong> 123 Rue de la Musique, 75001 Paris, France
-            </li>
           </ul>
           <p>
             Our support team is available Monday to Friday, 9 AM to 5 PM (CET). 
@@ -97,6 +89,10 @@
   </template>
   
   <script setup>
+    useSeoMeta({
+  title: "About",
+})
+
   </script>
   
   <style scoped>
