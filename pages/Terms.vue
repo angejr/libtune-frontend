@@ -1,6 +1,11 @@
 <script setup>
   useSeoMeta({
-  title: "Terms",
+  title: "Terms and Conditions",
+  ogTitle: "Terms and Conditions",
+  robots: {
+    noindex: true,
+    follow: true
+  }
 })
 
 </script>

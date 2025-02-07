@@ -89,7 +89,10 @@
   
   <script setup>
     useSeoMeta({
-  title: "About",
+      title: "About Us",
+      ogTitle: "About Us",
+      description: "Our mission is to make premium music accessible for all your creative projects, while ensuring simplicity and professionalism.",
+      ogDescription: "Our mission is to make premium music accessible for all your creative projects, while ensuring simplicity and professionalism.",
 })
 
   </script>

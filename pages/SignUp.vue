@@ -83,6 +83,11 @@ const confirmPassword = ref("");
 
 useSeoMeta({
   title: "Sign-Up",
+  ogTitle: "Sign-Up",
+  robots: {
+    noindex: true,
+    nofollow: true
+  }
 })
 
 

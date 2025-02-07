@@ -93,6 +93,11 @@
 
   useSeoMeta({
   title: "Login",
+  ogTitle: "Login",
+  robots: {
+    noindex: true,
+    nofollow: true
+  }
   })
 
   

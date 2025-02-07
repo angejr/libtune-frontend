@@ -4,6 +4,10 @@ const errorStore = useErrorStore()
 
 useSeoMeta({
   title: "Unsubscribe",
+  robots: {
+    noindex: true,
+    nofollow: true
+  }
 })
 
 

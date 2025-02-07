@@ -6,6 +6,10 @@ const STRAPI_URL = config.public.strapiUrl
 
 useSeoMeta({
   title: "Pricing",
+  ogtitle: "Subscribe",
+  description: "Most affordable copyright free music plan, unlimited downloads and unlimited licence for commercial use, no attribution needed. Cancel anytime",
+  ogDescription: "Most affordable copyright free music plan, unlimited downloads and unlimited licence for commercial use, no attribution needed. Cancel anytime",
+
 })
 
 
@@ -86,19 +90,15 @@ function goToStripe() {
         <v-list dense>
           <v-list-item class="included">
             <v-icon icon="mdi-check-circle-outline" class="list-icon"></v-icon>
-            Unlimited downloads of high-quality music
+            Unlimited downloads
           </v-list-item>
           <v-list-item class="included">
             <v-icon icon="mdi-check-circle-outline" class="list-icon"></v-icon>
-            Royalty-free license for all downloaded music
+            License for all downloaded songs
           </v-list-item>
           <v-list-item class="included">
             <v-icon icon="mdi-check-circle-outline" class="list-icon"></v-icon>
-            Use in recreational and personal projects
-          </v-list-item>
-          <v-list-item class="included">
-            <v-icon icon="mdi-check-circle-outline" class="list-icon"></v-icon>
-            Monetized commercial use (e.g., YouTube, podcasts)
+            Commercial use allowed
           </v-list-item>
           <v-list-item class="included">
             <v-icon icon="mdi-check-circle-outline" class="list-icon"></v-icon>

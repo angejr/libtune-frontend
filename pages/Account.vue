@@ -8,6 +8,13 @@ const payments = ref([]);
 
 useSeoMeta({
   title: "Account",
+  ogtitle: "Account",
+  description:"Browse your libtune profile and account information",
+  oDescription:"Browse your libtune profile and account information",
+  robots: {
+    noindex: true,
+    nofollow: true
+  }
 })
 
 // Redirect to home if the user doesn't have an account yet

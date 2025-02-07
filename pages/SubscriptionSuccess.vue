@@ -3,7 +3,11 @@ const authStore = useAuthStore();
 const errorStore = useErrorStore();
 
 useSeoMeta({
-  title: "Subscription Success",
+  title: "Subscription Result",
+  robots: {
+    noindex: true,
+    nofollow: true
+  }
 })
 
 

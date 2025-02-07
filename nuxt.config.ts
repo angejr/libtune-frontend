@@ -4,13 +4,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: ['vuetify-nuxt-module', '@pinia/nuxt', 'nuxt-gtag', '@nuxtjs/seo', '@nuxtjs/sitemap', '@nuxtjs/robots'],
-  site: { 
-    url: 'https://libtune.com', 
-    },
-    robots: {
-      blockNonSeoBots: true,
-      disallow: ['/api']
-    },
+  site: {
+    url: 'https://libtune.com',
+  },
+  robots: {
+    blockNonSeoBots: true,
+    disallow: ['/api']
+  },
   gtag: {
     id: 'G-FJQG9Y2J4L',
     enabled: process.env.NODE_ENV === 'production'
@@ -19,12 +19,12 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: { brotli: true, gzip: true },
   },
-  app:{
-    head:{
+  app: {
+    head: {
       title: "",
       titleTemplate: '%s',
       link: [
-        { rel: 'icon',type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
     }
   },
@@ -39,7 +39,7 @@ export default defineNuxtConfig({
   //   }
   // },
   runtimeConfig: {
-    public:{
+    public: {
       strapiUrl: process.env.NUXT_STRAPI_URL,
     },
     strapiApiUrl: process.env.NUXT_STRAPI_API_URL,
