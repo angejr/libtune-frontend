@@ -12,8 +12,15 @@ export default defineNuxtConfig({
     disallow: ['/api']
   },
   gtag: {
-    id: 'G-FJQG9Y2J4L',
-    enabled: process.env.NODE_ENV === 'production'
+    enabled: process.env.NODE_ENV === 'production',
+    tags: [
+      {
+        id: 'G-FJQG9Y2J4L',
+      }, 
+      {
+        id: 'AW-16862883963'
+      }
+    ]
   },
   ssr: true,
   nitro: {
