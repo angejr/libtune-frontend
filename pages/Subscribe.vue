@@ -68,7 +68,7 @@ function SS_ProductCheckout(productId, baseUrl, userEmail) {
 function goToStripe() {
   // for product Checkout
   try {
-    SS_ProductCheckout(1, STRAPI_URL, authStore.user.email);
+    SS_ProductCheckout(2, STRAPI_URL, authStore.user.email);
   } catch (e) {
     errorStore.setError({ title: "Error", text: e.message });
   }
