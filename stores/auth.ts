@@ -21,7 +21,7 @@ export const useAuthStore = defineStore('auth', {
         },
         async register(username: string, email: string, password: string) {
 
-            const response = await $fetch('/api/register', {
+            const response : any = await $fetch('/api/register', {
                 method: "POST",
                 body: {
                     username,
@@ -35,7 +35,7 @@ export const useAuthStore = defineStore('auth', {
 
         async login(email: string, password: string) {
 
-            const response = await $fetch('/api/login', {
+            const response : any = await $fetch('/api/login', {
                 method: "POST",
                 body: {
                     identifier: email,
