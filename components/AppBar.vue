@@ -197,6 +197,7 @@ const drawerUser = ref(false)
           @click="
             goToPath('/');
             authStore?.logout();
+            drawer = false; drawerUser= false
           "
         >Logout</v-list-item>
       </v-list>
