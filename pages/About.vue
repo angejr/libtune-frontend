@@ -13,7 +13,7 @@ useSeoMeta({
     <v-container class="about-page" fluid>
       <v-card elevation="4" :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="about-card">
         <!-- Header Section -->
-        <v-card-title :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="about-title text-center">
+        <v-card-title :style="{ fontSize: displayStore.isMobile ? '28px': '' }" class="about-title text-center">
           About Libtune
         </v-card-title>
         <v-divider></v-divider>
