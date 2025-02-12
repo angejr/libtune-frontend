@@ -1,6 +1,7 @@
 <script setup>
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
+const displayStore = useDisplayStore();
 
 const subscriptionData = ref([]);
 const paymentMethods = ref([]);
@@ -49,7 +50,7 @@ const formatDate = (timestamp) =>
 
 <template>
   <v-container
-    class="my-8"
+  class="py-8"
     style="
       display: flex;
       flex-direction: column;
@@ -59,7 +60,7 @@ const formatDate = (timestamp) =>
     fluid
   >
     <!-- Profile Section Section -->
-    <v-card outlined class="mb-4">
+    <v-card outlined :class="displayStore.isMobile ? 'mb-4-mobile' : 'mb-4'">
       <v-card-title class="text-h5"> Profile </v-card-title>
       <v-divider></v-divider>
       <v-card-text>
@@ -84,7 +85,7 @@ const formatDate = (timestamp) =>
       </v-card-text>
     </v-card>
     <!-- Subscriptions Section -->
-    <v-card outlined class="mb-4">
+    <v-card outlined :class="displayStore.isMobile ? 'mb-4-mobile' : 'mb-4'">
       <v-card-title class="text-h5">Subscriptions</v-card-title>
       <v-divider></v-divider>
       <v-card-text>
@@ -159,7 +160,7 @@ const formatDate = (timestamp) =>
     </v-card>
 
     <!-- Payment Methods Section -->
-    <v-card v-if="authStore?.user?.customerId" outlined  class="mb-4">
+    <v-card v-if="authStore?.user?.customerId" outlined  :class="displayStore.isMobile ? 'mb-4-mobile' : 'mb-4'">
       <v-card-title class="text-h5">Payment Methods</v-card-title>
       <v-divider></v-divider>
       <v-card-text>
@@ -224,7 +225,7 @@ const formatDate = (timestamp) =>
     </v-card>
 
     <!-- Payments Section -->
-    <v-card v-if="authStore?.user?.customerId" outlined  class="mb-4">
+    <v-card v-if="authStore?.user?.customerId" outlined  :class="displayStore.isMobile ? 'mb-4-mobile' : 'mb-4'">
       <v-card-title class="text-h5">Payments</v-card-title>
       <v-divider></v-divider>
       <v-card-text>
@@ -266,6 +267,11 @@ const formatDate = (timestamp) =>
   margin-bottom: 16px;
   width: 800px;
   min-width: 100vh;
+}
+
+.mb-4-mobile {
+  margin-bottom: 16px;
+  width: 100%
 }
 
 .elevation-1 {

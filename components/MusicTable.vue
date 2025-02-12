@@ -402,7 +402,7 @@ function getHeaderClass(isMobile) {
   </v-container>
 </template>
 
-<style>
+<style scoped>
 .music-page-container {
   padding: 20px;
   min-height: 100vh;

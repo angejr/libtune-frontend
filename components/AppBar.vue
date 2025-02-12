@@ -3,6 +3,12 @@ const authStore = useAuthStore();
 const displayStore = useDisplayStore()
 const drawer = ref(false)
 const drawerUser = ref(false)
+
+function resetDrawers(){
+  drawer.value = false
+  drawerUser.value = false
+}
+
 </script>
 
 <template >
@@ -141,27 +147,27 @@ const drawerUser = ref(false)
         <v-list-item
           class="drawer-item"
           v-if="!authStore?.isAuthenticated"
-          @click="goToPath('/login')"
+          @click="goToPath('/login'); resetDrawers()"
           title="LOGIN"
         ></v-list-item>
         <v-list-item
           class="drawer-item"
           v-if="!authStore?.isAuthenticated"
-          @click="goToPath('/signup')"
+          @click="goToPath('/signup'); resetDrawers()"
           title="SIGN-UP"
         ></v-list-item>
         <v-divider v-if="!authStore?.isAuthenticated"></v-divider>
         <v-list-subheader> Information</v-list-subheader>
         <v-list-item
           class="drawer-item"
-          @click="goToPath('/subscribe')"
+          @click="goToPath('/subscribe'); resetDrawers()"
           title="PRICING"
         ></v-list-item>
         <v-list-item
-          class="drawer-item" @click="goToPath('/about')" title="ABOUT US"></v-list-item>
+          class="drawer-item" @click="goToPath('/about'); resetDrawers()" title="ABOUT US"></v-list-item>
         <v-list-item
           class="drawer-item"
-          @click="goToPath('/terms')"
+          @click="goToPath('/terms'); resetDrawers()"
           title="TERMS & CONDITIONS"
         ></v-list-item>
         <v-divider></v-divider>
@@ -189,7 +195,7 @@ const drawerUser = ref(false)
         <v-list-item>{{ authStore?.user?.username }}</v-list-item>
           <v-list-item class="user-email">{{ authStore?.user?.email}}</v-list-item>
           <v-divider></v-divider>
-          <v-list-item @click="goToPath('/account')">MY ACCOUNT</v-list-item>
+          <v-list-item @click="goToPath('/account'); resetDrawers()">MY ACCOUNT</v-list-item>
           <v-divider></v-divider>
         <v-list-item
           prepend-icon="mdi-logout-variant"
@@ -197,7 +203,7 @@ const drawerUser = ref(false)
           @click="
             goToPath('/');
             authStore?.logout();
-            drawer = false; drawerUser= false
+            resetDrawers()
           "
         >Logout</v-list-item>
       </v-list>

@@ -197,7 +197,7 @@
     </v-container>
 </template>
 
-<style>
+<style scoped>
   .termsContent {
     font-family: Arial, sans-serif;
     line-height: 1.6;
