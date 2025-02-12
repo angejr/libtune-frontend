@@ -265,13 +265,14 @@ function getHeaderClass(isMobile) {
         </template>
       </v-data-table-virtual>
 
-      <v-data-table-virtual
+      <v-data-table-virtual v-else
   :headers="[headers[0], { title: '', key: 'title', align: 'center' }, headers[4]] "
   :items="songs"
   hover
   multi-sort
   class="mt-4"
   :row-props="getRowProps"
+  hide-default-header=true
 >
   <template v-slot:loading>
     <div class="d-flex justify-center my-4">
