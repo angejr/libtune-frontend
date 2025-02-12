@@ -139,7 +139,7 @@ function resetDrawers(){
       </v-app-bar-title>
     </v-app-bar>
     <!-- Navigation drawer -->
-    <v-navigation-drawer v-model="drawer" :location="bottom" temporary>
+    <v-navigation-drawer v-model="drawer" location="left" temporary>
       <v-list>
         <v-list-subheader v-if="!authStore?.isAuthenticated">
           Authentication</v-list-subheader
@@ -175,7 +175,7 @@ function resetDrawers(){
       </v-list>
     </v-navigation-drawer>
 
-    <v-navigation-drawer v-model="drawerUser" :location="right" temporary>
+    <v-navigation-drawer v-model="drawerUser" location="right" temporary>
       <v-list>
         <v-list-subheader>Account Plan</v-list-subheader>
         <v-list-item>
