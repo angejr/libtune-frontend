@@ -9,7 +9,6 @@ const drawerUser = ref(false)
   <v-app-bar
     v-if="!displayStore.isMobile"
     elevation="10"
-    absolute
     class="app-bar"
     color="#1e1e2f"
   >
@@ -102,16 +101,15 @@ const drawerUser = ref(false)
       </template>
 
       <template v-if="authStore?.isAuthenticated" v-slot:append>
-        <!-- <v-btn variant="outlined" class="profile-btn">{{ authStore?.user?.value.trim().charAt(0) }}</v-btn> -->
         <v-btn
-          variant="outlined"
-          class="profile-btn"
-          @click.stop="
+            v-bind="props"
+            elevation="3"
+            icon="mdi-account"
+            class="user-menu-btn"
+            @click.stop="
             drawer = false;
-            drawerUser = !drawerUser;
-          "
-          >{{ authStore?.user?.username.trim().charAt(0) }}</v-btn
-        >
+            drawerUser = !drawerUser;">
+        </v-btn>
       </template>
 
       <!-- Title Section -->

@@ -2,6 +2,7 @@
 import { useIntersectionObserver, useDebounce } from "@vueuse/core";
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
+const displayStore = useDisplayStore();
 
 const search = ref("");
 const debouncedSearch = useDebounce(search, 800); // Debounced ref
@@ -140,13 +141,20 @@ function getRowProps(row) {
     class: row.item.id === getCurrent() ? "playingClass" : "",
   };
 }
+
+function getHeaderClass(isMobile) {
+  if (!isMobile) {
+    return "text-center text-h4 font-weight-bold pb-4";
+  }
+  return "text-center font-weight-bold pb-4";
+}
 </script>
 
 <template>
   <v-container class="py-8 music-page-container">
     <v-card class="music-page-card" flat max-width="1200px" elevation="8">
       <!-- Header -->
-      <v-card-title class="text-center text-h4 font-weight-bold pb-4">
+      <v-card-title :class="getHeaderClass(displayStore.isMobile)">
         100% Royalty-Free Music
       </v-card-title>
       <v-divider></v-divider>
@@ -189,7 +197,7 @@ function getRowProps(row) {
         </v-row>
       </v-container>
       <!-- Music Table -->
-      <v-data-table-virtual
+      <v-data-table-virtual v-if="!displayStore.isMobile"
         :headers="headers"
         :items="songs"
         hover
@@ -256,6 +264,78 @@ function getRowProps(row) {
           ></v-btn>
         </template>
       </v-data-table-virtual>
+
+      <v-data-table-virtual
+  :headers="[headers[0], { title: '', key: 'title', align: 'center' }, headers[4]] "
+  :items="songs"
+  hover
+  multi-sort
+  class="mt-4"
+  :row-props="getRowProps"
+>
+  <template v-slot:loading>
+    <div class="d-flex justify-center my-4">
+      <v-progress-circular
+        indeterminate
+        color="primary"
+        size="40"
+      ></v-progress-circular>
+    </div>
+  </template>
+
+  <template v-slot:item="{ item }">
+    <!-- Main Row -->
+    <tr>
+      <td style="padding: 10px 0 10px 0" >
+        <div style=" display: flex; flex-direction: column; justify-content: space-around; align-items:center; gap:10px">
+          <AudioPlayer
+            :imageSource="item.image_url"
+            :audioId="item.id"
+            :isPlaying="currentPlayingAudio === item.id"
+            @toggle-play="handleTogglePlay"
+          />
+          <h6>
+            {{ item.length || "00:00" }}
+          </h6>
+        </div>
+      </td>
+      <td style="padding: 10px 0 10px 0">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items:center; gap:10px">
+          <h5> {{ item.title }}</h5>
+          <div style="display: flex; justify-content: center; align-items:center; flex-wrap: wrap;">
+            <v-chip v-if="item.instrumental" color="green" size="x-small">
+              Instrumental
+            </v-chip>
+            <v-chip
+              v-for="tag in [
+                ...new Set(
+                  item.tags
+                    ?.split(' ')
+                    .filter((tag) => !excludedTags.includes(tag))
+                ),
+              ]"
+              :key="tag"
+              size="x-small"
+              class="tag-chip"
+              :color="sunoTags[tag] || 'grey'"
+            >
+              {{ tag }}
+            </v-chip>
+          </div>
+        </div>
+      </td>
+      <td style="padding: 10px 0 10px 0">
+        <v-btn
+          color="purple"
+          icon="mdi-download"
+          size="x-small"
+          class="ma-2"
+          @click="handleDownload(item)"
+        ></v-btn>
+      </td>
+    </tr>
+  </template>
+</v-data-table-virtual>
 
       <!-- Loading Indicator -->
       <div ref="loadMoreTrigger" v-if="!allLoaded" class="my-4 text-center">

@@ -23,7 +23,7 @@ if (authStore.userToken) {
 <template>
   <v-app>
     <AppBar> </AppBar>
-    <v-main class="app" style="margin-top: 20px">
+    <v-main class="app">
       <v-dialog v-model="errorStore.error" max-width="500">
         <v-card>
           <v-alert
