@@ -35,6 +35,13 @@
             class="mt-4"
           ></v-text-field>
 
+          <p class="text-center mt-4 mb-4">
+            Don't have an account yet ? 
+            <NuxtLink to="/signup" class="terms-link">
+              Register
+            </NuxtLink>
+          </p>
+
           <v-btn
             :disabled="!isFormValid"
             @click="submitForm"
@@ -74,6 +81,16 @@
 
 .v-card-title {
   margin-bottom: 10px;
+}
+
+.terms-link {
+  color: #4a148c;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms-link:hover {
+  text-decoration: underline;
 }
 </style>
 

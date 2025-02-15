@@ -82,55 +82,49 @@ function goToStripe() {
         Premium Plan
       </v-card-title>
       <v-card-subtitle class="text-center text-h6">
-        <h2 class="price">€5/month</h2>
-        <p>Billed monthly, cancel anytime</p>
+        <h2 class="price">$5.25/month</h2>
+        <h6>Billed monthly, cancel anytime</h6>
       </v-card-subtitle>
       <v-divider></v-divider>
       <v-card-text>
         <v-list dense>
           <v-list-item class="included">
-            <v-icon icon="mdi-check-circle-outline" class="list-icon"></v-icon>
+            <v-icon icon="mdi-check-outline" class="list-icon positive"></v-icon>
             Unlimited downloads
           </v-list-item>
           <v-list-item class="included">
-            <v-icon icon="mdi-check-circle-outline" class="list-icon"></v-icon>
+            <v-icon icon="mdi-check-outline" class="list-icon positive"></v-icon>
             License for all downloaded songs
           </v-list-item>
           <v-list-item class="included">
-            <v-icon icon="mdi-check-circle-outline" class="list-icon"></v-icon>
+            <v-icon icon="mdi-check-outline" class="list-icon positive"></v-icon>
             Commercial use allowed
           </v-list-item>
           <v-list-item class="included">
-            <v-icon icon="mdi-check-circle-outline" class="list-icon"></v-icon>
+            <v-icon icon="mdi-check-outline" class="list-icon positive"></v-icon>
             No attribution required
           </v-list-item>
           <v-list-item class="excluded">
-            <v-icon icon="mdi-close-circle-outline" class="list-icon"></v-icon>
+            <v-icon icon="mdi-close-outline" class="list-icon negative"></v-icon>
             Redistribution or resale prohibited
           </v-list-item>
         </v-list>
-        <div v-if="!authStore?.userToken">
-          <p style="text-align: center;">Login or Sign-up first to be able to subscribe</p>
-          <br>
-          <div style="display:flex; justify-content: space-evenly; align-items: center">
-            <v-btn color="primary" variant="elevated" @click="goToPath('/login')">
-              Log In
-            </v-btn>
-            <v-btn color="primary" outlined @click="goToPath('/signup')">
-              Sign Up
-            </v-btn>
-          </div>
-        </div>
       </v-card-text>
-      <v-card-actions v-if="authStore?.userToken" style="display: flex; justify-content: center">
+      <v-card-actions style="display: flex; justify-content: center">
         <v-btn
           v-if="!authStore?.user?.customerId"
-          color="primary"
+          color="purple"
           variant="elevated"
           large
-          @click="goToStripe"
+          @click="
+            if(authStore?.userToken){
+            goToStripe();
+            }
+            else{
+              goToPath('/login');
+            }"
         >
-          Get Premium
+          Subscribe
         </v-btn>
         <h3 v-else>You are already subscribed !</h3>
       </v-card-actions>
@@ -147,16 +141,24 @@ function goToStripe() {
   font-weight: bold;
 }
 .included {
-  color: #4caf50;
+  font-weight:500;
   display: flex;
   align-items: center;
 }
 .excluded {
-  color: #f44336;
+  font-weight:500;
   display: flex;
   align-items: center;
 }
 .list-icon {
   margin-right: 8px;
+}
+
+.positive{
+  color:green
+}
+
+.negative{
+  color:red
 }
 </style>

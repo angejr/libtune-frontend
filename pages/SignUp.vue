@@ -6,6 +6,12 @@
       </v-card-title>
       <v-divider></v-divider>
       <v-card-text>
+        <p class="text-center mt-4 mb-4">
+            Already have an account ? 
+            <NuxtLink to="/login" class="terms-link">
+              Login
+            </NuxtLink>
+        </p>
         <v-form
           v-model="isFormValid"
           ref="formRef"
