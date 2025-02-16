@@ -1,5 +1,5 @@
-export function goToPath(path: string) {
-    return navigateTo({ path })
+export function goToPath(input : any) {
+    return navigateTo(input)
 }
 
 // Form validation rules

@@ -106,7 +106,7 @@ const submitForm = async () => {
   if (formRef.value && formRef.value.validate()) {
     try {
       await authStore.register(username.value, email.value, password.value);
-      goToPath("/");
+      goToPath("/subscribe");
     } catch (e) {
       errorStore.setError({title: "Sign-Up Error", text: e.message})
     }
