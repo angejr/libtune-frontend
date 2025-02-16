@@ -88,7 +88,7 @@ if (authStore.userToken) {
             @click="
               landingDialog = false;
               if (!authStore?.userToken){
-                goToPath('/login');
+                goToPath('/signup');
               }
               else {
                 goToPath('/subscribe')

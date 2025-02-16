@@ -121,7 +121,7 @@ function goToStripe() {
             goToStripe();
             }
             else{
-              goToPath('/login');
+              goToPath('/signup');
             }"
         >
           Subscribe
