@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
 
 
     // Second call to retrieve the customerId from the checkoutSessionId
-    const { customer: customerId } = await $fetch(
+    const { customer: customerId } : any = await $fetch(
         `${STRAPI_URL}/strapi-stripe/retrieveCheckoutSession/${id}`
     )
 

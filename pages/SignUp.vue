@@ -87,6 +87,9 @@ const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
 
+const config = useRuntimeConfig()
+const STRAPI_URL = config.public.strapiUrl
+
 useSeoMeta({
   title: "Sign-Up",
   ogTitle: "Sign-Up",
@@ -96,6 +99,14 @@ useSeoMeta({
   }
 })
 
+function goToStripe() {
+  // for product Checkout
+  try {
+    SS_ProductCheckout(2, STRAPI_URL, authStore.user.email);
+  } catch (e) {
+    errorStore.setError({ title: "Error", text: e.message });
+  }
+}
 
 const matchPassword = (value) =>
   value === password.value || "Passwords must match.";
@@ -106,7 +117,12 @@ const submitForm = async () => {
   if (formRef.value && formRef.value.validate()) {
     try {
       await authStore.register(username.value, email.value, password.value);
-      goToPath("/subscribe");
+      if(authStore?.userToken){
+            goToStripe();
+      }
+      else{
+        goToPath('/subscribe')
+      }
     } catch (e) {
       errorStore.setError({title: "Sign-Up Error", text: e.message})
     }
