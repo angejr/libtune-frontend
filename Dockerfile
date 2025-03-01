@@ -11,6 +11,8 @@ WORKDIR /app
 
 # Set production environment
 ENV NODE_ENV="production"
+# Set v8 memory size
+ENV NODE_OPTIONS="--max-old-space-size=1024"
 
 
 # Throw-away build stage to reduce size of final image
