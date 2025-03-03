@@ -4,131 +4,344 @@ const authStore = useAuthStore();
 
 const items = [
   { id: 1, title: "Pop", color: "pink", image: "images/pop.jpg" },
-  { id: 2, title: "Electronic", color: "purple", image: "images/electronic.jpg" },
+  {
+    id: 2,
+    title: "Electronic",
+    color: "purple",
+    image: "images/electronic.jpg",
+  },
   { id: 3, title: "Hip-Hop", color: "orange", image: "images/hip-hop.jpg" },
   { id: 4, title: "Cinematic", color: "tiel", image: "images/cinematic.jpg" },
   { id: 5, title: "Classical", color: "yellow", image: "images/classical.jpg" },
   { id: 5, title: "Acoustic", color: "pink", image: "images/acoustic.jpg" },
 ];
+
+const faq = [
+  {
+    title: "What is royalty-free music?",
+    text: "Royalty-free music is a type of licensing that allows the use of licensed music in multiple projects without paying additional fees. The purchaser pays a one-time fee often for a perpetual license. It's commonly used in films, TV shows, commercials, and other media projects. The cost varies depending on length, usage, and composer popularity. It's a cost-effective alternative to traditional licensing, where ongoing royalties must be paid each time the music is used."
+  },
+  {
+    title: "How can I use royalty-free music?",
+    text: "You can use royalty-free music as background music for videos on platforms like YouTube, Vimeo, Instagram, TikTok, and more. Other common media projects where you can use your royalty-free music are on websites in various projects, as background music in all sorts of games, mobile apps, presentations, and more."
+  },
+  {
+    title: "Where can I find royalty-free music?",
+    text: "There are many websites that offer royalty-free music that you can use for your different projects. However, the music quality can vary a lot as well as the license agreements."
+  },
+  {
+    title: "Is royalty-free music really free?",
+    text: "Royalty-free music means that the music is free from any additional royalties. However, while the music may be free from royalties, it is usually not completely free of cost as you at first most likely need to buy the license."
+  },
+  {
+    title: "Can I use royalty-free music for commercial purposes?",
+    text: "Yes, you can use royalty-free music for commercial purposes, as long as you follow the terms and conditions specified by the licensor of the music. Libtune's royalty-free music can be used for any purpose, including commercial purposes."
+  },
+  {
+    title: "Do I need to give credit to the artist when using royalty-free music?",
+    text: "It depends on the terms and conditions specified by the license provider. Some royalty-free music providers may require you to give credit to the artist, while others may not. Libtune does not require subscribers to give credit to any artists, although it’s highly appreciated."
+  },
+  {
+    title: "Are there any limitations to using royalty-free music with Libtune?",
+    text: "Our music is forbidden to be used with explicit or illegal content. Other than that, our music has no limitations as long as you have a valid subscription."
+  },
+  {
+    title: "Is copyright-free music and license-free music the same as royalty-free music?",
+    text: "No, 'copyright-free music' and 'license-free music' are not the same as 'royalty-free music'. Copyright-free music means that the music is not protected by copyright law and can be used freely. However, just because the music is not protected, it doesn't mean that the music is free of charge. License-free music means that the music does not require a license to be used and the user does not need to pay for the right to use the music, but this doesn't necessarily mean that the music is free of charge. Royalty-free music, on the other hand, refers to music that can be used without paying royalties each time the music is used or performed."
+  },
+  {
+    title: "How do I make sure that I have the right to use the royalty-free music?",
+    text: "When buying a subscription from Libtune, you have the complete right to use the music as you wish on any platform. If using another royalty-free music provider, make sure to read the licensing agreement carefully before using the music for any projects. This agreement will specify the terms and conditions under which the music can be used."
+  },
+  {
+    title: "Can I use royalty-free music on all social platforms?",
+    text: "In most cases, yes. However, you need to verify the terms of the license agreement from your music provider as well as the policies of that particular social platform. Some royalty-free music licenses may restrict usage on certain platforms for various reasons, while others may provide free usage on all platforms. Additionally, some social platforms have their own music libraries and licensing agreements which you have to consider before using your own licensed music. Libtune does not restrict the usage of your purchased music in any form, except if used for explicit or illegal content."
+  }
+];
+
 </script>
 
 <template>
   <v-container style="width: 100%; padding: 0">
+    <v-container class="py-8" fluid>
+      <v-row>
+        <v-col cols="12" md="6">
+          <v-card
+            style="
+              width: 100%;
+              box-shadow: 0 0 0 0;
+              background-color: transparent;
+            "
+          >
+            <v-card-title
+              style="
+                font-family: Montserrat;
+                line-height: 1;
+                word-wrap: break-word;
+                overflow: visible;
+                white-space: normal;
+              "
+            >
+              <h1>Royalty free music for all projects</h1>
+            </v-card-title>
+            <v-card-text>
+              <v-list style="background-color: transparent">
+                <v-list-item style="padding-left: 0; padding-right: 0">
+                  <div class="list-div font-inter">
+                    <v-icon> mdi-music</v-icon>
+                    <p>Access to thousands of high quality songs</p>
+                  </div>
+                </v-list-item>
+                <v-list-item style="padding-left: 0; padding-right: 0">
+                  <div class="list-div font-inter">
+                    <v-icon> mdi-download</v-icon>
+                    Unlimited downloads
+                  </div>
+                </v-list-item>
+                <v-list-item style="padding-left: 0; padding-right: 0">
+                  <div class="list-div font-inter">
+                    <v-icon> mdi-license</v-icon>
+                    Licence to use the songs for any project, videos, streams
+                    and podcasts
+                  </div>
+                </v-list-item>
+                <v-list-item style="padding-left: 0; padding-right: 0">
+                  <div class="list-div font-inter">
+                    <v-icon> mdi-cash</v-icon>
+                    Publish anywhere and monetize your content
+                  </div>
+                </v-list-item>
+              </v-list>
+            </v-card-text>
+            <v-card-actions>
+              <div style="display: flex; flex-direction: column; gap: 15px">
+                <v-btn
+                  class="font-inter"
+                  style="padding: 30px; display: flex; justify-content: center"
+                  color="purple"
+                  variant="elevated"
+                  @click="
+                    landingDialog = false;
+                    if (!authStore?.userToken) {
+                      goToPath('/signup');
+                    } else {
+                      goToPath('/subscribe');
+                    }
+                  "
+                >
+                  Subscribe</v-btn
+                >
+                <p
+                  class="font-inter"
+                  style="font-size: small; font-weight: 600"
+                >
+                  Subscribe now, Cancel anytime
+                </p>
+              </div>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+        <v-col v-if="!displayStore.isMobile" cols="12" md="6">
+          <v-img src="/images/bg.jpg" width="100%"></v-img>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-container class="py-8" style="width: 100%; background-color: black">
+      <v-row>
+        <v-col v-for="item in items" :key="item.id" cols="6" sm="4" md="3">
+          <v-card class="pa-2" style="padding: 0 !important" rounded="0">
+            <v-card-title
+              :style="{ backgroundColor: item.color, fontWeight: 'bold' }"
+              >{{ item.title }}</v-card-title
+            >
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-container class="py-8" fluid>
+      <v-row width="100%">
+        <v-col cols="12" md="6">
+          <v-img src="/images/bg (4).jpg" width="100%"></v-img>
+        </v-col>
+        <v-col cols="12" md="6">
+          <v-card style="background-color: transparent; box-shadow: 0 0 0 0">
+            <v-card-title class="font-inter"> Why Libtune ? </v-card-title>
+            <v-card-text>
+              <v-list
+                style="
+                  background-color: transparent;
+                  box-shadow: 0 0 0 0;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 15px;
+                "
+              >
+                <v-list-item
+                  class="libtune-advantage"
+                  style="padding-left: 0; padding-right: 0"
+                >
+                  <h3>2,000+ Royalty Free Songs</h3></v-list-item
+                >
+                <v-list-item
+                  class="libtune-advantage"
+                  style="padding-left: 0; padding-right: 0"
+                >
+                  <h3>Unlimited downloads</h3></v-list-item
+                >
+                <v-list-item
+                  class="libtune-advantage"
+                  style="padding-left: 0; padding-right: 0"
+                >
+                  <h3>Publish anywhere</h3></v-list-item
+                >
+                <v-list-item
+                  class="libtune-advantage"
+                  style="padding-left: 0; padding-right: 0"
+                >
+                  <h3>Soundtrack your content</h3></v-list-item
+                >
+              </v-list>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn
+                color="black"
+                variant="elevated"
+                @click="
+                  landingDialog = false;
+                  if (!authStore?.userToken) {
+                    goToPath('/signup');
+                  } else {
+                    goToPath('/subscribe');
+                  }
+                "
+              >
+                Subscribe
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
     <v-container
       class="py-8"
       style="
         display: flex;
         flex-direction: column;
-        justify-content: start;
+        justify-content: center;
         align-items: center;
+        gap: 20px;
       "
-      fluid
     >
-      <v-card
-        style="width: 100%; box-shadow: 0 0 0 0; background-color: transparent"
-      >
-        <v-card-title
-          style="
-            font-family: Montserrat;
-            line-height: 1;
-            word-wrap: break-word;
-            overflow: visible;
-            white-space: normal;
-          "
-        >
-          <h1>Royalty free music for all projects</h1>
+      <div>
+        <h1 style="font-family: Montserrat; font-size: xx-large">
+          Our Subscription
+        </h1>
+      </div>
+      <v-card class="premium-plan-card" elevation="10" max-width="400">
+        <v-card-title class="text-center text-h5 font-weight-bold">
+          Premium Plan
         </v-card-title>
+        <v-card-title class="text-center text-h6">
+          <div
+            class="price"
+            style="
+              display: flex;
+              align-items: baseline;
+              justify-content: center;
+            "
+          >
+            <h1>$5.25</h1>
+            <p style="font-size: x-small">/month</p>
+          </div>
+          <h6>Billed monthly, cancel anytime</h6>
+        </v-card-title>
+        <v-divider></v-divider>
         <v-card-text>
-          <v-list style="background-color: transparent">
-            <v-list-item style="padding-left: 0; padding-right: 0">
-              <div class="list-div font-inter">
-                <v-icon> mdi-music</v-icon>
-                <p>Access to thousands of high quality songs</p>
-              </div>
+          <v-list dense>
+            <v-list-item class="premium-feature">
+              <v-icon
+                icon="mdi-check-outline"
+                class="list-icon positive"
+              ></v-icon>
+              Unlimited downloads
             </v-list-item>
-            <v-list-item style="padding-left: 0; padding-right: 0">
-              <div class="list-div font-inter">
-                <v-icon> mdi-download</v-icon>
-                Unlimited downloads
-              </div>
+            <v-list-item class="premium-feature">
+              <v-icon
+                icon="mdi-check-outline"
+                class="list-icon positive"
+              ></v-icon>
+              License for all downloaded songs
             </v-list-item>
-            <v-list-item style="padding-left: 0; padding-right: 0">
-              <div class="list-div font-inter">
-                <v-icon> mdi-license</v-icon>
-                Licence to use the songs for any project, videos, streams and
-                podcasts
-              </div>
+            <v-list-item class="premium-feature">
+              <v-icon
+                icon="mdi-check-outline"
+                class="list-icon positive"
+              ></v-icon>
+              Commercial use allowed
             </v-list-item>
-            <v-list-item style="padding-left: 0; padding-right: 0">
-              <div class="list-div font-inter">
-                <v-icon> mdi-cash</v-icon>
-                Publish anywhere and monetize your content
-              </div>
+            <v-list-item class="premium-feature">
+              <v-icon
+                icon="mdi-check-outline"
+                class="list-icon positive"
+              ></v-icon>
+              No attribution required
+            </v-list-item>
+            <v-list-item class="premium-feature">
+              <v-icon
+                icon="mdi-close-outline"
+                class="list-icon negative"
+              ></v-icon>
+              Redistribution or resale prohibited
             </v-list-item>
           </v-list>
         </v-card-text>
-        <v-card-actions>
-          <div style="display: flex; flex-direction: column; gap: 15px">
-            <v-btn
-              class="font-inter"
-              style="padding: 30px; display: flex; justify-content: center"
-              color="purple"
-              variant="elevated"
-              @click="
-                landingDialog = false;
-                if (!authStore?.userToken) {
-                  goToPath('/signup');
-                } else {
-                  goToPath('/subscribe');
-                }
-              "
-            >
-              Subscribe</v-btn
-            >
-            <p class="font-inter" style="font-size: small; font-weight: 600">
-              Subscribe now, Cancel anytime
-            </p>
-          </div>
+        <v-card-actions style="display: flex; justify-content: center">
+          <v-btn
+            v-if="!authStore?.user?.customerId"
+            color="purple"
+            variant="elevated"
+            large
+            style="font-family: Inter"
+            @click="
+              if (authStore?.userToken) {
+                goToStripe();
+              } else {
+                goToPath('/signup');
+              }
+            "
+          >
+            Subscribe
+          </v-btn>
+          <h3 v-else>You are already subscribed !</h3>
         </v-card-actions>
       </v-card>
     </v-container>
-    <v-container style="width: 100%; background-color: black;">
-        <v-row>
-      <v-col 
-        v-for="item in items" :key="item.id" cols="6" sm="4" md="3"
-      >
-        <v-card class="pa-2" style="padding:0 !important" rounded="0">
-          <v-card-title :style="{ backgroundColor: item.color, fontWeight: 'bold'}">{{ item.title }}</v-card-title>
-        </v-card>
-      </v-col>
-    </v-row>
-    </v-container>
-    <v-container fluid>
-      <v-row width="100%">
-        <v-col cols="12" md="6">
-            <v-img src="/images/bg.jpg" width="100%"></v-img>
-        </v-col>
-        <v-col cols="12" md="6">
-            <v-card style="background-color: transparent; box-shadow: 0 0 0 0">
-                <v-card-title class="font-inter">
-                        Why Libtune ? 
-                </v-card-title>
-                <v-card-text>
-                    <v-list style="background-color: transparent ; box-shadow: 0 0 0 0; display:flex; flex-direction: column; gap:15px ">
-                        <v-list-item class="libtune-advantage" style="padding-left:0; padding-right:0"> <h3> 2,000+ Royalty Free Songs </h3></v-list-item>
-                        <v-list-item class="libtune-advantage" style="padding-left:0; padding-right:0"> <h3> Unlimited downloads</h3></v-list-item>
-                        <v-list-item class="libtune-advantage" style="padding-left:0; padding-right:0"> <h3> Publish anywhere</h3></v-list-item>
-                        <v-list-item class="libtune-advantage" style="padding-left:0; padding-right:0"> <h3>Soundtrack your content</h3></v-list-item>
-                    </v-list>
-                </v-card-text>
-                <v-card-actions>
-                  <v-btn color="black" variant="elevated">
-                    Subscribe
-                  </v-btn>
-                </v-card-actions>
-            </v-card>
-        </v-col>
-      </v-row>
+    <v-container
+      class="py-8"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      "
+    >
+      <div style="align-self: start">
+        <h1 style="font-family: Montserrat; font-size: x-large">
+          Frequently Asked Questions
+        </h1>
+      </div>
+      <v-list style="width: 100%; background-color: transparent; box-shadow: 0 0 0 0;">
+        <v-list-item v-for="q in faq" :key="q" style="padding-left: 0; padding-right: 0" class="font-inter">
+          <v-expansion-panels>
+            <v-expansion-panel
+              :title="q.title"
+              :text="q.text"
+            >
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </v-list-item>
+      </v-list>
     </v-container>
   </v-container>
 </template>
@@ -146,7 +359,33 @@ const items = [
 }
 
 .libtune-advantage {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Montserrat;
   font-size: x-large;
+}
+
+.premium-plan-card {
+  border-radius: 12px;
+}
+.price {
+  color: black;
+  font-weight: bold;
+}
+.premium-feature {
+  font-weight: 500;
+  font-family: Inter;
+  display: flex;
+  align-items: center;
+}
+
+.list-icon {
+  margin-right: 8px;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
 }
 </style>

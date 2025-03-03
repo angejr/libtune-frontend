@@ -26,32 +26,32 @@ function goToStripe() {
   <v-container class="py-8" style="display: flex; justify-content: center">
     <v-card class="premium-plan-card" elevation="10" max-width="400">
       <v-card-title class="text-center text-h5 font-weight-bold">
-        Premium Plan
-      </v-card-title>
-      <v-card-subtitle class="text-center text-h6">
-        <h2 class="price">$5.25/month</h2>
-        <h6>Billed monthly, cancel anytime</h6>
-      </v-card-subtitle>
+          Premium Plan
+        </v-card-title>
+        <v-card-title class="text-center text-h6">
+          <div class="price" style="display: flex; align-items: baseline; justify-content: center;"> <h1>$5.25</h1><p style="font-size:x-small">/month</p></div>
+          <h6>Billed monthly, cancel anytime</h6>
+        </v-card-title>
       <v-divider></v-divider>
       <v-card-text>
         <v-list dense>
-          <v-list-item class="included">
+          <v-list-item class="premium-feature">
             <v-icon icon="mdi-check-outline" class="list-icon positive"></v-icon>
             Unlimited downloads
           </v-list-item>
-          <v-list-item class="included">
+          <v-list-item class="premium-feature">
             <v-icon icon="mdi-check-outline" class="list-icon positive"></v-icon>
             License for all downloaded songs
           </v-list-item>
-          <v-list-item class="included">
+          <v-list-item class="premium-feature">
             <v-icon icon="mdi-check-outline" class="list-icon positive"></v-icon>
             Commercial use allowed
           </v-list-item>
-          <v-list-item class="included">
+          <v-list-item class="premium-feature">
             <v-icon icon="mdi-check-outline" class="list-icon positive"></v-icon>
             No attribution required
           </v-list-item>
-          <v-list-item class="excluded">
+          <v-list-item class="premium-feature">
             <v-icon icon="mdi-close-outline" class="list-icon negative"></v-icon>
             Redistribution or resale prohibited
           </v-list-item>
@@ -87,13 +87,9 @@ function goToStripe() {
   color: black;
   font-weight: bold;
 }
-.included {
+.premium-feature {
   font-weight:500;
-  display: flex;
-  align-items: center;
-}
-.excluded {
-  font-weight:500;
+  font-family: Inter;
   display: flex;
   align-items: center;
 }
