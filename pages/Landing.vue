@@ -1,6 +1,18 @@
 <script setup>
 const displayStore = useDisplayStore();
 const authStore = useAuthStore();
+const errorStore = useErrorStore()
+const config = useRuntimeConfig()
+const STRAPI_URL = config.public.strapiUrl
+
+function goToStripe() {
+  // for product Checkout
+  try {
+    SS_ProductCheckout(2, STRAPI_URL, authStore.user.email);
+  } catch (e) {
+    errorStore.setError({ title: "Error", text: e.message });
+  }
+}
 
 const items = [
   { id: 1, title: "Pop", color: "pink", image: "images/pop.jpg" },
@@ -152,6 +164,7 @@ const faq = [
           <v-card class="pa-2" style="padding: 0 !important" rounded="0">
             <v-card-title
               :style="{ backgroundColor: item.color, fontWeight: 'bold' }"
+              @click="goToPath('/')"
               >{{ item.title }}</v-card-title
             >
           </v-card>
@@ -343,6 +356,9 @@ const faq = [
         </v-list-item>
       </v-list>
     </v-container>
+    <v-footer color="#1e1e2f" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+      Contact : <strong>support@libtune.com</strong>
+    </v-footer>
   </v-container>
 </template>
 
