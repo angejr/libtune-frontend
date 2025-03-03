@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     tags: [
       {
         id: 'G-FJQG9Y2J4L',
-      }, 
+      },
       {
         id: 'AW-16862883963'
       }
@@ -31,7 +31,10 @@ export default defineNuxtConfig({
       title: "",
       titleTemplate: '%s',
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: "preconnect", href: "https://fonts.googleapis.com", crossorigin: "" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com" },
+        { href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap", rel: "stylesheet" }
       ]
     }
   },
