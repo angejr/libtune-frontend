@@ -10,8 +10,8 @@ useSeoMeta({
 </script>
 
 <template>
-    <v-container class="about-page" fluid>
-      <v-card elevation="4" :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="about-card">
+    <v-container :class="!displayStore.isMobile ? 'py-8' : 'zero-padding'" fluid>
+      <v-card elevation="4" :style="{ fontSize: displayStore.isMobile ? 'unset': '', borderRadius: !displayStore.isMobile ? '16px' : 0 }" class="about-card">
         <!-- Header Section -->
         <v-card-title :style="{ fontSize: displayStore.isMobile ? '28px': '' }" class="about-title text-center">
           About Libtune
@@ -101,15 +101,15 @@ useSeoMeta({
   </template>
   
   <style scoped>
-  .about-page {
-    padding: 24px;
+  .zero-padding{
+    padding: 0
   }
-  
   .about-card {
     max-width: 900px;
     margin: auto;
     border-radius: 12px;
     background-color: #ffffff;
+    padding: 20px
   }
   
   .about-title {

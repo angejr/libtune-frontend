@@ -151,8 +151,8 @@ function getHeaderClass(isMobile) {
 </script>
 
 <template>
-  <v-container class="py-8 music-page-container">
-    <v-card class="music-page-card" flat max-width="1200px" elevation="8">
+  <v-container :class="!displayStore.isMobile ? 'py-8' : 'zero-padding'" >
+    <v-card class="music-page-card" :style="{ borderRadius: displayStore.isMobile ? 0 : '12px'}" flat max-width="1200px" elevation="8">
       <!-- Header -->
       <v-card-title :class="getHeaderClass(displayStore.isMobile)">
         100% Royalty-Free Music
@@ -404,11 +404,8 @@ function getHeaderClass(isMobile) {
 </template>
 
 <style scoped>
-.music-page-container {
-  padding: 20px;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
+.zero-padding{
+  padding: 0;
 }
 
 .music-page-card {

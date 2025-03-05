@@ -13,8 +13,8 @@
 </script>
 
 <template>
-    <v-container class="py-8" style="display: flex; justify-content: center; border-radius: 12px;">
-      <v-card style="border-radius: 12px;">
+    <v-container :class="!displayStore.isMobile ? 'py-8' : 'zero-padding'" style="display: flex; justify-content: center; border-radius: 12px;">
+      <v-card :style="{ borderRadius: displayStore.isMobile ? 0 : '12px'}">
         <v-card-title style="display: flex; justify-content: center">
           <h1 v-if="!displayStore.isMobile">Terms and Conditions</h1>
           <h3 v-else>Terms and Conditions</h3>
@@ -198,8 +198,12 @@
 </template>
 
 <style scoped>
+  .zero-padding{
+  padding: 0;
+}
+
   .termsContent {
-    font-family: Arial, sans-serif;
+    font-family: Inter;
     line-height: 1.6;
     margin: 20px;
   }
