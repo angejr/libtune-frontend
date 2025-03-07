@@ -5,6 +5,15 @@ const errorStore = useErrorStore()
 const config = useRuntimeConfig()
 const STRAPI_URL = config.public.strapiUrl
 
+useSeoMeta({
+  title: "Landing",
+  ogTitle: "Landing",
+  robots: {
+    noindex: true,
+    nofollow: true
+  }
+  })
+
 function goToStripe() {
   // for product Checkout
   try {
