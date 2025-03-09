@@ -150,13 +150,13 @@ const faq = [
                     }
                   "
                 >
-                  Subscribe</v-btn
+                Start Free Trial</v-btn
                 >
                 <p
                   class="font-inter"
                   style="font-size: small; font-weight: 600"
                 >
-                  Subscribe now, Cancel anytime
+                  Start free trial. cancel anytime
                 </p>
               </div>
             </v-card-actions>
@@ -237,7 +237,7 @@ const faq = [
                   }
                 "
               >
-                Subscribe
+                Start Free Trial
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -332,7 +332,7 @@ const faq = [
               }
             "
           >
-            Subscribe
+          Start Free Trial
           </v-btn>
           <h3 v-else>You are already subscribed !</h3>
         </v-card-actions>
