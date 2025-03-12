@@ -100,10 +100,14 @@
   const errorStore = useErrorStore();
   const loginError = ref(false);
 
-  // redirect to home if already logged in
-  if (authStore?.userToken){
-    goToPath('/')
+  onMounted(
+  () =>{
+    // redirect to home if already logged in
+    if (authStore?.userToken){
+      goToPath('/')
+    }
   }
+)
   
   // Reactive form state
   const isFormValid = ref(false);

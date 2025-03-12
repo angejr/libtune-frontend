@@ -81,11 +81,15 @@
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
 
-// redirect to home if already logged in
-if (authStore?.userToken){
-  goToPath('/')
-}
-
+onMounted(
+  () =>{
+    // redirect to home if already logged in
+    if (authStore?.userToken){
+      goToPath('/')
+    }
+  }
+)
+;
 const isFormValid = ref(false);
 const username = ref("");
 const email = ref("");
