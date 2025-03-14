@@ -23,6 +23,12 @@ function goToStripe() {
   }
 }
 
+// Generate a random pastel color based on username
+function getColor(name){
+  const colors = ["blue", "red", "green", "purple", "orange", "pink", "teal"];
+  return colors[name.charCodeAt(0) % colors.length]; // Pick a color based on the first letter
+}; 
+
 const items = [
   { id: 1, title: "Pop", color: "pink", image: "images/pop.jpg" },
   {
@@ -79,6 +85,30 @@ const faq = [
     text: "In most cases, yes. However, you need to verify the terms of the license agreement from your music provider as well as the policies of that particular social platform. Some royalty-free music licenses may restrict usage on certain platforms for various reasons, while others may provide free usage on all platforms. Additionally, some social platforms have their own music libraries and licensing agreements which you have to consider before using your own licensed music. Libtune does not restrict the usage of your purchased music in any form, except if used for explicit or illegal content."
   }
 ];
+
+const reviews = [
+  { id: 1, text: "Libtune has an awesome selection of tracks, super useful!", user: "AliceM", value: 4.7 },
+  { id: 2, text: "Great for background music! Just wish there were more search filters.", user: "Jake92", value: 4.0 },
+  { id: 3, text: "Finally a site that makes finding royalty-free music easy. Love it!", user: "Samantha_R", value: 4.9 },
+  { id: 4, text: "Pretty solid, tho some tracks feel a bit generic. Still good tho!", user: "Mike_T", value: 3.8 },
+  { id: 5, text: "Libtune is my go-to for video projects. Affordable and legit.", user: "FilmmakerJoe", value: 4.6 },
+  { id: 6, text: "Gr8 site, easy to use. Found a lot of gems here!", user: "ElenaV", value: 4.5 },
+  { id: 7, text: "Was skeptical at first but it's actually really good.", user: "Chris_W", value: 4.2 },
+  { id: 8, text: "One of the better libraries out there. Needs more rock tho.", user: "ZaneF", value: 3.9 },
+  { id: 9, text: "Best royalty-free music site I’ve used, hands down.", user: "MelodyQueen", value: 5.0 },
+  { id: 10, text: "Decent variety. Some categories could use expansion.", user: "Leo_D", value: 4.0 },
+  { id: 11, text: "Tbh, didn’t expect much but ended up using it all the time.", user: "JayJay", value: 4.3 },
+  { id: 12, text: "Love the premium options. Wud be nice to have a mobile app!", user: "Steph_K", value: 4.4 },
+  { id: 13, text: "Everything works well, but UI could be a bit more modern.", user: "DesignGuru", value: 3.7 },
+  { id: 14, text: "Helped me find exactly what I needed for my podcast!", user: "PodcastSteve", value: 4.8 },
+  { id: 15, text: "The search function is way better than other sites. 👍", user: "Nina_S", value: 4.6 },
+  { id: 16, text: "Affordable, easy to navigate, and great variety.", user: "Marko", value: 4.5 },
+  { id: 17, text: "Good stuff, just wish some songs had more variations.", user: "LiamB", value: 3.9 },
+  { id: 18, text: "Better than expected. Customer support was quick too!", user: "RealJohnDoe", value: 4.7 },
+  { id: 19, text: "I use it for my Twitch streams. No copyright issues!", user: "StreamerAlex", value: 4.8 },
+  { id: 20, text: "Had some doubts at first but now I keep coming back!", user: "KatieW", value: 4.3 }
+];
+
 
 </script>
 
@@ -154,7 +184,7 @@ const faq = [
                 >
                 <p
                   class="font-inter"
-                  style="font-size: small; font-weight: 600"
+                  style="font-size: small; font-weight: 600; text-align: center;"
                 >
                   Start free trial. cancel anytime
                 </p>
@@ -243,6 +273,36 @@ const faq = [
           </v-card>
         </v-col>
       </v-row>
+    </v-container>
+    <v-container class="py-8">
+      <div class="mb-6">
+        <h1 style="font-family: Montserrat; font-size: x-large; text-align:center">
+          What our customers say
+        </h1>
+      </div>
+      <v-slide-group :mobile="displayStore.isMobile">
+        <v-slide-group-item v-for="review in reviews" :key="review.id">
+          <v-card class="mx-6 pa-4" width="300">
+            <template v-slot:prepend>
+              <v-avatar :color="getColor(review.user)">
+                <span class="text-white text-h6">{{ review.user.charAt(0).toUpperCase() }}</span>
+              </v-avatar>
+            </template>
+            <v-card-title>{{ review.user }}</v-card-title>
+            <v-card-subtitle>
+              <v-rating
+                  half-increments
+                  readonly
+                  :length="5"
+                  :size="33"
+                  :model-value="review.value"
+                  active-color="#FF9900"
+                />
+            </v-card-subtitle>
+            <v-card-text>{{ review.text }}</v-card-text>
+          </v-card>
+        </v-slide-group-item>
+      </v-slide-group>
     </v-container>
     <v-container
       class="py-8"
