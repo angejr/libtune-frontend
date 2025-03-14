@@ -46,6 +46,8 @@ export default defineEventHandler(async (event) => {
     catch (e) {
         throw createError({
             statusCode: 401,
+            // Most common error & somehow strapi doesn't return actual error message only 500
+            statusMessage: "An account with this Email already exists"
         })
     }
 })
