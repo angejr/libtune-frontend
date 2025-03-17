@@ -108,7 +108,6 @@ function resetDrawers(){
 
       <template v-if="authStore?.isAuthenticated" v-slot:append>
         <v-btn
-            v-bind="props"
             elevation="3"
             icon="mdi-account"
             class="user-menu-btn"

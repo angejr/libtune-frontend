@@ -72,8 +72,10 @@ async function getSongs(setup = false) {
   }
 }
 
-// Fetch initial songs on setup
-getSongs(true);
+onMounted( () => {
+  // Fetch initial songs on setup
+  getSongs(false);
+})
 
 useIntersectionObserver(
   loadMoreTrigger,
@@ -272,8 +274,7 @@ function getHeaderClass(isMobile) {
   multi-sort
   class="mt-4"
   :row-props="getRowProps"
-  hide-default-header=true
->
+  hide-default-header>
   <template v-slot:loading>
     <div class="d-flex justify-center my-4">
       <v-progress-circular
