@@ -100,14 +100,14 @@
   const errorStore = useErrorStore();
   const loginError = ref(false);
 
-  onMounted(
-  () =>{
-    // redirect to home if already logged in
-    if (authStore?.userToken){
-      goToPath('/')
+  definePageMeta({
+  middleware: defineNuxtRouteMiddleware(() => {
+    const authStore = useAuthStore();
+    if (authStore?.userToken) {
+      return navigateTo('/'); // Redirect if authenticated
     }
-  }
-)
+  })
+});
   
   // Reactive form state
   const isFormValid = ref(false);

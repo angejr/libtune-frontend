@@ -81,15 +81,15 @@
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
 
-onMounted(
-  () =>{
-    // redirect to home if already logged in
-    if (authStore?.userToken){
-      goToPath('/')
+definePageMeta({
+  middleware: defineNuxtRouteMiddleware(() => {
+    const authStore = useAuthStore();
+    if (authStore?.userToken) {
+      return navigateTo('/'); // Redirect if authenticated
     }
-  }
-)
-;
+  })
+});
+
 const isFormValid = ref(false);
 const username = ref("");
 const email = ref("");
