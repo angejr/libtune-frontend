@@ -1,6 +1,6 @@
 <template>
   <v-container class="signup-container" max-width="500">
-    <v-card class="signup-card" elevation="10">
+    <v-card v-if="!authStore?.userToken" class="signup-card" elevation="10">
       <v-card-title class="text-center text-h5 font-weight-bold">
         Sign Up
       </v-card-title>
@@ -73,6 +73,60 @@
           </v-btn>
         </v-form>
       </v-card-text>
+    </v-card>
+    <!-- Subscription Confirmation -->
+    <v-card v-else class="signup-card" elevation="4">
+      <v-card-title class="headline text-center">
+        <v-icon large color="green" class="mr-3">mdi-check-circle</v-icon>
+        You're Signed-Up!
+      </v-card-title>
+      <v-divider></v-divider>
+      <v-card-text>
+        <p class="text-center">
+          Thank you for signing-up to <strong>Libtune</strong>.
+        </p>
+        <p class="text-center">
+          You now have access to our library of
+          <strong> 100% royalty-free music! </strong>
+        </p>
+        <br />
+        <p class="text-left">
+          <strong>Next Steps:</strong>
+        </p>
+        <ul class="subscription-steps">
+          <li>Browse our extensive collection of music.</li>
+        </ul>
+
+        <v-spacer></v-spacer>
+        <p class="text-left">
+          <strong> Upgrade to Libtune Premium to get:</strong>
+        </p>
+        <ul class="subscription-steps">
+          <li>Download tracks with no limitations.</li>
+          <li>Use music for both recreational and commercial projects.</li>
+        </ul>
+      </v-card-text>
+      <v-card-actions class="justify-space-evenly">
+        <v-btn color="primary" variant="elevated" large @click="goToPath('/')">
+          Browse
+        </v-btn>
+        <v-btn
+            v-if="!authStore?.user?.customerId"
+            color="purple"
+            variant="elevated"
+            large
+            style="font-family: Inter"
+            @click="
+              if (authStore?.userToken) {
+                goToStripe();
+              } else {
+                goToPath('/signup');
+              }
+            "
+          >
+          Subscribe
+          </v-btn>
+      </v-card-actions>
     </v-card>
   </v-container>
 </template>
