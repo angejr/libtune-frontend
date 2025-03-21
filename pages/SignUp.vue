@@ -99,7 +99,7 @@
 
         <v-spacer></v-spacer>
         <p class="text-left">
-          <strong> Upgrade to Libtune Premium to get:</strong>
+          <strong> Upgrade to Libtune Premium to be able to:</strong>
         </p>
         <ul class="subscription-steps">
           <li>Download tracks with no limitations.</li>
@@ -134,15 +134,8 @@
 <script setup>
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
-
-definePageMeta({
-  middleware: defineNuxtRouteMiddleware(() => {
-    const authStore = useAuthStore();
-    if (authStore?.userToken) {
-      return navigateTo('/'); // Redirect if authenticated
-    }
-  })
-});
+const route = useRoute()
+const subscribe = ref(route.query.subscribe)
 
 const isFormValid = ref(false);
 const username = ref("");
@@ -180,12 +173,9 @@ const submitForm = async () => {
   if (formRef.value && formRef.value.validate()) {
     try {
       await authStore.register(username.value, email.value, password.value);
-      if(authStore?.userToken){
-            goToStripe();
-      }
-      else{
-        goToPath('/subscribe')
-      }
+      if(authStore?.userToken && subscribe.value === "true" ){
+          goToStripe();
+        }
     } catch (e) {
       errorStore.setError({title: "Sign-Up Error", text: e.message})
     }

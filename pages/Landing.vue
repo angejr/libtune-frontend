@@ -174,7 +174,7 @@ const reviews = [
                   @click="
                     landingDialog = false;
                     if (!authStore?.userToken) {
-                      goToPath('/signup');
+                      goToPath('/signup?subscribe=true');
                     } else {
                       goToPath('/subscribe');
                     }
@@ -261,7 +261,7 @@ const reviews = [
                 @click="
                   landingDialog = false;
                   if (!authStore?.userToken) {
-                    goToPath('/signup');
+                    goToPath('/signup?subscribe=true');
                   } else {
                     goToPath('/subscribe');
                   }
@@ -388,7 +388,7 @@ const reviews = [
               if (authStore?.userToken) {
                 goToStripe();
               } else {
-                goToPath('/signup');
+                goToPath('/signup?subscribe=true');
               }
             "
           >
