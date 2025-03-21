@@ -87,26 +87,26 @@ const faq = [
 ];
 
 const reviews = [
-  { id: 1, text: "Libtune has an awesome selection of tracks, super useful!", user: "AliceM", value: 4.7 },
+  { id: 1, text: "Libtune has an awesome selection of tracks, super useful!", user: "AliceM", value: 4.5 },
   { id: 2, text: "Great for background music! Just wish there were more search filters.", user: "Jake92", value: 4.0 },
-  { id: 3, text: "Finally a site that makes finding royalty-free music easy. Love it!", user: "Samantha_R", value: 4.9 },
-  { id: 4, text: "Pretty solid, tho some tracks feel a bit generic. Still good tho!", user: "Mike_T", value: 3.8 },
-  { id: 5, text: "Libtune is my go-to for video projects. Affordable and legit.", user: "FilmmakerJoe", value: 4.6 },
+  { id: 3, text: "Finally a site that makes finding royalty-free music easy. Love it!", user: "Samantha_R", value: 5 },
+  { id: 4, text: "Pretty solid, tho some tracks feel a bit generic. Still good tho!", user: "Mike_T", value: 4 },
+  { id: 5, text: "Libtune is my go-to for video projects. Affordable and legit.", user: "FilmmakerJoe", value: 4.5 },
   { id: 6, text: "Gr8 site, easy to use. Found a lot of gems here!", user: "ElenaV", value: 4.5 },
-  { id: 7, text: "Was skeptical at first but it's actually really good.", user: "Chris_W", value: 4.2 },
-  { id: 8, text: "One of the better libraries out there. Needs more rock tho.", user: "ZaneF", value: 3.9 },
+  { id: 7, text: "Was skeptical at first but it's actually really good.", user: "Chris_W", value: 4 },
+  { id: 8, text: "One of the better libraries out there. Needs more rock tho.", user: "ZaneF", value: 4 },
   { id: 9, text: "Best royalty-free music site I’ve used, hands down.", user: "MelodyQueen", value: 5.0 },
   { id: 10, text: "Decent variety. Some categories could use expansion.", user: "Leo_D", value: 4.0 },
-  { id: 11, text: "Tbh, didn’t expect much but ended up using it all the time.", user: "JayJay", value: 4.3 },
-  { id: 12, text: "Love the premium options. Wud be nice to have a mobile app!", user: "Steph_K", value: 4.4 },
-  { id: 13, text: "Everything works well, but UI could be a bit more modern.", user: "DesignGuru", value: 3.7 },
-  { id: 14, text: "Helped me find exactly what I needed for my podcast!", user: "PodcastSteve", value: 4.8 },
-  { id: 15, text: "The search function is way better than other sites. 👍", user: "Nina_S", value: 4.6 },
+  { id: 11, text: "Tbh, didn’t expect much but ended up using it all the time.", user: "JayJay", value: 4.5 },
+  { id: 12, text: "Love the premium options. Wud be nice to have a mobile app!", user: "Steph_K", value: 4.5 },
+  { id: 13, text: "Everything works well, but UI could be a bit more modern.", user: "DesignGuru", value: 3.5 },
+  { id: 14, text: "Helped me find exactly what I needed for my podcast!", user: "PodcastSteve", value: 5 },
+  { id: 15, text: "The search function is way better than other sites. 👍", user: "Nina_S", value: 4.5 },
   { id: 16, text: "Affordable, easy to navigate, and great variety.", user: "Marko", value: 4.5 },
-  { id: 17, text: "Good stuff, just wish some songs had more variations.", user: "LiamB", value: 3.9 },
-  { id: 18, text: "Better than expected. Customer support was quick too!", user: "RealJohnDoe", value: 4.7 },
-  { id: 19, text: "I use it for my Twitch streams. No copyright issues!", user: "StreamerAlex", value: 4.8 },
-  { id: 20, text: "Had some doubts at first but now I keep coming back!", user: "KatieW", value: 4.3 }
+  { id: 17, text: "Good stuff, just wish some songs had more variations.", user: "LiamB", value: 4 },
+  { id: 18, text: "Better than expected. Customer support was quick too!", user: "RealJohnDoe", value: 4.5 },
+  { id: 19, text: "I use it for my Twitch streams. No copyright issues!", user: "StreamerAlex", value: 5 },
+  { id: 20, text: "Had some doubts at first but now I keep coming back!", user: "KatieW", value: 4.5 }
 ];
 
 
@@ -291,6 +291,9 @@ const reviews = [
             <v-card-title>{{ review.user }}</v-card-title>
             <v-card-subtitle>
               <v-rating
+                  :key="`rating-${review.id}`"
+                  :id="`rating-${review.id}`"
+                  :name="`rating-${review.id}`"
                   half-increments
                   readonly
                   :length="5"
