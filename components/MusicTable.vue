@@ -139,9 +139,11 @@ function getCurrent() {
 }
 
 function getRowProps(row) {
-  return {
-    class: row.item.id === getCurrent() ? "playingClass" : "",
-  };
+  if (row.item.id === getCurrent()){
+    return {
+      style: "background-color: rgb(70, 138, 138); color: white;",
+    };
+  }
 }
 
 function getHeaderClass(isMobile) {
@@ -235,10 +237,11 @@ function getHeaderClass(isMobile) {
 
         <!-- Tags Column -->
         <template v-slot:[`item.tags`]="{ item }">
-          <v-chip v-if="item.instrumental" color="green" small>
+          <v-chip v-if="item.instrumental" color="green" small :variant="item.id === getCurrent() ? 'elevated' : undefined">
             Instrumental
           </v-chip>
           <v-chip
+            :variant="item.id === getCurrent() ? 'elevated' : undefined"
             v-for="tag in [
               ...new Set(
                 item.tags
@@ -287,7 +290,7 @@ function getHeaderClass(isMobile) {
 
   <template v-slot:item="{ item }">
     <!-- Main Row -->
-    <tr>
+    <tr :style="currentPlayingAudio === item.id ? 'background-color: rgb(70, 138, 138); color: white': ''">
       <td style="padding: 10px 0 10px 0" >
         <div style=" display: flex; flex-direction: column; justify-content: space-around; align-items:center; gap:10px">
           <AudioPlayer
@@ -305,10 +308,11 @@ function getHeaderClass(isMobile) {
         <div style="display: flex; flex-direction: column; justify-content: center; align-items:center; gap:10px">
           <h5> {{ item.title }}</h5>
           <div style="display: flex; justify-content: center; align-items:center; flex-wrap: wrap;">
-            <v-chip v-if="item.instrumental" color="green" size="x-small">
+            <v-chip v-if="item.instrumental" color="green" size="x-small" :variant="item.id === getCurrent() ? 'elevated' : undefined">
               Instrumental
             </v-chip>
             <v-chip
+            :variant="item.id === getCurrent() ? 'elevated' : undefined"
               v-for="tag in [
                 ...new Set(
                   item.tags
@@ -416,10 +420,5 @@ function getHeaderClass(isMobile) {
 
 .tag-chip {
   margin: 2px;
-}
-
-.playingClass {
-  background-color: rgb(70, 138, 138);
-  color: white;
 }
 </style>
