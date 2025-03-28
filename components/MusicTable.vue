@@ -130,8 +130,7 @@ async function downloadSong(item) {
 }
 
 function handleTogglePlay(audioId) {
-  currentPlayingAudio.value =
-    currentPlayingAudio.value === audioId ? null : audioId;
+  currentPlayingAudio.value = audioId;
 }
 
 function getCurrent() {

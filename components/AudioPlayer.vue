@@ -1,6 +1,10 @@
 <template>
   <div class="d-flex justify-center align-center" style="position: relative">
-    <v-progress-circular
+    <v-progress-circular indeterminate v-if="isLoading" :size="45"
+      :width="5"
+      color="white"
+      style="position: absolute; z-index: 1"></v-progress-circular>
+    <v-progress-circular v-else
       :model-value="audioProgress"
       :size="45"
       :width="5"
@@ -35,6 +39,7 @@
 <script setup>
 const audioSource = ref(null);
 const errorStore = useErrorStore();
+const isLoading = ref(false);
 
 // Props
 const props = defineProps({
@@ -86,9 +91,10 @@ async function togglePlay() {
     if (audio.value) {
       if (isPlayingInternal.value) {
         audio.value.pause();
-        emit('toggle-play', null);
+        emit('toggle-play', props.audioId);
       } else {
         if (!audioSource.value) {
+          isLoading.value = true
           await getSong();
         }
 
@@ -135,6 +141,7 @@ async function getSong() {
 
 function onAudioLoaded() {
   console.log("Audio is ready to play");
+  isLoading.value = false
 }
 
 function onAudioError() {
