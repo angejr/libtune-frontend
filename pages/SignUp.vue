@@ -63,11 +63,12 @@
           </p>
 
           <v-btn
-            :disabled="!isFormValid"
+            :disabled="!isFormValid || signUpLoading"
             @click="submitForm"
             color="primary"
             block
             large
+            :loading="signUpLoading"
           >
             Sign Up
           </v-btn>
@@ -145,6 +146,7 @@ const confirmPassword = ref("");
 
 const config = useRuntimeConfig()
 const STRAPI_URL = config.public.strapiUrl
+const signUpLoading = ref(false);
 
 useSeoMeta({
   title: "Sign-Up",
@@ -170,6 +172,7 @@ const matchPassword = (value) =>
 const formRef = ref(null);
 
 const submitForm = async () => {
+  signUpLoading.value = true
   if (formRef.value && formRef.value.validate()) {
     try {
       await authStore.register(username.value, email.value, password.value);
@@ -180,6 +183,7 @@ const submitForm = async () => {
       errorStore.setError({title: "Sign-Up Error", text: e.message})
     }
   }
+  signUpLoading.value= false
 };
 </script>
 

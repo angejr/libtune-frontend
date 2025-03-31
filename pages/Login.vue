@@ -43,12 +43,13 @@
           </p>
 
           <v-btn
-            :disabled="!isFormValid"
+            :disabled="!isFormValid || loginLoading"
             @click="submitForm"
             color="primary"
             block
             large
             class="mt-6"
+            :loading="loginLoading"
           >
             Log In
           </v-btn>
@@ -116,6 +117,8 @@
   
   // Form reference
   const formRef = ref(null);
+  // Loading status
+  const loginLoading = ref(false);
 
   useSeoMeta({
   title: "Login",
@@ -129,6 +132,7 @@
   
   // Form submission logic
   const submitForm = async () => {
+    loginLoading.value = true
     // Ensure formRef is defined before calling validate
     if (formRef.value && formRef.value.validate()) {
       try {
@@ -143,6 +147,7 @@
         }
       }
     }
+    loginLoading.value= false
   };
   </script>
     

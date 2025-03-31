@@ -127,7 +127,7 @@ const formatDate = (timestamp) =>
             <v-chip v-if="item.status == 'active'" color="green" small>
               active
             </v-chip>
-            <v-chip v-else color="red" small> inactive </v-chip>
+            <v-chip v-else color="red" small> {{item.status}} </v-chip>
           </template>
 
           <template v-slot:[`item.product`]="{ item }">

@@ -4,6 +4,7 @@ const authStore = useAuthStore();
 const errorStore = useErrorStore()
 const config = useRuntimeConfig()
 const STRAPI_URL = config.public.strapiUrl
+const stripeLoading = ref(false);
 
 useSeoMeta({
   title: "Landing",
@@ -387,9 +388,13 @@ const reviews = [
             variant="elevated"
             large
             style="font-family: Inter"
+            :disabled="stripeLoading"
+            :loading="stripeLoading"
             @click="
               if (authStore?.userToken) {
+                stripeLoading = true
                 goToStripe();
+                stripeLoading= false
               } else {
                 goToPath('/signup?subscribe=true');
               }

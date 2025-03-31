@@ -1,8 +1,9 @@
 <script setup>
 const authStore = useAuthStore();
 const errorStore = useErrorStore()
-const config = useRuntimeConfig()
-const STRAPI_URL = config.public.strapiUrl
+const config = useRuntimeConfig();
+const STRAPI_URL = config.public.strapiUrl;
+const stripeLoading = ref(false);
 
 useSeoMeta({
   title: "Pricing",
@@ -63,9 +64,13 @@ function goToStripe() {
           color="purple"
           variant="elevated"
           large
+          :disabled="stripeLoading"
+          :loading="stripeLoading"
           @click="
             if(authStore?.userToken){
+            stripeLoading = true
             goToStripe();
+            stripeLoading = false
             }
             else{
               goToPath('/signup');
