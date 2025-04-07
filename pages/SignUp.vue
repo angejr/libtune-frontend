@@ -157,10 +157,10 @@ useSeoMeta({
   }
 })
 
-function goToStripe() {
+async function goToStripe() {
   // for product Checkout
   try {
-    SS_ProductCheckout(2, STRAPI_URL, authStore.user.email);
+    await SS_ProductCheckout(2, STRAPI_URL, authStore.user.email);
   } catch (e) {
     errorStore.setError({ title: "Error", text: e.message });
   }
@@ -177,7 +177,7 @@ const submitForm = async () => {
     try {
       await authStore.register(username.value, email.value, password.value);
       if(authStore?.userToken && subscribe.value === "true" ){
-          goToStripe();
+          await goToStripe();
         }
     } catch (e) {
       errorStore.setError({title: "Sign-Up Error", text: e.message})

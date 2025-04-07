@@ -29,52 +29,55 @@ export function removeAll(stringsToRemove: string[], string: string) : string{
   return returnString
 }
 
-export function SS_ProductCheckout(productId: Number, baseUrl: string, userEmail: string) {
+export async function SS_ProductCheckout(productId: Number, baseUrl: string, userEmail: string) {
+  await new Promise(r => setTimeout(r, 2000));
   localStorage.setItem("strapiStripeUrl", baseUrl);
   const getRedirectUrl =
     baseUrl + "/strapi-stripe/getRedirectUrl/" + productId + "/" + userEmail;
 
-  fetch(getRedirectUrl, {
-    method: "get",
-    mode: "cors",
-    headers: new Headers({
-      "Content-Type": "application/json",
-    }),
-  })
-    .then((response) => response.json())
-    .then((response) => {
-      if (response.url) {
-        const url = response.url;
-        navigateTo(url, { external: true });
-
-        // ADDED SS_GetProductPaymentDetails
-
-        const checkoutSessionId = url
-          .split("/")
-          [url.split("/").length - 1].split("#")[0];
-
-        const baseUrl = localStorage.getItem("strapiStripeUrl");
-        const retrieveCheckoutSessionUrl =
-          baseUrl +
-          "/strapi-stripe/retrieveCheckoutSession/" +
-          checkoutSessionId;
-
-        if (
-          window.performance
-            .getEntriesByType("navigation")
-            .map((nav : any) => nav.type)
-            .includes("reload")
-        ) {
-          console.info("website reloded");
-        } else {
-          fetch(retrieveCheckoutSessionUrl, {
-            method: "get",
-            mode: "cors",
-            headers: new Headers({
-              "Content-Type": "application/json",
-            }),
-          });
+  await new Promise( r => {
+    fetch(getRedirectUrl, {
+      method: "get",
+      mode: "cors",
+      headers: new Headers({
+        "Content-Type": "application/json",
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.url) {
+          const url = response.url;
+          navigateTo(url, { external: true });
+  
+          // ADDED SS_GetProductPaymentDetails
+  
+          const checkoutSessionId = url
+            .split("/")
+            [url.split("/").length - 1].split("#")[0];
+  
+          const baseUrl = localStorage.getItem("strapiStripeUrl");
+          const retrieveCheckoutSessionUrl =
+            baseUrl +
+            "/strapi-stripe/retrieveCheckoutSession/" +
+            checkoutSessionId;
+  
+          if (
+            window.performance
+              .getEntriesByType("navigation")
+              .map((nav : any) => nav.type)
+              .includes("reload")
+          ) {
+            console.info("website reloded");
+          } else {
+            fetch(retrieveCheckoutSessionUrl, {
+              method: "get",
+              mode: "cors",
+              headers: new Headers({
+                "Content-Type": "application/json",
+              }),
+            });
+          }
         }
-      }
-    });
+      });
+  })
 }

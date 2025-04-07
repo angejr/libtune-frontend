@@ -15,10 +15,10 @@ useSeoMeta({
   }
   })
 
-function goToStripe() {
+async function goToStripe() {
   // for product Checkout
   try {
-    SS_ProductCheckout(2, STRAPI_URL, authStore.user.email);
+    await SS_ProductCheckout(2, STRAPI_URL, authStore.user.email);
   } catch (e) {
     errorStore.setError({ title: "Error", text: e.message });
   }
@@ -29,6 +29,16 @@ function getColor(name){
   const colors = ["blue", "red", "green", "purple", "orange", "pink", "teal"];
   return colors[name.charCodeAt(0) % colors.length]; // Pick a color based on the first letter
 }; 
+
+async function subscribe(){
+  if (authStore?.userToken) {
+    stripeLoading.value = true
+    goToStripe();
+    stripeLoading.value= false
+  } else {
+    goToPath('/signup?subscribe=true');
+  }
+}
 
 const items = [
   { id: 1, title: "Pop", color: "pink", image: "images/pop.jpg" },
@@ -391,15 +401,7 @@ const reviews = [
             style="font-family: Inter"
             :disabled="stripeLoading"
             :loading="stripeLoading"
-            @click="
-              if (authStore?.userToken) {
-                stripeLoading = true
-                goToStripe();
-                stripeLoading= false
-              } else {
-                goToPath('/signup?subscribe=true');
-              }
-            "
+            @click="subscribe"
           >
           Start Free Trial
           </v-btn>

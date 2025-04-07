@@ -13,13 +13,26 @@ useSeoMeta({
 
 })
 
-function goToStripe() {
+async function goToStripe() {
   // for product Checkout
   try {
-    SS_ProductCheckout(2, STRAPI_URL, authStore.user.email);
+    await SS_ProductCheckout(2, STRAPI_URL, authStore.user.email);
   } catch (e) {
     errorStore.setError({ title: "Error", text: e.message });
   }
+}
+
+async function subscribe (){
+  if(authStore?.userToken){
+    stripeLoading.value = true;
+    console.log(stripeLoading.value)
+    await goToStripe();
+    stripeLoading.value = false
+    console.log(stripeLoading.value)
+    }
+    else{
+      goToPath('/signup');
+    }
 }
 </script>
 
@@ -66,15 +79,7 @@ function goToStripe() {
           large
           :disabled="stripeLoading"
           :loading="stripeLoading"
-          @click="
-            if(authStore?.userToken){
-            stripeLoading = true
-            goToStripe();
-            stripeLoading = false
-            }
-            else{
-              goToPath('/signup');
-            }"
+          @click="subscribe"
         >
           Subscribe
         </v-btn>
