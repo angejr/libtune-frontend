@@ -115,7 +115,7 @@ const reviews = [
 
 <template>
   <v-container style="width: 100%; padding: 0">
-    <v-container class="py-8" fluid>
+    <v-container class="py-4" fluid>
       <v-row>
         <v-col cols="12" md="6">
           <v-card
@@ -187,7 +187,7 @@ const reviews = [
                   class="font-inter"
                   style="font-size: small; font-weight: 600; text-align: center;"
                 >
-                  Start free trial. cancel anytime
+                 Free, then 5.25$/month. Cancel anytime
                 </p>
               </div>
             </v-card-actions>
@@ -197,6 +197,40 @@ const reviews = [
           <v-img src="/images/bg.jpg" width="100%"></v-img>
         </v-col>
       </v-row>
+    </v-container>
+    <!-- Reviews -->
+    <v-container class="py-4">
+      <div class="mb-6">
+        <h1 style="font-family: Montserrat; font-size: x-large; text-align:center">
+          What our customers say
+        </h1>
+      </div>
+      <v-slide-group :mobile="displayStore.isMobile">
+        <v-slide-group-item v-for="review in reviews" :key="review.id">
+          <v-card class="mx-6 pa-4" width="300">
+            <template v-slot:prepend>
+              <v-avatar :color="getColor(review.user)">
+                <span class="text-white text-h6">{{ review.user.charAt(0).toUpperCase() }}</span>
+              </v-avatar>
+            </template>
+            <v-card-title>{{ review.user }}</v-card-title>
+            <v-card-subtitle>
+              <v-rating
+                  :key="`rating-${review.id}`"
+                  :id="`rating-${review.id}`"
+                  :name="`rating-${review.id}`"
+                  half-increments
+                  readonly
+                  :length="5"
+                  :size="33"
+                  :model-value="review.value"
+                  active-color="#FF9900"
+                />
+            </v-card-subtitle>
+            <v-card-text>{{ review.text }}</v-card-text>
+          </v-card>
+        </v-slide-group-item>
+      </v-slide-group>
     </v-container>
     <v-container class="py-8" style="width: 100%; background-color: black">
       <v-row>
@@ -274,39 +308,6 @@ const reviews = [
           </v-card>
         </v-col>
       </v-row>
-    </v-container>
-    <v-container class="py-8">
-      <div class="mb-6">
-        <h1 style="font-family: Montserrat; font-size: x-large; text-align:center">
-          What our customers say
-        </h1>
-      </div>
-      <v-slide-group :mobile="displayStore.isMobile">
-        <v-slide-group-item v-for="review in reviews" :key="review.id">
-          <v-card class="mx-6 pa-4" width="300">
-            <template v-slot:prepend>
-              <v-avatar :color="getColor(review.user)">
-                <span class="text-white text-h6">{{ review.user.charAt(0).toUpperCase() }}</span>
-              </v-avatar>
-            </template>
-            <v-card-title>{{ review.user }}</v-card-title>
-            <v-card-subtitle>
-              <v-rating
-                  :key="`rating-${review.id}`"
-                  :id="`rating-${review.id}`"
-                  :name="`rating-${review.id}`"
-                  half-increments
-                  readonly
-                  :length="5"
-                  :size="33"
-                  :model-value="review.value"
-                  active-color="#FF9900"
-                />
-            </v-card-subtitle>
-            <v-card-text>{{ review.text }}</v-card-text>
-          </v-card>
-        </v-slide-group-item>
-      </v-slide-group>
     </v-container>
     <v-container
       class="py-8"
