@@ -25,10 +25,8 @@ async function goToStripe() {
 async function subscribe (){
   if(authStore?.userToken){
     stripeLoading.value = true;
-    console.log(stripeLoading.value)
     await goToStripe();
     stripeLoading.value = false
-    console.log(stripeLoading.value)
     }
     else{
       goToPath('/signup');
