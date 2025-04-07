@@ -30,7 +30,6 @@ export function removeAll(stringsToRemove: string[], string: string) : string{
 }
 
 export async function SS_ProductCheckout(productId: Number, baseUrl: string, userEmail: string) {
-  await new Promise(r => setTimeout(r, 2000));
   localStorage.setItem("strapiStripeUrl", baseUrl);
   const getRedirectUrl =
     baseUrl + "/strapi-stripe/getRedirectUrl/" + productId + "/" + userEmail;
