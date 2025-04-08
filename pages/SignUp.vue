@@ -147,6 +147,7 @@ const confirmPassword = ref("");
 const config = useRuntimeConfig()
 const STRAPI_URL = config.public.strapiUrl
 const signUpLoading = ref(false);
+const displayStore = useDisplayStore()
 
 useSeoMeta({
   title: "Sign-Up",
@@ -160,7 +161,7 @@ useSeoMeta({
 async function goToStripe() {
   // for product Checkout
   try {
-    await SS_ProductCheckout(2, STRAPI_URL, authStore.user.email);
+    await SS_ProductCheckout(displayStore.isIndian ? 4 : 2, STRAPI_URL, authStore.user.email);
   } catch (e) {
     errorStore.setError({ title: "Error", text: e.message });
   }

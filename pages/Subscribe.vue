@@ -4,6 +4,7 @@ const errorStore = useErrorStore()
 const config = useRuntimeConfig();
 const STRAPI_URL = config.public.strapiUrl;
 const stripeLoading = ref(false);
+const displayStore = useDisplayStore();
 
 useSeoMeta({
   title: "Pricing",
@@ -16,7 +17,7 @@ useSeoMeta({
 async function goToStripe() {
   // for product Checkout
   try {
-    await SS_ProductCheckout(2, STRAPI_URL, authStore.user.email);
+    await SS_ProductCheckout(displayStore.isIndian ? 4 : 2, STRAPI_URL, authStore.user.email);
   } catch (e) {
     errorStore.setError({ title: "Error", text: e.message });
   }
@@ -41,7 +42,7 @@ async function subscribe (){
           Premium Plan
         </v-card-title>
         <v-card-title class="text-center text-h6">
-          <div class="price" style="display: flex; align-items: baseline; justify-content: center;"> <h1>$5.25</h1><p style="font-size:x-small">/month</p></div>
+          <div class="price" style="display: flex; align-items: baseline; justify-content: center;"> <h1>{{ displayStore.isIndian ? '₹470' :'$5.25'}}</h1><p style="font-size:x-small">/month</p></div>
           <h6>Billed monthly, cancel anytime</h6>
         </v-card-title>
       <v-divider></v-divider>

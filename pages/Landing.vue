@@ -197,7 +197,7 @@ const reviews = [
                   class="font-inter"
                   style="font-size: small; font-weight: 600; text-align: center;"
                 >
-                 Free, then 5.25$/month. Cancel anytime
+                 Free, then {{ displayStore.isIndian ? '₹470' :'$5.25'}}/month. Cancel anytime
                 </p>
               </div>
             </v-card-actions>
@@ -347,7 +347,7 @@ const reviews = [
               justify-content: center;
             "
           >
-            <h1>$5.25</h1>
+            <h1>{{ displayStore.isIndian ? '₹470' :'$5.25'}}</h1>
             <p style="font-size: x-small">/month</p>
           </div>
           <h6>Billed monthly, cancel anytime</h6>
