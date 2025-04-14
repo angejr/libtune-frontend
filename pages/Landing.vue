@@ -18,7 +18,7 @@ useSeoMeta({
 async function goToStripe() {
   // for product Checkout
   try {
-    await SS_ProductCheckout(2, STRAPI_URL, authStore.user.email);
+    await SS_ProductCheckout(displayStore.isIndian ? 4 : 2, STRAPI_URL, authStore.user.email);
   } catch (e) {
     errorStore.setError({ title: "Error", text: e.message });
   }
