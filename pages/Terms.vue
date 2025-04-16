@@ -94,7 +94,7 @@
             </p>
             <p>
               <strong>3.2 Payments:</strong> All payments are processed securely
-              via [insert payment gateway, e.g., Stripe or PayPal]. Subscription
+              via Stripe. Subscription
               fees are billed on a recurring monthly basis.
             </p>
             <p>
@@ -170,8 +170,7 @@
             <h3 v-else>10. Governing Law</h3>
             <p>
               These Terms are governed by the laws of France. Any disputes arising
-              from or related to these Terms shall be resolved in the courts of
-              [insert specific jurisdiction in France, e.g., Paris].
+              from or related to these Terms shall be resolved in the court of Paris.
             </p>
   
             <h2 v-if="!displayStore.isMobile">11. Changes to the Terms</h2>
