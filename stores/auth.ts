@@ -32,6 +32,19 @@ export const useAuthStore = defineStore('auth', {
             this.setUser(response.user)
             this.setToken(response.jwt)
         },
+        async connectGoogle(id_token : string, access_token : string) {
+            const config = useRuntimeConfig()
+            const STRAPI_URL = config.public.strapiUrl
+
+            const response : any = await $fetch(`${STRAPI_URL}/api/auth/google/callback`, {
+                params: {
+                  id_token,
+                  access_token
+                }
+              })
+            this.setUser(response.user)
+            this.setToken(response.jwt)
+        },
 
         async login(email: string, password: string) {
 

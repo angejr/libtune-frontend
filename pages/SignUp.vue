@@ -5,13 +5,37 @@
         Sign Up
       </v-card-title>
       <v-divider></v-divider>
+      <p class="text-center mt-4 mb-4">
+        Already have an account ? 
+        <NuxtLink to="/login" class="terms-link">
+          Login
+        </NuxtLink>
+      </p>
+
+      <div style="padding: 1rem;">
+        <v-btn
+            :disabled="signUpLoading"
+            @click="registerGoogle"
+            variant="outlined"
+            block
+            large
+            :loading="signUpLoading"
+            class="text-none"
+          >
+          <img
+        src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg"
+        alt="Google"
+        class="me-2"
+        width="20"
+        height="20"
+      />
+            Continue with Google
+          </v-btn>
+      </div>
+      <div class="px-6 pt-4">
+        <v-divider>OR</v-divider>
+      </div>
       <v-card-text>
-        <p class="text-center mt-4 mb-4">
-            Already have an account ? 
-            <NuxtLink to="/login" class="terms-link">
-              Login
-            </NuxtLink>
-        </p>
         <v-form
           v-model="isFormValid"
           ref="formRef"
@@ -137,6 +161,8 @@ const authStore = useAuthStore();
 const errorStore = useErrorStore();
 const route = useRoute()
 const subscribe = ref(route.query.subscribe)
+const accessToken = ref(route.query.access_token)
+const idToken = ref(route.query.id_token)
 
 const isFormValid = ref(false);
 const username = ref("");
@@ -158,6 +184,10 @@ useSeoMeta({
   }
 })
 
+onMounted( async() => {
+  await connectGoogle()
+})
+
 async function goToStripe() {
   // for product Checkout
   try {
@@ -171,6 +201,27 @@ const matchPassword = (value) =>
   value === password.value || "Passwords must match.";
 
 const formRef = ref(null);
+
+const registerGoogle = () => {
+  signUpLoading.value = true
+  window.location.href=`${STRAPI_URL}/api/connect/google`
+  signUpLoading.value= false
+}
+
+async function connectGoogle (){
+  if (idToken.value && accessToken.value){
+    signUpLoading.value = true
+    try {
+      await authStore.connectGoogle(idToken.value, accessToken.value);
+      if(authStore?.userToken && subscribe.value === "true" ){
+          await goToStripe();
+        }
+    } catch (e) {
+      errorStore.setError({title: "Sign-Up Error", text: e.message})
+    }
+    signUpLoading.value= false
+  }
+}
 
 const submitForm = async () => {
   signUpLoading.value = true
