@@ -132,10 +132,10 @@
   
   // Form submission logic
   const submitForm = async () => {
-    loginLoading.value = true
     // Ensure formRef is defined before calling validate
     if (formRef.value && formRef.value.validate()) {
       try {
+        loginLoading.value = true
         await authStore.login(email.value, password.value);
         goToPath("/");
       } catch (e) {
@@ -144,10 +144,10 @@
         }
         else{
           errorStore.setError({title: "Login Error", text: e.message})
+          loginLoading.value= false
         }
       }
     }
-    loginLoading.value= false
   };
   </script>
     

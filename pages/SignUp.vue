@@ -16,7 +16,7 @@
         <v-btn
             :disabled="signUpLoading"
             @click="registerGoogle"
-            variant="outlined"
+            :variant="signUpLoading ? 'elevated' : 'outlined'"
             block
             large
             :loading="signUpLoading"
@@ -172,7 +172,7 @@ const confirmPassword = ref("");
 
 const config = useRuntimeConfig()
 const STRAPI_URL = config.public.strapiUrl
-const signUpLoading = ref(false);
+const signUpLoading = ref(!!idToken.value && !!accessToken.value);
 const displayStore = useDisplayStore()
 
 useSeoMeta({
@@ -202,30 +202,35 @@ const matchPassword = (value) =>
 
 const formRef = ref(null);
 
-const registerGoogle = () => {
-  signUpLoading.value = true
-  window.location.href=`${STRAPI_URL}/api/connect/google`
-  signUpLoading.value= false
+const registerGoogle = async () => {
+  try{
+    signUpLoading.value = true
+    await navigateTo(`${STRAPI_URL}/api/connect/google`, {external: true})
+  }
+  catch(e){
+    errorStore.setError({title: "Sign-Up Error", text: e.message})
+    signUpLoading.value = false
+  }
 }
 
 async function connectGoogle (){
   if (idToken.value && accessToken.value){
-    signUpLoading.value = true
     try {
+      signUpLoading.value = true
       await authStore.connectGoogle(idToken.value, accessToken.value);
       if(authStore?.userToken && subscribe.value === "true" ){
           await goToStripe();
         }
     } catch (e) {
       errorStore.setError({title: "Sign-Up Error", text: e.message})
+      signUpLoading.value= false
     }
-    signUpLoading.value= false
   }
 }
 
 const submitForm = async () => {
-  signUpLoading.value = true
   if (formRef.value && formRef.value.validate()) {
+    signUpLoading.value = true
     try {
       await authStore.register(username.value, email.value, password.value);
       if(authStore?.userToken && subscribe.value === "true" ){
@@ -233,9 +238,9 @@ const submitForm = async () => {
         }
     } catch (e) {
       errorStore.setError({title: "Sign-Up Error", text: e.message})
+      signUpLoading.value= false
     }
   }
-  signUpLoading.value= false
 };
 </script>
 

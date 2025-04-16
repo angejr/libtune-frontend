@@ -18,9 +18,11 @@ useSeoMeta({
 async function goToStripe() {
   // for product Checkout
   try {
+    stripeLoading.value = true
     await SS_ProductCheckout(displayStore.isIndian ? 4 : 2, STRAPI_URL, authStore.user.email);
   } catch (e) {
     errorStore.setError({ title: "Error", text: e.message });
+    stripeLoading.value= false
   }
 }
 
@@ -32,9 +34,7 @@ function getColor(name){
 
 async function subscribe(){
   if (authStore?.userToken) {
-    stripeLoading.value = true
     goToStripe();
-    stripeLoading.value= false
   } else {
     goToPath('/signup?subscribe=true');
   }
