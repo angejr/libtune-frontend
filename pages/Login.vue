@@ -7,6 +7,29 @@
         Login
       </v-card-title>
       <v-divider></v-divider>
+      <div class="px-4 py-8">
+        <v-btn
+            :disabled="loginLoading"
+            @click="registerGoogle"
+            :variant="loginLoading ? 'elevated' : 'outlined'"
+            block
+            large
+            :loading="loginLoading"
+            class="text-none"
+          >
+          <img
+        src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg"
+        alt="Google"
+        class="me-2"
+        width="20"
+        height="20"
+      />
+            Continue with Google
+          </v-btn>
+      </div>
+      <div class="px-6">
+        <v-divider>OR</v-divider>
+      </div>
       <v-card-text>
         <v-form
         v-model="isFormValid"
@@ -100,6 +123,10 @@
   const authStore = useAuthStore();
   const errorStore = useErrorStore();
   const loginError = ref(false);
+  const config = useRuntimeConfig()
+  const STRAPI_URL = config.public.strapiUrl
+  // Loading status
+  const loginLoading = ref(false);
 
   definePageMeta({
   middleware: defineNuxtRouteMiddleware(() => {
@@ -118,7 +145,6 @@
   // Form reference
   const formRef = ref(null);
   // Loading status
-  const loginLoading = ref(false);
 
   useSeoMeta({
   title: "Login",
@@ -129,7 +155,17 @@
   }
   })
 
-  
+  const registerGoogle = async () => {
+  try{
+    loginLoading.value = true
+    await navigateTo(`${STRAPI_URL}/api/connect/google`, {external: true})
+  }
+  catch(e){
+    errorStore.setError({title: "Login Error", text: e.message})
+    loginLoading.value = false
+  }
+}
+
   // Form submission logic
   const submitForm = async () => {
     // Ensure formRef is defined before calling validate
