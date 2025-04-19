@@ -169,6 +169,7 @@ const confirmPassword = ref("");
 const config = useRuntimeConfig()
 const STRAPI_URL = config.public.strapiUrl
 const signUpLoading = ref(!!idToken.value && !!accessToken.value);
+const stripeLoading = ref(false);
 const displayStore = useDisplayStore()
 
 useSeoMeta({
@@ -241,7 +242,7 @@ const submitForm = async () => {
 
 const subscribeAction = () => {
   try{
-    signUpLoading.value = true
+    stripeLoading.value = true
     if (authStore?.userToken) {
       goToStripe();
     } else {
@@ -250,7 +251,7 @@ const subscribeAction = () => {
   }
   catch(e){
     errorStore.setError({title: "Sign-Up Error", text: e.message})
-    signUpLoading.value= false
+    stripeLoading.value= false
   }
 }
 </script>
