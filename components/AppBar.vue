@@ -9,6 +9,36 @@ function resetDrawers(){
   drawerUser.value = false
 }
 
+// Count Down 
+const now = ref(Date.now());
+const timeLeft = ref(0);
+
+const offerEndTime = new Date('2025-05-01T00:00:00Z').getTime();
+
+const formatTime = (ms) => {
+  const totalSeconds = Math.floor(ms / 1000);
+
+  const days = Math.floor(totalSeconds / (3600 * 24));
+  const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return [
+    String(days).padStart(2, '0') + "D",
+    String(hours).padStart(2, '0') + "H",
+    String(minutes).padStart(2, '0') + "m",
+    String(seconds).padStart(2, '0') + "s"
+  ].join(':');
+};
+
+onMounted(() => {
+  const interval = setInterval(() => {
+    now.value = Date.now();
+    timeLeft.value = Math.max(offerEndTime - now.value, 0);
+    if (timeLeft.value <= 0) clearInterval(interval);
+  }, 1000);
+});
+
 </script>
 
 <template >
@@ -96,9 +126,22 @@ function resetDrawers(){
   </v-app-bar>
 
   <div v-else>
-    <v-app-bar elevation="10" color="#1e1e2f">
+    <v-app-bar color="red" density="compact" scroll-behavior="fully-hide" :readonly="true">
       <template v-slot:prepend>
-        <v-app-bar-nav-icon
+        <v-app-bar-nav-icon :slim="true" density="compact">
+          <v-icon icon="mdi-fire" />
+        </v-app-bar-nav-icon>
+      </template>
+      <v-app-bar-title>
+        <div class="text-container">
+            Spring Sale 50% OFF: {{ formatTime(timeLeft) }}  
+        </div>
+      </v-app-bar-title>
+    </v-app-bar>
+
+    <v-app-bar elevation="10" color="#1e1e2f" density="compact">
+      <template v-slot:prepend>
+        <v-app-bar-nav-icon density="compact"
           @click.stop="
             drawerUser = false;
             drawer = !drawer;
@@ -268,5 +311,14 @@ function resetDrawers(){
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.text-container {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  font-size: clamp(12px, 4.5vw, 24px);
 }
 </style>
