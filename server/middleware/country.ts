@@ -4,7 +4,10 @@ export default defineEventHandler(async (event) => {
       event.node.req.socket.remoteAddress;
   
     // const ip = '197.238.3.1' // TN
-    // const ip = '81.17.122.173' // IND
+    // const ip = '81.17.122.173' // IN
+    // const ip = '185.213.83.41' // ID
+    // const ip = '212.97.71.99' // PH
+    
     if (!ip) return;
   
     try {

@@ -80,3 +80,32 @@ export async function SS_ProductCheckout(productId: Number, baseUrl: string, use
       });
   })
 }
+
+export const countryCodeToPrice : any = {
+  // Default/US
+  US: {
+    priceId: 2,
+    priceValue: '$5.25'
+  },
+  // India
+  IN: {
+    priceId: 4,
+    priceValue: '₹470'
+  },
+  // Singapore
+  SG: {
+    priceId: 4,
+    priceValue: '₹470'
+  },
+  // Indonesia
+  ID: {
+    priceId: 5,
+    priceValue: 'IDR 95,000'
+  },
+  // Philippines
+  PH: {
+    priceId: 6,
+    priceValue: '₱320'
+  },
+  
+}

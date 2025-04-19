@@ -19,7 +19,7 @@ async function goToStripe() {
   // for product Checkout
   try {
     stripeLoading.value = true
-    await SS_ProductCheckout(displayStore.isIndian ? 4 : 2, STRAPI_URL, authStore.user.email);
+    await SS_ProductCheckout(displayStore.countryPrice.priceId, STRAPI_URL, authStore.user.email);
   } catch (e) {
     errorStore.setError({ title: "Error", text: e.message });
     stripeLoading.value= false
@@ -197,7 +197,7 @@ const reviews = [
                   class="font-inter"
                   style="font-size: small; font-weight: 600; text-align: center;"
                 >
-                 Free, then {{ displayStore.isIndian ? '₹470' :'$5.25'}}/month. Cancel anytime
+                 Free, then {{ displayStore.countryPrice.priceValue}}/month. Cancel anytime
                 </p>
               </div>
             </v-card-actions>
@@ -347,7 +347,7 @@ const reviews = [
               justify-content: center;
             "
           >
-            <h1>{{ displayStore.isIndian ? '₹470' :'$5.25'}}</h1>
+            <h1>{{ displayStore.countryPrice.priceValue}}</h1>
             <p style="font-size: x-small">/month</p>
           </div>
           <h6>Billed monthly, cancel anytime</h6>

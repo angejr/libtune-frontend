@@ -8,9 +8,9 @@ export const useDisplayStore = defineStore('display', () => {
   
   const getIsMobile = computed(() => isMobile.value)
 
-  const country : any = useCookie('country').value
-  const isIndian = ['IN', 'SG'].includes(country) 
+  const countryCode : any = useCookie('country').value
+  const countryPrice : any = countryCodeToPrice[Object.keys(countryCodeToPrice).includes(countryCode) ? countryCode : 'US' ]
 
-  return { isMobile, getIsMobile, isIndian }
+  return { isMobile, getIsMobile, countryPrice }
   })
   
