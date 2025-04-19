@@ -42,7 +42,15 @@ async function subscribe (){
           Premium Plan
         </v-card-title>
         <v-card-title class="text-center text-h6">
-          <div class="price" style="display: flex; align-items: baseline; justify-content: center;"> <h1>{{ displayStore.countryPrice.priceValue}}</h1><p style="font-size:x-small">/month</p></div>
+          <div style="display:flex; justify-content: center; gap:5px">
+            <p class="text-decoration-line-through text-sm">
+              {{ displayStore.countryPrice.priceOriginalValue}}
+            </p>
+            <v-chip color="red">
+              <p style="font-size: x-large;">-</p> {{ displayStore.countryPrice.priceValue }}
+            </v-chip>
+          </div>
+          <div class="price" style="display: flex; align-items: baseline; justify-content: center; color:red"><h1>{{ displayStore.countryPrice.priceValue}}</h1><p style="font-size:x-small">/month</p></div>
           <h6>Billed monthly, cancel anytime</h6>
         </v-card-title>
       <v-divider></v-divider>

@@ -85,27 +85,34 @@ export const countryCodeToPrice : any = {
   // Default/US
   US: {
     priceId: 2,
-    priceValue: '$5.25'
+    priceValue: '$5.25',
+    priceOriginalValue: '$10.50'
   },
   // India
   IN: {
     priceId: 4,
-    priceValue: '₹470'
+    priceValue: '₹470',
+    priceOriginalValue: '₹940'
   },
   // Singapore
   SG: {
     priceId: 4,
-    priceValue: '₹470'
+    priceValue: '₹470',
+    priceOriginalValue: '₹940'
   },
   // Indonesia
   ID: {
     priceId: 5,
-    priceValue: 'IDR 95,000'
+    priceValue: 'IDR 95,000',
+    priceOriginalValue: 'IDR 190,000'
   },
   // Philippines
   PH: {
     priceId: 6,
-    priceValue: '₱320'
+    priceValue: '₱320',
+    priceOriginalValue: '₱640'
   },
   
 }
+
+export const offerExpiryDate = '2025-05-01T00:00:00Z' // Spring offer

@@ -13,7 +13,7 @@ function resetDrawers(){
 const now = ref(Date.now());
 const timeLeft = ref(0);
 
-const offerEndTime = new Date('2025-05-01T00:00:00Z').getTime();
+const offerEndTime = new Date(offerExpiryDate).getTime();
 
 const formatTime = (ms) => {
   const totalSeconds = Math.floor(ms / 1000);
