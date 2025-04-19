@@ -141,13 +141,9 @@
             variant="elevated"
             large
             style="font-family: Inter"
-            @click="
-              if (authStore?.userToken) {
-                goToStripe();
-              } else {
-                goToPath('/signup');
-              }
-            "
+            :disabled="signUpLoading"
+            :loading="signUpLoading"
+            @click="subscribeAction()"
           >
           Subscribe
           </v-btn>
@@ -242,6 +238,21 @@ const submitForm = async () => {
     }
   }
 };
+
+const subscribeAction = () => {
+  try{
+    signUpLoading.value = true
+    if (authStore?.userToken) {
+      goToStripe();
+    } else {
+      goToPath('/signup');
+    }
+  }
+  catch(e){
+    errorStore.setError({title: "Sign-Up Error", text: e.message})
+    signUpLoading.value= false
+  }
+}
 </script>
 
 <style scoped>
