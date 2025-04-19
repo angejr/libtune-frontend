@@ -141,8 +141,8 @@
             variant="elevated"
             large
             style="font-family: Inter"
-            :disabled="signUpLoading"
-            :loading="signUpLoading"
+            :disabled="stripeLoading"
+            :loading="stripeLoading"
             @click="subscribeAction()"
           >
           Subscribe
