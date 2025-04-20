@@ -1,42 +1,46 @@
 <script setup>
 const displayStore = useDisplayStore();
 const authStore = useAuthStore();
-const errorStore = useErrorStore()
-const config = useRuntimeConfig()
-const STRAPI_URL = config.public.strapiUrl
+const errorStore = useErrorStore();
+const config = useRuntimeConfig();
+const STRAPI_URL = config.public.strapiUrl;
 const stripeLoading = ref(false);
 
 useSeoMeta({
-  title: "Landing",
-  ogTitle: "Landing",
+  title: `Royalty Free Music for Any Project | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  ogTitle: `Royalty Free Music for Any Project | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
   robots: {
     noindex: true,
-    nofollow: true
-  }
-  })
+    nofollow: true,
+  },
+});
 
 async function goToStripe() {
   // for product Checkout
   try {
-    stripeLoading.value = true
-    await SS_ProductCheckout(displayStore.countryPrice.priceId, STRAPI_URL, authStore.user.email);
+    stripeLoading.value = true;
+    await SS_ProductCheckout(
+      displayStore.countryPrice.priceId,
+      STRAPI_URL,
+      authStore.user.email
+    );
   } catch (e) {
     errorStore.setError({ title: "Error", text: e.message });
-    stripeLoading.value= false
+    stripeLoading.value = false;
   }
 }
 
 // Generate a random pastel color based on username
-function getColor(name){
+function getColor(name) {
   const colors = ["blue", "red", "green", "purple", "orange", "pink", "teal"];
   return colors[name.charCodeAt(0) % colors.length]; // Pick a color based on the first letter
-}; 
+}
 
-async function subscribe(){
+async function subscribe() {
   if (authStore?.userToken) {
     goToStripe();
   } else {
-    goToPath('/signup?subscribe=true');
+    goToPath("/signup?subscribe=true");
   }
 }
 
@@ -57,74 +61,178 @@ const items = [
 const faq = [
   {
     title: "What is royalty-free music?",
-    text: "Royalty-free music is a type of licensing that allows the use of licensed music in multiple projects without paying additional fees. The purchaser pays a one-time fee often for a perpetual license. It's commonly used in films, TV shows, commercials, and other media projects. The cost varies depending on length, usage, and composer popularity. It's a cost-effective alternative to traditional licensing, where ongoing royalties must be paid each time the music is used."
+    text: "Royalty-free music is a type of licensing that allows the use of licensed music in multiple projects without paying additional fees. The purchaser pays a one-time fee often for a perpetual license. It's commonly used in films, TV shows, commercials, and other media projects. The cost varies depending on length, usage, and composer popularity. It's a cost-effective alternative to traditional licensing, where ongoing royalties must be paid each time the music is used.",
   },
   {
     title: "How can I use royalty-free music?",
-    text: "You can use royalty-free music as background music for videos on platforms like YouTube, Vimeo, Instagram, TikTok, and more. Other common media projects where you can use your royalty-free music are on websites in various projects, as background music in all sorts of games, mobile apps, presentations, and more."
+    text: "You can use royalty-free music as background music for videos on platforms like YouTube, Vimeo, Instagram, TikTok, and more. Other common media projects where you can use your royalty-free music are on websites in various projects, as background music in all sorts of games, mobile apps, presentations, and more.",
   },
   {
     title: "Where can I find royalty-free music?",
-    text: "There are many websites that offer royalty-free music that you can use for your different projects. However, the music quality can vary a lot as well as the license agreements."
+    text: "There are many websites that offer royalty-free music that you can use for your different projects. However, the music quality can vary a lot as well as the license agreements.",
   },
   {
     title: "Is royalty-free music really free?",
-    text: "Royalty-free music means that the music is free from any additional royalties. However, while the music may be free from royalties, it is usually not completely free of cost as you at first most likely need to buy the license."
+    text: "Royalty-free music means that the music is free from any additional royalties. However, while the music may be free from royalties, it is usually not completely free of cost as you at first most likely need to buy the license.",
   },
   {
     title: "Can I use royalty-free music for commercial purposes?",
-    text: "Yes, you can use royalty-free music for commercial purposes, as long as you follow the terms and conditions specified by the licensor of the music. Libtune's royalty-free music can be used for any purpose, including commercial purposes."
+    text: "Yes, you can use royalty-free music for commercial purposes, as long as you follow the terms and conditions specified by the licensor of the music. Libtune's royalty-free music can be used for any purpose, including commercial purposes.",
   },
   {
-    title: "Do I need to give credit to the artist when using royalty-free music?",
-    text: "It depends on the terms and conditions specified by the license provider. Some royalty-free music providers may require you to give credit to the artist, while others may not. Libtune does not require subscribers to give credit to any artists, although it’s highly appreciated."
+    title:
+      "Do I need to give credit to the artist when using royalty-free music?",
+    text: "It depends on the terms and conditions specified by the license provider. Some royalty-free music providers may require you to give credit to the artist, while others may not. Libtune does not require subscribers to give credit to any artists, although it’s highly appreciated.",
   },
   {
-    title: "Are there any limitations to using royalty-free music with Libtune?",
-    text: "Our music is forbidden to be used with explicit or illegal content. Other than that, our music has no limitations as long as you have a valid subscription."
+    title:
+      "Are there any limitations to using royalty-free music with Libtune?",
+    text: "Our music is forbidden to be used with explicit or illegal content. Other than that, our music has no limitations as long as you have a valid subscription.",
   },
   {
-    title: "Is copyright-free music and license-free music the same as royalty-free music?",
-    text: "No, 'copyright-free music' and 'license-free music' are not the same as 'royalty-free music'. Copyright-free music means that the music is not protected by copyright law and can be used freely. However, just because the music is not protected, it doesn't mean that the music is free of charge. License-free music means that the music does not require a license to be used and the user does not need to pay for the right to use the music, but this doesn't necessarily mean that the music is free of charge. Royalty-free music, on the other hand, refers to music that can be used without paying royalties each time the music is used or performed."
+    title:
+      "Is copyright-free music and license-free music the same as royalty-free music?",
+    text: "No, 'copyright-free music' and 'license-free music' are not the same as 'royalty-free music'. Copyright-free music means that the music is not protected by copyright law and can be used freely. However, just because the music is not protected, it doesn't mean that the music is free of charge. License-free music means that the music does not require a license to be used and the user does not need to pay for the right to use the music, but this doesn't necessarily mean that the music is free of charge. Royalty-free music, on the other hand, refers to music that can be used without paying royalties each time the music is used or performed.",
   },
   {
-    title: "How do I make sure that I have the right to use the royalty-free music?",
-    text: "When buying a subscription from Libtune, you have the complete right to use the music as you wish on any platform. If using another royalty-free music provider, make sure to read the licensing agreement carefully before using the music for any projects. This agreement will specify the terms and conditions under which the music can be used."
+    title:
+      "How do I make sure that I have the right to use the royalty-free music?",
+    text: "When buying a subscription from Libtune, you have the complete right to use the music as you wish on any platform. If using another royalty-free music provider, make sure to read the licensing agreement carefully before using the music for any projects. This agreement will specify the terms and conditions under which the music can be used.",
   },
   {
     title: "Can I use royalty-free music on all social platforms?",
-    text: "In most cases, yes. However, you need to verify the terms of the license agreement from your music provider as well as the policies of that particular social platform. Some royalty-free music licenses may restrict usage on certain platforms for various reasons, while others may provide free usage on all platforms. Additionally, some social platforms have their own music libraries and licensing agreements which you have to consider before using your own licensed music. Libtune does not restrict the usage of your purchased music in any form, except if used for explicit or illegal content."
-  }
+    text: "In most cases, yes. However, you need to verify the terms of the license agreement from your music provider as well as the policies of that particular social platform. Some royalty-free music licenses may restrict usage on certain platforms for various reasons, while others may provide free usage on all platforms. Additionally, some social platforms have their own music libraries and licensing agreements which you have to consider before using your own licensed music. Libtune does not restrict the usage of your purchased music in any form, except if used for explicit or illegal content.",
+  },
 ];
 
 const reviews = [
-  { id: 1, text: "Libtune has an awesome selection of tracks, super useful!", user: "AliceM", value: 4.5 },
-  { id: 2, text: "Great for background music! Just wish there were more search filters.", user: "Jake92", value: 4.0 },
-  { id: 3, text: "Finally a site that makes finding royalty-free music easy. Love it!", user: "Samantha_R", value: 5 },
-  { id: 4, text: "Pretty solid, tho some tracks feel a bit generic. Still good tho!", user: "Mike_T", value: 4 },
-  { id: 5, text: "Libtune is my go-to for video projects. Affordable and legit.", user: "FilmmakerJoe", value: 4.5 },
-  { id: 6, text: "Gr8 site, easy to use. Found a lot of gems here!", user: "ElenaV", value: 4.5 },
-  { id: 7, text: "Was skeptical at first but it's actually really good.", user: "Chris_W", value: 4 },
-  { id: 8, text: "One of the better libraries out there. Needs more rock tho.", user: "ZaneF", value: 4 },
-  { id: 9, text: "Best royalty-free music site I’ve used, hands down.", user: "MelodyQueen", value: 5.0 },
-  { id: 10, text: "Decent variety. Some categories could use expansion.", user: "Leo_D", value: 4.0 },
-  { id: 11, text: "Tbh, didn’t expect much but ended up using it all the time.", user: "JayJay", value: 4.5 },
-  { id: 12, text: "Love the premium options. Wud be nice to have a mobile app!", user: "Steph_K", value: 4.5 },
-  { id: 13, text: "Everything works well, but UI could be a bit more modern.", user: "DesignGuru", value: 3.5 },
-  { id: 14, text: "Helped me find exactly what I needed for my podcast!", user: "PodcastSteve", value: 5 },
-  { id: 15, text: "The search function is way better than other sites. 👍", user: "Nina_S", value: 4.5 },
-  { id: 16, text: "Affordable, easy to navigate, and great variety.", user: "Marko", value: 4.5 },
-  { id: 17, text: "Good stuff, just wish some songs had more variations.", user: "LiamB", value: 4 },
-  { id: 18, text: "Better than expected. Customer support was quick too!", user: "RealJohnDoe", value: 4.5 },
-  { id: 19, text: "I use it for my Twitch streams. No copyright issues!", user: "StreamerAlex", value: 5 },
-  { id: 20, text: "Had some doubts at first but now I keep coming back!", user: "KatieW", value: 4.5 }
+  {
+    id: 1,
+    text: "Libtune has an awesome selection of tracks, super useful!",
+    user: "AliceM",
+    value: 4.5,
+  },
+  {
+    id: 2,
+    text: "Great for background music! Just wish there were more search filters.",
+    user: "Jake92",
+    value: 4.0,
+  },
+  {
+    id: 3,
+    text: "Finally a site that makes finding royalty-free music easy. Love it!",
+    user: "Samantha_R",
+    value: 5,
+  },
+  {
+    id: 4,
+    text: "Pretty solid, tho some tracks feel a bit generic. Still good tho!",
+    user: "Mike_T",
+    value: 4,
+  },
+  {
+    id: 5,
+    text: "Libtune is my go-to for video projects. Affordable and legit.",
+    user: "FilmmakerJoe",
+    value: 4.5,
+  },
+  {
+    id: 6,
+    text: "Gr8 site, easy to use. Found a lot of gems here!",
+    user: "ElenaV",
+    value: 4.5,
+  },
+  {
+    id: 7,
+    text: "Was skeptical at first but it's actually really good.",
+    user: "Chris_W",
+    value: 4,
+  },
+  {
+    id: 8,
+    text: "One of the better libraries out there. Needs more rock tho.",
+    user: "ZaneF",
+    value: 4,
+  },
+  {
+    id: 9,
+    text: "Best royalty-free music site I’ve used, hands down.",
+    user: "MelodyQueen",
+    value: 5.0,
+  },
+  {
+    id: 10,
+    text: "Decent variety. Some categories could use expansion.",
+    user: "Leo_D",
+    value: 4.0,
+  },
+  {
+    id: 11,
+    text: "Tbh, didn’t expect much but ended up using it all the time.",
+    user: "JayJay",
+    value: 4.5,
+  },
+  {
+    id: 12,
+    text: "Love the premium options. Wud be nice to have a mobile app!",
+    user: "Steph_K",
+    value: 4.5,
+  },
+  {
+    id: 13,
+    text: "Everything works well, but UI could be a bit more modern.",
+    user: "DesignGuru",
+    value: 3.5,
+  },
+  {
+    id: 14,
+    text: "Helped me find exactly what I needed for my podcast!",
+    user: "PodcastSteve",
+    value: 5,
+  },
+  {
+    id: 15,
+    text: "The search function is way better than other sites. 👍",
+    user: "Nina_S",
+    value: 4.5,
+  },
+  {
+    id: 16,
+    text: "Affordable, easy to navigate, and great variety.",
+    user: "Marko",
+    value: 4.5,
+  },
+  {
+    id: 17,
+    text: "Good stuff, just wish some songs had more variations.",
+    user: "LiamB",
+    value: 4,
+  },
+  {
+    id: 18,
+    text: "Better than expected. Customer support was quick too!",
+    user: "RealJohnDoe",
+    value: 4.5,
+  },
+  {
+    id: 19,
+    text: "I use it for my Twitch streams. No copyright issues!",
+    user: "StreamerAlex",
+    value: 5,
+  },
+  {
+    id: 20,
+    text: "Had some doubts at first but now I keep coming back!",
+    user: "KatieW",
+    value: 4.5,
+  },
 ];
-
 
 </script>
 
 <template>
   <v-container style="width: 100%; padding: 0">
+    <!-- Presentation -->
     <v-container class="py-4" fluid>
       <v-row>
         <v-col cols="12" md="6">
@@ -144,10 +252,16 @@ const reviews = [
                 white-space: normal;
               "
             >
-              <h1>Royalty free music for all projects</h1>
+              <h1 v-if="displayStore.titleVersion === 1 ">Royalty free music for all projects</h1>
+              <h1 v-else-if="displayStore.titleVersion === 2 ">Bring your stories to life. Just <i>add</i> sound</h1>
+              <h1 v-else-if="displayStore.titleVersion === 3 ">Freedom to Create, Confidence to Share</h1>
+              <h1 v-else-if="displayStore.titleVersion === 4 ">Make Magic, Not Paperwork</h1>
+              <h1 v-else-if="displayStore.titleVersion === 5 ">Unleash Your Stories with the Right Sound</h1>
+              <h1 v-else-if="displayStore.titleVersion === 6 ">Create Without Limits, Share Without Fear</h1>
+              <h1 v-else-if="displayStore.titleVersion === 7 ">Beautiful Sound, Zero Stress</h1>
             </v-card-title>
             <v-card-text>
-              <v-list style="background-color: transparent">
+              <v-list v-if="displayStore.subtitleVersion === 1" style="background-color: transparent">
                 <v-list-item style="padding-left: 0; padding-right: 0">
                   <div class="list-div font-inter">
                     <v-icon> mdi-music</v-icon>
@@ -174,6 +288,33 @@ const reviews = [
                   </div>
                 </v-list-item>
               </v-list>
+              <p v-else-if="displayStore.subtitleVersion === 2" class="font-inter text-subtitle-1 font-weight-medium mt-4">
+                Join the thousands of creators who trust Libtune to stay safe from copyright strikes and demonetization — so they can focus on creating, not worrying about takedowns.
+              </p>
+              <p v-else-if="displayStore.subtitleVersion === 3" class="font-inter text-subtitle-1 font-weight-medium mt-4">
+                Libtune gives you unlimited access to 2000+ songs across every genre — all royalty-free, all forever yours. No legal confusion, just music you can trust.
+              </p>
+              <p v-else-if="displayStore.subtitleVersion === 4" class="font-inter text-subtitle-1 font-weight-medium mt-4">
+                Libtune’s simple license and 2000+ song library lets you publish freely everywhere. Join thousands of creators who’ve left copyright strikes and demonetizations behind.
+              </p>
+              <p v-else-if="displayStore.subtitleVersion === 5" class="font-inter text-subtitle-1 font-weight-medium mt-4">
+                Don’t let music copyrights ruin your projects. Libtune’s 2000+ track library gives you safe, professional sound and lifetime usage — all in one simple subscription.
+              </p>
+              <p v-else-if="displayStore.subtitleVersion === 6" class="font-inter text-subtitle-1 font-weight-medium mt-4">
+                Tired of takedowns and muted videos? Libtune is a library of 2000+ royalty-free tracks with a license that protects you for life — no fine print.
+              </p>
+              <p v-else-if="displayStore.subtitleVersion === 7" class="font-inter text-subtitle-1 font-weight-medium mt-4">
+                Libtune was made for creators like you — people who just want great music without the legal mess. 2000+ tracks, all cleared for lifetime use.
+              </p>
+              <p v-else-if="displayStore.subtitleVersion === 8" class="font-inter text-subtitle-1 font-weight-medium mt-4">
+                Ever lost ad revenue over background music? Yeah, us too. That’s why Libtune gives you 2000+ royalty-free tracks and a super-simple license.
+              </p>
+              <p v-else-if="displayStore.subtitleVersion === 9" class="font-inter text-subtitle-1 font-weight-medium mt-4">
+                Sick of strikes, takedowns, and muted videos ? Us too. That’s why we built Libtune — 2000+ royalty-free tracks, one license, zero nonsense.
+              </p>
+              <p v-else-if="displayStore.subtitleVersion === 10" class="font-inter text-subtitle-1 font-weight-medium mt-4">
+                Don’t let one background beat ruin your whole video. Libtune gives you 2000+ safe songs and a forever license your future self will thank you for.
+              </p>
             </v-card-text>
             <v-card-actions>
               <div style="display: flex; flex-direction: column; gap: 15px">
@@ -191,13 +332,14 @@ const reviews = [
                     }
                   "
                 >
-                Start Free Trial</v-btn
+                  Start Free Trial</v-btn
                 >
                 <p
                   class="font-inter"
-                  style="font-size: small; font-weight: 600; text-align: center;"
+                  style="font-size: small; font-weight: 600; text-align: center"
                 >
-                 Free, then {{ displayStore.countryPrice.priceValue}}/month. Cancel anytime
+                  Free, then {{ displayStore.countryPrice.priceValue }}/month.
+                  Cancel anytime
                 </p>
               </div>
             </v-card-actions>
@@ -207,40 +349,6 @@ const reviews = [
           <v-img src="/images/bg.jpg" width="100%"></v-img>
         </v-col>
       </v-row>
-    </v-container>
-    <!-- Reviews -->
-    <v-container class="py-4">
-      <div class="mb-6">
-        <h1 style="font-family: Montserrat; font-size: x-large; text-align:center">
-          What our customers say
-        </h1>
-      </div>
-      <v-slide-group :mobile="displayStore.isMobile">
-        <v-slide-group-item v-for="review in reviews" :key="review.id">
-          <v-card class="mx-6 pa-4" width="300">
-            <template v-slot:prepend>
-              <v-avatar :color="getColor(review.user)">
-                <span class="text-white text-h6">{{ review.user.charAt(0).toUpperCase() }}</span>
-              </v-avatar>
-            </template>
-            <v-card-title>{{ review.user }}</v-card-title>
-            <v-card-subtitle>
-              <v-rating
-                  :key="`rating-${review.id}`"
-                  :id="`rating-${review.id}`"
-                  :name="`rating-${review.id}`"
-                  half-increments
-                  readonly
-                  :length="5"
-                  :size="33"
-                  :model-value="review.value"
-                  active-color="#FF9900"
-                />
-            </v-card-subtitle>
-            <v-card-text>{{ review.text }}</v-card-text>
-          </v-card>
-        </v-slide-group-item>
-      </v-slide-group>
     </v-container>
     <v-container class="py-8" style="width: 100%; background-color: black">
       <v-row>
@@ -319,6 +427,48 @@ const reviews = [
         </v-col>
       </v-row>
     </v-container>
+        <!-- Reviews -->
+        <v-container class="py-4">
+      <div class="mb-6">
+        <h1
+          style="
+            font-family: Montserrat;
+            font-size: x-large;
+            text-align: center;
+          "
+        >
+          What our customers say
+        </h1>
+      </div>
+      <v-slide-group :mobile="displayStore.isMobile">
+        <v-slide-group-item v-for="review in reviews" :key="review.id">
+          <v-card class="mx-6 pa-4" width="300">
+            <template v-slot:prepend>
+              <v-avatar :color="getColor(review.user)">
+                <span class="text-white text-h6">{{
+                  review.user.charAt(0).toUpperCase()
+                }}</span>
+              </v-avatar>
+            </template>
+            <v-card-title>{{ review.user }}</v-card-title>
+            <v-card-subtitle>
+              <v-rating
+                :key="`rating-${review.id}`"
+                :id="`rating-${review.id}`"
+                :name="`rating-${review.id}`"
+                half-increments
+                readonly
+                :length="5"
+                :size="33"
+                :model-value="review.value"
+                active-color="#FF9900"
+              />
+            </v-card-subtitle>
+            <v-card-text>{{ review.text }}</v-card-text>
+          </v-card>
+        </v-slide-group-item>
+      </v-slide-group>
+    </v-container>
     <v-container
       class="py-8"
       style="
@@ -339,12 +489,13 @@ const reviews = [
           Premium Plan
         </v-card-title>
         <v-card-title class="text-center text-h6">
-          <div style="display:flex; justify-content: center; gap:5px">
+          <div style="display: flex; justify-content: center; gap: 5px">
             <p class="text-decoration-line-through text-sm">
-              {{ displayStore.countryPrice.priceOriginalValue}}
+              {{ displayStore.countryPrice.priceOriginalValue }}
             </p>
             <v-chip color="red">
-              <p style="font-size: x-large;">-</p> {{ displayStore.countryPrice.priceValue }}
+              <p style="font-size: x-large">-</p>
+              {{ displayStore.countryPrice.priceValue }}
             </v-chip>
           </div>
           <div
@@ -353,10 +504,10 @@ const reviews = [
               display: flex;
               align-items: baseline;
               justify-content: center;
-              color:red
+              color: red;
             "
           >
-            <h1>{{ displayStore.countryPrice.priceValue}}</h1>
+            <h1>{{ displayStore.countryPrice.priceValue }}</h1>
             <p style="font-size: x-small">/month</p>
           </div>
           <h6>Billed monthly, cancel anytime</h6>
@@ -412,7 +563,7 @@ const reviews = [
             :loading="stripeLoading"
             @click="subscribe"
           >
-          Start Free Trial
+            Start Free Trial
           </v-btn>
           <h3 v-else>You are already subscribed !</h3>
         </v-card-actions>
@@ -433,19 +584,31 @@ const reviews = [
           Frequently Asked Questions
         </h1>
       </div>
-      <v-list style="width: 100%; background-color: transparent; box-shadow: 0 0 0 0;">
-        <v-list-item v-for="q in faq" :key="q" style="padding-left: 0; padding-right: 0" class="font-inter">
+      <v-list
+        style="width: 100%; background-color: transparent; box-shadow: 0 0 0 0"
+      >
+        <v-list-item
+          v-for="q in faq"
+          :key="q"
+          style="padding-left: 0; padding-right: 0"
+          class="font-inter"
+        >
           <v-expansion-panels>
-            <v-expansion-panel
-              :title="q.title"
-              :text="q.text"
-            >
+            <v-expansion-panel :title="q.title" :text="q.text">
             </v-expansion-panel>
           </v-expansion-panels>
         </v-list-item>
       </v-list>
     </v-container>
-    <v-footer color="#1e1e2f" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+    <v-footer
+      color="#1e1e2f"
+      style="
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      "
+    >
       Contact : <strong>support@libtune.com</strong>
     </v-footer>
   </v-container>
