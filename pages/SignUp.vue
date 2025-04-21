@@ -173,8 +173,8 @@ const stripeLoading = ref(false);
 const displayStore = useDisplayStore()
 
 useSeoMeta({
-  title: "Sign-Up",
-  ogTitle: "Sign-Up",
+  title: `Sign-Up | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  ogTitle: `Sign-Up | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
   robots: {
     noindex: true,
     nofollow: true

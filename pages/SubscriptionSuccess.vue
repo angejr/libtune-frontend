@@ -1,9 +1,11 @@
 <script setup>
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
+const displayStore = useDisplayStore();
 
 useSeoMeta({
-  title: "Subscription Result",
+  title: `Subscription Result | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  ogTitle: `Subscription Result | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
   robots: {
     noindex: true,
     nofollow: true

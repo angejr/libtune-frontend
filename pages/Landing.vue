@@ -7,8 +7,8 @@ const STRAPI_URL = config.public.strapiUrl;
 const stripeLoading = ref(false);
 
 useSeoMeta({
-  title: `Royalty Free Music for Any Project | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
-  ogTitle: `Royalty Free Music for Any Project | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  title: `Royalty Free Music for Any Project`,
+  ogTitle: `Royalty Free Music for Any Project`,
   robots: {
     noindex: true,
     nofollow: true,
