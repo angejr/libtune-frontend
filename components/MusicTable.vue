@@ -169,6 +169,7 @@ function getHeaderClass(isMobile) {
             <v-text-field
               v-model.trim="search"
               label="Search"
+              placeholder="Search Title or Tag"
               prepend-inner-icon="mdi-magnify"
               variant="outlined"
               hide-details
@@ -186,7 +187,7 @@ function getHeaderClass(isMobile) {
               clearable
               chips
               dense
-              outlined
+              variant="outlined"
               @update:model-value="
                 () => {
                   songs = [];

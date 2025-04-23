@@ -43,9 +43,27 @@ export default defineEventHandler(async (event) => {
     [`fields`]: ["title", "length", "lyric", "tags", "image_url"]
   }
 
+  let lastIndex = 0 
+
   if (search) {
-    query[`filters[title][$containsi]`] = search
-  }
+    query[`filters[$or][0][title][$containsi]`] = search
+
+    let augmentedFilter : any = []
+    search.split(' ').forEach((el) => {
+      augmentedFilter.push(el)
+      augmentedFilter.push(el.replaceAll('-', ''))
+      augmentedFilter.push(el.replaceAll('-', ' '))
+      augmentedFilter.push(el.replaceAll(' ', '-'))
+      augmentedFilter.push(el.replaceAll(' ', ''))
+    })
+
+    augmentedFilter = [... new Set(augmentedFilter)]
+
+    for (let i = 0; i < augmentedFilter.length; i++ ){
+        query[`filters[$or][${i+1}][tags][$containsi]`] = augmentedFilter[i]
+    }
+    lastIndex = augmentedFilter.length
+}
 
   if (filter.length > 0){
 
@@ -62,10 +80,10 @@ export default defineEventHandler(async (event) => {
 
     for (let i = 0; i < augmentedFilter.length; i++ ){
       if (augmentedFilter[i] === "Instrumental"){
-        query[`filters[$or][${i}][lyric][$eq]`] = "[Instrumental]"
+        query[`filters[$or][${i + lastIndex + 1 }][lyric][$eq]`] = "[Instrumental]"
       }
       else{
-        query[`filters[$or][${i}][tags][$containsi]`] = augmentedFilter[i]
+        query[`filters[$or][${i + lastIndex + 1}][tags][$containsi]`] = augmentedFilter[i]
       }
     }
   }
@@ -87,16 +105,6 @@ export default defineEventHandler(async (event) => {
     image_url: song.attributes.image_url,
     lyric: song.attributes.lyric,
   }))
-
-  // if (filter.length > 0) {
-  //   response.data = response.data.filter((el: any) =>
-  //     filter.some((element) => {
-  //       let tags = el?.tags?.split(" ");
-  //       if (el?.instrumental) tags.push("Instrumental");
-  //       return tags?.includes(element);
-  //     })
-  //   );
-  // }
 
   return response;
 });
