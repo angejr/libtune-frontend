@@ -156,7 +156,6 @@
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
 const route = useRoute()
-const subscribe = ref(route.query.subscribe)
 const accessToken = ref(route.query.access_token)
 const idToken = ref(route.query.id_token)
 
@@ -215,7 +214,8 @@ async function connectGoogle (){
     try {
       signUpLoading.value = true
       await authStore.connectGoogle(idToken.value, accessToken.value);
-      if(authStore?.userToken && subscribe.value === "true" ){
+      if(authStore?.userToken && displayStore.getSubscribeAfterSignUp().value){
+          displayStore.setSubscribeAfterSignUp(false)
           await goToStripe();
         }
     } catch (e) {
@@ -230,7 +230,8 @@ const submitForm = async () => {
     signUpLoading.value = true
     try {
       await authStore.register(username.value, email.value, password.value);
-      if(authStore?.userToken && subscribe.value === "true" ){
+      if(authStore?.userToken && displayStore.getSubscribeAfterSignUp().value){
+          displayStore.setSubscribeAfterSignUp(false)
           await goToStripe();
         }
     } catch (e) {

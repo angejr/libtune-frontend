@@ -38,9 +38,10 @@ function getColor(name) {
 
 async function subscribe() {
   if (authStore?.userToken) {
-    goToStripe();
+    await goToStripe();
   } else {
-    goToPath("/signup?subscribe=true");
+    displayStore.setSubscribeAfterSignUp(true)
+    goToPath("/signup");
   }
 }
 
@@ -323,14 +324,7 @@ const reviews = [
                   style="padding: 30px; display: flex; justify-content: center"
                   color="purple"
                   variant="elevated"
-                  @click="
-                    landingDialog = false;
-                    if (!authStore?.userToken) {
-                      goToPath('/signup?subscribe=true');
-                    } else {
-                      goToPath('/subscribe');
-                    }
-                  "
+                  @click="goToPath('/subscribe')"
                 >
                   Start Free Trial</v-btn
                 >
@@ -411,14 +405,7 @@ const reviews = [
               <v-btn
                 color="black"
                 variant="elevated"
-                @click="
-                  landingDialog = false;
-                  if (!authStore?.userToken) {
-                    goToPath('/signup?subscribe=true');
-                  } else {
-                    goToPath('/subscribe');
-                  }
-                "
+                @click="goToPath('/subscribe')"
               >
                 Start Free Trial
               </v-btn>

@@ -7,8 +7,8 @@ const stripeLoading = ref(false);
 const displayStore = useDisplayStore();
 
 useSeoMeta({
-  title: "Pricing",
-  ogtitle: "Subscribe",
+  title: `Pricing | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  ogtitle: `Subscribe | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
   description: "Most affordable copyright free music plan, unlimited downloads and unlimited licence for commercial use, no attribution needed. Cancel anytime",
   ogDescription: "Most affordable copyright free music plan, unlimited downloads and unlimited licence for commercial use, no attribution needed. Cancel anytime",
 
@@ -30,6 +30,7 @@ async function subscribe (){
     await goToStripe();
     }
     else{
+      displayStore.setSubscribeAfterSignUp(true)
       goToPath('/signup');
     }
 }

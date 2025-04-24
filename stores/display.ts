@@ -24,6 +24,12 @@ export const useDisplayStore = defineStore('display', () => {
     useCookie('subtitleVersion').value = subtitleVersion;
   }
 
-  return { isMobile, getIsMobile, countryPrice, titleVersion, subtitleVersion }
+   const getSubscribeAfterSignUp = () =>
+    useCookie<boolean>('subscribeAfterSignUp', { default: () => false });
+
+  const setSubscribeAfterSignUp = (value: boolean) => {
+    getSubscribeAfterSignUp().value = value;
+  };
+  return { isMobile, getIsMobile, countryPrice, titleVersion, subtitleVersion, getSubscribeAfterSignUp, setSubscribeAfterSignUp }
   })
   
