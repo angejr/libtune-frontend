@@ -78,7 +78,7 @@ async function subscribe (){
           </v-list-item>
         </v-list>
       </v-card-text>
-      <v-card-actions style="display: flex; justify-content: center">
+      <v-card-actions class="mb-4" style="display: flex; justify-content: center">
         <v-btn
           v-if="!authStore?.user?.customerId"
           color="purple"
@@ -92,6 +92,39 @@ async function subscribe (){
         </v-btn>
         <h3 v-else>You are already subscribed !</h3>
       </v-card-actions>
+      <v-divider></v-divider>
+        <v-card-actions class="mt-4" style="display: flex; justify-content: center; flex-direction: column; gap:10px">
+          <v-chip size="small" dense prepend-icon="mdi-lock">
+              Secured payment
+            </v-chip>
+          <div style="display: flex; align-items: center; justify-content: center; gap:10px">
+              <v-img
+                :src="`/images/payment_methods/visa.png`"
+                width="35"
+                height="35"
+              ></v-img>
+              <v-img
+                :src="`/images/payment_methods/mastercard.png`"
+                width="35"
+                height="35"
+              ></v-img>
+              <v-img
+              :src="`/images/payment_methods/paypal.png`"
+              width="40"
+              height="40"
+              ></v-img>
+              <v-img
+                :src="`/images/payment_methods/apple_pay.png`"
+                width="35"
+                height="35"
+              ></v-img>
+              <v-img
+                :src="`/images/payment_methods/google_pay.png`"
+                width="40"
+                height="40"
+              ></v-img>
+            </div>
+        </v-card-actions>
     </v-card>
   </v-container>
 </template>
