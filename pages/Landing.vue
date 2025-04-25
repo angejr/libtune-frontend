@@ -530,13 +530,13 @@ const reviews = [
               ></v-icon>
               No attribution required
             </v-list-item>
-            <v-list-item class="premium-feature">
-              <v-icon
-                icon="mdi-close-outline"
-                class="list-icon negative"
-              ></v-icon>
-              Redistribution or resale prohibited
-            </v-list-item>
+            <v-list-item class="premium-feature" style="display: flex; justify-content: center;font-weight:bolder">
+              <v-icon icon="mdi-plus-circle" size="x-large"></v-icon>
+          </v-list-item>
+          <v-list-item class="premium-feature" style="display: flex; justify-content: center">
+            <v-icon icon="mdi-gift-outline" class="list-icon positive"></v-icon>
+            Free bundle of 20 songs 
+          </v-list-item>
           </v-list>
         </v-card-text>
         <v-card-actions class="mb-4" style="display: flex; justify-content: center">
