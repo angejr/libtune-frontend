@@ -16,6 +16,11 @@ primary_region = 'bom'
   min_machines_running = 1
   processes = ['app']
 
+[http_service.concurrency]
+  type = "requests"
+  soft_limit = 40
+  hard_limit = 100
+
 [[vm]]
   memory = '1gb'
   cpu_kind = 'shared'
