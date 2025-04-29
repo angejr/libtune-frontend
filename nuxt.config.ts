@@ -1,6 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
+  vite: {
+    server: {
+      allowedHosts: ['.ngrok-free.app'],
+    },
+  },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: ['vuetify-nuxt-module', '@pinia/nuxt', 'nuxt-gtag', '@nuxtjs/seo', '@nuxtjs/sitemap', '@nuxtjs/robots'],
@@ -51,6 +56,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       strapiUrl: process.env.NUXT_STRAPI_URL,
+      stripeSPublicKey: process.env.NUXT_STRIPE_PUBLIC_KEY
     },
     strapiApiUrl: process.env.NUXT_STRAPI_API_URL,
     strapiTokenMusic: process.env.NUXT_STRAPI_TOKEN_MUSIC,

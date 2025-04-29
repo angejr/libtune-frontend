@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     try {
       const res : any = await $fetch(`https://ipinfo.io/${ip}?token=a300f6b25b7f23`);
       if (res) {
-        setCookie(event, 'country', res.country); // e.g. 'IN'
+        setCookie(event, 'country', res.country || 'US'); // e.g. 'IN'
       }
     } catch (err) {
       console.warn('Geo lookup failed', err);

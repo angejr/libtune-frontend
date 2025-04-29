@@ -84,32 +84,42 @@ export async function SS_ProductCheckout(productId: Number, baseUrl: string, use
 export const countryCodeToPrice : any = {
   // Default/US
   US: {
-    priceId: 2,
+    currency: 'usd',
+    priceNumber: 525,
+    priceId: 1,
     priceValue: '$5.25',
     priceOriginalValue: '$10.50'
   },
   // India
   IN: {
+    currency: 'inr',
     priceId: 4,
     priceValue: '₹470',
+    priceNumber: 47000,
     priceOriginalValue: '₹940'
   },
   // Singapore
   SG: {
+    currency: 'inr',
     priceId: 4,
     priceValue: '₹470',
+    priceNumber: 47000,
     priceOriginalValue: '₹940'
   },
   // Indonesia
   ID: {
+    currency: 'idr',
     priceId: 5,
     priceValue: 'IDR 95,000',
+    priceNumber: 95000,
     priceOriginalValue: 'IDR 190,000'
   },
   // Philippines
   PH: {
+    currency: 'php',
     priceId: 6,
     priceValue: '₱320',
+    priceNumber: 32000,
     priceOriginalValue: '₱640'
   },
   
