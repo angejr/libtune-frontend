@@ -107,8 +107,8 @@ onMounted(() => {
               authStore?.user?.email
             }}</v-list-subheader>
           </v-list-item>
-          <v-list-item @click="goToPath('/account')">
-            <v-list-item-title>My Account</v-list-item-title>
+          <v-list-item @click="goToPath('/account')" class="text-capitalize font-inter text-h6 font-weight-regular">
+            My Account
           </v-list-item>
           <v-list-item
             prepend-icon="mdi-logout-variant"
@@ -187,31 +187,28 @@ onMounted(() => {
           Authentication</v-list-subheader
         >
         <v-list-item
-          class="drawer-item"
+          class="text-capitalize font-inter text-h6 font-weight-regular"
           v-if="!authStore?.isAuthenticated"
           @click="goToPath('/login'); resetDrawers()"
-          title="LOGIN"
-        ></v-list-item>
+        >Login</v-list-item>
         <v-list-item
-          class="drawer-item"
+          class="text-capitalize font-inter text-h6 font-weight-regular"
           v-if="!authStore?.isAuthenticated"
           @click="goToPath('/signup'); resetDrawers()"
-          title="SIGN-UP"
-        ></v-list-item>
+        >Sign Up</v-list-item>
         <v-divider v-if="!authStore?.isAuthenticated"></v-divider>
         <v-list-subheader> Information</v-list-subheader>
         <v-list-item
-          class="drawer-item"
+          class="text-capitalize font-inter text-h6 font-weight-regular"
           @click="goToPath('/subscribe'); resetDrawers()"
-          title="PRICING"
-        ></v-list-item>
+        >Pricing</v-list-item>
         <v-list-item
-          class="drawer-item" @click="goToPath('/about'); resetDrawers()" title="ABOUT US"></v-list-item>
+          class="text-capitalize font-inter text-h6 font-weight-regular" @click="goToPath('/about'); resetDrawers()">
+          About Us</v-list-item>
         <v-list-item
-          class="drawer-item"
+          class="text-capitalize font-inter text-h6 font-weight-regular"
           @click="goToPath('/terms'); resetDrawers()"
-          title="TERMS & CONDITIONS"
-        ></v-list-item>
+        >Terms & Conditions</v-list-item>
         <v-divider></v-divider>
         <v-list-item></v-list-item>
       </v-list>
@@ -227,17 +224,18 @@ onMounted(() => {
             variant="elevated"
             large
             @click="goToPath('/subscribe')"
+            class="text-capitalize font-inter"
           >
-            UPGRADE
+            Upgrade
           </v-btn>
-          <h4 v-else>PREMIUM</h4>
+          <h4 v-else class="text-capitalize font-inter text-h6 font-weight-regular">Premium</h4>
         </v-list-item>
         <v-divider></v-divider>
         <v-list-subheader>Profile</v-list-subheader>
         <v-list-item>{{ authStore?.user?.username }}</v-list-item>
           <v-list-item class="user-email">{{ authStore?.user?.email}}</v-list-item>
           <v-divider></v-divider>
-          <v-list-item @click="goToPath('/account'); resetDrawers()">MY ACCOUNT</v-list-item>
+          <v-list-item @click="goToPath('/account'); resetDrawers()" class="text-capitalize font-inter text-h6 font-weight-regular">My Account</v-list-item>
           <v-divider></v-divider>
         <v-list-item
           prepend-icon="mdi-logout-variant"
@@ -320,5 +318,9 @@ onMounted(() => {
   text-overflow: ellipsis;
   display: block;
   font-size: clamp(12px, 4.5vw, 24px);
+}
+
+.font-inter {
+  font-family: Inter;
 }
 </style>

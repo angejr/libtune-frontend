@@ -125,4 +125,4 @@ export const countryCodeToPrice : any = {
   
 }
 
-export const offerExpiryDate = '2025-05-01T00:00:00Z' // Spring offer
+export const offerExpiryDate = '2025-05-21T00:00:00Z' // Spring offer

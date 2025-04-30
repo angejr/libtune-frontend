@@ -71,10 +71,10 @@
             color="primary"
             block
             large
-            class="mt-6"
+            class="mt-6 font-inter text-capitalize"
             :loading="loginLoading"
           >
-            Log In
+            Login
           </v-btn>
         </v-form>
       </v-card-text>
@@ -115,6 +115,10 @@
 
 .terms-link:hover {
   text-decoration: underline;
+}
+
+.font-inter {
+  font-family: Inter
 }
 </style>
 

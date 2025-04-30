@@ -93,6 +93,7 @@
             block
             large
             :loading="signUpLoading"
+            class="text-capitalize font-inter"
           >
             Sign Up
           </v-btn>
@@ -132,7 +133,8 @@
         </ul>
       </v-card-text>
       <v-card-actions class="justify-space-evenly">
-        <v-btn color="primary" variant="elevated" large @click="goToPath('/')">
+        <v-btn color="primary" class="font-inter text-capitalize"
+        variant="elevated" large @click="goToPath('/')" >
           Browse
         </v-btn>
         <v-btn
@@ -140,7 +142,7 @@
             color="purple"
             variant="elevated"
             large
-            style="font-family: Inter"
+            class="font-inter text-capitalize"
             :disabled="stripeLoading"
             :loading="stripeLoading"
             @click="subscribeAction()"
@@ -282,5 +284,9 @@ const subscribeAction = () => {
 
 .terms-link:hover {
   text-decoration: underline;
+}
+
+.font-inter {
+  font-family: Inter
 }
 </style>

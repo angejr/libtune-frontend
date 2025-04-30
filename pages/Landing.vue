@@ -320,7 +320,7 @@ const reviews = [
             <v-card-actions>
               <div style="display: flex; flex-direction: column; gap: 15px">
                 <v-btn
-                  class="font-inter"
+                  class="font-inter text-capitalize text-h6"
                   style="padding: 30px; display: flex; justify-content: center"
                   color="purple"
                   variant="elevated"
@@ -406,7 +406,7 @@ const reviews = [
                 color="black"
                 variant="elevated"
                 @click="goToPath('/subscribe')"
-              >
+                class="text-capitalize font-inter">
                 Start Free Trial
               </v-btn>
             </v-card-actions>
@@ -514,7 +514,7 @@ const reviews = [
                 icon="mdi-check-outline"
                 class="list-icon positive"
               ></v-icon>
-              License for all downloaded songs
+              License downloaded songs
             </v-list-item>
             <v-list-item class="premium-feature">
               <v-icon
@@ -530,10 +530,7 @@ const reviews = [
               ></v-icon>
               No attribution required
             </v-list-item>
-            <v-list-item class="premium-feature" style="display: flex; justify-content: center;font-weight:bolder">
-              <v-icon icon="mdi-plus-circle" size="x-large"></v-icon>
-          </v-list-item>
-          <v-list-item class="premium-feature" style="display: flex; justify-content: center">
+          <v-list-item class="premium-feature">
             <v-icon icon="mdi-gift-outline" class="list-icon positive"></v-icon>
             Free bundle of 20 songs 
           </v-list-item>
@@ -542,15 +539,16 @@ const reviews = [
         <v-card-actions class="mb-4" style="display: flex; justify-content: center">
           <v-btn
             v-if="!authStore?.user?.customerId"
-            color="purple"
+            color="primary"
             variant="elevated"
             large
-            style="font-family: Inter"
             :disabled="stripeLoading"
             :loading="stripeLoading"
             @click="subscribe"
+            class="text-capitalize font-inter"
+            style="width: 75%"
           >
-            Start Free Trial
+            Subscribe
           </v-btn>
           <h3 v-else>You are already subscribed !</h3>
         </v-card-actions>
