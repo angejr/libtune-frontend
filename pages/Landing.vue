@@ -478,12 +478,8 @@ const reviews = [
         <v-card-title class="text-center text-h6">
           <div style="display: flex; justify-content: center; gap: 5px">
             <p class="text-decoration-line-through text-sm">
-              {{ displayStore.countryPrice.priceOriginalValue }}
+              {{ displayStore.countryPrice.priceOriginalValue }}/month
             </p>
-            <v-chip color="red">
-              <p style="font-size: x-large">-</p>
-              {{ displayStore.countryPrice.priceValue }}
-            </v-chip>
           </div>
           <div
             class="price"
