@@ -8,8 +8,8 @@ export const useDisplayStore = defineStore('display', () => {
   
   const getIsMobile = computed(() => isMobile.value)
 
-  const countryCode : any = useCookie('country').value || 'US'
-  const countryPrice : any = countryCodeToPrice[countryCode]
+  const countryCode : any = useCookie('country').value
+  const countryPrice : any = countryCodeToPrice[Object.keys(countryCodeToPrice).includes(countryCode) ? countryCode : 'US' ]
 
   // Landing version
   let titleVersion : any = useCookie('titleVersion').value
