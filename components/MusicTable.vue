@@ -208,6 +208,7 @@ function getHeaderClass(isMobile) {
         multi-sort
         class="mt-4"
         :row-props="getRowProps"
+        no-data-text=""
       >
         <!-- Loading Slot -->
         <template v-slot:loading>
@@ -277,7 +278,8 @@ function getHeaderClass(isMobile) {
   multi-sort
   class="mt-4"
   :row-props="getRowProps"
-  hide-default-header>
+  hide-default-header
+  no-data-text="">
   <template v-slot:loading>
     <div class="d-flex justify-center my-4">
       <v-progress-circular

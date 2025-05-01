@@ -86,7 +86,7 @@ export const countryCodeToPrice : any = {
   US: {
     currency: 'usd',
     priceNumber: 525,
-    priceId: 1,
+    priceId: 2,
     priceValue: '$5.25',
     priceOriginalValue: '$10.50'
   },
