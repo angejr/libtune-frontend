@@ -176,5 +176,17 @@
         "noAccount": "Don't have an account yet ?",
         "register": "Register",
         "wrong": "Wrong E-mail or password"
+    },
+    "SubscriptionSuccess": {
+        "PageTitle": "Subscription Result",
+        "subscribed": "You're Subscribed!",
+        "thankYou": "Thank you for subscribing to",
+        "nowUnlimitedAccess": "You now have unlimited access to our library of",
+        "subscriptionSteps": {
+            "1": "Browse our extensive collection of music.",
+            "2": "Download tracks with no limitations.",
+            "3": "Use music for both recreational and commercial projects."
+        },
+        "browse": "Explore Music Library"
     }
 }

@@ -2,10 +2,11 @@
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
 const displayStore = useDisplayStore();
+const { t, locales, setLocale } = useI18n();
 
 useSeoMeta({
-  title: `Subscription Result | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
-  ogTitle: `Subscription Result | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  title: `${t("SubscriptionSuccess.PageTitle")} | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  ogTitle: `${t("SubscriptionSuccess.PageTitle")} | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
   robots: {
     noindex: true,
     nofollow: true
@@ -65,30 +66,30 @@ if (!subscribed.value) {
     <v-card v-if="subscribed" class="subscription-card" elevation="4">
       <v-card-title class="headline text-center">
         <v-icon large color="green" class="mr-3">mdi-check-circle</v-icon>
-        You're Subscribed!
+        {{ $t('SubscriptionSuccess.subscribed') }}
       </v-card-title>
       <v-divider></v-divider>
       <v-card-text>
         <p class="text-center">
-          Thank you for subscribing to <strong>Libtune Premium</strong>.
+          {{ $t('SubscriptionSuccess.thankYou') }} <strong>Libtune Premium</strong>.
         </p>
         <p class="text-left">
-          You now have unlimited access to our library of
-          <strong> 100% royalty-free music! </strong>
+          {{ $t('SubscriptionSuccess.nowUnlimitedAccess') }}
+          <strong> {{ $t('SignUp.100PrctRoyaltyFree') }} </strong>
         </p>
         <br />
         <p class="text-left">
-          <strong>Next Steps:</strong>
+          <strong>{{ $t('SignUp.nextSteps') }}:</strong>
         </p>
         <ul class="subscription-steps">
-          <li>Browse our extensive collection of music.</li>
-          <li>Download tracks with no limitations.</li>
-          <li>Use music for both recreational and commercial projects.</li>
+          <li>{{ $t('SubscriptionSuccess.subscriptionSteps.1') }}</li>
+          <li>{{ $t('SubscriptionSuccess.subscriptionSteps.2') }}</li>
+          <li>{{ $t('SubscriptionSuccess.subscriptionSteps.3') }}</li>
         </ul>
       </v-card-text>
       <v-card-actions class="justify-center">
         <v-btn color="primary" variant="elevated" large @click="goToPath('/')">
-          Explore Music Library
+          {{ $t('SubscriptionSuccess.browse') }}
         </v-btn>
       </v-card-actions>
     </v-card>

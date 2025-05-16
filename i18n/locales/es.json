@@ -175,6 +175,19 @@
         "noAccount": "¿Aún no tienes una cuenta?",
         "register": "Registrarse",
         "wrong": "Correo electrónico o contraseña incorrectos"
+    },
+    "SubscriptionSuccess": {
+        "PageTitle": "Resultado de la Suscripción",
+        "subscribed": "¡Estás suscrito!",
+        "thankYou": "Gracias por suscribirte a",
+        "nowUnlimitedAccess": "Ahora tienes acceso ilimitado a nuestra biblioteca de",
+        "subscriptionSteps": {
+            "1": "Explora nuestra extensa colección de música.",
+            "2": "Descarga pistas sin limitaciones.",
+            "3": "Usa la música en proyectos recreativos y comerciales."
+        },
+        "browse": "Explorar Biblioteca Musical"
     }
+
 
 }
