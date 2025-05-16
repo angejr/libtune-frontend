@@ -189,32 +189,91 @@
         "browse": "Explorar Biblioteca Musical"
     },
     "AboutUs": {
-  "PageTitle": "Sobre Nosotros",
-  "PageDescription": "Nuestra misión es hacer que la música premium sea accesible para todos tus proyectos creativos, garantizando siempre simplicidad y profesionalismo.",
-  "aboutLibtune": "Acerca de Libtune",
-  "intro": "Libtune es tu plataforma de referencia para música libre de derechos y de alta calidad. Ya seas creador de contenido, podcaster, cineasta o profesional, te damos la libertad de mejorar tus proyectos con bandas sonoras excepcionales. Nuestra misión es hacer que la música premium sea accesible para todos tus proyectos creativos, garantizando siempre simplicidad y profesionalismo.",
-  "no": "NINGÚN",
-  "any": "CUALQUIER",
-  "commitments": {
-    "title": "Paga una vez (al mes), úsala en todas partes",
-    "1": "Reclamaciones de copyright",
-    "2": "Desmonetizaciones",
-    "3": "Regalías que pagar a nadie",
-    "4": "Proyecto que desees"
-  },
-  "features": {
-    "title": "¿Qué nos hace únicos?",
-    "1": "Una amplia biblioteca de pistas cuidadosamente seleccionadas y de alta calidad.",
-    "2": "Licencias libres de derechos para uso personal y comercial.",
-    "3": "Descargas ilimitadas con nuestro plan premium asequible.",
-    "4": "Una experiencia fluida con un enfoque centrado en el usuario."
-  },
-  "start": "Empieza tu camino con Libtune",
-  "email": "Correo electrónico",
-  "getPremium": "Hazte Premium",
-  "contact": "Contáctanos"
-}
-
-
-
+        "PageTitle": "Sobre Nosotros",
+        "PageDescription": "Nuestra misión es hacer que la música premium sea accesible para todos tus proyectos creativos, garantizando siempre simplicidad y profesionalismo.",
+        "aboutLibtune": "Acerca de Libtune",
+        "intro": "Libtune es tu plataforma de referencia para música libre de derechos y de alta calidad. Ya seas creador de contenido, podcaster, cineasta o profesional, te damos la libertad de mejorar tus proyectos con bandas sonoras excepcionales. Nuestra misión es hacer que la música premium sea accesible para todos tus proyectos creativos, garantizando siempre simplicidad y profesionalismo.",
+        "no": "NINGÚN",
+        "any": "CUALQUIER",
+        "commitments": {
+            "title": "Paga una vez (al mes), úsala en todas partes",
+            "1": "Reclamaciones de copyright",
+            "2": "Desmonetizaciones",
+            "3": "Regalías que pagar a nadie",
+            "4": "Proyecto que desees"
+        },
+        "features": {
+            "title": "¿Qué nos hace únicos?",
+            "1": "Una amplia biblioteca de pistas cuidadosamente seleccionadas y de alta calidad.",
+            "2": "Licencias libres de derechos para uso personal y comercial.",
+            "3": "Descargas ilimitadas con nuestro plan premium asequible.",
+            "4": "Una experiencia fluida con un enfoque centrado en el usuario."
+        },
+        "start": "Empieza tu camino con Libtune",
+        "email": "Correo electrónico",
+        "getPremium": "Hazte Premium",
+        "contact": "Contáctanos"
+    },
+    "Terms": {
+        "pageTitle": "Términos y Condiciones",
+        "heading": "Términos de Servicio para Libtune",
+        "effectiveDateLabel": "Fecha de entrada en vigor:",
+        "lastUpdatedLabel": "Última actualización:",
+        "intro": "¡Bienvenido a Libtune! Estos Términos de Servicio (“Términos”) regulan tu acceso y uso de la plataforma Libtune, incluyendo nuestro sitio web, servicios y biblioteca musical (colectivamente, los “Servicios”). Al usar Libtune, aceptas estos Términos. Si no estás de acuerdo, no puedes utilizar los Servicios.",
+        "definitionsTitle": "1. Definiciones",
+        "definitions": {
+            "libtune": "\"Libtune\" se refiere a nuestra plataforma, servicios y cualquier aplicación asociada.",
+            "content": "\"Contenido\" se refiere a la música, pistas de audio y otros archivos de sonido disponibles en Libtune.",
+            "user": "\"Usuario\" se refiere a cualquier persona o entidad que utilice los Servicios, ya sea gratuita o pagando.",
+            "plan": "\"Plan de Suscripción\" se refiere al servicio de pago que proporciona acceso para descargar y usar Contenido bajo la licencia especificada."
+        },
+        "licenseTitle": "2. Concesión de Licencia",
+        "license": {
+            "permittedTitle": "2.1 Usos Permitidos:",
+            "permitted": "Al suscribirte a un Plan de Suscripción de pago, Libtune te otorga una licencia no exclusiva, intransferible y libre de regalías para:",
+            "useRecreational": "Usar el Contenido de forma recreativa (por ejemplo, escucha personal o proyectos privados).",
+            "useCommercial": "Usar el Contenido con fines comerciales, como en videos monetizados de YouTube, podcasts, anuncios u otros proyectos de medios.",
+            "prohibitedTitle": "2.2 Usos Prohibidos:",
+            "redistribute": "Redistribuir, vender o sublicenciar el Contenido tal como está o como parte de un servicio competidor.",
+            "ownershipClaim": "Afirmar la propiedad del Contenido.",
+            "illegal": "Utilizar el Contenido en proyectos que violen leyes aplicables o promuevan discursos de odio, violencia o actividades ilegales."
+        },
+        "subscriptionTitle": "3. Suscripción y Pago",
+        "subscription": {
+            "plans": "3.1 Planes de Suscripción: El acceso al Contenido descargable de Libtune está disponible mediante un Plan de Suscripción de pago. Los detalles del plan, incluyendo precios y beneficios, se encuentran en nuestro sitio web.",
+            "payments": "3.2 Pagos: Todos los pagos se procesan de forma segura a través de Stripe. Las tarifas de suscripción se facturan mensualmente de forma recurrente.",
+            "cancellation": "3.3 Cancelación: Puedes cancelar tu suscripción en cualquier momento desde la configuración de tu cuenta. Tras la cancelación, conservarás el acceso a los Servicios hasta el final de tu ciclo de facturación."
+        },
+        "ipTitle": "4. Propiedad Intelectual",
+        "ip": {
+            "ownership": "4.1 Propiedad: Todo el Contenido disponible en Libtune sigue siendo propiedad intelectual de Libtune y/o sus licenciantes. Los usuarios no adquieren derechos de propiedad sobre el Contenido.",
+            "attribution": "4.2 Atribución: Aunque no es obligatorio, animamos a los usuarios a acreditar a Libtune en sus proyectos cuando sea posible."
+        },
+        "responsibilitiesTitle": "5. Responsabilidades del Usuario",
+        "responsibilities": {
+            "security": "5.1 Seguridad de la Cuenta: Eres responsable de mantener la seguridad de tus credenciales de cuenta y de todas las actividades realizadas a través de tu cuenta.",
+            "compliance": "5.2 Cumplimiento: Aceptas usar los Servicios de acuerdo con todas las leyes y regulaciones aplicables."
+        },
+        "terminationTitle": "6. Terminación",
+        "termination": {
+            "clause1": "6.1 Libtune se reserva el derecho de suspender o cancelar tu cuenta en cualquier momento por violación de estos Términos o uso indebido de los Servicios.",
+            "clause2": "6.2 Tras la terminación, se revocará tu acceso al Contenido, pero los proyectos creados durante tu suscripción activa podrán seguir utilizando el Contenido licenciado."
+        },
+        "disclaimerTitle": "7. Exclusión de Garantías",
+        "disclaimer": "Libtune proporciona los Servicios “tal como están” y rechaza todas las garantías, expresas o implícitas, incluyendo pero no limitándose a comerciabilidad, idoneidad para un propósito particular y no infracción.",
+        "liabilityTitle": "8. Limitación de Responsabilidad",
+        "liability": "En la máxima medida permitida por la ley, Libtune no será responsable de ningún daño indirecto, incidental, consecuente o especial que surja de o en relación con tu uso de los Servicios.",
+        "indemnificationTitle": "9. Indemnización",
+        "indemnification": "Aceptas indemnizar y eximir de responsabilidad a Libtune frente a cualquier reclamación, daño o gasto (incluidos honorarios legales razonables) derivados de tu uso de los Servicios o del incumplimiento de estos Términos.",
+        "lawTitle": "10. Legislación Aplicable",
+        "law": "Estos Términos se rigen por las leyes de Francia. Cualquier disputa que surja de o esté relacionada con estos Términos se resolverá en el tribunal de París.",
+        "changesTitle": "11. Cambios en los Términos",
+        "changes": "Libtune se reserva el derecho de modificar estos Términos en cualquier momento. Notificaremos a los usuarios sobre cambios importantes por correo electrónico o mediante notificaciones en la plataforma. El uso continuado de los Servicios después de los cambios implica la aceptación de los nuevos Términos.",
+        "contactTitle": "12. Información de Contacto",
+        "contact": {
+            "intro": "Si tienes preguntas sobre estos Términos, contáctanos en:",
+            "emailLabel": "Correo electrónico:",
+            "closing": "Al usar Libtune, aceptas estos Términos. ¡Gracias por elegir Libtune para tus necesidades musicales!"
+        }
+    }
 }

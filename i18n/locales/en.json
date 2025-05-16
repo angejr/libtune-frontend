@@ -2,11 +2,11 @@
     "Landing": {
         "PageTitle": "Royalty Free Music for Any Project",
         "StartFreeTrial": "Start Free Trial",
-        "MusicCategory":{
+        "MusicCategory": {
             "Electronic": "Electronic",
             "Hip-Hop": "Hip-Hop",
-            "Cinematic": "Cinematic", 
-            "Classical": "Classical", 
+            "Cinematic": "Cinematic",
+            "Classical": "Classical",
             "Acoustic": "Acoustic"
         },
         "TitleVersions": {
@@ -17,7 +17,6 @@
             "5": "Unleash Your Stories with the Right Sound",
             "6": "Create Without Limits, Share Without Fear",
             "7": "Beautiful Sound, Zero Stress"
-          
         },
         "SubtitleVersions": {
             "1": {
@@ -48,43 +47,43 @@
             "title": "Frequently Asked Questions",
             "1": {
                 "title": "What is royalty-free music?",
-                "text":"Royalty-free music is a type of licensing that allows the use of licensed music in multiple projects without paying additional fees. The purchaser pays a one-time fee often for a perpetual license. It's commonly used in films, TV shows, commercials, and other media projects. The cost varies depending on length, usage, and composer popularity. It's a cost-effective alternative to traditional licensing, where ongoing royalties must be paid each time the music is used."
+                "text": "Royalty-free music is a type of licensing that allows the use of licensed music in multiple projects without paying additional fees. The purchaser pays a one-time fee often for a perpetual license. It's commonly used in films, TV shows, commercials, and other media projects. The cost varies depending on length, usage, and composer popularity. It's a cost-effective alternative to traditional licensing, where ongoing royalties must be paid each time the music is used."
             },
             "2": {
                 "title": "How can I use royalty-free music?",
-                "text":"You can use royalty-free music as background music for videos on platforms like YouTube, Vimeo, Instagram, TikTok, and more. Other common media projects where you can use your royalty-free music are on websites in various projects, as background music in all sorts of games, mobile apps, presentations, and more."
+                "text": "You can use royalty-free music as background music for videos on platforms like YouTube, Vimeo, Instagram, TikTok, and more. Other common media projects where you can use your royalty-free music are on websites in various projects, as background music in all sorts of games, mobile apps, presentations, and more."
             },
             "3": {
                 "title": "Where can I find royalty-free music?",
-                "text":"There are many websites that offer royalty-free music that you can use for your different projects. However, the music quality can vary a lot as well as the license agreements."
+                "text": "There are many websites that offer royalty-free music that you can use for your different projects. However, the music quality can vary a lot as well as the license agreements."
             },
             "4": {
                 "title": "Is royalty-free music really free?",
-                "text":"Royalty-free music means that the music is free from any additional royalties. However, while the music may be free from royalties, it is usually not completely free of cost as you at first most likely need to buy the license."
+                "text": "Royalty-free music means that the music is free from any additional royalties. However, while the music may be free from royalties, it is usually not completely free of cost as you at first most likely need to buy the license."
             },
             "5": {
                 "title": "Can I use royalty-free music for commercial purposes?",
-                "text":"Yes, you can use royalty-free music for commercial purposes, as long as you follow the terms and conditions specified by the licensor of the music. Libtune's royalty-free music can be used for any purpose, including commercial purposes."
+                "text": "Yes, you can use royalty-free music for commercial purposes, as long as you follow the terms and conditions specified by the licensor of the music. Libtune's royalty-free music can be used for any purpose, including commercial purposes."
             },
             "6": {
                 "title": "Do I need to give credit to the artist when using royalty-free music?",
-                "text":"It depends on the terms and conditions specified by the license provider. Some royalty-free music providers may require you to give credit to the artist, while others may not. Libtune does not require subscribers to give credit to any artists, although it’s highly appreciated."
+                "text": "It depends on the terms and conditions specified by the license provider. Some royalty-free music providers may require you to give credit to the artist, while others may not. Libtune does not require subscribers to give credit to any artists, although it’s highly appreciated."
             },
             "7": {
                 "title": "Are there any limitations to using royalty-free music with Libtune?",
-                "text":"Our music is forbidden to be used with explicit or illegal content. Other than that, our music has no limitations as long as you have a valid subscription."
+                "text": "Our music is forbidden to be used with explicit or illegal content. Other than that, our music has no limitations as long as you have a valid subscription."
             },
             "8": {
                 "title": "Is copyright-free music and license-free music the same as royalty-free music?",
-                "text":"No, 'copyright-free music' and 'license-free music' are not the same as 'royalty-free music'. Copyright-free music means that the music is not protected by copyright law and can be used freely. However, just because the music is not protected, it doesn't mean that the music is free of charge. License-free music means that the music does not require a license to be used and the user does not need to pay for the right to use the music, but this doesn't necessarily mean that the music is free of charge. Royalty-free music, on the other hand, refers to music that can be used without paying royalties each time the music is used or performed."
+                "text": "No, 'copyright-free music' and 'license-free music' are not the same as 'royalty-free music'. Copyright-free music means that the music is not protected by copyright law and can be used freely. However, just because the music is not protected, it doesn't mean that the music is free of charge. License-free music means that the music does not require a license to be used and the user does not need to pay for the right to use the music, but this doesn't necessarily mean that the music is free of charge. Royalty-free music, on the other hand, refers to music that can be used without paying royalties each time the music is used or performed."
             },
             "9": {
                 "title": "How do I make sure that I have the right to use the royalty-free music?",
-                "text":"When buying a subscription from Libtune, you have the complete right to use the music as you wish on any platform. If using another royalty-free music provider, make sure to read the licensing agreement carefully before using the music for any projects. This agreement will specify the terms and conditions under which the music can be used."
+                "text": "When buying a subscription from Libtune, you have the complete right to use the music as you wish on any platform. If using another royalty-free music provider, make sure to read the licensing agreement carefully before using the music for any projects. This agreement will specify the terms and conditions under which the music can be used."
             },
             "10": {
                 "title": "Can I use royalty-free music on all social platforms?",
-                "text":"In most cases, yes. However, you need to verify the terms of the license agreement from your music provider as well as the policies of that particular social platform. Some royalty-free music licenses may restrict usage on certain platforms for various reasons, while others may provide free usage on all platforms. Additionally, some social platforms have their own music libraries and licensing agreements which you have to consider before using your own licensed music. Libtune does not restrict the usage of your purchased music in any form, except if used for explicit or illegal content."
+                "text": "In most cases, yes. However, you need to verify the terms of the license agreement from your music provider as well as the policies of that particular social platform. Some royalty-free music licenses may restrict usage on certain platforms for various reasons, while others may provide free usage on all platforms. Additionally, some social platforms have their own music libraries and licensing agreements which you have to consider before using your own licensed music. Libtune does not restrict the usage of your purchased music in any form, except if used for explicit or illegal content."
             }
         },
         "Reviews": {
@@ -129,20 +128,20 @@
         "Contact": "Contact"
     },
     "AppBar": {
-            "pricing": "Pricing",
-            "about": "About Us",
-            "terms": "Terms",
-            "termsAndConditions": "Terms & Conditions",
-            "login": "Login",
-            "logout": "Logout",
-            "signup": "Sign Up",
-            "account": "My Account",
-            "sale": "Spring Sale 50% OFF",
-            "authentication": "Authentication",
-            "information": "Information",
-            "profile": "Profile",
-            "plan": "Account Plan",
-            "upgrade": "Upgrade"
+        "pricing": "Pricing",
+        "about": "About Us",
+        "terms": "Terms",
+        "termsAndConditions": "Terms & Conditions",
+        "login": "Login",
+        "logout": "Logout",
+        "signup": "Sign Up",
+        "account": "My Account",
+        "sale": "Spring Sale 50% OFF",
+        "authentication": "Authentication",
+        "information": "Information",
+        "profile": "Profile",
+        "plan": "Account Plan",
+        "upgrade": "Upgrade"
     },
     "Subscribe": {
         "PageTitle": "Pricing {'|'} v_{titleVersion}_{subtitleVersion}",
@@ -214,5 +213,67 @@
         "email": "Email",
         "getPremium": "Get Premium",
         "contact": "Contact Us"
-
-    }}
+    },
+    "Terms": {
+        "pageTitle": "Terms and Conditions",
+        "heading": "Terms of Service for Libtune",
+        "effectiveDateLabel": "Effective Date:",
+        "lastUpdatedLabel": "Last Updated:",
+        "intro": "Welcome to Libtune! These Terms of Service (“Terms”) govern your access to and use of the Libtune platform, including our website, services, and music library (collectively, the “Services”). By using Libtune, you agree to these Terms. If you do not agree, you may not use the Services.",
+        "definitionsTitle": "1. Definitions",
+        "definitions": {
+            "libtune": "\"Libtune\" refers to our platform, services, and any associated applications.",
+            "content": "\"Content\" refers to the music, soundtracks, and other audio files available on Libtune.",
+            "user": "\"User\" refers to any individual or entity using the Services, whether free or paying.",
+            "plan": "\"Subscription Plan\" refers to the paid service that provides access to download and use Content under the specified license."
+        },
+        "licenseTitle": "2. License Grant",
+        "license": {
+            "permittedTitle": "2.1 Permitted Uses:",
+            "permitted": "Upon subscribing to a paid Subscription Plan, Libtune grants you a non-exclusive, non-transferable, royalty-free license to:",
+            "useRecreational": "Use the Content recreationally (e.g., personal listening or private projects).",
+            "useCommercial": "Use the Content for commercial purposes, such as in monetized YouTube videos, podcasts, advertisements, or other media projects.",
+            "prohibitedTitle": "2.2 Prohibited Uses:",
+            "redistribute": "Redistribute, sell, or sublicense the Content as is or as part of a competing service.",
+            "ownershipClaim": "Claim ownership of the Content.",
+            "illegal": "Use the Content in projects that violate applicable laws or promote hate speech, violence, or illegal activities."
+        },
+        "subscriptionTitle": "3. Subscription and Payment",
+        "subscription": {
+            "plans": "3.1 Subscription Plans: Access to Libtune’s downloadable Content is available through a paid Subscription Plan. Plan details, including pricing and benefits, are listed on our website.",
+            "payments": "3.2 Payments: All payments are processed securely via Stripe. Subscription fees are billed on a recurring monthly basis.",
+            "cancellation": "3.3 Cancellation: You may cancel your subscription at any time through your account settings. Upon cancellation, you will retain access to the Services until the end of your billing cycle."
+        },
+        "ipTitle": "4. Intellectual Property",
+        "ip": {
+            "ownership": "4.1 Ownership: All Content available on Libtune remains the intellectual property of Libtune and/or its licensors. Users do not obtain ownership rights to the Content.",
+            "attribution": "4.2 Attribution: While attribution is not required, we encourage users to credit Libtune in their projects where applicable."
+        },
+        "responsibilitiesTitle": "5. User Responsibilities",
+        "responsibilities": {
+            "security": "5.1 Account Security: You are responsible for maintaining the security of your account credentials and for all activities conducted through your account.",
+            "compliance": "5.2 Compliance: You agree to use the Services in accordance with all applicable laws and regulations."
+        },
+        "terminationTitle": "6. Termination",
+        "termination": {
+            "clause1": "6.1 Libtune reserves the right to suspend or terminate your account at any time for violation of these Terms or misuse of the Services.",
+            "clause2": "6.2 Upon termination, your access to the Content will be revoked, but any projects created during your active subscription may continue to use the licensed Content."
+        },
+        "disclaimerTitle": "7. Disclaimer of Warranties",
+        "disclaimer": "Libtune provides the Services “as is” and disclaims all warranties, express or implied, including but not limited to merchantability, fitness for a particular purpose, and non-infringement.",
+        "liabilityTitle": "8. Limitation of Liability",
+        "liability": "To the fullest extent permitted by law, Libtune shall not be liable for any indirect, incidental, consequential, or special damages arising out of or in connection with your use of the Services.",
+        "indemnificationTitle": "9. Indemnification",
+        "indemnification": "You agree to indemnify and hold Libtune harmless from any claims, damages, or expenses (including reasonable legal fees) arising out of your use of the Services or breach of these Terms.",
+        "lawTitle": "10. Governing Law",
+        "law": "These Terms are governed by the laws of France. Any disputes arising from or related to these Terms shall be resolved in the court of Paris.",
+        "changesTitle": "11. Changes to the Terms",
+        "changes": "Libtune reserves the right to modify these Terms at any time. We will notify users of significant changes via email or platform notifications. Continued use of the Services after changes are implemented constitutes your acceptance of the new Terms.",
+        "contactTitle": "12. Contact Information",
+        "contact": {
+            "intro": "If you have questions about these Terms, please contact us at:",
+            "emailLabel": "Email:",
+            "closing": "By using Libtune, you agree to these Terms. Thank you for choosing Libtune for your music needs!"
+        }
+    }
+}
