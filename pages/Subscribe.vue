@@ -10,8 +10,8 @@ const { t, locales, setLocale } = useI18n();
 useSeoMeta({
   title: t("Subscribe.PageTitle", {titleVersion: displayStore.titleVersion, subtitleVersion: displayStore.subtitleVersion}),
   ogtitle: t("Subscribe.PageTitle", {titleVersion: displayStore.titleVersion, subtitleVersion: displayStore.subtitleVersion}),
-  description: "Most affordable copyright free music plan, unlimited downloads and unlimited licence for commercial use, no attribution needed. Cancel anytime",
-  ogDescription: "Most affordable copyright free music plan, unlimited downloads and unlimited licence for commercial use, no attribution needed. Cancel anytime",
+  description: t("Subscribe.PageDescription"),
+  ogDescription: t("Subscribe.PageDescription"),
 
 })
 

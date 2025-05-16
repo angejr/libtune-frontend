@@ -145,6 +145,7 @@
             "upgrade": "Upgrade"
     },
     "Subscribe": {
-        "PageTitle": "Pricing {'|'} v_{titleVersion}_{subtitleVersion}"
+        "PageTitle": "Pricing {'|'} v_{titleVersion}_{subtitleVersion}",
+        "PageDescription": "Most affordable copyright free music plan, unlimited downloads and unlimited licence for commercial use, no attribution needed. Cancel anytime"
     }
 }

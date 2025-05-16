@@ -144,6 +144,7 @@
         "upgrade": "Mejorar"
     },
     "Subscribe": {
-        "PageTitle": "Precios {'|'} v_{titleVersion}_{subtitleVersion}"
+        "PageTitle": "Precios {'|'} v_{titleVersion}_{subtitleVersion}",
+        "PageDescription": "El plan de música libre de derechos más económico: descargas ilimitadas y licencia ilimitada para uso comercial, sin necesidad de atribución. Cancela en cualquier momento."
     }
 }
