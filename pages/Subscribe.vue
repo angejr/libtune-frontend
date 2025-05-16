@@ -5,10 +5,11 @@ const config = useRuntimeConfig();
 const STRAPI_URL = config.public.strapiUrl;
 const stripeLoading = ref(false);
 const displayStore = useDisplayStore();
+const { t, locales, setLocale } = useI18n();
 
 useSeoMeta({
-  title: `Pricing | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
-  ogtitle: `Subscribe | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  title: t("Subscribe.PageTitle", {titleVersion: displayStore.titleVersion, subtitleVersion: displayStore.subtitleVersion}),
+  ogtitle: t("Subscribe.PageTitle", {titleVersion: displayStore.titleVersion, subtitleVersion: displayStore.subtitleVersion}),
   description: "Most affordable copyright free music plan, unlimited downloads and unlimited licence for commercial use, no attribution needed. Cancel anytime",
   ogDescription: "Most affordable copyright free music plan, unlimited downloads and unlimited licence for commercial use, no attribution needed. Cancel anytime",
 
@@ -40,41 +41,60 @@ async function subscribe (){
   <v-container class="py-8" style="display: flex; justify-content: center">
     <v-card class="premium-plan-card" elevation="10" max-width="400">
       <v-card-title class="text-center text-h5 font-weight-bold">
-          Premium Plan
+        {{ $t("Landing.Subscription.plan") }}
         </v-card-title>
         <v-card-title class="text-center text-h6">
           <div style="display:flex; justify-content: center; gap:5px">
             <p class="text-decoration-line-through text-sm">
-              {{ displayStore.countryPrice.priceOriginalValue}}/month
+              {{ displayStore.countryPrice.priceOriginalValue}}/{{
+                $t("Landing.Subscription.month")
+              }}
             </p>
           </div>
-          <div class="price" style="display: flex; align-items: baseline; justify-content: center; color:red"><h1>{{ displayStore.countryPrice.priceValue}}</h1><p style="font-size:x-small">/month</p></div>
-          <h6>Billed monthly, cancel anytime</h6>
+          <div class="price" style="display: flex; align-items: baseline; justify-content: center; color:red"><h1>{{ displayStore.countryPrice.priceValue}}</h1><p style="font-size:x-small">/{{
+                $t("Landing.Subscription.month")
+              }}</p></div>
+          <h6>{{ $t("Landing.Subscription.billing") }}</h6>
         </v-card-title>
       <v-divider></v-divider>
       <v-card-text>
         <v-list dense>
-          <v-list-item class="premium-feature">
-            <v-icon icon="mdi-check-outline" class="list-icon positive"></v-icon>
-            Unlimited downloads
-          </v-list-item>
-          <v-list-item class="premium-feature">
-            <v-icon icon="mdi-check-outline" class="list-icon positive"></v-icon>
-            License downloaded songs
-          </v-list-item>
-          <v-list-item class="premium-feature">
-            <v-icon icon="mdi-check-outline" class="list-icon positive"></v-icon>
-            Commercial use allowed
-          </v-list-item>
-          <v-list-item class="premium-feature">
-            <v-icon icon="mdi-check-outline" class="list-icon positive"></v-icon>
-            No attribution required
-          </v-list-item>
-          <v-list-item class="premium-feature">
-            <v-icon icon="mdi-gift-outline" class="list-icon positive"></v-icon>
-            Free bundle of 20 songs 
-          </v-list-item>
-        </v-list>
+            <v-list-item class="premium-feature">
+              <v-icon
+                icon="mdi-check-outline"
+                class="list-icon positive"
+              ></v-icon
+              >{{ $t("Landing.Subscription.features.1") }}</v-list-item
+            >
+            <v-list-item class="premium-feature">
+              <v-icon
+                icon="mdi-check-outline"
+                class="list-icon positive"
+              ></v-icon
+              >{{ $t("Landing.Subscription.features.2") }}</v-list-item
+            >
+            <v-list-item class="premium-feature">
+              <v-icon
+                icon="mdi-check-outline"
+                class="list-icon positive"
+              ></v-icon
+              >{{ $t("Landing.Subscription.features.3") }}</v-list-item
+            >
+            <v-list-item class="premium-feature">
+              <v-icon
+                icon="mdi-check-outline"
+                class="list-icon positive"
+              ></v-icon
+              >{{ $t("Landing.Subscription.features.4") }}</v-list-item
+            >
+            <v-list-item class="premium-feature">
+              <v-icon
+                icon="mdi-gift-outline"
+                class="list-icon positive"
+              ></v-icon
+              >{{ $t("Landing.Subscription.features.5") }}</v-list-item
+            >
+          </v-list>
       </v-card-text>
       <v-card-actions class="mb-4" style="display: flex; justify-content: center">
         <v-btn
@@ -86,15 +106,15 @@ async function subscribe (){
           :loading="stripeLoading"
           @click="subscribe"
           class="text-capitalize"
-          style="font-family: Inter; width: 75%;"          >
-          Subscribe
+          style="font-family: Inter; width: 75%;">
+          {{ $t("Landing.Subscription.subscribe") }}
         </v-btn>
-        <h3 v-else>You are already subscribed !</h3>
+        <h3 v-else>{{ $t("Landing.Subscription.alreadySubscribed") }}</h3>
       </v-card-actions>
       <v-divider></v-divider>
         <v-card-actions class="mt-4" style="display: flex; justify-content: center; flex-direction: column; gap:10px">
           <v-chip size="small" dense prepend-icon="mdi-lock">
-              Secured payment
+            {{ $t("Landing.Subscription.secured") }}
             </v-chip>
           <div style="display: flex; align-items: center; justify-content: center; gap:10px">
               <v-img

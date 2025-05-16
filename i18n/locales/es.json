@@ -142,6 +142,8 @@
         "profile": "Perfil",
         "plan": "Plan de cuenta",
         "upgrade": "Mejorar"
+    },
+    "Subscribe": {
+        "PageTitle": "Precios {'|'} v_{titleVersion}_{subtitleVersion}"
     }
-
 }

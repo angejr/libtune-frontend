@@ -143,5 +143,8 @@
             "profile": "Profile",
             "plan": "Account Plan",
             "upgrade": "Upgrade"
+    },
+    "Subscribe": {
+        "PageTitle": "Pricing {'|'} v_{titleVersion}_{subtitleVersion}"
     }
 }
