@@ -147,5 +147,30 @@
     "Subscribe": {
         "PageTitle": "Pricing {'|'} v_{titleVersion}_{subtitleVersion}",
         "PageDescription": "Most affordable copyright free music plan, unlimited downloads and unlimited licence for commercial use, no attribution needed. Cancel anytime"
+    },
+    "SignUp": {
+        "PageTitle": "Sign-Up",
+        "haveAccount": "Already have an account ?",
+        "continueGoogle": "Continue with Google",
+        "or": "OR",
+        "agreement": "By signing up, you agree to the",
+        "signedUp": "You're Signed-Up!",
+        "thankYou": "Thank you for signing-up to",
+        "nowAccess": "You now have access to our library of",
+        "100PrctRoyaltyFree": "100% royalty-free music!",
+        "nextSteps": "Next Steps",
+        "subscriptionSteps": {
+            "1": "Browse our extensive collection of music.",
+            "2": "Upgrade to Libtune Premium to be able to:",
+            "3": "Download tracks with no limitations.",
+            "4": "Use music for both recreational and commercial projects."
+        },
+        "browse": "Browse",
+        "subscribe": "Subscribe",
+        "username": "Username",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password"
+
     }
 }

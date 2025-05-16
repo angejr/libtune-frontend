@@ -2,13 +2,14 @@
   <v-container class="signup-container" max-width="500">
     <v-card v-if="!authStore?.userToken" class="signup-card" elevation="10">
       <v-card-title class="text-center text-h5 font-weight-bold">
-        Sign Up
+        {{$t("AppBar.signup")}}
       </v-card-title>
       <v-divider></v-divider>
       <p class="text-center mt-4 mb-4">
-        Already have an account ? 
+        {{$t('SignUp.haveAccount')}} 
         <NuxtLink to="/login" class="terms-link">
-          Login
+          {{$t("AppBar.login")}}
+
         </NuxtLink>
       </p>
 
@@ -29,11 +30,11 @@
         width="20"
         height="20"
       />
-            Continue with Google
+      {{$t('SignUp.continueGoogle')}}
           </v-btn>
       </div>
       <div class="px-6 pt-4">
-        <v-divider>OR</v-divider>
+        <v-divider>{{$t('SignUp.or')}}</v-divider>
       </div>
       <v-card-text>
         <v-form
@@ -43,7 +44,7 @@
         >
           <v-text-field
             v-model="username"
-            label="Username"
+            :label="$t('SignUp.username')"
             variant="outlined"
             :rules="[validationRules.required, validationRules.safe, validationRules.max(60)]"
             dense
@@ -52,7 +53,7 @@
 
           <v-text-field
             v-model="email"
-            label="Email"
+            :label="$t('SignUp.email')"
             variant="outlined"
             :rules="[validationRules.required, validationRules.email, validationRules.safe, validationRules.max(60)]"
             dense
@@ -61,7 +62,7 @@
 
           <v-text-field
             v-model="password"
-            label="Password"
+            :label="$t('SignUp.password')"
             type="password"
             variant="outlined"
             :rules="[validationRules.required, validationRules.min(8), validationRules.safe, validationRules.max(30)]"
@@ -71,7 +72,7 @@
 
           <v-text-field
             v-model="confirmPassword"
-            label="Confirm Password"
+            :label="$t('SignUp.confirmPassword')"
             type="password"
             variant="outlined"
             :rules="[validationRules.required, matchPassword, validationRules.safe, validationRules.max(30)]"
@@ -80,9 +81,10 @@
           ></v-text-field>
 
           <p class="text-center mt-4 mb-4">
-            By signing up, you agree to the
+            {{$t('SignUp.agreement')}}
             <NuxtLink to="/terms" class="terms-link">
-              Terms and Conditions
+              {{$t("AppBar.termsAndConditions")}}
+
             </NuxtLink>
           </p>
 
@@ -95,7 +97,7 @@
             :loading="signUpLoading"
             class="text-capitalize font-inter"
           >
-            Sign Up
+          {{$t("AppBar.signup")}}
           </v-btn>
         </v-form>
       </v-card-text>
@@ -104,38 +106,38 @@
     <v-card v-else class="signup-card" elevation="4">
       <v-card-title class="headline text-center">
         <v-icon large color="green" class="mr-3">mdi-check-circle</v-icon>
-        You're Signed-Up!
+        {{$t("SignUp.signedUp")}}
       </v-card-title>
       <v-divider></v-divider>
       <v-card-text>
         <p class="text-center">
-          Thank you for signing-up to <strong>Libtune</strong>.
+          {{$t("SignUp.thankYou")}} <strong>Libtune</strong>.
         </p>
         <p class="text-center">
-          You now have access to our library of
-          <strong> 100% royalty-free music! </strong>
+          {{$t("SignUp.nowAccess")}}
+          <strong> {{$t("SignUp.100PrctRoyaltyFree")}} </strong>
         </p>
         <br />
         <p class="text-left">
-          <strong>Next Steps:</strong>
+          <strong>{{$t("SignUp.nextSteps")}}:</strong>
         </p>
         <ul class="subscription-steps">
-          <li>Browse our extensive collection of music.</li>
+          <li>{{$t("SignUp.subscriptionSteps.1")}}</li>
         </ul>
 
         <v-spacer></v-spacer>
         <p class="text-left">
-          <strong> Upgrade to Libtune Premium to be able to:</strong>
+          <strong> {{$t("SignUp.subscriptionSteps.2")}}</strong>
         </p>
         <ul class="subscription-steps">
-          <li>Download tracks with no limitations.</li>
-          <li>Use music for both recreational and commercial projects.</li>
+          <li>{{$t("SignUp.subscriptionSteps.3")}}</li>
+          <li>{{$t("SignUp.subscriptionSteps.4")}}</li>
         </ul>
       </v-card-text>
       <v-card-actions class="justify-space-evenly">
         <v-btn color="primary" class="font-inter text-capitalize"
         variant="elevated" large @click="goToPath('/')" >
-          Browse
+        {{$t("SignUp.browse")}}
         </v-btn>
         <v-btn
             v-if="!authStore?.user?.customerId"
@@ -147,7 +149,7 @@
             :loading="stripeLoading"
             @click="subscribeAction()"
           >
-          Subscribe
+          {{$t("SignUp.subscribe")}}
           </v-btn>
       </v-card-actions>
     </v-card>
@@ -172,10 +174,11 @@ const STRAPI_URL = config.public.strapiUrl
 const signUpLoading = ref(!!idToken.value && !!accessToken.value);
 const stripeLoading = ref(false);
 const displayStore = useDisplayStore()
+const { t, locales, setLocale } = useI18n();
 
 useSeoMeta({
-  title: `Sign-Up | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
-  ogTitle: `Sign-Up | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  title: `${t('SignUp.PageTitle')} | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  ogTitle: `${t('SignUp.PageTitle')} | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
   robots: {
     noindex: true,
     nofollow: true

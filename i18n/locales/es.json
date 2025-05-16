@@ -2,7 +2,7 @@
     "Landing": {
         "PageTitle": "Música sin copyright para todos los proyectos",
         "StartFreeTrial": "Iniciar prueba gratuita",
-        "MusicCategory":{
+        "MusicCategory": {
             "Electronic": "Electronica",
             "Hip-Hop": "Hip-hop",
             "Cinematic": "Cinemática",
@@ -17,7 +17,7 @@
             "5": "Libera tus historias con el sonido adecuado",
             "6": "Crea sin límites, comparte sin miedo",
             "7": "Sonido hermoso, cero estrés"
-            },
+        },
         "SubtitleVersions": {
             "1": {
                 "1": "Acceso a miles de canciones de alta calidad",
@@ -146,5 +146,29 @@
     "Subscribe": {
         "PageTitle": "Precios {'|'} v_{titleVersion}_{subtitleVersion}",
         "PageDescription": "El plan de música libre de derechos más económico: descargas ilimitadas y licencia ilimitada para uso comercial, sin necesidad de atribución. Cancela en cualquier momento."
+    },
+    "SignUp": {
+        "PageTitle": "Registrarse",
+        "haveAccount": "¿Ya tienes una cuenta?",
+        "continueGoogle": "Continuar con Google",
+        "or": "O",
+        "agreement": "Al registrarte, aceptas los",
+        "signedUp": "¡Registro completado!",
+        "thankYou": "Gracias por registrarte en",
+        "nowAccess": "Ahora tienes acceso a nuestra biblioteca de",
+        "100PrctRoyaltyFree": "¡música 100% libre de derechos!",
+        "nextSteps": "Próximos pasos",
+        "subscriptionSteps": {
+            "1": "Explora nuestra amplia colección de música.",
+            "2": "Mejora a Libtune Premium para poder:",
+            "3": "Descargar pistas sin limitaciones.",
+            "4": "Usar música tanto en proyectos recreativos como comerciales."
+        },
+        "browse": "Explorar",
+        "subscribe": "Suscribirse",
+        "username": "Nombre de usuario",
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "confirmPassword": "Confirmar contraseña"
     }
 }
