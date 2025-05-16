@@ -127,5 +127,21 @@
             "secured": "Secured payment"
         },
         "Contact": "Contact"
+    },
+    "AppBar": {
+            "pricing": "Pricing",
+            "about": "About Us",
+            "terms": "Terms",
+            "termsAndConditions": "Terms & Conditions",
+            "login": "Login",
+            "logout": "Logout",
+            "signup": "Sign Up",
+            "account": "My Account",
+            "sale": "Spring Sale 50% OFF",
+            "authentication": "Authentication",
+            "information": "Information",
+            "profile": "Profile",
+            "plan": "Account Plan",
+            "upgrade": "Upgrade"
     }
 }

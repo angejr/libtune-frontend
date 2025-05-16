@@ -126,5 +126,22 @@
             "secured": "Pago seguro"
         },
         "Contact": "Contacto"
+    },
+    "AppBar": {
+        "pricing": "Precios",
+        "about": "Sobre Nosotros",
+        "terms": "Términos",
+        "termsAndConditions": "Términos y Condiciones",
+        "login": "Acceso",
+        "logout": "Cerrar sesión",
+        "signup": "Registrarse",
+        "account": "Mi Cuenta",
+        "sale": "50% Dto. Primavera",
+        "authentication": "Autenticación",
+        "information": "Información",
+        "profile": "Perfil",
+        "plan": "Plan de cuenta",
+        "upgrade": "Mejorar"
     }
+
 }

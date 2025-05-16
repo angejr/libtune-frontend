@@ -3,6 +3,7 @@ const authStore = useAuthStore();
 const displayStore = useDisplayStore()
 const drawer = ref(false)
 const drawerUser = ref(false)
+const { t, locales, setLocale } = useI18n();
 
 function resetDrawers(){
   drawer.value = false
@@ -74,19 +75,19 @@ onMounted(() => {
       <!-- Breadcrumbs -->
       <v-breadcrumbs class="breadcrumbs">
         <v-breadcrumbs-item
-          title="Pricing"
+          :title="$t('AppBar.pricing')"
           to="/subscribe"
         ></v-breadcrumbs-item>
         <v-breadcrumbs-divider divider=" "></v-breadcrumbs-divider>
-        <v-breadcrumbs-item title="About Us" to="/about"></v-breadcrumbs-item>
+        <v-breadcrumbs-item :title="$t('AppBar.about')" to="/about"></v-breadcrumbs-item>
         <v-breadcrumbs-divider divider=" "></v-breadcrumbs-divider>
-        <v-breadcrumbs-item title="Terms" to="/terms"></v-breadcrumbs-item>
+        <v-breadcrumbs-item :title="$t('AppBar.terms')" to="/terms"></v-breadcrumbs-item>
       </v-breadcrumbs>
 
       <!-- Authentication Buttons or Menu -->
       <div v-if="!authStore?.isAuthenticated" class="auth-buttons">
-        <v-btn @click="goToPath('/login')">Login</v-btn>
-        <v-btn @click="goToPath('/signup')" variant="outlined"> Sign-up </v-btn>
+        <v-btn @click="goToPath('/login')">{{$t('AppBar.login')}}</v-btn>
+        <v-btn @click="goToPath('/signup')" variant="outlined"> {{$t('AppBar.signup')}} </v-btn>
       </div>
 
       <v-menu v-else>
@@ -108,7 +109,7 @@ onMounted(() => {
             }}</v-list-subheader>
           </v-list-item>
           <v-list-item @click="goToPath('/account')" class="text-capitalize font-inter text-h6 font-weight-regular">
-            My Account
+            {{$t('AppBar.account')}}
           </v-list-item>
           <v-list-item
             prepend-icon="mdi-logout-variant"
@@ -118,7 +119,7 @@ onMounted(() => {
               authStore.logout();
             "
           >
-            <v-list-item-title>Logout</v-list-item-title>
+            <v-list-item-title>{{$t('AppBar.logout')}}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -134,7 +135,7 @@ onMounted(() => {
       </template>
       <v-app-bar-title>
         <div class="text-container">
-            Spring Sale 50% OFF: {{ formatTime(timeLeft) }}  
+          {{$t('AppBar.sale')}}: {{ formatTime(timeLeft) }}  
         </div>
       </v-app-bar-title>
     </v-app-bar>
@@ -184,31 +185,31 @@ onMounted(() => {
     <v-navigation-drawer v-model="drawer" location="left" temporary>
       <v-list>
         <v-list-subheader v-if="!authStore?.isAuthenticated">
-          Authentication</v-list-subheader
+          {{$t('AppBar.authentication')}}</v-list-subheader
         >
         <v-list-item
           class="text-capitalize font-inter text-h6 font-weight-regular"
           v-if="!authStore?.isAuthenticated"
           @click="goToPath('/login'); resetDrawers()"
-        >Login</v-list-item>
+        >{{$t('AppBar.login')}}</v-list-item>
         <v-list-item
           class="text-capitalize font-inter text-h6 font-weight-regular"
           v-if="!authStore?.isAuthenticated"
           @click="goToPath('/signup'); resetDrawers()"
-        >Sign Up</v-list-item>
+        >{{$t('AppBar.signup')}}</v-list-item>
         <v-divider v-if="!authStore?.isAuthenticated"></v-divider>
-        <v-list-subheader> Information</v-list-subheader>
+        <v-list-subheader> {{$t('AppBar.information')}}</v-list-subheader>
         <v-list-item
           class="text-capitalize font-inter text-h6 font-weight-regular"
           @click="goToPath('/subscribe'); resetDrawers()"
-        >Pricing</v-list-item>
+        >{{$t('AppBar.pricing')}}</v-list-item>
         <v-list-item
           class="text-capitalize font-inter text-h6 font-weight-regular" @click="goToPath('/about'); resetDrawers()">
-          About Us</v-list-item>
+          {{$t('AppBar.about')}}</v-list-item>
         <v-list-item
           class="text-capitalize font-inter text-h6 font-weight-regular"
           @click="goToPath('/terms'); resetDrawers()"
-        >Terms & Conditions</v-list-item>
+        >{{$t('AppBar.termsAndConditions')}}</v-list-item>
         <v-divider></v-divider>
         <v-list-item></v-list-item>
       </v-list>
@@ -216,7 +217,7 @@ onMounted(() => {
 
     <v-navigation-drawer v-model="drawerUser" location="right" temporary>
       <v-list>
-        <v-list-subheader>Account Plan</v-list-subheader>
+        <v-list-subheader>{{$t('AppBar.plan')}}</v-list-subheader>
         <v-list-item>
           <v-btn
             v-if="!authStore?.user?.customerId"
@@ -226,16 +227,16 @@ onMounted(() => {
             @click="goToPath('/subscribe')"
             class="text-capitalize font-inter"
           >
-            Upgrade
+          {{$t('AppBar.upgrade')}}
           </v-btn>
           <h4 v-else class="text-capitalize font-inter text-h6 font-weight-regular">Premium</h4>
         </v-list-item>
         <v-divider></v-divider>
-        <v-list-subheader>Profile</v-list-subheader>
+        <v-list-subheader>{{$t('AppBar.profile')}}</v-list-subheader>
         <v-list-item>{{ authStore?.user?.username }}</v-list-item>
           <v-list-item class="user-email">{{ authStore?.user?.email}}</v-list-item>
           <v-divider></v-divider>
-          <v-list-item @click="goToPath('/account'); resetDrawers()" class="text-capitalize font-inter text-h6 font-weight-regular">My Account</v-list-item>
+          <v-list-item @click="goToPath('/account'); resetDrawers()" class="text-capitalize font-inter text-h6 font-weight-regular">{{$t('AppBar.account')}}</v-list-item>
           <v-divider></v-divider>
         <v-list-item
           prepend-icon="mdi-logout-variant"
@@ -245,7 +246,7 @@ onMounted(() => {
             authStore?.logout();
             resetDrawers()
           "
-        >Logout</v-list-item>
+        >{{$t('AppBar.logout')}}</v-list-item>
       </v-list>
     </v-navigation-drawer>
   </div>
