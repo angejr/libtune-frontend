@@ -1,0 +1,131 @@
+{
+    "Landing": {
+        "PageTitle": "Royalty Free Music for Any Project",
+        "StartFreeTrial": "Start Free Trial",
+        "MusicCategory":{
+            "Electronic": "Electronic",
+            "Hip-Hop": "Hip-Hop",
+            "Cinematic": "Cinematic", 
+            "Classical": "Classical", 
+            "Acoustic": "Acoustic"
+        },
+        "TitleVersions": {
+            "1": "Royalty free music for all projects",
+            "2": "Bring your stories to life. Just add sound",
+            "3": "Freedom to Create, Confidence to Share",
+            "4": "Make Magic, Not Paperwork",
+            "5": "Unleash Your Stories with the Right Sound",
+            "6": "Create Without Limits, Share Without Fear",
+            "7": "Beautiful Sound, Zero Stress"
+          
+        },
+        "SubtitleVersions": {
+            "1": {
+                "1": "Access to thousands of high quality songs",
+                "2": "Unlimited downloads",
+                "3": "Licence to use the songs for any project, videos, streams and podcasts",
+                "4": "Publish anywhere and monetize your content"
+            },
+            "2": "Join the thousands of creators who trust Libtune to stay safe from copyright strikes and demonetization — so they can focus on creating, not worrying about takedowns.",
+            "3": "Libtune gives you unlimited access to 2000+ songs across every genre — all royalty-free, all forever yours. No legal confusion, just music you can trust.",
+            "4": "Libtune’s simple license and 2000+ song library lets you publish freely everywhere. Join thousands of creators who’ve left copyright strikes and demonetizations behind.",
+            "5": "Don’t let music copyrights ruin your projects. Libtune’s 2000+ track library gives you safe, professional sound and lifetime usage — all in one simple subscription.",
+            "6": "Tired of takedowns and muted videos? Libtune is a library of 2000+ royalty-free tracks with a license that protects you for life — no fine print.",
+            "7": "Libtune was made for creators like you — people who just want great music without the legal mess. 2000+ tracks, all cleared for lifetime use.",
+            "8": "Ever lost ad revenue over background music? Yeah, us too. That’s why Libtune gives you 2000+ royalty-free tracks and a super-simple license.",
+            "9": "Sick of strikes, takedowns, and muted videos ? Us too. That’s why we built Libtune — 2000+ royalty-free tracks, one license, zero nonsense.",
+            "10": "Don’t let one background beat ruin your whole video. Libtune gives you 2000+ safe songs and a forever license your future self will thank you for."
+        },
+        "TrialCondition": "Free, then { price }/month. Cancel anytime",
+        "WhyLibtune": {
+            "title": "Why Libtune ?",
+            "2": "2,000+ Royalty Free Songs",
+            "3": "Unlimited downloads",
+            "4": "Publish anywhere",
+            "5": "Soundtrack your content"
+        },
+        "Faq": {
+            "title": "Frequently Asked Questions",
+            "1": {
+                "title": "What is royalty-free music?",
+                "text":"Royalty-free music is a type of licensing that allows the use of licensed music in multiple projects without paying additional fees. The purchaser pays a one-time fee often for a perpetual license. It's commonly used in films, TV shows, commercials, and other media projects. The cost varies depending on length, usage, and composer popularity. It's a cost-effective alternative to traditional licensing, where ongoing royalties must be paid each time the music is used."
+            },
+            "2": {
+                "title": "How can I use royalty-free music?",
+                "text":"You can use royalty-free music as background music for videos on platforms like YouTube, Vimeo, Instagram, TikTok, and more. Other common media projects where you can use your royalty-free music are on websites in various projects, as background music in all sorts of games, mobile apps, presentations, and more."
+            },
+            "3": {
+                "title": "Where can I find royalty-free music?",
+                "text":"There are many websites that offer royalty-free music that you can use for your different projects. However, the music quality can vary a lot as well as the license agreements."
+            },
+            "4": {
+                "title": "Is royalty-free music really free?",
+                "text":"Royalty-free music means that the music is free from any additional royalties. However, while the music may be free from royalties, it is usually not completely free of cost as you at first most likely need to buy the license."
+            },
+            "5": {
+                "title": "Can I use royalty-free music for commercial purposes?",
+                "text":"Yes, you can use royalty-free music for commercial purposes, as long as you follow the terms and conditions specified by the licensor of the music. Libtune's royalty-free music can be used for any purpose, including commercial purposes."
+            },
+            "6": {
+                "title": "Do I need to give credit to the artist when using royalty-free music?",
+                "text":"It depends on the terms and conditions specified by the license provider. Some royalty-free music providers may require you to give credit to the artist, while others may not. Libtune does not require subscribers to give credit to any artists, although it’s highly appreciated."
+            },
+            "7": {
+                "title": "Are there any limitations to using royalty-free music with Libtune?",
+                "text":"Our music is forbidden to be used with explicit or illegal content. Other than that, our music has no limitations as long as you have a valid subscription."
+            },
+            "8": {
+                "title": "Is copyright-free music and license-free music the same as royalty-free music?",
+                "text":"No, 'copyright-free music' and 'license-free music' are not the same as 'royalty-free music'. Copyright-free music means that the music is not protected by copyright law and can be used freely. However, just because the music is not protected, it doesn't mean that the music is free of charge. License-free music means that the music does not require a license to be used and the user does not need to pay for the right to use the music, but this doesn't necessarily mean that the music is free of charge. Royalty-free music, on the other hand, refers to music that can be used without paying royalties each time the music is used or performed."
+            },
+            "9": {
+                "title": "How do I make sure that I have the right to use the royalty-free music?",
+                "text":"When buying a subscription from Libtune, you have the complete right to use the music as you wish on any platform. If using another royalty-free music provider, make sure to read the licensing agreement carefully before using the music for any projects. This agreement will specify the terms and conditions under which the music can be used."
+            },
+            "10": {
+                "title": "Can I use royalty-free music on all social platforms?",
+                "text":"In most cases, yes. However, you need to verify the terms of the license agreement from your music provider as well as the policies of that particular social platform. Some royalty-free music licenses may restrict usage on certain platforms for various reasons, while others may provide free usage on all platforms. Additionally, some social platforms have their own music libraries and licensing agreements which you have to consider before using your own licensed music. Libtune does not restrict the usage of your purchased music in any form, except if used for explicit or illegal content."
+            }
+        },
+        "Reviews": {
+            "title": "What our customers say",
+            "1": "Libtune has an awesome selection of tracks, super useful!",
+            "2": "Great for background music! Just wish there were more search filters.",
+            "3": "Finally a site that makes finding royalty-free music easy. Love it!",
+            "4": "Pretty solid, tho some tracks feel a bit generic. Still good tho!",
+            "5": "Libtune is my go-to for video projects. Affordable and legit.",
+            "6": "Gr8 site, easy to use. Found a lot of gems here!",
+            "7": "Was skeptical at first but it's actually really good.",
+            "8": "One of the better libraries out there. Needs more rock tho.",
+            "9": "Best royalty-free music site I’ve used, hands down.",
+            "10": "Decent variety. Some categories could use expansion.",
+            "11": "Tbh, didn’t expect much but ended up using it all the time.",
+            "12": "Love the premium options. Wud be nice to have a mobile app!",
+            "13": "Everything works well, but UI could be a bit more modern.",
+            "14": "Helped me find exactly what I needed for my podcast!",
+            "15": "The search function is way better than other sites. 👍",
+            "16": "Affordable, easy to navigate, and great variety.",
+            "17": "Good stuff, just wish some songs had more variations.",
+            "18": "Better than expected. Customer support was quick too!",
+            "19": "I use it for my Twitch streams. No copyright issues!",
+            "20": "Had some doubts at first but now I keep coming back!"
+        },
+        "Subscription": {
+            "title": "Our Subscription",
+            "plan": "Premium Plan",
+            "month": "month",
+            "billing": "Billed monthly, cancel anytime",
+            "features": {
+                "1": "Unlimited downloads",
+                "2": "License downloaded songs",
+                "3": "Commercial use allowed",
+                "4": "No attribution required",
+                "5": "Free bundle of 20 songs"
+            },
+            "subscribe": "subscribe",
+            "alreadySubscribed": "You are already subscribed !",
+            "secured": "Secured payment"
+        },
+        "Contact": "Contact"
+    }
+}

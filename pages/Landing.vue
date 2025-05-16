@@ -5,10 +5,11 @@ const errorStore = useErrorStore();
 const config = useRuntimeConfig();
 const STRAPI_URL = config.public.strapiUrl;
 const stripeLoading = ref(false);
+const { t, locales, setLocale } = useI18n();
 
 useSeoMeta({
-  title: `Royalty Free Music for Any Project`,
-  ogTitle: `Royalty Free Music for Any Project`,
+  title: t("Landing.PageTitle"),
+  ogTitle: t("Landing.PageTitle"),
   robots: {
     noindex: true,
     nofollow: true,
@@ -40,7 +41,7 @@ async function subscribe() {
   if (authStore?.userToken) {
     await goToStripe();
   } else {
-    displayStore.setSubscribeAfterSignUp(true)
+    displayStore.setSubscribeAfterSignUp(true);
     goToPath("/signup");
   }
 }
@@ -49,186 +50,201 @@ const items = [
   { id: 1, title: "Pop", color: "pink", image: "images/pop.jpg" },
   {
     id: 2,
-    title: "Electronic",
+    title: t("Landing.MusicCategory.Electronic"),
     color: "purple",
     image: "images/electronic.jpg",
   },
-  { id: 3, title: "Hip-Hop", color: "orange", image: "images/hip-hop.jpg" },
-  { id: 4, title: "Cinematic", color: "tiel", image: "images/cinematic.jpg" },
-  { id: 5, title: "Classical", color: "yellow", image: "images/classical.jpg" },
-  { id: 5, title: "Acoustic", color: "pink", image: "images/acoustic.jpg" },
+  {
+    id: 3,
+    title: t("Landing.MusicCategory.Hip-Hop"),
+    color: "orange",
+    image: "images/hip-hop.jpg",
+  },
+  {
+    id: 4,
+    title: t("Landing.MusicCategory.Cinematic"),
+    color: "tiel",
+    image: "images/cinematic.jpg",
+  },
+  {
+    id: 5,
+    title: t("Landing.MusicCategory.Classical"),
+    color: "yellow",
+    image: "images/classical.jpg",
+  },
+  {
+    id: 5,
+    title: t("Landing.MusicCategory.Acoustic"),
+    color: "pink",
+    image: "images/acoustic.jpg",
+  },
 ];
 
 const faq = [
   {
-    title: "What is royalty-free music?",
-    text: "Royalty-free music is a type of licensing that allows the use of licensed music in multiple projects without paying additional fees. The purchaser pays a one-time fee often for a perpetual license. It's commonly used in films, TV shows, commercials, and other media projects. The cost varies depending on length, usage, and composer popularity. It's a cost-effective alternative to traditional licensing, where ongoing royalties must be paid each time the music is used.",
+    title: t("Landing.Faq.1.title"),
+    text: t("Landing.Faq.1.text"),
   },
   {
-    title: "How can I use royalty-free music?",
-    text: "You can use royalty-free music as background music for videos on platforms like YouTube, Vimeo, Instagram, TikTok, and more. Other common media projects where you can use your royalty-free music are on websites in various projects, as background music in all sorts of games, mobile apps, presentations, and more.",
+    title: t("Landing.Faq.2.title"),
+    text: t("Landing.Faq.2.text"),
   },
   {
-    title: "Where can I find royalty-free music?",
-    text: "There are many websites that offer royalty-free music that you can use for your different projects. However, the music quality can vary a lot as well as the license agreements.",
+    title: t("Landing.Faq.3.title"),
+    text: t("Landing.Faq.3.text"),
   },
   {
-    title: "Is royalty-free music really free?",
-    text: "Royalty-free music means that the music is free from any additional royalties. However, while the music may be free from royalties, it is usually not completely free of cost as you at first most likely need to buy the license.",
+    title: t("Landing.Faq.4.title"),
+    text: t("Landing.Faq.4.text"),
   },
   {
-    title: "Can I use royalty-free music for commercial purposes?",
-    text: "Yes, you can use royalty-free music for commercial purposes, as long as you follow the terms and conditions specified by the licensor of the music. Libtune's royalty-free music can be used for any purpose, including commercial purposes.",
+    title: t("Landing.Faq.5.title"),
+    text: t("Landing.Faq.5.text"),
   },
   {
-    title:
-      "Do I need to give credit to the artist when using royalty-free music?",
-    text: "It depends on the terms and conditions specified by the license provider. Some royalty-free music providers may require you to give credit to the artist, while others may not. Libtune does not require subscribers to give credit to any artists, although it’s highly appreciated.",
+    title: t("Landing.Faq.6.title"),
+    text: t("Landing.Faq.6.text"),
   },
   {
-    title:
-      "Are there any limitations to using royalty-free music with Libtune?",
-    text: "Our music is forbidden to be used with explicit or illegal content. Other than that, our music has no limitations as long as you have a valid subscription.",
+    title: t("Landing.Faq.7.title"),
+    text: t("Landing.Faq.7.text"),
   },
   {
-    title:
-      "Is copyright-free music and license-free music the same as royalty-free music?",
-    text: "No, 'copyright-free music' and 'license-free music' are not the same as 'royalty-free music'. Copyright-free music means that the music is not protected by copyright law and can be used freely. However, just because the music is not protected, it doesn't mean that the music is free of charge. License-free music means that the music does not require a license to be used and the user does not need to pay for the right to use the music, but this doesn't necessarily mean that the music is free of charge. Royalty-free music, on the other hand, refers to music that can be used without paying royalties each time the music is used or performed.",
+    title: t("Landing.Faq.8.title"),
+    text: t("Landing.Faq.8.text"),
   },
   {
-    title:
-      "How do I make sure that I have the right to use the royalty-free music?",
-    text: "When buying a subscription from Libtune, you have the complete right to use the music as you wish on any platform. If using another royalty-free music provider, make sure to read the licensing agreement carefully before using the music for any projects. This agreement will specify the terms and conditions under which the music can be used.",
+    title: t("Landing.Faq.9.title"),
+    text: t("Landing.Faq.9.text"),
   },
   {
-    title: "Can I use royalty-free music on all social platforms?",
-    text: "In most cases, yes. However, you need to verify the terms of the license agreement from your music provider as well as the policies of that particular social platform. Some royalty-free music licenses may restrict usage on certain platforms for various reasons, while others may provide free usage on all platforms. Additionally, some social platforms have their own music libraries and licensing agreements which you have to consider before using your own licensed music. Libtune does not restrict the usage of your purchased music in any form, except if used for explicit or illegal content.",
+    title: t("Landing.Faq.10.title"),
+    text: t("Landing.Faq.10.text"),
   },
 ];
 
 const reviews = [
   {
     id: 1,
-    text: "Libtune has an awesome selection of tracks, super useful!",
+    text: t("Landing.Reviews.1"),
     user: "AliceM",
     value: 4.5,
   },
   {
     id: 2,
-    text: "Great for background music! Just wish there were more search filters.",
+    text: t("Landing.Reviews.2"),
     user: "Jake92",
     value: 4.0,
   },
   {
     id: 3,
-    text: "Finally a site that makes finding royalty-free music easy. Love it!",
+    text: t("Landing.Reviews.3"),
     user: "Samantha_R",
     value: 5,
   },
   {
     id: 4,
-    text: "Pretty solid, tho some tracks feel a bit generic. Still good tho!",
+    text: t("Landing.Reviews.4"),
     user: "Mike_T",
     value: 4,
   },
   {
     id: 5,
-    text: "Libtune is my go-to for video projects. Affordable and legit.",
+    text: t("Landing.Reviews.5"),
     user: "FilmmakerJoe",
     value: 4.5,
   },
   {
     id: 6,
-    text: "Gr8 site, easy to use. Found a lot of gems here!",
+    text: t("Landing.Reviews.6"),
     user: "ElenaV",
     value: 4.5,
   },
   {
     id: 7,
-    text: "Was skeptical at first but it's actually really good.",
+    text: t("Landing.Reviews.7"),
     user: "Chris_W",
     value: 4,
   },
   {
     id: 8,
-    text: "One of the better libraries out there. Needs more rock tho.",
+    text: t("Landing.Reviews.8"),
     user: "ZaneF",
     value: 4,
   },
   {
     id: 9,
-    text: "Best royalty-free music site I’ve used, hands down.",
+    text: t("Landing.Reviews.9"),
     user: "MelodyQueen",
     value: 5.0,
   },
   {
     id: 10,
-    text: "Decent variety. Some categories could use expansion.",
+    text: t("Landing.Reviews.10"),
     user: "Leo_D",
     value: 4.0,
   },
   {
     id: 11,
-    text: "Tbh, didn’t expect much but ended up using it all the time.",
+    text: t("Landing.Reviews.11"),
     user: "JayJay",
     value: 4.5,
   },
   {
     id: 12,
-    text: "Love the premium options. Wud be nice to have a mobile app!",
+    text: t("Landing.Reviews.12"),
     user: "Steph_K",
     value: 4.5,
   },
   {
     id: 13,
-    text: "Everything works well, but UI could be a bit more modern.",
+    text: t("Landing.Reviews.13"),
     user: "DesignGuru",
     value: 3.5,
   },
   {
     id: 14,
-    text: "Helped me find exactly what I needed for my podcast!",
+    text: t("Landing.Reviews.14"),
     user: "PodcastSteve",
     value: 5,
   },
   {
     id: 15,
-    text: "The search function is way better than other sites. 👍",
+    text: t("Landing.Reviews.15"),
     user: "Nina_S",
     value: 4.5,
   },
   {
     id: 16,
-    text: "Affordable, easy to navigate, and great variety.",
+    text: t("Landing.Reviews.16"),
     user: "Marko",
     value: 4.5,
   },
   {
     id: 17,
-    text: "Good stuff, just wish some songs had more variations.",
+    text: t("Landing.Reviews.17"),
     user: "LiamB",
     value: 4,
   },
   {
     id: 18,
-    text: "Better than expected. Customer support was quick too!",
+    text: t("Landing.Reviews.18"),
     user: "RealJohnDoe",
     value: 4.5,
   },
   {
     id: 19,
-    text: "I use it for my Twitch streams. No copyright issues!",
+    text: t("Landing.Reviews.19"),
     user: "StreamerAlex",
     value: 5,
   },
   {
     id: 20,
-    text: "Had some doubts at first but now I keep coming back!",
+    text: t("Landing.Reviews.20"),
     user: "KatieW",
     value: 4.5,
   },
 ];
-
 </script>
 
 <template>
@@ -253,68 +269,111 @@ const reviews = [
                 white-space: normal;
               "
             >
-              <h1 v-if="displayStore.titleVersion === 1 ">Royalty free music for all projects</h1>
-              <h1 v-else-if="displayStore.titleVersion === 2 ">Bring your stories to life. Just <i>add</i> sound</h1>
-              <h1 v-else-if="displayStore.titleVersion === 3 ">Freedom to Create, Confidence to Share</h1>
-              <h1 v-else-if="displayStore.titleVersion === 4 ">Make Magic, Not Paperwork</h1>
-              <h1 v-else-if="displayStore.titleVersion === 5 ">Unleash Your Stories with the Right Sound</h1>
-              <h1 v-else-if="displayStore.titleVersion === 6 ">Create Without Limits, Share Without Fear</h1>
-              <h1 v-else-if="displayStore.titleVersion === 7 ">Beautiful Sound, Zero Stress</h1>
+              <h1 v-if="displayStore.titleVersion === 1">
+                {{ $t("Landing.TitleVersions.1") }}
+              </h1>
+              <h1 v-else-if="displayStore.titleVersion === 2">
+                {{ $t("Landing.TitleVersions.2") }}
+              </h1>
+              <h1 v-else-if="displayStore.titleVersion === 3">
+                {{ $t("Landing.TitleVersions.3") }}
+              </h1>
+              <h1 v-else-if="displayStore.titleVersion === 4">
+                {{ $t("Landing.TitleVersions.4") }}
+              </h1>
+              <h1 v-else-if="displayStore.titleVersion === 5">
+                {{ $t("Landing.TitleVersions.5") }}
+              </h1>
+              <h1 v-else-if="displayStore.titleVersion === 6">
+                {{ $t("Landing.TitleVersions.6") }}
+              </h1>
+              <h1 v-else-if="displayStore.titleVersion === 7">
+                {{ $t("Landing.TitleVersions.7") }}
+              </h1>
             </v-card-title>
             <v-card-text>
-              <v-list v-if="displayStore.subtitleVersion === 1" style="background-color: transparent">
+              <v-list
+                v-if="displayStore.subtitleVersion === 1"
+                style="background-color: transparent"
+              >
                 <v-list-item style="padding-left: 0; padding-right: 0">
                   <div class="list-div font-inter">
                     <v-icon> mdi-music</v-icon>
-                    <p>Access to thousands of high quality songs</p>
+                    <p>{{ $t("Landing.SubtitleVersions.1.1") }}</p>
                   </div>
                 </v-list-item>
                 <v-list-item style="padding-left: 0; padding-right: 0">
                   <div class="list-div font-inter">
-                    <v-icon> mdi-download</v-icon>
-                    Unlimited downloads
+                    <v-icon> mdi-download</v-icon
+                    >{{ $t("Landing.SubtitleVersions.1.2") }}
                   </div>
                 </v-list-item>
                 <v-list-item style="padding-left: 0; padding-right: 0">
                   <div class="list-div font-inter">
-                    <v-icon> mdi-license</v-icon>
-                    Licence to use the songs for any project, videos, streams
-                    and podcasts
+                    <v-icon> mdi-license</v-icon
+                    >{{ $t("Landing.SubtitleVersions.1.3") }}
                   </div>
                 </v-list-item>
                 <v-list-item style="padding-left: 0; padding-right: 0">
                   <div class="list-div font-inter">
-                    <v-icon> mdi-cash</v-icon>
-                    Publish anywhere and monetize your content
+                    <v-icon> mdi-cash</v-icon
+                    >{{ $t("Landing.SubtitleVersions.1.4") }}
                   </div>
                 </v-list-item>
               </v-list>
-              <p v-else-if="displayStore.subtitleVersion === 2" class="font-inter text-subtitle-1 font-weight-medium mt-4">
-                Join the thousands of creators who trust Libtune to stay safe from copyright strikes and demonetization — so they can focus on creating, not worrying about takedowns.
+              <p
+                v-else-if="displayStore.subtitleVersion === 2"
+                class="font-inter text-subtitle-1 font-weight-medium mt-4"
+              >
+                {{ $t("Landing.SubtitleVersions.2") }}
               </p>
-              <p v-else-if="displayStore.subtitleVersion === 3" class="font-inter text-subtitle-1 font-weight-medium mt-4">
-                Libtune gives you unlimited access to 2000+ songs across every genre — all royalty-free, all forever yours. No legal confusion, just music you can trust.
+              <p
+                v-else-if="displayStore.subtitleVersion === 3"
+                class="font-inter text-subtitle-1 font-weight-medium mt-4"
+              >
+                {{ $t("Landing.SubtitleVersions.3") }}
               </p>
-              <p v-else-if="displayStore.subtitleVersion === 4" class="font-inter text-subtitle-1 font-weight-medium mt-4">
-                Libtune’s simple license and 2000+ song library lets you publish freely everywhere. Join thousands of creators who’ve left copyright strikes and demonetizations behind.
+              <p
+                v-else-if="displayStore.subtitleVersion === 4"
+                class="font-inter text-subtitle-1 font-weight-medium mt-4"
+              >
+                {{ $t("Landing.SubtitleVersions.4") }}
               </p>
-              <p v-else-if="displayStore.subtitleVersion === 5" class="font-inter text-subtitle-1 font-weight-medium mt-4">
-                Don’t let music copyrights ruin your projects. Libtune’s 2000+ track library gives you safe, professional sound and lifetime usage — all in one simple subscription.
+              <p
+                v-else-if="displayStore.subtitleVersion === 5"
+                class="font-inter text-subtitle-1 font-weight-medium mt-4"
+              >
+                {{ $t("Landing.SubtitleVersions.5") }}
               </p>
-              <p v-else-if="displayStore.subtitleVersion === 6" class="font-inter text-subtitle-1 font-weight-medium mt-4">
-                Tired of takedowns and muted videos? Libtune is a library of 2000+ royalty-free tracks with a license that protects you for life — no fine print.
+              <p
+                v-else-if="displayStore.subtitleVersion === 6"
+                class="font-inter text-subtitle-1 font-weight-medium mt-4"
+              >
+                {{ $t("Landing.SubtitleVersions.6") }}
               </p>
-              <p v-else-if="displayStore.subtitleVersion === 7" class="font-inter text-subtitle-1 font-weight-medium mt-4">
-                Libtune was made for creators like you — people who just want great music without the legal mess. 2000+ tracks, all cleared for lifetime use.
+              <p
+                v-else-if="displayStore.subtitleVersion === 7"
+                class="font-inter text-subtitle-1 font-weight-medium mt-4"
+              >
+                {{ $t("Landing.SubtitleVersions.7") }}
               </p>
-              <p v-else-if="displayStore.subtitleVersion === 8" class="font-inter text-subtitle-1 font-weight-medium mt-4">
-                Ever lost ad revenue over background music? Yeah, us too. That’s why Libtune gives you 2000+ royalty-free tracks and a super-simple license.
+              <p
+                v-else-if="displayStore.subtitleVersion === 8"
+                class="font-inter text-subtitle-1 font-weight-medium mt-4"
+              >
+                {{ $t("Landing.SubtitleVersions.8") }}
               </p>
-              <p v-else-if="displayStore.subtitleVersion === 9" class="font-inter text-subtitle-1 font-weight-medium mt-4">
-                Sick of strikes, takedowns, and muted videos ? Us too. That’s why we built Libtune — 2000+ royalty-free tracks, one license, zero nonsense.
+              <p
+                v-else-if="displayStore.subtitleVersion === 9"
+                class="font-inter text-subtitle-1 font-weight-medium mt-4"
+              >
+                {{ $t("Landing.SubtitleVersions.9") }}
               </p>
-              <p v-else-if="displayStore.subtitleVersion === 10" class="font-inter text-subtitle-1 font-weight-medium mt-4">
-                Don’t let one background beat ruin your whole video. Libtune gives you 2000+ safe songs and a forever license your future self will thank you for.
+              <p
+                v-else-if="displayStore.subtitleVersion === 10"
+                class="font-inter text-subtitle-1 font-weight-medium mt-4"
+              >
+                {{ $t("Landing.SubtitleVersions.10") }}
               </p>
             </v-card-text>
             <v-card-actions>
@@ -326,14 +385,17 @@ const reviews = [
                   variant="elevated"
                   @click="goToPath('/subscribe')"
                 >
-                  Start Free Trial</v-btn
+                  {{ $t("Landing.StartFreeTrial") }}</v-btn
                 >
                 <p
                   class="font-inter"
                   style="font-size: small; font-weight: 600; text-align: center"
                 >
-                  Free, then {{ displayStore.countryPrice.priceValue }}/month.
-                  Cancel anytime
+                  {{
+                    $t("Landing.TrialCondition", {
+                      price: displayStore.countryPrice.priceValue,
+                    })
+                  }}
                 </p>
               </div>
             </v-card-actions>
@@ -364,7 +426,9 @@ const reviews = [
         </v-col>
         <v-col cols="12" md="6">
           <v-card style="background-color: transparent; box-shadow: 0 0 0 0">
-            <v-card-title class="font-inter"> Why Libtune ? </v-card-title>
+            <v-card-title class="font-inter">
+              {{ $t("Landing.WhyLibtune.title") }}
+            </v-card-title>
             <v-card-text>
               <v-list
                 style="
@@ -379,25 +443,33 @@ const reviews = [
                   class="libtune-advantage"
                   style="padding-left: 0; padding-right: 0"
                 >
-                  <h3>2,000+ Royalty Free Songs</h3></v-list-item
+                  <h3>
+                    {{ $t("Landing.WhyLibtune.2") }}
+                  </h3></v-list-item
                 >
                 <v-list-item
                   class="libtune-advantage"
                   style="padding-left: 0; padding-right: 0"
                 >
-                  <h3>Unlimited downloads</h3></v-list-item
+                  <h3>
+                    {{ $t("Landing.WhyLibtune.3") }}
+                  </h3></v-list-item
                 >
                 <v-list-item
                   class="libtune-advantage"
                   style="padding-left: 0; padding-right: 0"
                 >
-                  <h3>Publish anywhere</h3></v-list-item
+                  <h3>
+                    {{ $t("Landing.WhyLibtune.4") }}
+                  </h3></v-list-item
                 >
                 <v-list-item
                   class="libtune-advantage"
                   style="padding-left: 0; padding-right: 0"
                 >
-                  <h3>Soundtrack your content</h3></v-list-item
+                  <h3>
+                    {{ $t("Landing.WhyLibtune.5") }}
+                  </h3></v-list-item
                 >
               </v-list>
             </v-card-text>
@@ -406,16 +478,17 @@ const reviews = [
                 color="black"
                 variant="elevated"
                 @click="goToPath('/subscribe')"
-                class="text-capitalize font-inter">
-                Start Free Trial
+                class="text-capitalize font-inter"
+              >
+                {{ $t("Landing.StartFreeTrial") }}
               </v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
-        <!-- Reviews -->
-        <v-container class="py-4">
+    <!-- Reviews -->
+    <v-container class="py-4">
       <div class="mb-6">
         <h1
           style="
@@ -424,7 +497,7 @@ const reviews = [
             text-align: center;
           "
         >
-          What our customers say
+          {{ $t("Landing.Reviews.title") }}
         </h1>
       </div>
       <v-slide-group :mobile="displayStore.isMobile">
@@ -468,17 +541,19 @@ const reviews = [
     >
       <div>
         <h1 style="font-family: Montserrat; font-size: xx-large">
-          Our Subscription
+          {{ $t("Landing.Subscription.title") }}
         </h1>
       </div>
       <v-card class="premium-plan-card" elevation="10" max-width="400">
         <v-card-title class="text-center text-h5 font-weight-bold">
-          Premium Plan
+          {{ $t("Landing.Subscription.plan") }}
         </v-card-title>
         <v-card-title class="text-center text-h6">
           <div style="display: flex; justify-content: center; gap: 5px">
             <p class="text-decoration-line-through text-sm">
-              {{ displayStore.countryPrice.priceOriginalValue }}/month
+              {{ displayStore.countryPrice.priceOriginalValue }}/{{
+                $t("Landing.Subscription.month")
+              }}
             </p>
           </div>
           <div
@@ -491,9 +566,11 @@ const reviews = [
             "
           >
             <h1>{{ displayStore.countryPrice.priceValue }}</h1>
-            <p style="font-size: x-small">/month</p>
+            <p style="font-size: x-small">
+              /{{ $t("Landing.Subscription.month") }}
+            </p>
           </div>
-          <h6>Billed monthly, cancel anytime</h6>
+          <h6>{{ $t("Landing.Subscription.billing") }}</h6>
         </v-card-title>
         <v-divider></v-divider>
         <v-card-text>
@@ -502,37 +579,43 @@ const reviews = [
               <v-icon
                 icon="mdi-check-outline"
                 class="list-icon positive"
-              ></v-icon>
-              Unlimited downloads
-            </v-list-item>
+              ></v-icon
+              >{{ $t("Landing.Subscription.features.1") }}</v-list-item
+            >
             <v-list-item class="premium-feature">
               <v-icon
                 icon="mdi-check-outline"
                 class="list-icon positive"
-              ></v-icon>
-              License downloaded songs
-            </v-list-item>
+              ></v-icon
+              >{{ $t("Landing.Subscription.features.2") }}</v-list-item
+            >
             <v-list-item class="premium-feature">
               <v-icon
                 icon="mdi-check-outline"
                 class="list-icon positive"
-              ></v-icon>
-              Commercial use allowed
-            </v-list-item>
+              ></v-icon
+              >{{ $t("Landing.Subscription.features.3") }}</v-list-item
+            >
             <v-list-item class="premium-feature">
               <v-icon
                 icon="mdi-check-outline"
                 class="list-icon positive"
-              ></v-icon>
-              No attribution required
-            </v-list-item>
-          <v-list-item class="premium-feature">
-            <v-icon icon="mdi-gift-outline" class="list-icon positive"></v-icon>
-            Free bundle of 20 songs 
-          </v-list-item>
+              ></v-icon
+              >{{ $t("Landing.Subscription.features.4") }}</v-list-item
+            >
+            <v-list-item class="premium-feature">
+              <v-icon
+                icon="mdi-gift-outline"
+                class="list-icon positive"
+              ></v-icon
+              >{{ $t("Landing.Subscription.features.5") }}</v-list-item
+            >
           </v-list>
         </v-card-text>
-        <v-card-actions class="mb-4" style="display: flex; justify-content: center">
+        <v-card-actions
+          class="mb-4"
+          style="display: flex; justify-content: center"
+        >
           <v-btn
             v-if="!authStore?.user?.customerId"
             color="primary"
@@ -544,42 +627,57 @@ const reviews = [
             class="text-capitalize font-inter"
             style="width: 75%"
           >
-            Subscribe
+          {{ $t("Landing.Subscription.subscribe") }}
           </v-btn>
-          <h3 v-else>You are already subscribed !</h3>
+          <h3 v-else>{{ $t("Landing.Subscription.alreadySubscribed") }}</h3>
         </v-card-actions>
         <v-divider></v-divider>
-        <v-card-actions class="mt-4" style="display: flex; justify-content: center; flex-direction: column; gap:10px">
+        <v-card-actions
+          class="mt-4"
+          style="
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+          "
+        >
           <v-chip size="small" dense prepend-icon="mdi-lock">
-              Secured payment
-            </v-chip>
-          <div style="display: flex; align-items: center; justify-content: center; gap:10px">
-              <v-img
-                :src="`/images/payment_methods/visa.png`"
-                width="35"
-                height="35"
-              ></v-img>
-              <v-img
-                :src="`/images/payment_methods/mastercard.png`"
-                width="35"
-                height="35"
-              ></v-img>
-              <v-img
+            {{ $t("Landing.Subscription.secured") }}
+          </v-chip>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;
+            "
+          >
+            <v-img
+              :src="`/images/payment_methods/visa.png`"
+              width="35"
+              height="35"
+            ></v-img>
+            <v-img
+              :src="`/images/payment_methods/mastercard.png`"
+              width="35"
+              height="35"
+            ></v-img>
+            <v-img
               :src="`/images/payment_methods/paypal.png`"
               width="40"
               height="40"
-              ></v-img>
-              <v-img
-                :src="`/images/payment_methods/apple_pay.png`"
-                width="35"
-                height="35"
-              ></v-img>
-              <v-img
-                :src="`/images/payment_methods/google_pay.png`"
-                width="40"
-                height="40"
-              ></v-img>
-            </div>
+            ></v-img>
+            <v-img
+              :src="`/images/payment_methods/apple_pay.png`"
+              width="35"
+              height="35"
+            ></v-img>
+            <v-img
+              :src="`/images/payment_methods/google_pay.png`"
+              width="40"
+              height="40"
+            ></v-img>
+          </div>
         </v-card-actions>
       </v-card>
     </v-container>
@@ -595,7 +693,7 @@ const reviews = [
     >
       <div style="align-self: start">
         <h1 style="font-family: Montserrat; font-size: x-large">
-          Frequently Asked Questions
+          {{ $t("Landing.Faq.title") }}
         </h1>
       </div>
       <v-list
@@ -623,7 +721,7 @@ const reviews = [
         justify-content: center;
       "
     >
-      Contact : <strong>support@libtune.com</strong>
+      {{ $t('Landing.Contact')}} : <strong>support@libtune.com</strong>
     </v-footer>
   </v-container>
 </template>

@@ -1,0 +1,130 @@
+{
+    "Landing": {
+        "PageTitle": "Música sin copyright para todos los proyectos",
+        "StartFreeTrial": "Iniciar prueba gratuita",
+        "MusicCategory":{
+            "Electronic": "Electronica",
+            "Hip-Hop": "Hip-hop",
+            "Cinematic": "Cinemática",
+            "Classical": "Clásica",
+            "Acoustic": "Acústica"
+        },
+        "TitleVersions": {
+            "1": "Música sin copyright para todos los proyectos",
+            "2": "Da vida a tus historias. Solo agrega sonido",
+            "3": "Libertad para crear, confianza para compartir",
+            "4": "Haz magia, no papeleo",
+            "5": "Libera tus historias con el sonido adecuado",
+            "6": "Crea sin límites, comparte sin miedo",
+            "7": "Sonido hermoso, cero estrés"
+            },
+        "SubtitleVersions": {
+            "1": {
+                "1": "Acceso a miles de canciones de alta calidad",
+                "2": "Descargas ilimitadas",
+                "3": "Licencia para usar las canciones en cualquier proyecto, videos, transmisiones y podcasts",
+                "4": "Publica en cualquier lugar y monetiza tu contenido"
+            },
+            "2": "Únete a miles de creadores que confían en Libtune para mantenerse seguros de strikes de copyright y desmonetización — para que puedan centrarse en crear, sin preocuparse por eliminaciones.",
+            "3": "Libtune te ofrece acceso ilimitado a más de 2000 canciones de todos los géneros — todas libres de derechos, todas para siempre tuyas. Sin confusiones legales, solo música en la que puedes confiar.",
+            "4": "La licencia simple de Libtune y su biblioteca de más de 2000 canciones te permiten publicar libremente en todas partes. Únete a miles de creadores que dejaron atrás los strikes y desmonetizaciones.",
+            "5": "No dejes que los derechos de autor de la música arruinen tus proyectos. La biblioteca de más de 2000 pistas de Libtune te ofrece sonido profesional seguro y uso de por vida — todo en una suscripción sencilla.",
+            "6": "¿Cansado de eliminaciones y videos silenciados? Libtune es una biblioteca de más de 2000 pistas libres de derechos con una licencia que te protege de por vida — sin letras pequeñas.",
+            "7": "Libtune fue creado para creadores como tú — personas que solo quieren música genial sin líos legales. Más de 2000 pistas, todas autorizadas para uso de por vida.",
+            "8": "¿Alguna vez perdiste ingresos por anuncios debido a la música de fondo? Sí, a nosotros también. Por eso Libtune te ofrece más de 2000 pistas libres de derechos y una licencia súper sencilla.",
+            "9": "¿Harto de strikes, eliminaciones y videos silenciados? Nosotros también. Por eso creamos Libtune — más de 2000 pistas libres de derechos, una licencia, cero complicaciones.",
+            "10": "No dejes que un ritmo de fondo arruine todo tu video. Libtune te ofrece más de 2000 canciones seguras y una licencia para siempre que tu yo futuro agradecerá."
+        },
+        "TrialCondition": "Gratis, luego {price}/mes. Cancela en cualquier momento",
+        "WhyLibtune": {
+            "title": "¿Por qué Libtune?",
+            "2": "Más de 2,000 canciones libres de regalías",
+            "3": "Descargas ilimitadas",
+            "4": "Publica en cualquier lugar",
+            "5": "Pon banda sonora a tu contenido"
+        },
+        "Faq": {
+            "title": "Preguntas Frecuentes",
+            "1": {
+                "title": "¿Qué es la música libre de regalías?",
+                "text": "La música libre de regalías es un tipo de licencia que permite usar música con licencia en múltiples proyectos sin pagar tarifas adicionales. El comprador paga una tarifa única por una licencia perpetua. Se usa comúnmente en películas, programas de televisión, comerciales y otros proyectos multimedia. El costo varía según la duración, el uso y la popularidad del compositor. Es una alternativa rentable a la licencia tradicional, que requiere pagar regalías cada vez que se usa la música."
+            },
+            "2": {
+                "title": "¿Cómo puedo usar música libre de regalías?",
+                "text": "Puedes usar música libre de regalías como música de fondo para videos en plataformas como YouTube, Vimeo, Instagram, TikTok y más. También se puede usar en sitios web, en juegos, aplicaciones móviles, presentaciones y otros tipos de proyectos."
+            },
+            "3": {
+                "title": "¿Dónde puedo encontrar música libre de regalías?",
+                "text": "Hay muchos sitios web que ofrecen música libre de regalías para distintos proyectos. Sin embargo, la calidad musical y los acuerdos de licencia pueden variar bastante."
+            },
+            "4": {
+                "title": "¿La música libre de regalías es realmente gratuita?",
+                "text": "La música libre de regalías significa que no se deben pagar regalías adicionales. Sin embargo, normalmente no es completamente gratuita, ya que primero se necesita comprar la licencia."
+            },
+            "5": {
+                "title": "¿Puedo usar música libre de regalías con fines comerciales?",
+                "text": "Sí, puedes usar música libre de regalías con fines comerciales, siempre que cumplas los términos y condiciones establecidos por el licenciante. La música de Libtune puede usarse para cualquier fin, incluidos los comerciales."
+            },
+            "6": {
+                "title": "¿Necesito dar crédito al artista al usar música libre de regalías?",
+                "text": "Depende de los términos y condiciones del proveedor de la licencia. Algunos proveedores lo requieren, otros no. Libtune no exige dar crédito a los artistas, aunque siempre es bien recibido."
+            },
+            "7": {
+                "title": "¿Hay alguna limitación al usar la música de Libtune?",
+                "text": "Nuestra música no puede usarse con contenido ilegal o explícito. Fuera de eso, no hay limitaciones mientras tengas una suscripción válida."
+            },
+            "8": {
+                "title": "¿La música sin copyright o sin licencia es lo mismo que la música libre de regalías?",
+                "text": "No, 'música sin copyright' y 'música sin licencia' no son lo mismo que 'música libre de regalías'. Música sin copyright significa que no está protegida por derechos de autor, pero no necesariamente es gratuita. Música sin licencia significa que no requiere una licencia para usarse, pero tampoco implica que sea gratuita. Música libre de regalías significa que no se pagan regalías por cada uso."
+            },
+            "9": {
+                "title": "¿Cómo me aseguro de tener derecho a usar música libre de regalías?",
+                "text": "Al suscribirte a Libtune, obtienes el derecho completo para usar la música en cualquier plataforma. Si usas otro proveedor, asegúrate de leer el acuerdo de licencia antes de usar la música en cualquier proyecto. Este acuerdo especifica los términos de uso."
+            },
+            "10": {
+                "title": "¿Puedo usar música libre de regalías en todas las plataformas sociales?",
+                "text": "En la mayoría de los casos, sí. Pero debes verificar tanto los términos de la licencia de tu proveedor como las políticas de cada plataforma. Algunas licencias pueden tener restricciones según la plataforma. Además, algunas redes sociales tienen sus propias bibliotecas y políticas de música. Libtune no impone restricciones, salvo en caso de contenido explícito o ilegal."
+            }
+        },
+        "Reviews": {
+            "title": "Lo que dicen nuestros clientes",
+            "1": "Libtune tiene una selección increíble de pistas, ¡súper útil!",
+            "2": "¡Genial para música de fondo! Solo desearía que tuviera más filtros de búsqueda.",
+            "3": "Finalmente un sitio que facilita encontrar música libre de regalías. ¡Me encanta!",
+            "4": "Bastante sólido, aunque algunas pistas suenan un poco genéricas. ¡Aun así está bien!",
+            "5": "Libtune es mi opción principal para proyectos de video. Asequible y confiable.",
+            "6": "Gran sitio, fácil de usar. ¡Encontré muchas joyas aquí!",
+            "7": "Era escéptico al principio, pero en realidad está muy bien.",
+            "8": "Una de las mejores bibliotecas que he visto. Aunque le falta más rock.",
+            "9": "La mejor web de música libre de regalías que he usado, sin duda.",
+            "10": "Variedad decente. Algunas categorías podrían expandirse.",
+            "11": "Para ser honesto, no esperaba mucho pero terminé usándola todo el tiempo.",
+            "12": "Me encantan las opciones premium. ¡Sería genial tener una app móvil!",
+            "13": "Todo funciona bien, pero la interfaz podría ser más moderna.",
+            "14": "¡Me ayudó a encontrar justo lo que necesitaba para mi pódcast!",
+            "15": "La función de búsqueda es mucho mejor que en otros sitios. 👍",
+            "16": "Asequible, fácil de navegar y con buena variedad.",
+            "17": "Buen contenido, solo que me gustaría que algunas canciones tuvieran más versiones.",
+            "18": "Mejor de lo que esperaba. ¡El soporte al cliente también fue rápido!",
+            "19": "Lo uso para mis transmisiones en Twitch. ¡Sin problemas de copyright!",
+            "20": "Tenía mis dudas al principio, ¡pero ahora siempre vuelvo!"
+        },
+        "Subscription": {
+            "title": "Nuestra Suscripción",
+            "plan": "Plan Premium",
+            "month": "mes",
+            "billing": "Mensual, cancela cuando quieras",
+            "features": {
+                "1": "Descargas ilimitadas",
+                "2": "Licencia para las canciones",
+                "3": "Uso comercial permitido",
+                "4": "No se requiere atribución",
+                "5": "Paquete gratuito de 20 canciones"
+            },
+            "subscribe": "suscribirse",
+            "alreadySubscribed": "suscrito",
+            "secured": "Pago seguro"
+        },
+        "Contact": "Contacto"
+    }
+}

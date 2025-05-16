@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ['vuetify-nuxt-module', '@pinia/nuxt', 'nuxt-gtag', '@nuxtjs/seo', '@nuxtjs/sitemap', '@nuxtjs/robots'],
+  modules: ['vuetify-nuxt-module', '@pinia/nuxt', 'nuxt-gtag', '@nuxtjs/seo', '@nuxtjs/sitemap', '@nuxtjs/robots', '@nuxtjs/i18n'],
   site: {
     url: 'https://libtune.com',
   },
@@ -30,6 +30,13 @@ export default defineNuxtConfig({
   ssr: true,
   nitro: {
     compressPublicAssets: { brotli: true, gzip: true },
+  },
+  i18n: {
+    locales: [
+    { code: 'en', name: 'English', file: 'en.json' },
+    { code: 'es', name: 'Español', file: 'es.json' },
+  ],
+    defaultLocale: 'en',
   },
   app: {
     head: {
