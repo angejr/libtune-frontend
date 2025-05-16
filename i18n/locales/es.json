@@ -187,7 +187,34 @@
             "3": "Usa la música en proyectos recreativos y comerciales."
         },
         "browse": "Explorar Biblioteca Musical"
-    }
+    },
+    "AboutUs": {
+  "PageTitle": "Sobre Nosotros",
+  "PageDescription": "Nuestra misión es hacer que la música premium sea accesible para todos tus proyectos creativos, garantizando siempre simplicidad y profesionalismo.",
+  "aboutLibtune": "Acerca de Libtune",
+  "intro": "Libtune es tu plataforma de referencia para música libre de derechos y de alta calidad. Ya seas creador de contenido, podcaster, cineasta o profesional, te damos la libertad de mejorar tus proyectos con bandas sonoras excepcionales. Nuestra misión es hacer que la música premium sea accesible para todos tus proyectos creativos, garantizando siempre simplicidad y profesionalismo.",
+  "no": "NINGÚN",
+  "any": "CUALQUIER",
+  "commitments": {
+    "title": "Paga una vez (al mes), úsala en todas partes",
+    "1": "Reclamaciones de copyright",
+    "2": "Desmonetizaciones",
+    "3": "Regalías que pagar a nadie",
+    "4": "Proyecto que desees"
+  },
+  "features": {
+    "title": "¿Qué nos hace únicos?",
+    "1": "Una amplia biblioteca de pistas cuidadosamente seleccionadas y de alta calidad.",
+    "2": "Licencias libres de derechos para uso personal y comercial.",
+    "3": "Descargas ilimitadas con nuestro plan premium asequible.",
+    "4": "Una experiencia fluida con un enfoque centrado en el usuario."
+  },
+  "start": "Empieza tu camino con Libtune",
+  "email": "Correo electrónico",
+  "getPremium": "Hazte Premium",
+  "contact": "Contáctanos"
+}
+
 
 
 }

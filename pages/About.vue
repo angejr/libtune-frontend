@@ -1,10 +1,12 @@
 <script setup>
 const displayStore = useDisplayStore()
+const { t, locales, setLocale } = useI18n();
+
 useSeoMeta({
-  title: "About Us",
-  ogTitle: "About Us",
-  description: "Our mission is to make premium music accessible for all your creative projects, while ensuring simplicity and professionalism.",
-  ogDescription: "Our mission is to make premium music accessible for all your creative projects, while ensuring simplicity and professionalism.",
+  title: t("AboutUs.PageTitle"),
+  ogTitle: t("AboutUs.PageTitle"),
+  description: t("AboutUs.PageDescription"),
+  ogDescription: t("AboutUs.PageDescription"),
 })
 
 </script>
@@ -14,85 +16,81 @@ useSeoMeta({
       <v-card elevation="4" :style="{ fontSize: displayStore.isMobile ? 'unset': '', borderRadius: !displayStore.isMobile ? '16px' : 0 }" class="about-card">
         <!-- Header Section -->
         <v-card-title :style="{ fontSize: displayStore.isMobile ? '28px': '' }" class="about-title text-center">
-          About Libtune
+          {{$t("AboutUs.aboutLibtune")}}
         </v-card-title>
         <v-divider></v-divider>
         <v-card-text :style="{paddingLeft: displayStore.isMobile ? '10px' : '40px', paddingRight: displayStore.isMobile ? '10px' : '40px' }">
           <!-- Introduction -->
           <section :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="about-section">
             <p :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="intro">
-              Libtune is your go-to platform for royalty-free, high-quality music. 
-              Whether you're a content creator, podcaster, filmmaker, or a business professional, 
-              we empower you with the freedom to enhance your projects with outstanding soundtracks. 
-              Our mission is to make premium music accessible for all your creative endeavors, 
-              while ensuring simplicity and professionalism.
+              {{$t("AboutUs.intro")}}
             </p>
           </section>
 
           <!-- Commitment Section -->
           <section :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="about-section">
-            <h2 v-if="!displayStore.isMobile" class="section-title">Pay once (per month), Use everywhere</h2>
-            <h3 v-else style="margin-bottom: 8px;">Pay once (per month), Use everywhere</h3>
+            <h2 v-if="!displayStore.isMobile" class="section-title">{{$t("AboutUs.commitments.title")}}</h2>
+            <h3 v-else style="margin-bottom: 8px;">{{$t("AboutUs.commitments.title")}}</h3>
             <ul :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="features-list">
               <li>
                 <v-icon color="green" :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="feature-icon">mdi-check-bold</v-icon>
-                <strong style="margin-left:5px; margin-right:5px">NO</strong> Copyright strikes
+                <strong style="margin-left:5px; margin-right:5px">{{$t("AboutUs.no")}}</strong> {{$t("AboutUs.commitments.1")}}
               </li>
               <li>
                 <v-icon color="green" :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="feature-icon">mdi-check-bold</v-icon>
-                <strong style="margin-left:5px; margin-right:5px">NO</strong> Demonitizations
+                <strong style="margin-left:5px; margin-right:5px">{{$t("AboutUs.no")}}</strong> {{$t("AboutUs.commitments.2")}}
               </li>
               <li>
                 <v-icon color="green" :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="feature-icon">mdi-check-bold</v-icon>
-                <strong style="margin-left:5px; margin-right:5px">NO</strong> Royalties to Pay to anyone 
+                <strong style="margin-left:5px; margin-right:5px">{{$t("AboutUs.no")}}</strong> {{$t("AboutUs.commitments.3")}} 
               </li>
               <li>
                 <v-icon color="green" :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="feature-icon">mdi-check-bold</v-icon>
-                <strong style="margin-left:5px; margin-right:5px">ANY</strong> project you please
+                <strong style="margin-left:5px; margin-right:5px">{{$t("AboutUs.any")}}</strong> {{$t("AboutUs.commitments.4")}}
               </li>
             </ul>
           </section>
   
           <!-- Features Section -->
           <section :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="about-section">
-            <h2  v-if="!displayStore.isMobile" class="section-title">What Makes Us Unique?</h2>
-            <h3 v-else style="margin-bottom: 8px;">What Makes Us Unique?</h3>
+            <h2  v-if="!displayStore.isMobile" class="section-title">{{$t("AboutUs.features.title")}}</h2>
+            <h3 v-else style="margin-bottom: 8px;">{{$t("AboutUs.features.title")}}</h3>
             <ul :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="features-list">
               <li>
                 <v-icon color="deep-purple lighten-2" :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="feature-icon">mdi-music</v-icon>
-                A vast library of meticulously curated, high-quality tracks.
+                {{$t("AboutUs.features.1")}}
               </li>
               <li>
                 <v-icon color="deep-purple lighten-2" :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="feature-icon">mdi-license</v-icon>
-                Royalty-free licensing for personal and commercial use.
+                {{$t("AboutUs.features.2")}}
               </li>
               <li>
                 <v-icon color="deep-purple lighten-2" :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="feature-icon">mdi-download</v-icon>
-                Unlimited downloads with our affordable premium plan.
+                {{$t("AboutUs.features.3")}}
               </li>
               <li>
                 <v-icon color="deep-purple lighten-2" :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="feature-icon">mdi-account-check</v-icon>
-                A seamless user experience with a customer-first approach.
+                {{$t("AboutUs.features.4")}}
               </li>
             </ul>
           </section>
           
           <!-- Contact Section -->
         <section :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="about-section contact">
-          <h2 :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="section-title">Contact Us</h2>
+          <h2 :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="section-title">{{$t("AboutUs.contact")}}</h2>
           <ul :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="contact-list">
             <li>
               <v-icon color="blue darken-2" :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="contact-icon">mdi-email</v-icon>
-              <strong>Email:</strong> <a href="mailto:support@libtune.com">support@libtune.com</a>
+              <strong>{{$t("AboutUs.email")}}:</strong> <a href="mailto:support@libtune.com">support@libtune.com</a>
             </li>
           </ul>
         </section>
   
           <!-- Call to Action -->
           <section :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="about-section cta">
-            <h2 :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="section-title">Start Your Journey with Libtune</h2>
+            <h2 :style="{ fontSize: displayStore.isMobile ? 'unset': '' }" class="section-title">{{$t("AboutUs.start")}}</h2>
             <v-btn color="primary" variant="elevated" large @click="goToPath('/subscribe')">
-          Get Premium
+              {{$t("AboutUs.getPremium")}}
         </v-btn>
           </section>
         </v-card-text>

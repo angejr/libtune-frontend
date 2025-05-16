@@ -188,5 +188,31 @@
             "3": "Use music for both recreational and commercial projects."
         },
         "browse": "Explore Music Library"
-    }
-}
+    },
+    "AboutUs": {
+        "PageTitle": "About Us",
+        "PageDescription": "Our mission is to make premium music accessible for all your creative projects, while ensuring simplicity and professionalism.",
+        "aboutLibtune": "About Libtune",
+        "intro": "Libtune is your go-to platform for royalty-free, high-quality music. Whether you're a content creator, podcaster, filmmaker, or a business professional, we empower you with the freedom to enhance your projects with outstanding soundtracks.Our mission is to make premium music accessible for all your creative endeavors,while ensuring simplicity and professionalism.",
+        "no": "NO",
+        "any": "ANY",
+        "commitments": {
+            "title": "Pay once (per month), Use everywhere",
+            "1": "Copyright strikes",
+            "2": "Demonitizations",
+            "3": "Royalties to Pay to anyone",
+            "4": "Project you please"
+        },
+        "features": {
+            "title": "What Makes Us Unique?",
+            "1": "A vast library of meticulously curated, high-quality tracks.",
+            "2": "Royalty-free licensing for personal and commercial use",
+            "3": "Unlimited downloads with our affordable premium plan.",
+            "4": "A seamless user experience with a customer-first approach."
+        },
+        "start": "Start Your Journey with Libtune",
+        "email": "Email",
+        "getPremium": "Get Premium",
+        "contact": "Contact Us"
+
+    }}
