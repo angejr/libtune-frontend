@@ -4,7 +4,7 @@
   >
     <v-card elevation="10" class="login-card">
       <v-card-title class="text-center text-h5 font-weight-bold">
-        Login
+        {{$t('AppBar.login')}}
       </v-card-title>
       <v-divider></v-divider>
       <div class="px-4 py-8">
@@ -24,11 +24,11 @@
         width="20"
         height="20"
       />
-            Continue with Google
+      {{$t('SignUp.continueGoogle')}}
           </v-btn>
       </div>
       <div class="px-6">
-        <v-divider>OR</v-divider>
+        <v-divider>{{$t('SignUp.or')}}</v-divider>
       </div>
       <v-card-text>
         <v-form
@@ -36,10 +36,10 @@
         ref="formRef"
         lazy-validation
         >
-        <p v-if="loginError" style="color:red; margin-top: 10px"> Wrong E-mail or password</p>
+        <p v-if="loginError" style="color:red; margin-top: 10px"> {{$t("Login.wrong")}}</p>
           <v-text-field
             v-model="email"
-            label="Email"
+            :label="$t('SignUp.email')"
             variant="outlined"
             :rules="[validationRules.required, validationRules.email, validationRules.safe, validationRules.max(60)]"
             required
@@ -49,7 +49,7 @@
 
           <v-text-field
             v-model="password"
-            label="Password"
+            :label="$t('SignUp.password')"
             type="password"
             variant="outlined"
             :rules="[validationRules.required, validationRules.min(8), validationRules.safe, validationRules.max(30)]"
@@ -59,9 +59,8 @@
           ></v-text-field>
 
           <p class="text-center mt-4 mb-4">
-            Don't have an account yet ? 
-            <NuxtLink to="/signup" class="terms-link">
-              Register
+            {{$t('Login.noAccount')}} <NuxtLink to="/signup" class="terms-link">
+              {{$t('Login.register')}}
             </NuxtLink>
           </p>
 
@@ -74,7 +73,7 @@
             class="mt-6 font-inter text-capitalize"
             :loading="loginLoading"
           >
-            Login
+          {{$t('AppBar.login')}}
           </v-btn>
         </v-form>
       </v-card-text>
@@ -131,6 +130,7 @@
   const STRAPI_URL = config.public.strapiUrl
   // Loading status
   const loginLoading = ref(false);
+  const { t, locales, setLocale } = useI18n();
 
   definePageMeta({
   middleware: defineNuxtRouteMiddleware(() => {

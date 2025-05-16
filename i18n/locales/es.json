@@ -170,5 +170,11 @@
         "email": "Correo electrónico",
         "password": "Contraseña",
         "confirmPassword": "Confirmar contraseña"
+    },
+    "Login": {
+        "noAccount": "¿Aún no tienes una cuenta?",
+        "register": "Registrarse",
+        "wrong": "Correo electrónico o contraseña incorrectos"
     }
+
 }

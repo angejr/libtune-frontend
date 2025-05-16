@@ -171,6 +171,10 @@
         "email": "Email",
         "password": "Password",
         "confirmPassword": "Confirm Password"
-
+    },
+    "Login": {
+        "noAccount": "Don't have an account yet ?",
+        "register": "Register",
+        "wrong": "Wrong E-mail or password"
     }
 }
