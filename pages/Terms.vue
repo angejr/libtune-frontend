@@ -20,7 +20,7 @@
         <h3 v-else>{{ $t('Terms.pageTitle') }}</h3>
       </v-card-title>
       <v-card-text>
-        <body class="termsContent">
+        <div class="termsContent">
           <h1 v-if="!displayStore.isMobile">{{ $t('Terms.heading') }}</h1>
           <p><strong>{{ $t('Terms.effectiveDateLabel') }}</strong> 24/11/2024</p>
           <p><strong>{{ $t('Terms.lastUpdatedLabel') }}</strong> 24/11/2024</p>
@@ -95,7 +95,7 @@
           <p>{{ $t('Terms.contact.intro') }}</p>
           <p><strong>{{ $t('Terms.contact.emailLabel') }}</strong> support@libtune.com</p>
           <p>{{ $t('Terms.contact.closing') }}</p>
-        </body>
+        </div>
       </v-card-text>
     </v-card>
   </v-container>
