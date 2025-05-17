@@ -1,22 +1,22 @@
 <script setup>
 const authStore = useAuthStore();
-const errorStore = useErrorStore()
+const errorStore = useErrorStore();
+const { t, locales, setLocale } = useI18n();
 
 useSeoMeta({
-  title: "Unsubscribe",
+  title: t("Unsubscribe.PageTitle"),
   robots: {
     noindex: true,
-    nofollow: true
-  }
-})
-
+    nofollow: true,
+  },
+});
 
 // Redirect when trying to access a page only accessible when logged in
-if (!authStore?.userToken){
-  goToPath('/login')
+if (!authStore?.userToken) {
+  goToPath("/login");
 }
 
-const feedback = ref('');
+const feedback = ref("");
 const feedbackError = ref(false);
 
 const unsubscribe = async () => {
@@ -26,57 +26,59 @@ const unsubscribe = async () => {
   }
   feedbackError.value = false;
 
-  try{
-
-      await $fetch('/api/customers/cancel/me', {
-        method: 'PUT',
-        headers: {
-            authorization: `Bearer ${authStore.userToken}`
-        }
-      })
-      // Refetch User
-      await authStore.fetchUser();
-      goToPath('/')
-  }
-  catch(e){
+  try {
+    await $fetch("/api/customers/cancel/me", {
+      method: "PUT",
+      headers: {
+        authorization: `Bearer ${authStore.userToken}`,
+      },
+    });
+    // Refetch User
+    await authStore.fetchUser();
+    goToPath("/");
+  } catch (e) {
     errorStore.setError({
-        title: 'Error while cancelling premium',
-        text: e.message
-    })
+      title: "Error while cancelling premium",
+      text: e.message,
+    });
   }
 };
 </script>
 
 <template>
-  <v-container v-if="authStore?.user?.customerId" class="py-8" style="display: flex; justify-content: center">
+  <v-container
+    v-if="authStore?.user?.customerId"
+    class="py-8"
+    style="display: flex; justify-content: center"
+  >
     <v-card class="unsubscribe-card" elevation="10" max-width="500">
       <!-- Title -->
       <v-card-title class="text-center text-h5 font-weight-bold">
         <v-icon icon="mdi-close" color="red"></v-icon>
-        Cancel Premium
+        {{ t("Unsubscribe.cancelPremium") }}
       </v-card-title>
 
       <!-- Benefits Lost -->
       <v-card-subtitle class="text-center text-h6 font-weight-medium">
-        By unsubscribing, you’ll lose access to:
+        {{ t("Unsubscribe.byUnsubscribing") }}:
       </v-card-subtitle>
       <v-card-text>
         <v-list dense>
           <v-list-item>
             <v-icon icon="mdi-close" color="red" class="list-icon"></v-icon>
-            Unlimited downloads of high-quality music
+            {{ t("Unsubscribe.features.1") }}
           </v-list-item>
           <v-list-item>
             <v-icon icon="mdi-close" color="red" class="list-icon"></v-icon>
-            Royalty-free license for all downloaded music
+            {{ t("Unsubscribe.features.2") }}
           </v-list-item>
           <v-list-item>
             <v-icon icon="mdi-close" color="red" class="list-icon"></v-icon>
-            Use in recreational and personal projects
+            {{ t("Unsubscribe.features.3") }}
           </v-list-item>
           <v-list-item>
             <v-icon icon="mdi-close" color="red" class="list-icon"></v-icon>
-            Monetized commercial use (e.g., YouTube, podcasts)
+            {{ t("Unsubscribe.features.4") }}
           </v-list-item>
         </v-list>
       </v-card-text>
@@ -85,8 +87,7 @@ const unsubscribe = async () => {
       <v-divider></v-divider>
       <v-card-text class="legal-note">
         <p>
-          <strong>Note:</strong> Upon unsubscribing, you will no longer have the
-          legal right to use previously downloaded music for any purposes.
+          <strong>{{ t("Unsubscribe.note") }}:</strong> {{ t("Unsubscribe.legal") }}
         </p>
       </v-card-text>
 
@@ -96,10 +97,14 @@ const unsubscribe = async () => {
         <v-textarea
           v-model="feedback"
           outlined
-          label="Please let us know why you're unsubscribing"
+          :label="t('Unsubscribe.whyUnsub')"
           :error="feedbackError"
           :error-messages="feedbackError ? 'Feedback is required.' : ''"
-          :rules="[validationRules.required, validationRules.safe, validationRules.max(300)]"
+          :rules="[
+            validationRules.required,
+            validationRules.safe,
+            validationRules.max(300),
+          ]"
           rows="4"
         ></v-textarea>
       </v-card-text>
@@ -113,17 +118,21 @@ const unsubscribe = async () => {
           :disabled="!feedback.trim()"
           @click="unsubscribe"
         >
-          Cancel Subscription
+        {{ t("Unsubscribe.cancelSub") }}
         </v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
-  <v-container v-else class="py-8" style="display: flex; justify-content: center">
+  <v-container
+    v-else
+    class="py-8"
+    style="display: flex; justify-content: center"
+  >
     <v-card class="unsubscribe-card" elevation="10" max-width="500">
       <!-- Title -->
       <v-card-title class="text-center text-h5 font-weight-bold">
         <v-icon icon="mdi-close" color="red"></v-icon>
-        You are not subscribed yet
+        {{ t("Unsubscribe.notSubscribed") }}
       </v-card-title>
 
       <!-- Unsubscribe Button -->
@@ -134,7 +143,7 @@ const unsubscribe = async () => {
           large
           @click="goToPath('/subscribe')"
         >
-          Get Premium
+        {{ t("Unsubscribe.getPremium") }}
         </v-btn>
       </v-card-actions>
     </v-card>

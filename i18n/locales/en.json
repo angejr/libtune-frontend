@@ -1,4 +1,11 @@
 {
+    "$vuetify": {
+    "rating": {
+      "ariaLabel": {
+        "item": "Rating {value} of {max}"
+      }
+    }
+  },
     "Landing": {
         "PageTitle": "Royalty Free Music for Any Project",
         "StartFreeTrial": "Start Free Trial",
@@ -275,5 +282,23 @@
             "emailLabel": "Email:",
             "closing": "By using Libtune, you agree to these Terms. Thank you for choosing Libtune for your music needs!"
         }
+    },
+
+    "Unsubscribe": {
+        "PageTitle": "Unsubscribe",
+        "cancelPremium": "Cancel Premium",
+        "byUnsubscribing": "By unsubscribing, you’ll lose access to",
+        "features": {
+            "1": "Unlimited downloads of high-quality music",
+            "2": "Royalty-free license for all downloaded music",
+            "3": "Use in recreational and personal projects",
+            "4": "Monetized commercial use (e.g., YouTube, podcasts)"
+        },
+        "note": "Note",
+        "legal": "Upon unsubscribing, you will no longer have the legal right to use previously downloaded music for any purposes.",
+        "whyUnsub": "Please let us know why you're unsubscribing",
+        "cancelSub": "Cancel Subscription",
+        "notSubscribed": "You are not subscribed yet",
+        "getPremium": "Get Premium"
     }
 }

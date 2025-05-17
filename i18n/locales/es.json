@@ -1,4 +1,11 @@
 {
+    "$vuetify": {
+        "rating": {
+            "ariaLabel": {
+                "item": "Calificación {value} de {max}"
+            }
+        }
+    },
     "Landing": {
         "PageTitle": "Música sin copyright para todos los proyectos",
         "StartFreeTrial": "Iniciar prueba gratuita",
@@ -275,5 +282,22 @@
             "emailLabel": "Correo electrónico:",
             "closing": "Al usar Libtune, aceptas estos Términos. ¡Gracias por elegir Libtune para tus necesidades musicales!"
         }
+    },
+    "Unsubscribe": {
+        "PageTitle": "Darse de baja",
+        "cancelPremium": "Cancelar Premium",
+        "byUnsubscribing": "Al darte de baja, perderás acceso a",
+        "features": {
+            "1": "Descargas ilimitadas de música en alta calidad",
+            "2": "Licencia libre de regalías para toda la música descargada",
+            "3": "Uso en proyectos recreativos y personales",
+            "4": "Uso comercial monetizado (por ejemplo, YouTube, pódcasts)"
+        },
+        "note": "Nota",
+        "legal": "Al darte de baja, ya no tendrás derecho legal a usar la música descargada previamente para ningún propósito.",
+        "whyUnsub": "Por favor, dinos por qué te estás dando de baja",
+        "cancelSub": "Cancelar suscripción",
+        "notSubscribed": "Aún no estás suscrito",
+        "getPremium": "Obtener Premium"
     }
 }
