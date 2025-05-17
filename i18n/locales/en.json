@@ -1,11 +1,12 @@
 {
     "$vuetify": {
-    "rating": {
-      "ariaLabel": {
-        "item": "Rating {value} of {max}"
-      }
-    }
-  },
+        "rating": {
+            "ariaLabel": {
+                "item": "Rating {value} of {max}"
+            }
+        },
+        "noDataText": ""
+    },
     "Landing": {
         "PageTitle": "Royalty Free Music for Any Project",
         "StartFreeTrial": "Start Free Trial",
@@ -283,7 +284,6 @@
             "closing": "By using Libtune, you agree to these Terms. Thank you for choosing Libtune for your music needs!"
         }
     },
-
     "Unsubscribe": {
         "PageTitle": "Unsubscribe",
         "cancelPremium": "Cancel Premium",
@@ -300,5 +300,37 @@
         "cancelSub": "Cancel Subscription",
         "notSubscribed": "You are not subscribed yet",
         "getPremium": "Get Premium"
+    },
+    "Account": {
+        "PageTitle": "Account",
+        "PageDescription": "Browse your libtune profile and account information",
+        "FetchError": "Could not fetch account data",
+        "Profile": "Profile",
+        "Email": "Email",
+        "Username": "Username",
+        "Subscriptions": "Subscriptions",
+        "Status": "Status",
+        "Product": "Product",
+        "BillingFrequency": "Billing Frequency",
+        "NextPaymentDate": "Next Payment Date",
+        "Monthly": "Monthly",
+        "Yearly": "Yearly",
+        "NoSubscription": "No active subscription",
+        "BuyPremium": "BUY PREMIUM",
+        "Active": "active",
+        "CancelSubscription": "Cancel Subscription",
+        "PaymentMethods": "Payment Methods",
+        "CardNumber": "Card Number",
+        "ExpiryDate": "Expiry Date",
+        "BillingDetails": "Billing Details",
+        "BillingName": "Billing Name",
+        "Address": "Address",
+        "City": "City",
+        "Country": "Country",
+        "Payments": "Payments",
+        "Amount": "Amount",
+        "Description": "Description",
+        "Date": "Date",
+        "NoDescription": "No description provided"
     }
 }

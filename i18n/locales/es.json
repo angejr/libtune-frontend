@@ -4,7 +4,8 @@
             "ariaLabel": {
                 "item": "Calificación {value} de {max}"
             }
-        }
+        },
+        "noDataText": ""
     },
     "Landing": {
         "PageTitle": "Música sin copyright para todos los proyectos",
@@ -299,5 +300,38 @@
         "cancelSub": "Cancelar suscripción",
         "notSubscribed": "Aún no estás suscrito",
         "getPremium": "Obtener Premium"
-    }
+    },
+    "Account": {
+  "PageTitle": "Cuenta",
+  "PageDescription": "Consulta tu perfil e información de cuenta de Libtune",
+  "FetchError": "No se pudo obtener la información de la cuenta",
+  "Profile": "Perfil",
+  "Email": "Correo electrónico",
+  "Username": "Nombre de usuario",
+  "Subscriptions": "Suscripciones",
+  "Status": "Estado",
+  "Product": "Producto",
+  "BillingFrequency": "Frecuencia de facturación",
+  "NextPaymentDate": "Próxima fecha de pago",
+  "Monthly": "Mensual",
+  "Yearly": "Anual",
+  "NoSubscription": "Sin suscripción activa",
+  "BuyPremium": "COMPRAR PREMIUM",
+  "Active": "activa",
+  "CancelSubscription": "Cancelar suscripción",
+  "PaymentMethods": "Métodos de pago",
+  "CardNumber": "Número de tarjeta",
+  "ExpiryDate": "Fecha de vencimiento",
+  "BillingDetails": "Detalles de facturación",
+  "BillingName": "Nombre de facturación",
+  "Address": "Dirección",
+  "City": "Ciudad",
+  "Country": "País",
+  "Payments": "Pagos",
+  "Amount": "Importe",
+  "Description": "Descripción",
+  "Date": "Fecha",
+  "NoDescription": "Sin descripción"
+}
+
 }
