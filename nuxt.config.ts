@@ -32,6 +32,14 @@ export default defineNuxtConfig({
     compressPublicAssets: { brotli: true, gzip: true },
   },
   i18n: {
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      alwaysRedirect: true,
+      fallbackLocale: 'en',
+      redirectOn: 'all'
+    },
+    strategy: 'prefix_except_default',
     locales: [
     { code: 'en', name: 'English', file: 'en.json' },
     { code: 'es', name: 'Español', file: 'es.json' },
