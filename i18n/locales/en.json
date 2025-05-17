@@ -5,7 +5,27 @@
                 "item": "Rating {value} of {max}"
             }
         },
-        "noDataText": ""
+        "noDataText": "",
+        "badge": "Badge",
+        "close": "Close",
+        "dataIterator": {
+            "pageText": "{0}-{1} of {2}",
+            "noResultsText": "No matching records found",
+            "loadingText": "Loading items..."
+        },
+        "input": {
+            "clear": "Clear",
+            "prependAction": "Prepend action",
+            "appendAction": "Append action"
+        },
+        "datePicker": {
+            "itemsSelected": "{0} selected",
+            "nextMonthAriaLabel": "Next month",
+            "nextYearAriaLabel": "Next year",
+            "prevMonthAriaLabel": "Previous month",
+            "prevYearAriaLabel": "Previous year"
+        },
+        "open": "Open"
     },
     "Landing": {
         "PageTitle": "Royalty Free Music for Any Project",
@@ -332,5 +352,8 @@
         "Description": "Description",
         "Date": "Date",
         "NoDescription": "No description provided"
+    },
+    "Home": {
+        "PageDescription": "Access a massive library of royalty free and copyright free music for podcasts, YouTube, social media and content creation. Ready to download. Affordable licensing. Subscribe now!"
     }
 }

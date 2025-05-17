@@ -5,7 +5,27 @@
                 "item": "Calificación {value} de {max}"
             }
         },
-        "noDataText": ""
+        "noDataText": "",
+        "badge": "Insignia",
+        "close": "Cerrar",
+        "dataIterator": {
+            "pageText": "{0}-{1} de {2}",
+            "noResultsText": "No se encontraron resultados",
+            "loadingText": "Cargando elementos..."
+        },
+        "input": {
+            "clear": "Borrar",
+            "prependAction": "Acción anterior",
+            "appendAction": "Acción siguiente"
+        },
+        "datePicker": {
+            "itemsSelected": "{0} seleccionados",
+            "nextMonthAriaLabel": "Mes siguiente",
+            "nextYearAriaLabel": "Año siguiente",
+            "prevMonthAriaLabel": "Mes anterior",
+            "prevYearAriaLabel": "Año anterior"
+        },
+        "open": "Abrir"
     },
     "Landing": {
         "PageTitle": "Música sin copyright para todos los proyectos",
@@ -302,36 +322,38 @@
         "getPremium": "Obtener Premium"
     },
     "Account": {
-  "PageTitle": "Cuenta",
-  "PageDescription": "Consulta tu perfil e información de cuenta de Libtune",
-  "FetchError": "No se pudo obtener la información de la cuenta",
-  "Profile": "Perfil",
-  "Email": "Correo electrónico",
-  "Username": "Nombre de usuario",
-  "Subscriptions": "Suscripciones",
-  "Status": "Estado",
-  "Product": "Producto",
-  "BillingFrequency": "Frecuencia de facturación",
-  "NextPaymentDate": "Próxima fecha de pago",
-  "Monthly": "Mensual",
-  "Yearly": "Anual",
-  "NoSubscription": "Sin suscripción activa",
-  "BuyPremium": "COMPRAR PREMIUM",
-  "Active": "activa",
-  "CancelSubscription": "Cancelar suscripción",
-  "PaymentMethods": "Métodos de pago",
-  "CardNumber": "Número de tarjeta",
-  "ExpiryDate": "Fecha de vencimiento",
-  "BillingDetails": "Detalles de facturación",
-  "BillingName": "Nombre de facturación",
-  "Address": "Dirección",
-  "City": "Ciudad",
-  "Country": "País",
-  "Payments": "Pagos",
-  "Amount": "Importe",
-  "Description": "Descripción",
-  "Date": "Fecha",
-  "NoDescription": "Sin descripción"
-}
-
+        "PageTitle": "Cuenta",
+        "PageDescription": "Consulta tu perfil e información de cuenta de Libtune",
+        "FetchError": "No se pudo obtener la información de la cuenta",
+        "Profile": "Perfil",
+        "Email": "Correo electrónico",
+        "Username": "Nombre de usuario",
+        "Subscriptions": "Suscripciones",
+        "Status": "Estado",
+        "Product": "Producto",
+        "BillingFrequency": "Frecuencia de facturación",
+        "NextPaymentDate": "Próxima fecha de pago",
+        "Monthly": "Mensual",
+        "Yearly": "Anual",
+        "NoSubscription": "Sin suscripción activa",
+        "BuyPremium": "COMPRAR PREMIUM",
+        "Active": "activa",
+        "CancelSubscription": "Cancelar suscripción",
+        "PaymentMethods": "Métodos de pago",
+        "CardNumber": "Número de tarjeta",
+        "ExpiryDate": "Fecha de vencimiento",
+        "BillingDetails": "Detalles de facturación",
+        "BillingName": "Nombre de facturación",
+        "Address": "Dirección",
+        "City": "Ciudad",
+        "Country": "País",
+        "Payments": "Pagos",
+        "Amount": "Importe",
+        "Description": "Descripción",
+        "Date": "Fecha",
+        "NoDescription": "Sin descripción"
+    },
+    "Home": {
+        "PageDescription": "Accede a una enorme biblioteca de música libre de derechos y sin copyright para podcasts, YouTube, redes sociales y creación de contenido. Lista para descargar. Licencias asequibles. ¡Suscríbete ahora!"
+    }
 }
