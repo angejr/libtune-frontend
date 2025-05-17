@@ -3,15 +3,16 @@ import { useIntersectionObserver, useDebounce } from "@vueuse/core";
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
 const displayStore = useDisplayStore();
+const { t, locales, setLocale } = useI18n();
 
 const search = ref("");
 const debouncedSearch = useDebounce(search, 800); // Debounced ref
 const filter = ref([]);
 const headers = [
   { title: "", key: "play", align: "center", sortable: false },
-  { title: "Title", key: "title", align: "left" },
-  { title: "Length", key: "length", align: "center" },
-  { title: "Tags", key: "tags", align: "center", sortable: false },
+  { title: t('MusicTable.title'), key: "title", align: "left" },
+  { title: t('MusicTable.length'), key: "length", align: "center" },
+  { title: t('MusicTable.tags'), key: "tags", align: "center", sortable: false },
   { title: "", key: "download", align: "center", sortable: false },
 ];
 const songs = ref([]);
@@ -158,7 +159,7 @@ function getHeaderClass(isMobile) {
     <v-card class="music-page-card" :style="{ borderRadius: displayStore.isMobile ? 0 : '12px'}" flat max-width="1200px" elevation="8">
       <!-- Header -->
       <v-card-title :class="getHeaderClass(displayStore.isMobile)">
-        100% Royalty-Free Music
+        {{t("MusicTable.PageTitle")}}
       </v-card-title>
       <v-divider></v-divider>
 
@@ -168,8 +169,8 @@ function getHeaderClass(isMobile) {
           <v-col cols="12" md="6">
             <v-text-field
               v-model.trim="search"
-              label="Search"
-              placeholder="Search Title or Tag"
+              :label="t('MusicTable.labelSearch')"
+              :placeholder="t('MusicTable.labelPlaceholder')"
               prepend-inner-icon="mdi-magnify"
               variant="outlined"
               hide-details
@@ -183,7 +184,7 @@ function getHeaderClass(isMobile) {
               v-model="filter"
               multiple
               :items="Object.keys(sunoTags).concat('Instrumental')"
-              label="Filter by Tags"
+              :label="t('MusicTable.labelTags')"
               clearable
               chips
               dense
@@ -354,10 +355,9 @@ function getHeaderClass(isMobile) {
     <!-- Premium Dialog -->
     <v-dialog v-model="getPremiumDialog" max-width="500">
       <v-card>
-        <v-card-title class="headline">Download Music</v-card-title>
+        <v-card-title class="headline">{{t("MusicTable.downloadMusic")}}</v-card-title>
         <v-card-text>
-          Upgrade to <strong>Libtune Premium</strong> and enjoy unlimited music
-          downloads!
+          {{t('MusicTable.upgradeTo')}} <strong>Libtune Premium</strong> {{t('MusicTable.andEnjoy')}}
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -369,7 +369,7 @@ function getHeaderClass(isMobile) {
               goToPath('/subscribe');
             "
           >
-            Get Premium
+          {{t('MusicTable.getPremium')}}
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -378,9 +378,9 @@ function getHeaderClass(isMobile) {
     <!-- Login Dialog -->
     <v-dialog v-model="loginDialog" max-width="500">
       <v-card>
-        <v-card-title class="headline">Download Music</v-card-title>
+        <v-card-title class="headline">{{t("MusicTable.downloadMusic")}}</v-card-title>
         <v-card-text>
-          Please log in to download music. Not a member yet? Sign up now!
+          {{t("MusicTable.please")}}
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -392,7 +392,7 @@ function getHeaderClass(isMobile) {
               goToPath('/login');
             "
           >
-            Log In
+          {{t("MusicTable.login")}}
           </v-btn>
           <v-btn
             color="primary"
@@ -402,7 +402,7 @@ function getHeaderClass(isMobile) {
               goToPath('/signup');
             "
           >
-            Sign Up
+          {{t("MusicTable.signup")}}
           </v-btn>
         </v-card-actions>
       </v-card>

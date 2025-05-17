@@ -355,5 +355,21 @@
     },
     "Home": {
         "PageDescription": "Access a massive library of royalty free and copyright free music for podcasts, YouTube, social media and content creation. Ready to download. Affordable licensing. Subscribe now!"
+    },
+    "MusicTable": {
+        "PageTitle": "100% Royalty-Free Music",
+        "title": "Title",
+        "length": "Length",
+        "tags": "Tags",
+        "labelSearch": "Search",
+        "labelPlaceholder": "Search Title or Tag",
+        "labelTags": "Filter by Tags",
+        "downloadMusic": "Download Music",
+        "upgradeTo": "Upgrade to",
+        "andEnjoy": "and enjoy unlimited music downloads!",
+        "getPremium": "Get Premium",
+        "please": "Please log in to download music. Not a member yet? Sign up now!",
+        "login": "Log In",
+        "signup": "Sign Up"
     }
 }

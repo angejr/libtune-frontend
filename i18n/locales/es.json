@@ -355,5 +355,21 @@
     },
     "Home": {
         "PageDescription": "Accede a una enorme biblioteca de música libre de derechos y sin copyright para podcasts, YouTube, redes sociales y creación de contenido. Lista para descargar. Licencias asequibles. ¡Suscríbete ahora!"
+    },
+    "MusicTable": {
+        "PageTitle": "Música 100% libre de derechos",
+        "title": "Título",
+        "length": "Duración",
+        "tags": "Etiquetas",
+        "labelSearch": "Buscar",
+        "labelPlaceholder": "Buscar título o etiqueta",
+        "labelTags": "Filtrar por etiquetas",
+        "downloadMusic": "Descargar música",
+        "upgradeTo": "Actualízate a",
+        "andEnjoy": "y disfruta de descargas ilimitadas de música",
+        "getPremium": "Obtener Premium",
+        "please": "Inicia sesión para descargar música. ¿Aún no tienes cuenta? ¡Regístrate ahora!",
+        "login": "Iniciar sesión",
+        "signup": "Regístrate"
     }
 }
