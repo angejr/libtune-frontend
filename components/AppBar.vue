@@ -4,6 +4,7 @@ const displayStore = useDisplayStore()
 const drawer = ref(false)
 const drawerUser = ref(false)
 const { t, locales, setLocale } = useI18n();
+const localePath = useLocalePath();
 
 function resetDrawers(){
   drawer.value = false
@@ -76,12 +77,12 @@ onMounted(() => {
       <v-breadcrumbs class="breadcrumbs">
         <v-breadcrumbs-item
           :title="$t('AppBar.pricing')"
-          to="/subscribe"
+          :to="localePath('/subscribe')"
         ></v-breadcrumbs-item>
         <v-breadcrumbs-divider divider=" "></v-breadcrumbs-divider>
-        <v-breadcrumbs-item :title="$t('AppBar.about')" to="/about"></v-breadcrumbs-item>
+        <v-breadcrumbs-item :title="$t('AppBar.about')" :to="localePath('/about')"></v-breadcrumbs-item>
         <v-breadcrumbs-divider divider=" "></v-breadcrumbs-divider>
-        <v-breadcrumbs-item :title="$t('AppBar.terms')" to="/terms"></v-breadcrumbs-item>
+        <v-breadcrumbs-item :title="$t('AppBar.terms')" :to="localePath('/terms')"></v-breadcrumbs-item>
       </v-breadcrumbs>
 
       <!-- Authentication Buttons or Menu -->

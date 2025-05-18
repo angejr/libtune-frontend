@@ -7,7 +7,7 @@
       <v-divider></v-divider>
       <p class="text-center mt-4 mb-4">
         {{$t('SignUp.haveAccount')}} 
-        <NuxtLink to="/login" class="terms-link">
+        <NuxtLink :to="localePath('/login')" class="terms-link">
           {{$t("AppBar.login")}}
 
         </NuxtLink>
@@ -82,7 +82,7 @@
 
           <p class="text-center mt-4 mb-4">
             {{$t('SignUp.agreement')}}
-            <NuxtLink to="/terms" class="terms-link">
+            <NuxtLink :to="localePath('/terms')" class="terms-link">
               {{$t("AppBar.termsAndConditions")}}
 
             </NuxtLink>
@@ -175,6 +175,7 @@ const signUpLoading = ref(!!idToken.value && !!accessToken.value);
 const stripeLoading = ref(false);
 const displayStore = useDisplayStore()
 const { t, locales, setLocale } = useI18n();
+const localePath = useLocalePath();
 
 useSeoMeta({
   title: `${t('SignUp.PageTitle')} | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,

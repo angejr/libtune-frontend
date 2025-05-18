@@ -59,7 +59,7 @@
           ></v-text-field>
 
           <p class="text-center mt-4 mb-4">
-            {{$t('Login.noAccount')}} <NuxtLink to="/signup" class="terms-link">
+            {{$t('Login.noAccount')}} <NuxtLink :to="localePath('/signup')" class="terms-link">
               {{$t('Login.register')}}
             </NuxtLink>
           </p>
@@ -131,12 +131,13 @@
   // Loading status
   const loginLoading = ref(false);
   const { t, locales, setLocale } = useI18n();
+  const localePath = useLocalePath();
 
   definePageMeta({
   middleware: defineNuxtRouteMiddleware(() => {
     const authStore = useAuthStore();
     if (authStore?.userToken) {
-      return navigateTo('/'); // Redirect if authenticated
+      return goToPath('/'); // Redirect if authenticated
     }
   })
 });

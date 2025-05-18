@@ -1,5 +1,6 @@
 export function goToPath(input : any) {
-    return navigateTo(input)
+  const localePath = useLocalePath()
+    return navigateTo(localePath(input))
 }
 
 // Form validation rules
