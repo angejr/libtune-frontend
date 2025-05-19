@@ -156,6 +156,7 @@
         "Contact": "Contact"
     },
     "AppBar": {
+        "browse": "Explore",
         "pricing": "Pricing",
         "about": "About Us",
         "terms": "Terms",
