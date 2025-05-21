@@ -185,8 +185,8 @@
         }
         else{
           errorStore.setError({title: "Login Error", text: e.message})
-          loginLoading.value= false
         }
+        loginLoading.value= false
       }
     }
   };
