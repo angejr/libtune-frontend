@@ -8,8 +8,8 @@ const displayStore = useDisplayStore();
 const { t, locales, setLocale } = useI18n();
 
 useSeoMeta({
-  title: t("Subscribe.PageTitle", {titleVersion: displayStore.titleVersion, subtitleVersion: displayStore.subtitleVersion}),
-  ogtitle: t("Subscribe.PageTitle", {titleVersion: displayStore.titleVersion, subtitleVersion: displayStore.subtitleVersion}),
+  title: `${t('Subscribe.PageTitle')} | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  ogTitle: `${t('Subscribe.PageTitle')} | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
   description: t("Subscribe.PageDescription"),
   ogDescription: t("Subscribe.PageDescription"),
 
@@ -54,7 +54,14 @@ async function subscribe (){
           <div class="price" style="display: flex; align-items: baseline; justify-content: center; color:red"><h1>{{ displayStore.countryPrice.priceValue}}</h1><p style="font-size:x-small">/{{
                 $t("Landing.Subscription.month")
               }}</p></div>
-          <h6>{{ $t("Landing.Subscription.billing") }}</h6>
+              <div v-if="displayStore.countryPrice.currency !== 'usd'" style="display: flex; align-items: center; justify-content: center; gap:5px">
+                    <p class="font-inter" style="font-size: xx-small">{{$t("Subscribe.billedInDollars")}}</p>
+                <div style="display: flex; align-items: baseline; justify-content: center">
+                    <h6 style="font-weight: lighter;">$5.25</h6>
+                    <p style="font-size:xx-small">/{{$t("Landing.Subscription.month")}}</p> 
+              </div>
+              </div>
+          <p class="font-inter" style="font-size:xx-small">{{ $t("Landing.Subscription.billing") }}</p>
         </v-card-title>
       <v-divider></v-divider>
       <v-card-text>
@@ -172,5 +179,9 @@ async function subscribe (){
 
 .negative{
   color:red
+}
+
+.font-inter {
+  font-family: Inter;
 }
 </style>

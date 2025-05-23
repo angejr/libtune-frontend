@@ -87,7 +87,7 @@ export const countryCodeToPrice : any = {
   US: {
     currency: 'usd',
     priceNumber: 525,
-    priceId: 2,
+    priceId: 8, // Point to actual USD product and not EUR
     priceValue: '$5.25',
     priceOriginalValue: '$10.50'
   },
@@ -123,6 +123,79 @@ export const countryCodeToPrice : any = {
     priceNumber: 32000,
     priceOriginalValue: '₱640'
   },
+  // Mexico
+  MX: {
+    currency: 'mxn',
+    // priceId: 7,
+    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceValue: 'MX$110',
+    priceNumber: 11000,
+    priceOriginalValue: 'MX$220'
+  },
+  // Argentina
+  AR: {
+    currency: 'ars',
+    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceValue: 'ARS$6,435',
+    priceNumber: 6435,
+    priceOriginalValue: 'ARS$12,870'
+  },
+  // Columbia
+  CO: {
+    currency: 'cop',
+    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceValue: 'COL$23,645',
+    priceNumber: 6435,
+    priceOriginalValue: 'COL$47,290'
+  },
+    // Peru
+    PE: {
+      currency: 'pen',
+      priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+      priceValue: 'S/ 20',
+      priceNumber: 2000,
+      priceOriginalValue: 'S/ 40'
+    },
+    // Ecuador (uses USD)
+    EC: {
+      currency: 'usd',
+      priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+      priceValue: '$5.25',
+      priceNumber: 525,
+      priceOriginalValue: '$10.5'
+    },
+    // Venezuela
+    VE: {
+      currency: 'ves',
+      priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+      priceValue: 'Bs. 180',
+      priceNumber: 18000,
+      priceOriginalValue: 'Bs. 360'
+    },
+    // Guatemala
+    GT: {
+      currency: 'gtq',
+      priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+      priceValue: 'GTQ 39',
+      priceNumber: 3900,
+      priceOriginalValue: 'GTQ 78'
+    },
+    // Nicaragua
+    NI: {
+      currency: 'nio',
+      priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+      priceValue: 'C$185',
+      priceNumber: 18500,
+      priceOriginalValue: 'C$370'
+    },
+    // Bolivia
+    BO: {
+      currency: 'bob',
+      priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+      priceValue: 'Bs 35',
+      priceNumber: 3500,
+      priceOriginalValue: 'Bs 70'
+    }
   
 }
 

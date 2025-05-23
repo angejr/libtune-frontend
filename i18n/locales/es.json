@@ -173,8 +173,9 @@
         "upgrade": "Mejorar"
     },
     "Subscribe": {
-        "PageTitle": "Precios {'|'} v_{titleVersion}_{subtitleVersion}",
-        "PageDescription": "El plan de música libre de derechos más económico: descargas ilimitadas y licencia ilimitada para uso comercial, sin necesidad de atribución. Cancela en cualquier momento."
+        "PageTitle": "Precios",
+        "PageDescription": "El plan de música libre de derechos más económico: descargas ilimitadas y licencia ilimitada para uso comercial, sin necesidad de atribución. Cancela en cualquier momento.",
+        "billedInDollars": "El cobro se hace en dólares:"
     },
     "SignUp": {
         "PageTitle": "Registrarse",

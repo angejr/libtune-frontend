@@ -570,7 +570,14 @@ const reviews = [
               /{{ $t("Landing.Subscription.month") }}
             </p>
           </div>
-          <h6>{{ $t("Landing.Subscription.billing") }}</h6>
+          <div v-if="displayStore.countryPrice.currency !== 'usd'" style="display: flex; align-items: center; justify-content: center; gap:5px">
+                    <p class="font-inter" style="font-size: xx-small">{{$t("Subscribe.billedInDollars")}}</p>
+                <div style="display: flex; align-items: baseline; justify-content: center">
+                    <h6 style="font-weight: lighter;">$5.25</h6>
+                    <p style="font-size:xx-small">/{{$t("Landing.Subscription.month")}}</p> 
+              </div>
+              </div>
+          <p class="font-inter" style="font-size:xx-small">{{ $t("Landing.Subscription.billing") }}</p>
         </v-card-title>
         <v-divider></v-divider>
         <v-card-text>
