@@ -1,6 +1,7 @@
 export const useDisplayStore = defineStore('display', () => {
     const { mobile } = useDisplay()
     const isMobile = ref(false)
+    const { locale } = useI18n();
   
     watchEffect(() => {
       isMobile.value = mobile.value
@@ -11,16 +12,19 @@ export const useDisplayStore = defineStore('display', () => {
   const countryCode : any = useCookie('country').value
   const countryPrice : any = countryCodeToPrice[Object.keys(countryCodeToPrice).includes(countryCode) ? countryCode : 'US' ]
 
-  // Landing version
+  // Landing version // v1
+  const languageVersion = Object.keys(languageToVersionCombination).includes(locale.value) ? locale.value : 'en'
+  const versionCombination = languageToVersionCombination[languageVersion][Math.floor(Math.random() * 35)]
+  
   let titleVersion : any = useCookie('titleVersion').value
   if (!titleVersion){
-    titleVersion = Math.floor(Math.random() * 7) + 1
+    titleVersion = versionCombination.split('_')[1]
     useCookie('titleVersion').value = titleVersion;
   }
 
   let subtitleVersion : any = useCookie('subtitleVersion').value
   if (!subtitleVersion){
-    subtitleVersion = Math.floor(Math.random() * 10) + 1
+    subtitleVersion = versionCombination.split('_')[2]
     useCookie('subtitleVersion').value = subtitleVersion;
   }
 

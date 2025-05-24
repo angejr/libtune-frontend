@@ -5,8 +5,8 @@ const displayStore = useDisplayStore();
 const { t, locales, setLocale } = useI18n();
 
 useSeoMeta({
-  title: `${t("SubscriptionSuccess.PageTitle")} | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
-  ogTitle: `${t("SubscriptionSuccess.PageTitle")} | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  title: `${t("SubscriptionSuccess.PageTitle")} | v1_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  ogTitle: `${t("SubscriptionSuccess.PageTitle")} | v1_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
   robots: {
     noindex: true,
     nofollow: true

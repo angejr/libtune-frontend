@@ -1,6 +1,6 @@
-export function goToPath(input : any) {
+export function goToPath(input: any) {
   const localePath = useLocalePath()
-    return navigateTo(localePath(input))
+  return navigateTo(localePath(input))
 }
 
 // Form validation rules
@@ -11,19 +11,19 @@ export const validationRules = {
     value.length >= length || `Min ${length} characters.`,
   max: (length: any) => (value: any) =>
     value.length <= length || `Max ${length} characters.`,
-  safe: (value :any) => value == useSanitize(value) || "Unsafe input",
+  safe: (value: any) => value == useSanitize(value) || "Unsafe input",
   number: (value: any) => /^[0-9]*$/.test(value) || "Needs to be a number",
 };
 
 
-export function removeAll(stringsToRemove: string[], string: string) : string{
-  if (!string){
+export function removeAll(stringsToRemove: string[], string: string): string {
+  if (!string) {
     return string
   }
 
   let returnString = string
 
-  for (let toRemove of stringsToRemove){
+  for (let toRemove of stringsToRemove) {
     returnString = returnString.replaceAll(toRemove, '')
   }
 
@@ -35,7 +35,7 @@ export async function SS_ProductCheckout(productId: Number, baseUrl: string, use
   const getRedirectUrl =
     baseUrl + "/strapi-stripe/getRedirectUrl/" + productId + "/" + userEmail;
 
-  await new Promise( r => {
+  await new Promise(r => {
     fetch(getRedirectUrl, {
       method: "get",
       mode: "cors",
@@ -48,23 +48,23 @@ export async function SS_ProductCheckout(productId: Number, baseUrl: string, use
         if (response.url) {
           const url = response.url;
           navigateTo(url, { external: true });
-  
+
           // ADDED SS_GetProductPaymentDetails
-  
+
           const checkoutSessionId = url
             .split("/")
-            [url.split("/").length - 1].split("#")[0];
-  
+          [url.split("/").length - 1].split("#")[0];
+
           const baseUrl = localStorage.getItem("strapiStripeUrl");
           const retrieveCheckoutSessionUrl =
             baseUrl +
             "/strapi-stripe/retrieveCheckoutSession/" +
             checkoutSessionId;
-  
+
           if (
             window.performance
               .getEntriesByType("navigation")
-              .map((nav : any) => nav.type)
+              .map((nav: any) => nav.type)
               .includes("reload")
           ) {
             console.info("website reloded");
@@ -82,7 +82,7 @@ export async function SS_ProductCheckout(productId: Number, baseUrl: string, use
   })
 }
 
-export const countryCodeToPrice : any = {
+export const countryCodeToPrice: any = {
   // Default/US
   US: {
     currency: 'usd',
@@ -148,55 +148,128 @@ export const countryCodeToPrice : any = {
     priceNumber: 6435,
     priceOriginalValue: 'COL$47,290'
   },
-    // Peru
-    PE: {
-      currency: 'pen',
-      priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
-      priceValue: 'S/ 20',
-      priceNumber: 2000,
-      priceOriginalValue: 'S/ 40'
-    },
-    // Ecuador (uses USD)
-    EC: {
-      currency: 'usd',
-      priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
-      priceValue: '$5.25',
-      priceNumber: 525,
-      priceOriginalValue: '$10.5'
-    },
-    // Venezuela
-    VE: {
-      currency: 'ves',
-      priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
-      priceValue: 'Bs. 180',
-      priceNumber: 18000,
-      priceOriginalValue: 'Bs. 360'
-    },
-    // Guatemala
-    GT: {
-      currency: 'gtq',
-      priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
-      priceValue: 'GTQ 39',
-      priceNumber: 3900,
-      priceOriginalValue: 'GTQ 78'
-    },
-    // Nicaragua
-    NI: {
-      currency: 'nio',
-      priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
-      priceValue: 'C$185',
-      priceNumber: 18500,
-      priceOriginalValue: 'C$370'
-    },
-    // Bolivia
-    BO: {
-      currency: 'bob',
-      priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
-      priceValue: 'Bs 35',
-      priceNumber: 3500,
-      priceOriginalValue: 'Bs 70'
-    }
-  
+  // Peru
+  PE: {
+    currency: 'pen',
+    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceValue: 'S/ 20',
+    priceNumber: 2000,
+    priceOriginalValue: 'S/ 40'
+  },
+  // Ecuador (uses USD)
+  EC: {
+    currency: 'usd',
+    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceValue: '$5.25',
+    priceNumber: 525,
+    priceOriginalValue: '$10.5'
+  },
+  // Venezuela
+  VE: {
+    currency: 'ves',
+    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceValue: 'Bs. 180',
+    priceNumber: 18000,
+    priceOriginalValue: 'Bs. 360'
+  },
+  // Guatemala
+  GT: {
+    currency: 'gtq',
+    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceValue: 'GTQ 39',
+    priceNumber: 3900,
+    priceOriginalValue: 'GTQ 78'
+  },
+  // Nicaragua
+  NI: {
+    currency: 'nio',
+    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceValue: 'C$185',
+    priceNumber: 18500,
+    priceOriginalValue: 'C$370'
+  },
+  // Bolivia
+  BO: {
+    currency: 'bob',
+    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceValue: 'Bs 35',
+    priceNumber: 3500,
+    priceOriginalValue: 'Bs 70'
+  }
+
 }
 
 export const offerExpiryDate = '2025-05-31T00:00:00Z' // Spring offer
+
+export const languageToVersionCombination = {
+  en: ['v_3_9',
+    'v_4_2',
+    'v_5_7',
+    'v_5_8',
+    'v_4_9',
+    'v_6_7',
+    'v_7_6',
+    'v_1_3',
+    'v_2_10',
+    'v_3_7',
+    'v_7_4',
+    'v_4_6',
+    'v_1_5',
+    'v_6_5',
+    'v_4_8',
+    'v_3_6',
+    'v_2_4',
+    'v_3_1',
+    'v_5_6',
+    'v_6_9',
+    'v_2_2',
+    'v_2_6',
+    'v_1_9',
+    'v_7_9',
+    'v_7_5',
+    'v_5_2',
+    'v_1_1',
+    'v_6_4',
+    'v_4_4',
+    'v_4_10',
+    'v_7_3',
+    'v_5_3',
+    'v_3_10',
+    'v_4_1',
+    'v_7_1'],
+  es: ['v_6_5',
+    'v_4_5',
+    'v_1_2',
+    'v_6_8',
+    'v_4_6',
+    'v_4_4',
+    'v_1_4',
+    'v_2_5',
+    'v_3_2',
+    'v_7_8',
+    'v_7_4',
+    'v_5_5',
+    'v_7_6',
+    'v_5_6',
+    'v_5_9',
+    'v_7_9',
+    'v_3_6',
+    'v_1_8',
+    'v_6_6',
+    'v_4_1',
+    'v_3_1',
+    'v_6_2',
+    'v_5_1',
+    'v_7_10',
+    'v_6_3',
+    'v_2_8',
+    'v_5_3',
+    'v_7_5',
+    'v_7_7',
+    'v_6_1',
+    'v_5_7',
+    'v_6_10',
+    'v_1_6',
+    'v_2_2',
+    'v_2_10']
+}

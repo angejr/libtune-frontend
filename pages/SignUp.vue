@@ -178,8 +178,8 @@ const { t, locales, setLocale } = useI18n();
 const localePath = useLocalePath();
 
 useSeoMeta({
-  title: `${t('SignUp.PageTitle')} | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
-  ogTitle: `${t('SignUp.PageTitle')} | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  title: `${t('SignUp.PageTitle')} | v1_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  ogTitle: `${t('SignUp.PageTitle')} | v1_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
   robots: {
     noindex: true,
     nofollow: true

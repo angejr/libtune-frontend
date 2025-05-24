@@ -8,8 +8,8 @@ const displayStore = useDisplayStore();
 const { t, locales, setLocale } = useI18n();
 
 useSeoMeta({
-  title: `${t('Subscribe.PageTitle')} | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
-  ogTitle: `${t('Subscribe.PageTitle')} | v_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  title: `${t('Subscribe.PageTitle')} | v1_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
+  ogTitle: `${t('Subscribe.PageTitle')} | v1_${displayStore.titleVersion}_${displayStore.subtitleVersion}`,
   description: t("Subscribe.PageDescription"),
   ogDescription: t("Subscribe.PageDescription"),
 
