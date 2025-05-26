@@ -126,8 +126,7 @@ export const countryCodeToPrice: any = {
   // Mexico
   MX: {
     currency: 'mxn',
-    // priceId: 7,
-    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceId: 7,
     priceValue: 'MX$110',
     priceNumber: 11000,
     priceOriginalValue: 'MX$220'
@@ -135,23 +134,23 @@ export const countryCodeToPrice: any = {
   // Argentina
   AR: {
     currency: 'ars',
-    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
-    priceValue: 'ARS$6,435',
+    priceId: 9,
+    priceValue: '$ARS 6,435',
     priceNumber: 6435,
-    priceOriginalValue: 'ARS$12,870'
+    priceOriginalValue: '$ARS 12,870'
   },
   // Columbia
   CO: {
     currency: 'cop',
-    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
-    priceValue: 'COL$23,645',
-    priceNumber: 6435,
-    priceOriginalValue: 'COL$47,290'
+    priceId: 10,
+    priceValue: 'COL$ 23,645',
+    priceNumber: 23645,
+    priceOriginalValue: 'COL$ 47,290'
   },
   // Peru
   PE: {
     currency: 'pen',
-    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceId: 11,
     priceValue: 'S/ 20',
     priceNumber: 2000,
     priceOriginalValue: 'S/ 40'
@@ -159,7 +158,7 @@ export const countryCodeToPrice: any = {
   // Ecuador (uses USD)
   EC: {
     currency: 'usd',
-    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceId: 8,
     priceValue: '$5.25',
     priceNumber: 525,
     priceOriginalValue: '$10.5'
@@ -167,7 +166,7 @@ export const countryCodeToPrice: any = {
   // Venezuela
   VE: {
     currency: 'ves',
-    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceId: 8, // Point to USD product because stripe doesn't support VES
     priceValue: 'Bs. 180',
     priceNumber: 18000,
     priceOriginalValue: 'Bs. 360'
@@ -175,15 +174,15 @@ export const countryCodeToPrice: any = {
   // Guatemala
   GT: {
     currency: 'gtq',
-    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
-    priceValue: 'GTQ 39',
+    priceId: 12,
+    priceValue: 'Q 39',
     priceNumber: 3900,
-    priceOriginalValue: 'GTQ 78'
+    priceOriginalValue: 'Q 78'
   },
   // Nicaragua
   NI: {
     currency: 'nio',
-    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceId: 13,
     priceValue: 'C$185',
     priceNumber: 18500,
     priceOriginalValue: 'C$370'
@@ -191,7 +190,7 @@ export const countryCodeToPrice: any = {
   // Bolivia
   BO: {
     currency: 'bob',
-    priceId: 8, // Point to USD product because south american are less trustin gof their own currencies
+    priceId: 14,
     priceValue: 'Bs 35',
     priceNumber: 3500,
     priceOriginalValue: 'Bs 70'

@@ -54,7 +54,7 @@ async function subscribe (){
           <div class="price" style="display: flex; align-items: baseline; justify-content: center; color:red"><h1>{{ displayStore.countryPrice.priceValue}}</h1><p style="font-size:x-small">/{{
                 $t("Landing.Subscription.month")
               }}</p></div>
-              <div v-if="displayStore.countryPrice.currency !== 'usd'" style="display: flex; align-items: center; justify-content: center; gap:5px">
+              <div v-if="displayStore.countryPrice.currency === 'ves'" style="display: flex; align-items: center; justify-content: center; gap:5px">
                     <p class="font-inter" style="font-size: xx-small">{{$t("Subscribe.billedInDollars")}}</p>
                 <div style="display: flex; align-items: baseline; justify-content: center">
                     <h6 style="font-weight: lighter;">$5.25</h6>
