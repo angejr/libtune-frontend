@@ -4,7 +4,7 @@
 #
 
 app = 'libtune'
-primary_region = 'qro'
+primary_region = 'mia'
 
 [build]
 
