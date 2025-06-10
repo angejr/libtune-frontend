@@ -14,7 +14,7 @@ export const useDisplayStore = defineStore('display', () => {
 
   // Landing version // v1
   const languageVersion = Object.keys(languageToVersionCombination).includes(locale.value) ? locale.value : 'en'
-  const versionCombination = languageToVersionCombination[languageVersion][Math.floor(Math.random() * 35)]
+  const versionCombination = languageToVersionCombination[languageVersion][Math.floor(Math.random() * 12)]
   
   let titleVersion : any = useCookie('titleVersion').value
   if (!titleVersion){
