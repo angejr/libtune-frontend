@@ -269,26 +269,8 @@ const reviews = [
                 white-space: normal;
               "
             >
-              <h1 v-if="displayStore.titleVersion === 1">
-                {{ $t("Landing.TitleVersions.1") }}
-              </h1>
-              <h1 v-else-if="displayStore.titleVersion === 2">
-                {{ $t("Landing.TitleVersions.2") }}
-              </h1>
-              <h1 v-else-if="displayStore.titleVersion === 3">
-                {{ $t("Landing.TitleVersions.3") }}
-              </h1>
-              <h1 v-else-if="displayStore.titleVersion === 4">
-                {{ $t("Landing.TitleVersions.4") }}
-              </h1>
-              <h1 v-else-if="displayStore.titleVersion === 5">
-                {{ $t("Landing.TitleVersions.5") }}
-              </h1>
-              <h1 v-else-if="displayStore.titleVersion === 6">
-                {{ $t("Landing.TitleVersions.6") }}
-              </h1>
-              <h1 v-else-if="displayStore.titleVersion === 7">
-                {{ $t("Landing.TitleVersions.7") }}
+              <h1>
+                {{ $t(`Landing.TitleVersions.${displayStore.titleVersion}`) }}
               </h1>
             </v-card-title>
             <v-card-text>
@@ -322,58 +304,10 @@ const reviews = [
                 </v-list-item>
               </v-list>
               <p
-                v-else-if="displayStore.subtitleVersion === 2"
+                v-else
                 class="font-inter text-subtitle-1 font-weight-medium mt-4"
               >
-                {{ $t("Landing.SubtitleVersions.2") }}
-              </p>
-              <p
-                v-else-if="displayStore.subtitleVersion === 3"
-                class="font-inter text-subtitle-1 font-weight-medium mt-4"
-              >
-                {{ $t("Landing.SubtitleVersions.3") }}
-              </p>
-              <p
-                v-else-if="displayStore.subtitleVersion === 4"
-                class="font-inter text-subtitle-1 font-weight-medium mt-4"
-              >
-                {{ $t("Landing.SubtitleVersions.4") }}
-              </p>
-              <p
-                v-else-if="displayStore.subtitleVersion === 5"
-                class="font-inter text-subtitle-1 font-weight-medium mt-4"
-              >
-                {{ $t("Landing.SubtitleVersions.5") }}
-              </p>
-              <p
-                v-else-if="displayStore.subtitleVersion === 6"
-                class="font-inter text-subtitle-1 font-weight-medium mt-4"
-              >
-                {{ $t("Landing.SubtitleVersions.6") }}
-              </p>
-              <p
-                v-else-if="displayStore.subtitleVersion === 7"
-                class="font-inter text-subtitle-1 font-weight-medium mt-4"
-              >
-                {{ $t("Landing.SubtitleVersions.7") }}
-              </p>
-              <p
-                v-else-if="displayStore.subtitleVersion === 8"
-                class="font-inter text-subtitle-1 font-weight-medium mt-4"
-              >
-                {{ $t("Landing.SubtitleVersions.8") }}
-              </p>
-              <p
-                v-else-if="displayStore.subtitleVersion === 9"
-                class="font-inter text-subtitle-1 font-weight-medium mt-4"
-              >
-                {{ $t("Landing.SubtitleVersions.9") }}
-              </p>
-              <p
-                v-else-if="displayStore.subtitleVersion === 10"
-                class="font-inter text-subtitle-1 font-weight-medium mt-4"
-              >
-                {{ $t("Landing.SubtitleVersions.10") }}
+                {{ $t(`Landing.SubtitleVersions.${displayStore.subtitleVersion}`) }}
               </p>
             </v-card-text>
             <v-card-actions>
@@ -675,7 +609,7 @@ const reviews = [
               height="40"
             ></v-img>
             <v-img
-              :src="`/images/payment_methods/apple_pay.png`"
+              :src="`/images/payment_methods/link.png`"
               width="35"
               height="35"
             ></v-img>

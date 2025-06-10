@@ -140,7 +140,7 @@ async function subscribe (){
               height="40"
               ></v-img>
               <v-img
-                :src="`/images/payment_methods/apple_pay.png`"
+                :src="`/images/payment_methods/link.png`"
                 width="35"
                 height="35"
               ></v-img>
