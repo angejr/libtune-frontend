@@ -30,6 +30,7 @@ RUN npm ci --include=dev
 COPY . .
 
 ENV NUXT_STRAPI_URL="https://libtune-cms.fly.dev"
+ENV NUXT_CLARITY_ID="ryqlo5ltjx"
 
 # Build application
 RUN npm run build
