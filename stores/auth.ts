@@ -84,6 +84,16 @@ export const useAuthStore = defineStore('auth', {
             useCookie('userToken', {secure: true}).value = null
         },
 
+
+        async postLead(email: string) {
+            const response : any = await $fetch('/api/leads', {
+                method: "POST",
+                body: {
+                    email,
+                },
+            })
+        }
+
         // autoLogin() {
         //     const userToken = sessionStorage.getItem('userToken')
         //     if (userToken) {

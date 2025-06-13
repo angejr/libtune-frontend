@@ -2,7 +2,14 @@
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
 const route = useRoute()
-const landingDialog = ref(route.query.landing)
+const localePath = useLocalePath();
+const landingDialog = ref(true)
+const email = ref('')
+const username = ref('')
+const isFormValid = ref(false)
+const formRef = ref(null);
+const leadLoading = ref(false);
+const leadSuccess = ref(false)
 
 useSeoMeta({
   ogSiteName: "Libtune"
@@ -17,6 +24,20 @@ if (authStore.userToken) {
       title: "Could not fetch user",
       text: e.message,
     });
+  }
+}
+
+const submitForm = async () => {
+  if (formRef.value && formRef.value.validate()) {
+    leadLoading.value = true
+    try {
+      await authStore.postLead(email.value);
+      leadSuccess.value = true
+
+    } catch (e) {
+      errorStore.setError({title: "Lead Error:", text: e.message})
+    }
+    leadLoading.value= false
   }
 }
 </script>
@@ -39,65 +60,46 @@ if (authStore.userToken) {
       </v-dialog>
     <!-- Landing Dialog -->
     <v-dialog v-model="landingDialog" max-width="500px">
-      <v-card image="/images/bg.jpg">
-        <v-card-title style="text-align: center; font-weight: bold; color: white;" class="headline">Welcome to Libtune !</v-card-title>
-        <v-card-subtitle style="text-align: center; color: white;">
-          Your go-to site for Royalty-Free Music
-        </v-card-subtitle>
-        <v-card-subtitle style="text-align: center; padding-bottom: 0px; color: white;">
-          The Best, Simplest, Most-affordable model: 
-        </v-card-subtitle>
-        <v-card-subtitle style="text-align: center; font-weight: bold; color: white;">
-          You Pay, You Use.
-        </v-card-subtitle>
-        <v-card-text style="padding-bottom: 0px; color: white;">
-          <strong>
-            What you will get :
-          </strong>
-          <v-list  style="background-color: transparent">
-            <v-list-item style="color: white;">
-            <v-icon color="white">mdi-music</v-icon>
-            Access to thousands of high quality songs
-          </v-list-item>
-          <v-list-item style="color: white;"> 
-              <v-icon color="white">mdi-download</v-icon>
-              Unlimited downloads </v-list-item>
-              <v-list-item style="color: white;">
-              <v-icon color="white">mdi-license</v-icon>
-              Licence to use the songs for any project</v-list-item>
-            </v-list>
-            <strong>
-              What you will NOT get:
-            </strong>
-            <v-list  style="background-color: transparent">
-              <v-list-item style="color: white;">
-              <v-icon color="red">mdi-copyright</v-icon>
-              Copyright Strikes</v-list-item>
-              <v-list-item style="color: white;">
-              <v-icon color="red">mdi-currency-usd-off</v-icon>
-              Demonitization</v-list-item>
-              <v-list-item style="color: white;">
-              <v-icon color="red">mdi-chess-queen</v-icon>
-              Royalties to pay Us</v-list-item>
-          </v-list>
-        </v-card-text>
-        <v-card-actions style="display:flex; justify-content: center;">
+      <v-card>
+        <v-card-title style="text-align: center; font-weight: bold;" class="font-inter"> 🎁 Free Music Package 🎁 </v-card-title>
+        <v-card-text v-if="!leadSuccess" style="display: flex; flex-direction: column; gap: 10px">
+          <p class="text-justify font-inter">
+            Get a <strong>FREE</strong> bundle of 10 high quality songs, and licence to use them in any project  
+          </p>
+
+          <v-form
+          v-model="isFormValid"
+          ref="formRef"
+          lazy-validation
+        >
+          <v-text-field
+            v-model="email"
+            :label="$t('SignUp.email')"
+            variant="outlined"
+            :rules="[validationRules.required, validationRules.email, validationRules.safe, validationRules.max(60)]"
+            dense
+            class="mt-4"
+          ></v-text-field>
           <v-btn
-            color="purple"
-            variant="elevated"
-            @click="
-              landingDialog = false;
-              if (!authStore?.userToken){
-                goToPath('/signup');
-              }
-              else {
-                goToPath('/subscribe')
-              }
-            "
+            :disabled="!email"
+            @click="submitForm"
+            color="primary"
+            block
+            size="large"
+            class="text-capitalize font-inter"
+            :loading="leadLoading"
           >
-            Subscribe Now!
+          Get Free songs
           </v-btn>
-        </v-card-actions>
+        </v-form>
+      </v-card-text>
+      <v-card-text v-else  style="display: flex; justify-content: center;">
+        <v-icon large color="green" class="mr-3">mdi-check-circle</v-icon>
+        <p class="font-inter font-weight-medium">
+          The request has been sent !
+        </p>
+          
+      </v-card-text>
       </v-card>
     </v-dialog>
       <NuxtPage></NuxtPage>
@@ -112,5 +114,8 @@ if (authStore.userToken) {
 
 .classic {
   background-color: lightgrey;
+}
+.font-inter {
+  font-family: Inter;
 }
 </style>
