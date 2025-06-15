@@ -34,6 +34,14 @@ export const useDisplayStore = defineStore('display', () => {
   const setSubscribeAfterSignUp = (value: boolean) => {
     getSubscribeAfterSignUp().value = value;
   };
-  return { isMobile, getIsMobile, countryCode, countryPrice, titleVersion, subtitleVersion, getSubscribeAfterSignUp, setSubscribeAfterSignUp }
+  
+  const getLandingDialog = () =>  
+    useCookie<boolean>('landingDialog', { default: () => true });
+  
+  const setLandingDialog = (value: boolean) => {
+    getLandingDialog().value = value;
+  };
+
+  return { isMobile, getIsMobile, countryCode, countryPrice, titleVersion, subtitleVersion, getSubscribeAfterSignUp, setSubscribeAfterSignUp, getLandingDialog, setLandingDialog }
   })
   

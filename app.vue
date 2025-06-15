@@ -2,10 +2,9 @@
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
 const route = useRoute()
-const localePath = useLocalePath();
-const landingDialog = ref(true)
+const displayStore = useDisplayStore()
+const landingDialog = ref(displayStore.getLandingDialog())
 const email = ref('')
-const username = ref('')
 const isFormValid = ref(false)
 const formRef = ref(null);
 const leadLoading = ref(false);
@@ -33,6 +32,7 @@ const submitForm = async () => {
     try {
       await authStore.postLead(email.value);
       leadSuccess.value = true
+      displayStore.setLandingDialog(false)
 
     } catch (e) {
       errorStore.setError({title: "Lead Error:", text: e.message})
