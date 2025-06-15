@@ -85,11 +85,12 @@ export const useAuthStore = defineStore('auth', {
         },
 
 
-        async postLead(email: string) {
+        async postLead(email: string, locale: string) {
             const response : any = await $fetch('/api/leads', {
                 method: "POST",
                 body: {
                     email,
+                    locale
                 },
             })
         }

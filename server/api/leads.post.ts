@@ -9,6 +9,7 @@ export default defineEventHandler(async (event) => {
     // Validate input against schema
     const schema = z.object({
         email: z.string().regex(/^.+@.+\..+$/).max(60),
+        locale: z.string().regex(/^[A-z]*[-]*$/).max(20)
     }).strict()
     const validation = await readValidatedBody(event, body => schema.safeParse(body))
 

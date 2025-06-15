@@ -8,7 +8,8 @@ const email = ref('')
 const isFormValid = ref(false)
 const formRef = ref(null);
 const leadLoading = ref(false);
-const leadSuccess = ref(false)
+const leadSuccess = ref(false);
+const { locale } = useI18n();
 
 useSeoMeta({
   ogSiteName: "Libtune"
@@ -30,7 +31,7 @@ const submitForm = async () => {
   if (formRef.value && formRef.value.validate()) {
     leadLoading.value = true
     try {
-      await authStore.postLead(email.value);
+      await authStore.postLead(email.value, locale.value);
       leadSuccess.value = true
       displayStore.setLandingDialog(false)
 
