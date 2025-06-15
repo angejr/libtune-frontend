@@ -27,6 +27,12 @@
         },
         "open": "Open"
     },
+    "app": {
+        "FreeMusicPackage": "Free Music Package",
+        "GetFreeBundle": "Get a FREE bundle of 10 high quality songs, and licence to use them in any project",
+        "GetFreeSongs": "Get Free songs",
+        "RequestSent": "The request has been sent !"
+    },
     "Landing": {
         "PageTitle": "Royalty Free Music for Any Project",
         "StartFreeTrial": "Start Free Trial",

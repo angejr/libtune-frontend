@@ -62,10 +62,10 @@ const submitForm = async () => {
     <!-- Landing Dialog -->
     <v-dialog v-model="landingDialog" max-width="500px">
       <v-card>
-        <v-card-title style="text-align: center; font-weight: bold;" class="font-inter"> 🎁 Free Music Package 🎁 </v-card-title>
+        <v-card-title style="text-align: center; font-weight: bold;" class="font-inter"> 🎁 {{ $t('app.FreeMusicPackage') }} 🎁 </v-card-title>
         <v-card-text v-if="!leadSuccess" style="display: flex; flex-direction: column; gap: 10px">
           <p class="text-justify font-inter">
-            Get a <strong>FREE</strong> bundle of 10 high quality songs, and licence to use them in any project  
+            {{ $t('app.GetFreeBundle') }}
           </p>
 
           <v-form
@@ -90,14 +90,14 @@ const submitForm = async () => {
             class="text-capitalize font-inter"
             :loading="leadLoading"
           >
-          Get Free songs
+          {{ $t('app.GetFreeSongs') }}
           </v-btn>
         </v-form>
       </v-card-text>
       <v-card-text v-else  style="display: flex; justify-content: center;">
         <v-icon large color="green" class="mr-3">mdi-check-circle</v-icon>
         <p class="font-inter font-weight-medium">
-          The request has been sent !
+          {{ $t('app.RequestSent') }}
         </p>
           
       </v-card-text>
