@@ -336,7 +336,7 @@ const reviews = [
           </v-card>
         </v-col>
         <v-col v-if="!displayStore.isMobile" cols="12" md="6">
-          <v-img src="/images/bg.jpg" width="100%"></v-img>
+          <v-img src="/images/image_landing_title.webp" width="100%"></v-img>
         </v-col>
       </v-row>
     </v-container>
@@ -355,7 +355,7 @@ const reviews = [
     <v-container class="py-8" fluid>
       <v-row width="100%">
         <v-col cols="12" md="6">
-          <v-img src="/images/bg (4).jpg" width="100%"></v-img>
+          <v-img src="/images/image_landing_subtitle.webp" width="100%"></v-img>
         </v-col>
         <v-col cols="12" md="6">
           <v-card style="background-color: transparent; box-shadow: 0 0 0 0">
@@ -593,27 +593,27 @@ const reviews = [
             "
           >
             <v-img
-              :src="`/images/payment_methods/visa.png`"
+              :src="`/images/payment_methods/visa.webp`"
               width="35"
               height="35"
             ></v-img>
             <v-img
-              :src="`/images/payment_methods/mastercard.png`"
+              :src="`/images/payment_methods/mastercard.webp`"
               width="35"
               height="35"
             ></v-img>
             <v-img
-              :src="`/images/payment_methods/paypal.png`"
+              :src="`/images/payment_methods/paypal.webp`"
               width="40"
               height="40"
             ></v-img>
             <v-img
-              :src="`/images/payment_methods/link.png`"
+              :src="`/images/payment_methods/link.webp`"
               width="35"
               height="35"
             ></v-img>
             <v-img
-              :src="`/images/payment_methods/google_pay.png`"
+              :src="`/images/payment_methods/google_pay.webp`"
               width="40"
               height="40"
             ></v-img>

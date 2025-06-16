@@ -125,27 +125,27 @@ async function subscribe (){
             </v-chip>
           <div style="display: flex; align-items: center; justify-content: center; gap:10px">
               <v-img
-                :src="`/images/payment_methods/visa.png`"
+                :src="`/images/payment_methods/visa.webp`"
                 width="35"
                 height="35"
               ></v-img>
               <v-img
-                :src="`/images/payment_methods/mastercard.png`"
+                :src="`/images/payment_methods/mastercard.webp`"
                 width="35"
                 height="35"
               ></v-img>
               <v-img
-              :src="`/images/payment_methods/paypal.png`"
+              :src="`/images/payment_methods/paypal.webp`"
               width="40"
               height="40"
               ></v-img>
               <v-img
-                :src="`/images/payment_methods/link.png`"
+                :src="`/images/payment_methods/link.webp`"
                 width="35"
                 height="35"
               ></v-img>
               <v-img
-                :src="`/images/payment_methods/google_pay.png`"
+                :src="`/images/payment_methods/google_pay.webp`"
                 width="40"
                 height="40"
               ></v-img>
