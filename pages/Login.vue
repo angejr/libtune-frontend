@@ -67,7 +67,7 @@
           <v-btn
             :disabled="!isFormValid || loginLoading"
             @click="submitForm"
-            color="primary"
+            :color="!isFormValid || loginLoading ? 'grey' : 'primary'"
             block
             large
             class="mt-6 font-inter text-capitalize"

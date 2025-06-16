@@ -112,7 +112,7 @@ const unsubscribe = async () => {
       <!-- Unsubscribe Button -->
       <v-card-actions style="display: flex; justify-content: center">
         <v-btn
-          color="red"
+          :color="!feedback.trim() ? 'grey' : 'red'"
           variant="elevated"
           large
           :disabled="!feedback.trim()"

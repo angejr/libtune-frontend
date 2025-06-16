@@ -91,7 +91,7 @@
           <v-btn
             :disabled="!isFormValid || signUpLoading"
             @click="submitForm"
-            color="primary"
+            :color="!isFormValid || signUpLoading ? 'grey' : 'primary'"
             block
             large
             :loading="signUpLoading"

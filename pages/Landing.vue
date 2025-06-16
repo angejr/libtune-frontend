@@ -346,7 +346,6 @@ const reviews = [
           <v-card class="pa-2" style="padding: 0 !important" rounded="0">
             <v-card-title
               :style="{ backgroundColor: item.color, fontWeight: 'bold' }"
-              @click="goToPath('/')"
               >{{ item.title }}</v-card-title
             >
           </v-card>

@@ -26,10 +26,10 @@ const formatTime = (ms) => {
   const seconds = totalSeconds % 60;
 
   return [
-    String(days).padStart(2, '0') + "D",
-    String(hours).padStart(2, '0') + "H",
-    String(minutes).padStart(2, '0') + "m",
-    String(seconds).padStart(2, '0') + "s"
+    String(days).padStart(2, '0'),
+    String(hours).padStart(2, '0'),
+    String(minutes).padStart(2, '0'),
+    String(seconds).padStart(2, '0')
   ].join(':');
 };
 
@@ -214,6 +214,10 @@ onMounted(() => {
         >{{$t('AppBar.signup')}}</v-list-item>
         <v-divider v-if="!authStore?.isAuthenticated"></v-divider>
         <v-list-subheader> {{$t('AppBar.information')}}</v-list-subheader>
+        <v-list-item
+          class="text-capitalize font-inter text-h6 font-weight-regular"
+          @click="goToPath('/'); resetDrawers()"
+        >{{$t('AppBar.browse')}}</v-list-item>
         <v-list-item
           class="text-capitalize font-inter text-h6 font-weight-regular"
           @click="goToPath('/subscribe'); resetDrawers()"

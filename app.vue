@@ -82,9 +82,9 @@ const submitForm = async () => {
             class="mt-4"
           ></v-text-field>
           <v-btn
-            :disabled="!email"
+            :disabled="!isFormValid"
             @click="submitForm"
-            color="primary"
+            :color="!isFormValid ? 'grey' : 'primary'"
             block
             size="large"
             class="text-capitalize font-inter"
