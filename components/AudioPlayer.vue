@@ -12,8 +12,11 @@
       style="position: absolute; z-index: 1"
     >
       <!-- Circular Play/Pause Button -->
-      <v-icon color="black" @click="togglePlay">
+      <v-icon color="black" @click="togglePlay" size="xx-large" style="position: absolute; z-index: 1">
         {{ isPlayingInternal ? "mdi-pause-circle" : "mdi-play-circle" }}
+      </v-icon>
+      <v-icon color="white" size="xx-large" >
+        {{ isPlayingInternal ? "mdi-pause" : "mdi-play" }}
       </v-icon>
     </v-progress-circular>
     <v-img
