@@ -3,7 +3,6 @@ const authStore = useAuthStore();
 const errorStore = useErrorStore();
 const route = useRoute()
 const displayStore = useDisplayStore()
-const landingDialog = ref(displayStore.getLandingDialog())
 const email = ref('')
 const isFormValid = ref(false)
 const formRef = ref(null);
@@ -60,7 +59,7 @@ const submitForm = async () => {
         </v-card>
       </v-dialog>
     <!-- Landing Dialog -->
-    <v-dialog v-model="landingDialog" max-width="500px">
+    <v-dialog v-model="displayStore.landingDialog" max-width="500px">
       <v-card>
         <v-card-title style="text-align: center; font-weight: bold;" class="font-inter"> 🎁 {{ $t('app.FreeMusicPackage') }} 🎁 </v-card-title>
         <v-card-text v-if="!leadSuccess" style="display: flex; flex-direction: column; gap: 10px">
