@@ -9,6 +9,7 @@ const formRef = ref(null);
 const leadLoading = ref(false);
 const leadSuccess = ref(false);
 const { locale } = useI18n();
+const landingDialog = useCookie('landingDialog', { default: () => true });
 
 useSeoMeta({
   ogSiteName: "Libtune"
@@ -32,7 +33,7 @@ const submitForm = async () => {
     try {
       await authStore.postLead(email.value, locale.value);
       leadSuccess.value = true
-      displayStore.setLandingDialog(false)
+      landingDialog.value = false
 
     } catch (e) {
       errorStore.setError({title: "Lead Error:", text: e.message})
@@ -59,7 +60,7 @@ const submitForm = async () => {
         </v-card>
       </v-dialog>
     <!-- Landing Dialog -->
-    <v-dialog v-model="displayStore.landingDialog" max-width="500px">
+    <v-dialog v-model="landingDialog" max-width="500px">
       <v-card>
         <v-card-title style="text-align: center; font-weight: bold;" class="font-inter"> 🎁 {{ $t('app.FreeMusicPackage') }} 🎁 </v-card-title>
         <v-card-text v-if="!leadSuccess" style="display: flex; flex-direction: column; gap: 10px">
