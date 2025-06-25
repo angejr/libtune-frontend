@@ -5,7 +5,26 @@ const errorStore = useErrorStore();
 const config = useRuntimeConfig();
 const STRAPI_URL = config.public.strapiUrl;
 const stripeLoading = ref(false);
-const { t, locales, setLocale } = useI18n();
+const { t, locales, setLocale, locale } = useI18n();
+const landingDialog = ref(true);
+const landingDialogState = useLandingDialog()
+const { email, leadSuccess, leadLoading, isFormValid, formRef } = landingDialogState
+
+
+const submitForm = async () => {
+  if (formRef.value && formRef.value.validate()) {
+    leadLoading.value = true
+    try {
+      await authStore.postLead(email.value, locale.value);
+      leadSuccess.value = true
+      landingDialog.value = false
+
+    } catch (e) {
+      errorStore.setError({title: "Lead Error:", text: e.message})
+    }
+    leadLoading.value= false
+  }
+}
 
 useSeoMeta({
   title: t("Landing.PageTitle"),
@@ -249,6 +268,50 @@ const reviews = [
 
 <template>
   <v-container style="width: 100%; padding: 0">
+    <!-- Landing Dialog -->
+    <v-dialog v-model="landingDialog" max-width="500px">
+      <v-card>
+        <v-card-title style="text-align: center; font-weight: bold;" class="font-inter"> 🎁 {{ $t('app.FreeMusicPackage') }} 🎁 </v-card-title>
+        <v-card-text v-if="!leadSuccess" style="display: flex; flex-direction: column; gap: 10px">
+          <p class="text-justify font-inter">
+            {{ $t('app.GetFreeBundle') }}
+          </p>
+
+          <v-form
+          v-model="isFormValid"
+          ref="formRef"
+          lazy-validation
+        >
+          <v-text-field
+            v-model="email"
+            :label="$t('SignUp.email')"
+            variant="outlined"
+            :rules="[validationRules.required, validationRules.email, validationRules.safe, validationRules.max(60)]"
+            dense
+            class="mt-4"
+          ></v-text-field>
+          <v-btn
+            :disabled="!isFormValid"
+            @click="submitForm"
+            :color="!isFormValid ? 'grey' : 'primary'"
+            block
+            size="large"
+            class="text-capitalize font-inter"
+            :loading="leadLoading"
+          >
+          {{ $t('app.GetFreeSongs') }}
+          </v-btn>
+        </v-form>
+      </v-card-text>
+      <v-card-text v-else  style="display: flex; justify-content: center;">
+        <v-icon large color="green" class="mr-3">mdi-check-circle</v-icon>
+        <p class="font-inter font-weight-medium">
+          {{ $t('app.RequestSent') }}
+        </p>
+          
+      </v-card-text>
+      </v-card>
+    </v-dialog>
     <!-- Presentation -->
     <v-container class="py-4" fluid>
       <v-row>

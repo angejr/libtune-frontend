@@ -7,8 +7,6 @@ export const useDisplayStore = defineStore('display', () => {
       isMobile.value = mobile.value
     })
   
-  const getIsMobile = computed(() => isMobile.value)
-
   const countryCode : any = useCookie('country').value
   const countryPrice : any = countryCodeToPrice[Object.keys(countryCodeToPrice).includes(countryCode) ? countryCode : 'US' ]
 
@@ -35,6 +33,6 @@ export const useDisplayStore = defineStore('display', () => {
     getSubscribeAfterSignUp().value = value;
   };
 
-  return { isMobile, getIsMobile, countryCode, countryPrice, titleVersion, subtitleVersion, getSubscribeAfterSignUp, setSubscribeAfterSignUp }
+  return { isMobile, countryCode, countryPrice, titleVersion, subtitleVersion, getSubscribeAfterSignUp, setSubscribeAfterSignUp }
   })
   
