@@ -1,15 +1,12 @@
 <script setup>
 const authStore = useAuthStore();
 const errorStore = useErrorStore();
-const route = useRoute()
-const displayStore = useDisplayStore()
-const email = ref('')
-const isFormValid = ref(false)
-const formRef = ref(null);
-const leadLoading = ref(false);
-const leadSuccess = ref(false);
+const route = useRoute();
 const { locale } = useI18n();
 const landingDialog = useCookie('landingDialog', { default: () => true });
+const landingDialogState = useLandingDialog()
+const { email, leadSuccess, leadLoading, isFormValid, formRef } = landingDialogState
+
 
 useSeoMeta({
   ogSiteName: "Libtune"
