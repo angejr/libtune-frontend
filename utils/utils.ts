@@ -198,7 +198,7 @@ export const countryCodeToPrice: any = {
 
 }
 
-export const offerExpiryDate = '2025-07-10T00:00:00Z' // Summer offer
+export const offerExpiryDate = '2025-07-21T00:00:00Z' // Summer offer
 
 export const languageToVersionCombination = {
   en: ['v_3_9',
