@@ -417,317 +417,327 @@ const reviews = [
         </v-col>
       </v-row>
     </v-container>
-    <v-container class="py-8" fluid>
-      <v-row width="100%">
-        <v-col cols="12" md="6">
-          <v-img src="/images/image_landing_subtitle.webp" width="100%"></v-img>
-        </v-col>
-        <v-col cols="12" md="6">
-          <v-card style="background-color: transparent; box-shadow: 0 0 0 0">
-            <v-card-title class="font-inter">
-              {{ $t("Landing.WhyLibtune.title") }}
-            </v-card-title>
-            <v-card-text>
-              <v-list
-                style="
-                  background-color: transparent;
-                  box-shadow: 0 0 0 0;
-                  display: flex;
-                  flex-direction: column;
-                  gap: 15px;
-                "
-              >
-                <v-list-item
-                  class="libtune-advantage"
-                  style="padding-left: 0; padding-right: 0"
+    <v-lazy>
+      <v-container class="py-8" fluid>
+        <v-row width="100%">
+          <v-col cols="12" md="6">
+            <v-img src="/images/image_landing_subtitle.webp" width="100%"></v-img>
+          </v-col>
+          <v-col cols="12" md="6">
+            <v-card style="background-color: transparent; box-shadow: 0 0 0 0">
+              <v-card-title class="font-inter">
+                {{ $t("Landing.WhyLibtune.title") }}
+              </v-card-title>
+              <v-card-text>
+                <v-list
+                  style="
+                    background-color: transparent;
+                    box-shadow: 0 0 0 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                  "
                 >
-                  <h3>
-                    {{ $t("Landing.WhyLibtune.2") }}
-                  </h3></v-list-item
+                  <v-list-item
+                    class="libtune-advantage"
+                    style="padding-left: 0; padding-right: 0"
+                  >
+                    <h3>
+                      {{ $t("Landing.WhyLibtune.2") }}
+                    </h3></v-list-item
+                  >
+                  <v-list-item
+                    class="libtune-advantage"
+                    style="padding-left: 0; padding-right: 0"
+                  >
+                    <h3>
+                      {{ $t("Landing.WhyLibtune.3") }}
+                    </h3></v-list-item
+                  >
+                  <v-list-item
+                    class="libtune-advantage"
+                    style="padding-left: 0; padding-right: 0"
+                  >
+                    <h3>
+                      {{ $t("Landing.WhyLibtune.4") }}
+                    </h3></v-list-item
+                  >
+                  <v-list-item
+                    class="libtune-advantage"
+                    style="padding-left: 0; padding-right: 0"
+                  >
+                    <h3>
+                      {{ $t("Landing.WhyLibtune.5") }}
+                    </h3></v-list-item
+                  >
+                </v-list>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn
+                  color="black"
+                  variant="elevated"
+                  @click="goToPath('/subscribe')"
+                  class="text-capitalize font-inter"
                 >
-                <v-list-item
-                  class="libtune-advantage"
-                  style="padding-left: 0; padding-right: 0"
-                >
-                  <h3>
-                    {{ $t("Landing.WhyLibtune.3") }}
-                  </h3></v-list-item
-                >
-                <v-list-item
-                  class="libtune-advantage"
-                  style="padding-left: 0; padding-right: 0"
-                >
-                  <h3>
-                    {{ $t("Landing.WhyLibtune.4") }}
-                  </h3></v-list-item
-                >
-                <v-list-item
-                  class="libtune-advantage"
-                  style="padding-left: 0; padding-right: 0"
-                >
-                  <h3>
-                    {{ $t("Landing.WhyLibtune.5") }}
-                  </h3></v-list-item
-                >
-              </v-list>
-            </v-card-text>
-            <v-card-actions>
-              <v-btn
-                color="black"
-                variant="elevated"
-                @click="goToPath('/subscribe')"
-                class="text-capitalize font-inter"
-              >
-                {{ $t("Landing.StartFreeTrial") }}
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-    <!-- Reviews -->
-    <v-container class="py-4">
-      <div class="mb-6">
-        <h1
-          style="
-            font-family: Montserrat;
-            font-size: x-large;
-            text-align: center;
-          "
-        >
-          {{ $t("Landing.Reviews.title") }}
-        </h1>
-      </div>
-      <v-slide-group :mobile="displayStore.isMobile">
-        <v-slide-group-item v-for="review in reviews" :key="review.id">
-          <v-card class="mx-6 pa-4" width="300">
-            <template v-slot:prepend>
-              <v-avatar :color="getColor(review.user)">
-                <span class="text-white text-h6">{{
-                  review.user.charAt(0).toUpperCase()
-                }}</span>
-              </v-avatar>
-            </template>
-            <v-card-title>{{ review.user }}</v-card-title>
-            <v-card-subtitle>
-              <v-rating
-                :key="`rating-${review.id}`"
-                :id="`rating-${review.id}`"
-                :name="`rating-${review.id}`"
-                half-increments
-                readonly
-                :length="5"
-                :size="33"
-                :model-value="review.value"
-                active-color="#FF9900"
-              />
-            </v-card-subtitle>
-            <v-card-text>{{ review.text }}</v-card-text>
-          </v-card>
-        </v-slide-group-item>
-      </v-slide-group>
-    </v-container>
-    <v-container
-      class="py-8"
-      style="
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-      "
-    >
-      <div>
-        <h1 style="font-family: Montserrat; font-size: xx-large">
-          {{ $t("Landing.Subscription.title") }}
-        </h1>
-      </div>
-      <v-card class="premium-plan-card" elevation="10" max-width="400">
-        <v-card-title class="text-center text-h5 font-weight-bold">
-          {{ $t("Landing.Subscription.plan") }}
-        </v-card-title>
-        <v-card-title class="text-center text-h6">
-          <div style="display: flex; justify-content: center; gap: 5px">
-            <p class="text-decoration-line-through text-sm">
-              {{ displayStore.countryPrice.priceOriginalValue }}/{{
-                $t("Landing.Subscription.month")
-              }}
-            </p>
-          </div>
-          <div
-            class="price"
+                  {{ $t("Landing.StartFreeTrial") }}
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-lazy>
+    <v-lazy>
+      <!-- Reviews -->
+      <v-container class="py-4">
+        <div class="mb-6">
+          <h1
             style="
-              display: flex;
-              align-items: baseline;
-              justify-content: center;
-              color: red;
+              font-family: Montserrat;
+              font-size: x-large;
+              text-align: center;
             "
           >
-            <h1>{{ displayStore.countryPrice.priceValue }}</h1>
-            <p style="font-size: x-small">
-              /{{ $t("Landing.Subscription.month") }}
-            </p>
-          </div>
-          <div v-if="displayStore.countryPrice.currency !== 'usd'" style="display: flex; align-items: center; justify-content: center; gap:5px">
-                    <p class="font-inter" style="font-size: xx-small">{{$t("Subscribe.billedInDollars")}}</p>
-                <div style="display: flex; align-items: baseline; justify-content: center">
-                    <h6 style="font-weight: lighter;">$5.25</h6>
-                    <p style="font-size:xx-small">/{{$t("Landing.Subscription.month")}}</p> 
-              </div>
-              </div>
-          <p class="font-inter" style="font-size:xx-small">{{ $t("Landing.Subscription.billing") }}</p>
-        </v-card-title>
-        <v-divider></v-divider>
-        <v-card-text>
-          <v-list dense>
-            <v-list-item class="premium-feature">
-              <v-icon
-                icon="mdi-check-outline"
-                class="list-icon positive"
-              ></v-icon
-              >{{ $t("Landing.Subscription.features.1") }}</v-list-item
+            {{ $t("Landing.Reviews.title") }}
+          </h1>
+        </div>
+        <v-slide-group :mobile="displayStore.isMobile">
+          <v-slide-group-item v-for="review in reviews" :key="review.id">
+            <v-card class="mx-6 pa-4" width="300">
+              <template v-slot:prepend>
+                <v-avatar :color="getColor(review.user)">
+                  <span class="text-white text-h6">{{
+                    review.user.charAt(0).toUpperCase()
+                  }}</span>
+                </v-avatar>
+              </template>
+              <v-card-title>{{ review.user }}</v-card-title>
+              <v-card-subtitle>
+                <v-rating
+                  :key="`rating-${review.id}`"
+                  :id="`rating-${review.id}`"
+                  :name="`rating-${review.id}`"
+                  half-increments
+                  readonly
+                  :length="5"
+                  :size="33"
+                  :model-value="review.value"
+                  active-color="#FF9900"
+                />
+              </v-card-subtitle>
+              <v-card-text>{{ review.text }}</v-card-text>
+            </v-card>
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-container>
+    </v-lazy>
+    <v-lazy>
+      <v-container
+        class="py-8"
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+        "
+      >
+        <div>
+          <h1 style="font-family: Montserrat; font-size: xx-large">
+            {{ $t("Landing.Subscription.title") }}
+          </h1>
+        </div>
+        <v-card class="premium-plan-card" elevation="10" max-width="400">
+          <v-card-title class="text-center text-h5 font-weight-bold">
+            {{ $t("Landing.Subscription.plan") }}
+          </v-card-title>
+          <v-card-title class="text-center text-h6">
+            <div style="display: flex; justify-content: center; gap: 5px">
+              <p class="text-decoration-line-through text-sm">
+                {{ displayStore.countryPrice.priceOriginalValue }}/{{
+                  $t("Landing.Subscription.month")
+                }}
+              </p>
+            </div>
+            <div
+              class="price"
+              style="
+                display: flex;
+                align-items: baseline;
+                justify-content: center;
+                color: red;
+              "
             >
-            <v-list-item class="premium-feature">
-              <v-icon
-                icon="mdi-check-outline"
-                class="list-icon positive"
-              ></v-icon
-              >{{ $t("Landing.Subscription.features.2") }}</v-list-item
-            >
-            <v-list-item class="premium-feature">
-              <v-icon
-                icon="mdi-check-outline"
-                class="list-icon positive"
-              ></v-icon
-              >{{ $t("Landing.Subscription.features.3") }}</v-list-item
-            >
-            <v-list-item class="premium-feature">
-              <v-icon
-                icon="mdi-check-outline"
-                class="list-icon positive"
-              ></v-icon
-              >{{ $t("Landing.Subscription.features.4") }}</v-list-item
-            >
-            <v-list-item class="premium-feature">
-              <v-icon
-                icon="mdi-gift-outline"
-                class="list-icon positive"
-              ></v-icon
-              >{{ $t("Landing.Subscription.features.5") }}</v-list-item
-            >
-          </v-list>
-        </v-card-text>
-        <v-card-actions
-          class="mb-4"
-          style="display: flex; justify-content: center"
-        >
-          <v-btn
-            v-if="!authStore?.user?.customerId"
-            color="primary"
-            variant="elevated"
-            large
-            :disabled="stripeLoading"
-            :loading="stripeLoading"
-            @click="subscribe"
-            class="text-capitalize font-inter"
-            style="width: 75%"
+              <h1>{{ displayStore.countryPrice.priceValue }}</h1>
+              <p style="font-size: x-small">
+                /{{ $t("Landing.Subscription.month") }}
+              </p>
+            </div>
+            <div v-if="displayStore.countryPrice.currency !== 'usd'" style="display: flex; align-items: center; justify-content: center; gap:5px">
+                      <p class="font-inter" style="font-size: xx-small">{{$t("Subscribe.billedInDollars")}}</p>
+                  <div style="display: flex; align-items: baseline; justify-content: center">
+                      <h6 style="font-weight: lighter;">$5.25</h6>
+                      <p style="font-size:xx-small">/{{$t("Landing.Subscription.month")}}</p> 
+                </div>
+                </div>
+            <p class="font-inter" style="font-size:xx-small">{{ $t("Landing.Subscription.billing") }}</p>
+          </v-card-title>
+          <v-divider></v-divider>
+          <v-card-text>
+            <v-list dense>
+              <v-list-item class="premium-feature">
+                <v-icon
+                  icon="mdi-check-outline"
+                  class="list-icon positive"
+                ></v-icon
+                >{{ $t("Landing.Subscription.features.1") }}</v-list-item
+              >
+              <v-list-item class="premium-feature">
+                <v-icon
+                  icon="mdi-check-outline"
+                  class="list-icon positive"
+                ></v-icon
+                >{{ $t("Landing.Subscription.features.2") }}</v-list-item
+              >
+              <v-list-item class="premium-feature">
+                <v-icon
+                  icon="mdi-check-outline"
+                  class="list-icon positive"
+                ></v-icon
+                >{{ $t("Landing.Subscription.features.3") }}</v-list-item
+              >
+              <v-list-item class="premium-feature">
+                <v-icon
+                  icon="mdi-check-outline"
+                  class="list-icon positive"
+                ></v-icon
+                >{{ $t("Landing.Subscription.features.4") }}</v-list-item
+              >
+              <v-list-item class="premium-feature">
+                <v-icon
+                  icon="mdi-gift-outline"
+                  class="list-icon positive"
+                ></v-icon
+                >{{ $t("Landing.Subscription.features.5") }}</v-list-item
+              >
+            </v-list>
+          </v-card-text>
+          <v-card-actions
+            class="mb-4"
+            style="display: flex; justify-content: center"
           >
-          {{ $t("Landing.Subscription.subscribe") }}
-          </v-btn>
-          <h3 v-else>{{ $t("Landing.Subscription.alreadySubscribed") }}</h3>
-        </v-card-actions>
-        <v-divider></v-divider>
-        <v-card-actions
-          class="mt-4"
-          style="
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            gap: 10px;
-          "
-        >
-          <v-chip size="small" dense prepend-icon="mdi-lock">
-            {{ $t("Landing.Subscription.secured") }}
-          </v-chip>
-          <div
+            <v-btn
+              v-if="!authStore?.user?.customerId"
+              color="primary"
+              variant="elevated"
+              large
+              :disabled="stripeLoading"
+              :loading="stripeLoading"
+              @click="subscribe"
+              class="text-capitalize font-inter"
+              style="width: 75%"
+            >
+            {{ $t("Landing.Subscription.subscribe") }}
+            </v-btn>
+            <h3 v-else>{{ $t("Landing.Subscription.alreadySubscribed") }}</h3>
+          </v-card-actions>
+          <v-divider></v-divider>
+          <v-card-actions
+            class="mt-4"
             style="
               display: flex;
-              align-items: center;
               justify-content: center;
+              flex-direction: column;
               gap: 10px;
             "
           >
-            <v-img
-              :src="`/images/payment_methods/visa.webp`"
-              width="35"
-              height="35"
-            ></v-img>
-            <v-img
-              :src="`/images/payment_methods/mastercard.webp`"
-              width="35"
-              height="35"
-            ></v-img>
-            <v-img
-              :src="`/images/payment_methods/paypal.webp`"
-              width="40"
-              height="40"
-            ></v-img>
-            <v-img
-              :src="`/images/payment_methods/link.webp`"
-              width="35"
-              height="35"
-            ></v-img>
-            <v-img
-              :src="`/images/payment_methods/google_pay.webp`"
-              width="40"
-              height="40"
-            ></v-img>
-          </div>
-        </v-card-actions>
-      </v-card>
-    </v-container>
-    <v-container
-      class="py-8"
-      style="
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-      "
-    >
-      <div style="align-self: start">
-        <h1 style="font-family: Montserrat; font-size: x-large">
-          {{ $t("Landing.Faq.title") }}
-        </h1>
-      </div>
-      <v-list
-        style="width: 100%; background-color: transparent; box-shadow: 0 0 0 0"
+            <v-chip size="small" dense prepend-icon="mdi-lock">
+              {{ $t("Landing.Subscription.secured") }}
+            </v-chip>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+              "
+            >
+              <v-img
+                :src="`/images/payment_methods/visa.webp`"
+                width="35"
+                height="35"
+              ></v-img>
+              <v-img
+                :src="`/images/payment_methods/mastercard.webp`"
+                width="35"
+                height="35"
+              ></v-img>
+              <v-img
+                :src="`/images/payment_methods/paypal.webp`"
+                width="40"
+                height="40"
+              ></v-img>
+              <v-img
+                :src="`/images/payment_methods/link.webp`"
+                width="35"
+                height="35"
+              ></v-img>
+              <v-img
+                :src="`/images/payment_methods/google_pay.webp`"
+                width="40"
+                height="40"
+              ></v-img>
+            </div>
+          </v-card-actions>
+        </v-card>
+      </v-container>
+    </v-lazy>
+    <v-lazy>
+      <v-container
+        class="py-8"
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        "
       >
-        <v-list-item
-          v-for="q in faq"
-          :key="q"
-          style="padding-left: 0; padding-right: 0"
-          class="font-inter"
+        <div style="align-self: start">
+          <h1 style="font-family: Montserrat; font-size: x-large">
+            {{ $t("Landing.Faq.title") }}
+          </h1>
+        </div>
+        <v-list
+          style="width: 100%; background-color: transparent; box-shadow: 0 0 0 0"
         >
-          <v-expansion-panels>
-            <v-expansion-panel :title="q.title" :text="q.text">
-            </v-expansion-panel>
-          </v-expansion-panels>
-        </v-list-item>
-      </v-list>
-    </v-container>
-    <v-footer
-      color="#1e1e2f"
-      style="
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-      "
-    >
-      {{ $t('Landing.Contact')}} : <strong>support@libtune.com</strong>
-    </v-footer>
+          <v-list-item
+            v-for="q in faq"
+            :key="q"
+            style="padding-left: 0; padding-right: 0"
+            class="font-inter"
+          >
+            <v-expansion-panels>
+              <v-expansion-panel :title="q.title" :text="q.text">
+              </v-expansion-panel>
+            </v-expansion-panels>
+          </v-list-item>
+        </v-list>
+      </v-container>
+    </v-lazy>
+    <v-lazy>
+      <v-footer
+        color="#1e1e2f"
+        style="
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        {{ $t('Landing.Contact')}} : <strong>support@libtune.com</strong>
+      </v-footer>
+    </v-lazy>
   </v-container>
 </template>
 
