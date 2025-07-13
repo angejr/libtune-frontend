@@ -88,7 +88,7 @@ if (!subscribed.value) {
         </ul>
       </v-card-text>
       <v-card-actions class="justify-center">
-        <v-btn color="primary" variant="elevated" large @click="goToPath('/')">
+        <v-btn color="primary" variant="elevated" large @click="goToPath('/browse')">
           {{ $t('SubscriptionSuccess.browse') }}
         </v-btn>
       </v-card-actions>

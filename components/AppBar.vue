@@ -85,7 +85,7 @@ onMounted(() => {
         <v-breadcrumbs class="breadcrumbs">
           <v-breadcrumbs-item
             :title="$t('AppBar.browse')"
-            :to="localePath('/')"
+            :to="localePath('/browse')"
           ></v-breadcrumbs-item>
           <v-breadcrumbs-divider divider=" "></v-breadcrumbs-divider>
           <v-breadcrumbs-item
@@ -179,7 +179,7 @@ onMounted(() => {
       <!-- Title Section -->
       <v-app-bar-title class="app-bar-title">
         <a
-          href="/"
+          @click="goToPath('/')"          
           class="app-title-button"
           style="text-decoration: none; color: white"
         >
@@ -216,7 +216,7 @@ onMounted(() => {
         <v-list-subheader> {{$t('AppBar.information')}}</v-list-subheader>
         <v-list-item
           class="text-capitalize font-inter text-h6 font-weight-regular"
-          @click="goToPath('/'); resetDrawers()"
+          @click="goToPath('/browse'); resetDrawers()"
         >{{$t('AppBar.browse')}}</v-list-item>
         <v-list-item
           class="text-capitalize font-inter text-h6 font-weight-regular"

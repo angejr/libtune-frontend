@@ -136,7 +136,7 @@
       </v-card-text>
       <v-card-actions class="justify-space-evenly">
         <v-btn color="primary" class="font-inter text-capitalize"
-        variant="elevated" large @click="goToPath('/')" >
+        variant="elevated" large @click="goToPath('/browse')" >
         {{$t("SignUp.browse")}}
         </v-btn>
         <v-btn
