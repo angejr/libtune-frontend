@@ -46,6 +46,11 @@ export default defineNuxtConfig({
   ],
     defaultLocale: 'en',
   },
+  routeRules: {
+    '/landing': {
+      redirect: '/'
+    }
+  },
   app: {
     head: {
       title: "",
